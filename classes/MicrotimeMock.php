@@ -53,7 +53,7 @@ class MicrotimeMock extends AbstractMock
     public function setMicrotimeAsFloat($microtime)
     {
         $this->timestamp =
-                sprintf("%0.8F  %d", fmod($microtime, 1), $microtime);
+                sprintf("%0.8F %d", fmod($microtime, 1), $microtime);
     }
 
     /**

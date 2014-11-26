@@ -13,7 +13,7 @@ use malkusch\phpmock\MicrotimeMock;
  * @license WTFPL
  * @see AbstractMock
  */
-class AbstractMockTest extends \PHPUnit_Framework_TestCase
+class AbstractMockNamespaceTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
