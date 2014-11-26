@@ -1,0 +1,28 @@
+{
+    "name": "malkusch/php-mock",
+    "type": "library",
+    "description": "Mocks for php functions.",
+    "keywords": ["mock", "test"],
+    "homepage": "https://github.com/malkusch/php-mock",
+    "license": "WTFPL-2.0",
+    "authors": [
+        {
+            "name": "Markus Malkusch",
+            "email": "markus@malkusch.de",
+            "homepage": "http://markus.malkusch.de",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"malkusch\\phpmock\\": "classes/"}
+    },
+    "require": {
+        "php": ">=5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": ">=4"
+    },
+    "archive": {
+        "exclude": ["/tests/"]
+    }
+}
