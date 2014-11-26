@@ -1,0 +1,8 @@
+{
+    "name": "malkusch/php-mock-doc",
+    "require": {
+        "php": ">=5",
+	"malkusch/php-mock": "dev-master",
+	"apigen/apigen": "4.0.0-RC4"
+    }
+}

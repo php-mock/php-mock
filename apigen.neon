@@ -1,0 +1,4 @@
+destination: .
+source:
+	- vendor/malkusch/php-mock/classes/
+	
