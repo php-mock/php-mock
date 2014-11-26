@@ -90,7 +90,13 @@
 
 
 	<div class="description">
-	<p>Base functionality for all mocking classes.</p>
+	<p>PHP function mocking framework.</p>
+
+<p>Subclasses of this class mock an existing native PHP function.
+This is done by using PHP's namespace fallback policy.</p>
+
+<p>A mock will provide the namespaced function. I.e. only unqualified
+functions in a non-global namespace can be mocked.</p>
 
 	</div>
 
@@ -123,7 +129,7 @@
 <br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.AbstractMock.html#5-116" title="Go to source code">AbstractMock.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.AbstractMock.html#5-129" title="Go to source code">AbstractMock.php</a><br>
 	</div>
 
 
@@ -142,15 +148,15 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#25-31" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#31-39" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span> )</code>
 
 		<div class="description short">
-			
+			<p>Set the namespace for the mocked function.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			
+			<p>Set the namespace for the mocked function.</p>
 
 
 
@@ -180,7 +186,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_enable">#</a>
-		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#33-41" title="Go to source code">enable</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#41-49" title="Go to source code">enable</a>( )</code>
 
 		<div class="description short">
 			<p>Enables this mock.</p>
@@ -212,7 +218,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disable">#</a>
-		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#43-49" title="Go to source code">disable</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#51-57" title="Go to source code">disable</a>( )</code>
 
 		<div class="description short">
 			<p>Disable this mock.</p>
@@ -225,115 +231,6 @@
 
 
 
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getFunctionName" id="_getFunctionName">
-
-		<td class="attributes"><code>
-			abstract protected 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getFunctionName">#</a>
-		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#51-54" title="Go to source code">getFunctionName</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the function name which will be mocked</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the function name which will be mocked</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="mockFunction" id="_mockFunction">
-
-		<td class="attributes"><code>
-			abstract public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_mockFunction">#</a>
-		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#56-59" title="Go to source code">mockFunction</a>( )</code>
-
-		<div class="description short">
-			<p>Mocks the php function.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Mocks the php function.</p>
-
-
-
-
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="getCallback" id="_getCallback">
-
-		<td class="attributes"><code>
-			 public static
-
-			callable
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getCallback">#</a>
-		<code><a href="source-class-malkusch.phpmock.AbstractMock.html#61-76" title="Go to source code">getCallback</a>( <span>string <var>$canonicalFunctionName</var></span> )</code>
-
-		<div class="description short">
-			<p>Returns the defined callback for a mocked function.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the defined callback for a mocked function.</p>
-
-<p>This method is called from the function mock.</p>
-
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$canonicalFunctionName</var></dt>
-					<dd>The canonical function name.
-</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code>callable</code><br>The call back.
-
-				</div>
 
 
 
