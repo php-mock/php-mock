@@ -3,7 +3,13 @@
 namespace malkusch\phpmock;
 
 /**
- * Base functionality for all mocking classes.
+ * PHP function mocking framework.
+ * 
+ * Subclasses of this class mock an existing native PHP function.
+ * This is done by using PHP's namespace fallback policy.
+ * 
+ * A mock will provide the namespaced function. I.e. only unqualified
+ * functions in a non-global namespace can be mocked.
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
@@ -23,6 +29,8 @@ abstract class AbstractMock
     private $namespace;
     
     /**
+     * Set the namespace for the mocked function.
+     * 
      * @param string $namespace namespace for the mock function.
      */
     public function __construct($namespace)
@@ -50,11 +58,15 @@ abstract class AbstractMock
     
     /**
      * Returns the function name which will be mocked
+     * 
+     * @internal
      */
     abstract protected function getFunctionName();
     
     /**
      * Mocks the php function.
+     * 
+     * @internal
      */
     abstract public function mockFunction();
     
@@ -65,6 +77,7 @@ abstract class AbstractMock
      * 
      * @param string $canonicalFunctionName The canonical function name.
      * @return callback The call back.
+     * @internal
      */
     public static function getCallback($canonicalFunctionName)
     {

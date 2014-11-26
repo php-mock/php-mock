@@ -56,12 +56,6 @@ class MicrotimeMock extends AbstractMock
                 sprintf("%0.8F %d", fmod($microtime, 1), $microtime);
     }
 
-    /**
-     * Mocks PHP's microtime().
-     * 
-     * @param bool $get_as_float if true return the time as float
-     * @return mixed
-     */
     public function mockFunction($get_as_float = false)
     {
         if (! $get_as_float) {

@@ -33,11 +33,6 @@ class MtRandMock extends AbstractMock
         $this->number = $number;
     }
     
-    /**
-     * Mocks PHP's mt_rand().
-     * 
-     * @return int
-     */
     public function mockFunction()
     {
         return $this->number;

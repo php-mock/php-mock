@@ -48,14 +48,6 @@ class DateMock extends AbstractMock
         $this->timestamp = $timestamp;
     }
     
-    /**
-     * Mocks PHP's date().
-     * 
-     * This implementation ignores completely the $timestamp parameter if any
-     * given.
-     * 
-     * @return string
-     */
     public function mockFunction()
     {
         return \date(func_get_arg(0), $this->timestamp);

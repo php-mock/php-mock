@@ -33,11 +33,6 @@ class RandMock extends AbstractMock
         $this->number = $number;
     }
     
-    /**
-     * Mocks PHP's rand().
-     * 
-     * @return int
-     */
     public function mockFunction()
     {
         return $this->number;

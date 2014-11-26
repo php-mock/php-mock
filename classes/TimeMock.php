@@ -45,11 +45,6 @@ class TimeMock extends AbstractMock
         $this->timestamp = $timestamp;
     }
     
-    /**
-     * Mocks PHP's time().
-     * 
-     * @return int
-     */
     public function mockFunction()
     {
         return $this->timestamp;
