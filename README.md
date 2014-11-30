@@ -20,7 +20,7 @@ $time = time(); // This call can be mocked, a call to \time() can't.
 
 ## Requirements
 
-* PHP-5.4 or newer.
+* PHP-5.4 or newer. There's also a [PHP-5.3 branch](https://github.com/malkusch/php-mock/tree/php-5.3).
 
 * Only *unqualified* function calls in a namespace context can be mocked.
   E.g. a call for `time()` in the namespace `foo` is mockable,
