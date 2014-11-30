@@ -39,14 +39,16 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.phpmock.AbstractMock.html">AbstractMock</a></li>
-				<li><a href="class-malkusch.phpmock.DateMock.html">DateMock</a></li>
-				<li><a href="class-malkusch.phpmock.MicrotimeMock.html">MicrotimeMock</a></li>
-				<li><a href="class-malkusch.phpmock.MtRandMock.html">MtRandMock</a></li>
-				<li><a href="class-malkusch.phpmock.RandMock.html">RandMock</a></li>
-				<li><a href="class-malkusch.phpmock.TimeMock.html">TimeMock</a></li>
+				<li><a href="class-malkusch.phpmock.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></li>
+				<li><a href="class-malkusch.phpmock.FixedValueFunction.html">FixedValueFunction</a></li>
+				<li><a href="class-malkusch.phpmock.Mock.html">Mock</a></li>
+				<li><a href="class-malkusch.phpmock.MockBuilder.html">MockBuilder</a></li>
 			</ul>
 
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-malkusch.phpmock.CallableProvider.html">CallableProvider</a></li>
+			</ul>
 
 
 
@@ -92,37 +94,35 @@
 <table class="summary" id="classes">
 <caption>Classes summary</caption>
 <tr>
-	<td class="name"><a href="class-malkusch.phpmock.AbstractMock.html">AbstractMock</a></td>
+	<td class="name"><a href="class-malkusch.phpmock.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></td>
+	<td>Mock function for microtime which returns always the same time.
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-malkusch.phpmock.FixedValueFunction.html">FixedValueFunction</a></td>
+	<td>Mock function which returns always the same value.
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-malkusch.phpmock.Mock.html">Mock</a></td>
 	<td>Mocking framework for built-in PHP functions.
 </td>
 </tr>
 <tr>
-	<td class="name"><a href="class-malkusch.phpmock.DateMock.html">DateMock</a></td>
-	<td>Mocks PHP's built-in date() function.
-</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-malkusch.phpmock.MicrotimeMock.html">MicrotimeMock</a></td>
-	<td>Mocks PHP's built-in microtime() function.
-</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-malkusch.phpmock.MtRandMock.html">MtRandMock</a></td>
-	<td>Mocks PHP's built-in mt_rand() function.
-</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-malkusch.phpmock.RandMock.html">RandMock</a></td>
-	<td>Mocks PHP's built-in rand() function.
-</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-malkusch.phpmock.TimeMock.html">TimeMock</a></td>
-	<td>Mocks PHP's built-in time() function.
+	<td class="name"><a href="class-malkusch.phpmock.MockBuilder.html">MockBuilder</a></td>
+	<td>Fluent API mock builder.
 </td>
 </tr>
 </table>
 
+<table class="summary" id="interfaces">
+<caption>Interfaces summary</caption>
+<tr>
+	<td class="name"><a href="class-malkusch.phpmock.CallableProvider.html">CallableProvider</a></td>
+	<td>Provides a callable for a mock function.
+</td>
+</tr>
+</table>
 
 
 
@@ -135,6 +135,6 @@
 </div>
 </div>
 <script src="resources/combined.js?721046668"></script>
-<script src="elementlist.js?780404438"></script>
+<script src="elementlist.js?1069941999"></script>
 </body>
 </html>
