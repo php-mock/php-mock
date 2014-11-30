@@ -44,7 +44,7 @@ class Mock
      * @param string   $name       The function name of the mocked function.
      * @param callable $function   The mock function.
      */
-    public function __construct($namespace, $name, callable $function)
+    public function __construct($namespace, $name, $function)
     {
         $this->namespace = $namespace;
         $this->name = $name;

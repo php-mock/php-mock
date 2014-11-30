@@ -86,7 +86,7 @@ class MockBuilder
      * @return MockBuilder
      * @see setCallableProvider()
      */
-    public function setFunction(callable $function)
+    public function setFunction($function)
     {
         $this->function = $function;
         return $this;

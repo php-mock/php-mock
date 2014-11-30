@@ -20,7 +20,7 @@ $time = time(); // This call can be mocked, a call to \time() can't.
 
 ## Requirements
 
-* PHP-5.4 or newer.
+* PHP-5.3 or newer.
 
 * Only *unqualified* function calls in a namespace context can be mocked.
   E.g. a call for `time()` in the namespace `foo` is mockable,
@@ -45,7 +45,7 @@ Use [Composer](https://getcomposer.org/):
 ```json
 {
     "require": {
-        "malkusch/php-mock": "0.2"
+        "malkusch/php-mock": "dev-php-5.3"
     }
 }
 ```
@@ -228,4 +228,4 @@ This library was inspired by Fabian Schmengler's article
 If you like PHP-Mock and feel generous donate a few Bitcoins here:
 [1335STSwu9hST4vcMRppEPgENMHD2r1REK](bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK)
 
-[![Build Status](https://travis-ci.org/malkusch/php-mock.svg?branch=master)](https://travis-ci.org/malkusch/php-mock)
+[![Build Status](https://travis-ci.org/malkusch/php-mock.svg?branch=php-5.3)](https://travis-ci.org/malkusch/php-mock)
