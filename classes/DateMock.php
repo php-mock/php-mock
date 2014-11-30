@@ -3,7 +3,7 @@
 namespace malkusch\phpmock;
 
 /**
- * Mocks PHP's date() function.
+ * Mocks PHP's built-in date() function.
  * 
  * This mock ignores completely date's timestamp parameter. I.e. it will
  * always return the formated date for the mock's timestamp.

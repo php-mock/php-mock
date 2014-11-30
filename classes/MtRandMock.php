@@ -3,7 +3,7 @@
 namespace malkusch\phpmock;
 
 /**
- * Mocks PHP's mt_rand() function.
+ * Mocks PHP's built-in mt_rand() function.
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations

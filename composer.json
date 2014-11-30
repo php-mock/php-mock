@@ -1,8 +1,8 @@
 {
     "name": "malkusch/php-mock",
     "type": "library",
-    "description": "Mocks for php functions.",
-    "keywords": ["mock", "test"],
+    "description": "Mock non deterministic built-in PHP functions (e.g. time() or rand())",
+    "keywords": ["mock", "stub", "function", "test"],
     "homepage": "https://github.com/malkusch/php-mock",
     "license": "WTFPL-2.0",
     "authors": [

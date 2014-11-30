@@ -3,9 +3,9 @@
 namespace malkusch\phpmock;
 
 /**
- * PHP function mocking framework.
+ * Mocking framework for built-in PHP functions.
  * 
- * Subclasses of this class mock an existing native PHP function.
+ * Subclasses of this class mock an existing built-in PHP function.
  * This is done by using PHP's namespace fallback policy.
  * 
  * A mock will provide the namespaced function. I.e. only unqualified
@@ -57,7 +57,7 @@ abstract class AbstractMock
     }
     
     /**
-     * Returns the function name which will be mocked
+     * Returns the function name which will be mocked.
      * 
      * @internal
      */

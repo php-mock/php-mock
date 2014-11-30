@@ -1,6 +1,6 @@
 # About PHP-Mock
 
-PHP-Mock is a testing library which mocks non deterministic PHP functions like
+PHP-Mock is a testing library which mocks non deterministic built-in PHP functions like
 `time()` or `rand()`. This is achived by [PHP's namespace fallback policy](http://php.net/manual/en/language.namespaces.fallback.php):
 
 > For functions […], PHP will fall back to global functions […] if a
@@ -18,7 +18,6 @@ namespace foo;
 $time = time(); // This call can be mocked, a call to \time() can't.
 ```
 
-
 ## Requirements
 
 * PHP-5.3 or newer because of the `namespace` language feature.
@@ -26,6 +25,17 @@ $time = time(); // This call can be mocked, a call to \time() can't.
 * Only *unqualified* function calls in a namespace context can be mocked.
   E.g. a call for `time()` in the namespace `foo` is mockable,
   a call for `\time()` is not.
+
+## Alternatives
+
+If you can't rely on or just don't want to use the namespace fallback policy,
+there are alternative techniques to mock built-in PHP functions:
+
+* [**PHPBuiltinMock**](https://github.com/jadell/PHPBuiltinMock) relies on
+  the [APD](http://php.net/manual/en/book.apd.php) extension.
+
+* [**phpunit-mockfunction**](https://github.com/tcz/phpunit-mockfunction)
+  uses the [runkit](http://php.net/manual/en/book.runkit.php) extension.
 
 
 # Installation
@@ -39,6 +49,7 @@ Use [Composer](https://getcomposer.org/):
     }
 }
 ```
+
 
 # Mocks
 
@@ -170,6 +181,8 @@ class AlarmTest extends \PHPUnit_Framework_TestCase
 
 This project is free and under the WTFPL.
 Responsable for this project is Markus Malkusch markus@malkusch.de.
+This library was inspired by Fabian Schmengler's article
+[*PHP: “Mocking” built-in functions like time() in Unit Tests*](http://www.schmengler-se.de/en/2011/03/php-mocking-built-in-functions-like-time-in-unit-tests/).
 
 ## Donations
 
