@@ -9,6 +9,7 @@ namespace malkusch\phpmock;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
  * @see mt_rand()
+ * @deprecated 0.2
  */
 class MtRandMock extends AbstractMock
 {

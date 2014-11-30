@@ -3,24 +3,30 @@
 namespace malkusch\phpmock;
 
 /**
- * Tests TimeMock.
+ * Tests Mock.
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
- * @see TimeMock
+ * @see Mock
  */
-class TimeMockTest extends \PHPUnit_Framework_TestCase
+class MockTest extends \PHPUnit_Framework_TestCase
 {
-
+    
     /**
-     * @var TimeMock The time mock
+     * @var Mock
      */
     private $mock;
     
-    protected function setup()
+    protected function setUp()
     {
-        $this->mock = new TimeMock(__NAMESPACE__);
+        $this->mock = new Mock(
+            __NAMESPACE__,
+            "time",
+            function () {
+                return 1234;
+            }
+        );
         $this->mock->enable();
     }
     
@@ -30,24 +36,23 @@ class TimeMockTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test time().
+     * Tests enable().
      * 
      * @test
      */
-    public function testTime()
+    public function testEnable()
     {
-        $this->mock->setTime(1234);
         $this->assertEquals(1234, time());
     }
-    
+
     /**
-     * Test the initialization.
+     * Tests disable().
      * 
      * @test
      */
-    public function testSetup()
+    public function testDisable()
     {
-        $this->assertGreaterThanOrEqual(time(), \time());
-        $this->assertLessThanOrEqual(time() + 1, \time());
+        $this->mock->disable();
+        $this->assertNotEquals(1234, time());
     }
 }

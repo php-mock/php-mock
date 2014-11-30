@@ -20,7 +20,7 @@ $time = time(); // This call can be mocked, a call to \time() can't.
 
 ## Requirements
 
-* PHP-5.3 or newer because of the `namespace` language feature.
+* PHP-5.4 or newer.
 
 * Only *unqualified* function calls in a namespace context can be mocked.
   E.g. a call for `time()` in the namespace `foo` is mockable,
@@ -45,35 +45,46 @@ Use [Composer](https://getcomposer.org/):
 ```json
 {
     "require": {
-        "malkusch/php-mock": "0.1"
+        "malkusch/php-mock": "master-dev"
     }
 }
 ```
 
 
-# Mocks
-
-You'll find the Mocks in the namespace [`malkusch\phpmock`](http://malkusch.github.io/php-mock/namespace-malkusch.phpmock.html).
-
-* [`DateMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.DateMock.html) mocks `date()`.
-
-* [`TimeMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.TimeMock.html) mocks `time()`.
-
-* [`MicrotimeMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MicrotimeMock.html) mocks `microtime()`.
-
-* [`RandMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.RandMock.html) mocks `rand()`.
-
-* [`MtRandMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MtRandMock.html) mocks `mt_rand()`.
-
-
 # Usage
 
-You'll have to instantiate the desired [`AbstractMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.AbstractMock.html)
-implementation. That object might have some configuration setters which will
-determine the mock output. The function is not yet mocked. You'll have to
-enabled it by calling [`enable()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.AbstractMock.html#_enable)
-on the mock instance. When you are finished with that mock you
-should disable it by calling [`disable()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.AbstractMock.html#_disable)
+You find the API in the namespace [`malkusch\phpmock`](http://malkusch.github.io/php-mock/namespace-malkusch.phpmock.html).
+
+Create a [`Mock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html)
+object. You can do this with the fluent API of [`MockBuilder`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html):
+
+* [`MockBuilder::setNamespace()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setNamespace)
+  sets the target namespace of the mocked function.
+
+* [`MockBuilder::setName()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setName)
+  sets the name of the mocked function (e.g. `time()`).
+
+* [`MockBuilder::setFunction()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setFunction)
+  sets the concrete mock implementation.
+
+* [`MockBuilder::setCallableProvider()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setCallableProvider)
+  sets alternativly to `MockBuilder::setFunction()` the mock implementation as a
+  [`CallableProvider`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.CallableProvider.html):
+
+   * [`FixedValueFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.FixedValueFunction.html)
+     is a simple implementation which returns always the same value.
+
+   * [`FixedMicrotimeFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.FixedMicrotimeFunction.html)
+     is a simple implementation which returns always the same microtime. This
+     class is different to `FixedValueFunction` as it contains a converter for
+     `microtime()`'s float and string format.
+
+* [`MockBuilder::build()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_build)
+  builds a `Mock` object.
+
+After you have build your `Mock` object you have to call [`enable()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html#_enable)
+to enable the mock in the given namespace. When you are finished with that mock you
+should disable it by calling [`disable()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html#_disable)
 on the mock instance. 
 
 This example illustrates mocking of the unqualified function `time()` in the 
@@ -84,10 +95,18 @@ namespace `foo`:
 
 namespace foo;
 
-use malkusch\phpmock\TimeMock;
+use malkusch\phpmock\MockBuilder;
 
-$mock = new TimeMock(__NAMESPACE__);
-$mock->setTime(1417011228);
+$builder = new MockBuilder();
+$builder->setNamespace(__NAMESPACE__)
+        ->setName("time")
+        ->setFunction(
+            function () {
+                return 1417011228;
+            }
+        );
+                    
+$mock = $builder->build();
 
 // The mock is not enabled yet.
 assert (time() != 1417011228);
@@ -95,9 +114,16 @@ assert (time() != 1417011228);
 $mock->enable();
 assert (time() == 1417011228);
 
-// The mock is disabled and PHP's native time() is called.
+// The mock is disabled and PHP's built-in time() is called.
 $mock->disable();
 assert (time() != 1417011228);
+```
+
+Instead of setting the mock function with `MockBuilder::setFunction()` you could also
+use the existing [`FixedValueFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.FixedValueFunction.html):
+
+```php
+$builder->setCallableProvider(new FixedValueFunction(1417011228));
 ```
 
 ## Unit testing
@@ -137,19 +163,32 @@ This would be the unit test for `Alarm::isRinging()`:
 
 namespace foo;
 
-use malkusch\phpmock\TimeMock;
+use malkusch\phpmock\MockBuilder;
+use malkusch\phpmock\FixedValueFunction;
 
 class AlarmTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var TimeMock The time() mock.
+     * @var Mock The time() mock.
      */
     private $mock;
+
+    /**
+     * @var FixedValueFunction The mock function.
+     */
+    private $time;
     
     protected function setup()
     {
-        $this->mock = new TimeMock(__NAMESPACE__);
+        $this->time = new FixedValueFunction();
+        $builder = new MockBuilder();
+
+        $this->mock = $builder->setNamespace(__NAMESPACE__)
+                              ->setName("time")
+                              ->setCallableProvider($this->time)
+                              ->build();
+
         $this->mock->enable();
     }
     
@@ -163,13 +202,13 @@ class AlarmTest extends \PHPUnit_Framework_TestCase
         $timestamp = 1417011228;
         $alarm = new Alarm($timestamp);
 
-        $this->mock->setTime($timestamp - 1);
+        $this->time->setValue($timestamp - 1);
         $this->assertFalse($alarm->isRinging());
 
-        $this->mock->setTime($timestamp);
+        $this->time->setValue($timestamp);
         $this->assertTrue($alarm->isRinging());
 
-        $this->mock->setTime($timestamp + 1);
+        $this->time->setValue($timestamp + 1);
         $this->assertFalse($alarm->isRinging());
     }
 

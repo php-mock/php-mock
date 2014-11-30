@@ -12,6 +12,7 @@ namespace malkusch\phpmock;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
  * @see date()
+ * @deprecated 0.2
  */
 class DateMock extends AbstractMock
 {

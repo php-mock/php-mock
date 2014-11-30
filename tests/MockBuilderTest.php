@@ -1,26 +1,24 @@
 <?php
 
-namespace foo;
-
-use malkusch\phpmock\MockBuilder;
-use malkusch\phpmock\FixedValueFunction;
+namespace malkusch\phpmock;
 
 /**
- * Tests the example from the documentation.
+ * Tests MockBuilder.
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
+ * @see MockBuilder
  */
-class ExampleTest extends \PHPUnit_Framework_TestCase
+class MockBuilderTest extends \PHPUnit_Framework_TestCase
 {
-
+    
     /**
-     * Tests the example from the documentation.
+     * Tests build().
      * 
      * @test
      */
-    public function testExample1()
+    public function testBuild()
     {
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
@@ -30,36 +28,22 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
                         return 1234;
                     }
                 );
-                    
+        
         $mock = $builder->build();
         $mock->enable();
         try {
-            assert(time() == 1234);
             $this->assertEquals(1234, time());
             
         } finally {
             $mock->disable();
             
         }
-    }
-
-    /**
-     * Tests the example from the documentation.
-     * 
-     * @test
-     */
-    public function testExample2()
-    {
-        $builder = new MockBuilder();
-        $builder->setNamespace(__NAMESPACE__)
-                ->setName("time")
-                ->setCallableProvider(new FixedValueFunction(12345));
-                    
+        
+        $builder->setCallableProvider(new FixedValueFunction(123));
         $mock = $builder->build();
         $mock->enable();
         try {
-            assert(time() == 12345);
-            $this->assertEquals(12345, time());
+            $this->assertEquals(123, time());
             
         } finally {
             $mock->disable();
