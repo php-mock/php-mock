@@ -31,23 +31,14 @@ class MockBuilderTest extends \PHPUnit_Framework_TestCase
         
         $mock = $builder->build();
         $mock->enable();
-        try {
-            $this->assertEquals(1234, time());
-            
-        } finally {
-            $mock->disable();
-            
-        }
+        $this->assertEquals(1234, time());
+        $mock->disable();
+        
         
         $builder->setCallableProvider(new FixedValueFunction(123));
         $mock = $builder->build();
         $mock->enable();
-        try {
-            $this->assertEquals(123, time());
-            
-        } finally {
-            $mock->disable();
-            
-        }
+        $this->assertEquals(123, time());
+        $mock->disable();
     }
 }

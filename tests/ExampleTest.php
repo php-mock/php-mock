@@ -33,14 +33,10 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
                     
         $mock = $builder->build();
         $mock->enable();
-        try {
-            assert(time() == 1234);
-            $this->assertEquals(1234, time());
+        assert(time() == 1234);
+        $this->assertEquals(1234, time());
             
-        } finally {
-            $mock->disable();
-            
-        }
+        $mock->disable();
     }
 
     /**
@@ -57,13 +53,9 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
                     
         $mock = $builder->build();
         $mock->enable();
-        try {
-            assert(time() == 12345);
-            $this->assertEquals(12345, time());
-            
-        } finally {
-            $mock->disable();
-            
-        }
+        assert(time() == 12345);
+        $this->assertEquals(12345, time());
+        
+        $mock->disable();
     }
 }

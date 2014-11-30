@@ -67,14 +67,10 @@ class FixedMicrotimeFunctionTest extends \PHPUnit_Framework_TestCase
                     
         $mock = $builder->build();
         $mock->enable();
-        try {
-            $this->assertEquals("0.00000001 1", microtime());
-            $this->assertEquals(1.00000001, microtime(true));
+        $this->assertEquals("0.00000001 1", microtime());
+        $this->assertEquals(1.00000001, microtime(true));
             
-        } finally {
-            $mock->disable();
-            
-        }
+        $mock->disable();
     }
     
     /**
