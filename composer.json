@@ -23,6 +23,6 @@
         "phpunit/phpunit": ">=4"
     },
     "archive": {
-        "exclude": ["/tests/"]
+        "exclude": ["/tests"]
     }
 }
