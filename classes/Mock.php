@@ -18,11 +18,6 @@ class Mock
 {
     
     /**
-     * @var callable[] defined callables for the mocks.
-     */
-    private static $functions = array();
-    
-    /**
      * @var string namespace for the mock function.
      */
     private $namespace;
@@ -58,7 +53,8 @@ class Mock
      */
     public function enable()
     {
-        if (isset(self::$functions[$this->getCanonicalFunctionName()])) {
+        $registry = MockRegistry::getInstance();
+        if ($registry->isRegistered($this)) {
             throw new MockEnabledException(
                 "$this->name is already enabled."
                 . "Call disable() on the existing mock."
@@ -66,7 +62,7 @@ class Mock
             
         }
         $this->defineMockFunction();
-        self::$functions[$this->getCanonicalFunctionName()] = $this->function;
+        $registry->register($this);
     }
 
     /**
@@ -74,33 +70,30 @@ class Mock
      */
     public function disable()
     {
-        unset(self::$functions[$this->getCanonicalFunctionName()]);
+        MockRegistry::getInstance()->unregister($this);
     }
     
     /**
-     * Returns the defined callable for a mocked function.
+     * Calls the mocked function.
      * 
-     * This method is called from the function mock.
+     * This method is called from the namespaced function.
      * 
-     * @param string $canonicalFunctionName The canonical function name.
-     * @return callable
+     * @param array $arguments the call arguments.
+     * @return mixed
      * @internal
      */
-    public static function getCallable($canonicalFunctionName)
+    public function call(array $arguments)
     {
-        if (!isset(self::$functions[$canonicalFunctionName])) {
-            return null;
-            
-        }
-        return self::$functions[$canonicalFunctionName];
+        return call_user_func_array($this->function, $arguments);
     }
     
     /**
      * Returns the function name with its namespace.
      * 
      * @return String The function name with its namespace.
+     * @internal
      */
-    private function getCanonicalFunctionName()
+    public function getCanonicalFunctionName()
     {
         return strtolower("$this->namespace\\$this->name");
     }
@@ -120,16 +113,23 @@ class Mock
         
         $definition = "
             namespace $this->namespace {
+                
+                use \malkusch\phpmock\MockRegistry;
+
                 function $this->name()
                 {
-                    \$callable = \malkusch\phpmock\Mock::getCallable(
-                            '$canonicalFunctionName'
-                    );
-                    if (empty(\$callable)) {
-                        \$callable = '$this->name';
-                        
+                    \$registry = MockRegistry::getInstance();
+                    \$mock = \$registry->getMock('$canonicalFunctionName');
+                    
+                    // call the built-in function if the mock was not enabled.
+                    if (empty(\$mock)) {
+                        return call_user_func_array(
+                            '$this->name', func_get_args()
+                        );
                     }
-                    return call_user_func_array(\$callable, func_get_args());
+                    
+                    // call the mock function.
+                    return \$mock->call(func_get_args());
                 }
             }";
                 
