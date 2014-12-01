@@ -37,6 +37,9 @@ there are alternative techniques to mock built-in PHP functions:
 * [**phpunit-mockfunction**](https://github.com/tcz/phpunit-mockfunction)
   uses the [runkit](http://php.net/manual/en/book.runkit.php) extension.
 
+* [**vfsStream**](https://github.com/mikey179/vfsStream) is a stream wrapper for
+  a virtual file system. This will help you write tests which covers PHP
+  stream functions (e.g. `fread()` or `readdir()`).
 
 # Installation
 
