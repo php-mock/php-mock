@@ -36,6 +36,23 @@ class MockTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test function call recording.
+     * 
+     * @test
+     */
+    public function testRecording()
+    {
+        $recorder = $this->mock->getRecorder();
+        $this->assertEmpty($recorder->getCalls());
+        
+        time();
+        $this->assertEquals(array(array()), $recorder->getCalls());
+        
+        time(true);
+        $this->assertEquals(array(array(), array(true)), $recorder->getCalls());
+    }
+    
+    /**
      * Tests enable().
      * 
      * @test

@@ -33,6 +33,11 @@ class Mock
     private $function;
     
     /**
+     * @var Recorder Call recorder.
+     */
+    private $recorder;
+    
+    /**
      * Set the namespace, function name and the mock function.
      * 
      * @param string   $namespace  The namespace for the mock function.
@@ -44,6 +49,19 @@ class Mock
         $this->namespace = $namespace;
         $this->name = $name;
         $this->function = $function;
+        $this->recorder = new Recorder();
+    }
+    
+    /**
+     * Returns the call recorder.
+     * 
+     * Every call to the mocked function was recorded to this call recorder.
+     * 
+     * @return Recorder The call recorder.
+     */
+    public function getRecorder()
+    {
+        return $this->recorder;
     }
     
     /**
@@ -77,6 +95,7 @@ class Mock
      * Calls the mocked function.
      * 
      * This method is called from the namespaced function.
+     * It also records the call in the call recorder.
      * 
      * @param array $arguments the call arguments.
      * @return mixed
@@ -84,6 +103,7 @@ class Mock
      */
     public function call(array $arguments)
     {
+        $this->recorder->record($arguments);
         return call_user_func_array($this->function, $arguments);
     }
     
