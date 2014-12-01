@@ -44,6 +44,29 @@ class MockTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals(1234, time());
     }
+    
+    /**
+     * Tests failing enabling an already enabled mock.
+     * 
+     * @expectedException malkusch\phpmock\MockEnabledException
+     * @test
+     */
+    public function testFailEnable()
+    {
+        $this->mock->enable();
+    }
+    
+    /**
+     * Tests disabling and enabling again.
+     * 
+     * @test
+     */
+    public function testReenable()
+    {
+        $this->mock->disable();
+        $this->mock->enable();
+        $this->assertEquals(1234, time());
+    }
 
     /**
      * Tests disable().

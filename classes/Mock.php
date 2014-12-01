@@ -53,11 +53,19 @@ class Mock
     
     /**
      * Enables this mock.
+     * 
+     * @throws MockEnabledException If the function has already an enabled mock.
      */
     public function enable()
     {
+        if (isset(self::$functions[$this->getCanonicalFunctionName()])) {
+            throw new MockEnabledException(
+                "$this->name is already enabled."
+                . "Call disable() on the existing mock."
+            );
+            
+        }
         $this->defineMockFunction();
-
         self::$functions[$this->getCanonicalFunctionName()] = $this->function;
     }
 
@@ -94,7 +102,7 @@ class Mock
      */
     private function getCanonicalFunctionName()
     {
-        return "$this->namespace\\$this->name";
+        return strtolower("$this->namespace\\$this->name");
     }
 
     /**
