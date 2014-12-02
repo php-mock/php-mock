@@ -3,7 +3,9 @@
 namespace foo;
 
 use malkusch\phpmock\MockBuilder;
+use malkusch\phpmock\MockRegistry;
 use malkusch\phpmock\functions\FixedValueFunction;
+use malkusch\phpmock\SleepEnvironmentBuilder;
 
 /**
  * Tests the example from the documentation.
@@ -14,6 +16,11 @@ use malkusch\phpmock\functions\FixedValueFunction;
  */
 class ExampleTest extends \PHPUnit_Framework_TestCase
 {
+    
+    protected function tearDown()
+    {
+        MockRegistry::getInstance()->unregisterAll();
+    }
 
     /**
      * Tests the example from the documentation.
@@ -35,8 +42,6 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         $mock->enable();
         assert(time() == 1234);
         $this->assertEquals(1234, time());
-            
-        $mock->disable();
     }
 
     /**
@@ -55,7 +60,25 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         $mock->enable();
         assert(time() == 12345);
         $this->assertEquals(12345, time());
+    }
+
+    /**
+     * Tests the example from the documentation.
+     * 
+     * @test
+     */
+    public function testExample3()
+    {
+        $builder = new SleepEnvironmentBuilder();
+        $builder->setNamespace(__NAMESPACE__)
+                ->setTimestamp(12345);
+
+        $environment = $builder->build();
+        $environment->enable();
         
-        $mock->disable();
+        sleep(10);
+
+        assert(12345 + 10 == time());
+        $this->assertEquals(12345 + 10, time());
     }
 }

@@ -48,7 +48,7 @@ Use [Composer](https://getcomposer.org/):
 ```json
 {
     "require": {
-        "malkusch/php-mock": "0.2"
+        "malkusch/php-mock": "dev-master"
     }
 }
 ```
@@ -81,6 +81,15 @@ object. You can do this with the fluent API of [`MockBuilder`](http://malkusch.g
      is a simple implementation which returns always the same microtime. This
      class is different to `FixedValueFunction` as it contains a converter for
      `microtime()`'s float and string format.
+
+   * [`SleepFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.SleepFunction.html)
+     is a `sleep()` implementation, which doesn't halt but increases an
+     [`Incrementable`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.Incrementable.html)
+     e.g. a `time()` mock.
+
+   * [`UsleepFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.UsleepFunction.html)
+     is an `usleep()` implementation, which doesn't halt but increases an
+     `Incrementable` e.g. a `microtime()` mock.
 
 * [`MockBuilder::build()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_build)
   builds a `Mock` object.
@@ -139,6 +148,34 @@ $builder->setNamespace(__NAMESPACE__)
         ->setFunctionProvider(new FixedValueFunction(1417011228));
 
 $mock = $builder->build();
+```
+
+## Mock environments
+
+Complex mock environments can be grouped in a [`MockEnvironment`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockEnvironment.html).
+The [`SleepEnvironmentBuilder`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.SleepEnvironmentBuilder.html)
+builds a mock environment where `sleep()` and `usleep()` return immediatly.
+Furthermore they increase the amount of time in the mocked `time()` and
+`microtime()`:
+
+```php
+<?php
+
+namespace foo;
+
+use malkusch\phpmock\SleepEnvironmentBuilder;
+
+$builder = new SleepEnvironmentBuilder();
+$builder->setNamespace(__NAMESPACE__)
+        ->setTimestamp(1417011228);
+
+$environment = $builder->build();
+$environment->enable();
+
+// This won't delay the test for 10 seconds, but increase time().        
+sleep(10);
+
+assert(1417011228 + 10 == time());
 ```
 
 ## Unit testing

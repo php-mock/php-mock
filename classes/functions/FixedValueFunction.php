@@ -9,7 +9,7 @@ namespace malkusch\phpmock\functions;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
  */
-class FixedValueFunction implements FunctionProvider
+class FixedValueFunction implements FunctionProvider, Incrementable
 {
     
     /**
@@ -55,5 +55,10 @@ class FixedValueFunction implements FunctionProvider
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function increment($increment)
+    {
+        $this->value += $increment;
     }
 }

@@ -75,6 +75,14 @@ class MockRegistry
     }
     
     /**
+     * Unregisters all mocks.
+     */
+    public function unregisterAll()
+    {
+        $this->mocks = array();
+    }
+    
+    /**
      * Unregisters a mock.
      * 
      * @param Mock $mock The mock.

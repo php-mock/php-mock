@@ -9,7 +9,7 @@ namespace malkusch\phpmock\functions;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
  */
-class FixedMicrotimeFunction implements FunctionProvider
+class FixedMicrotimeFunction implements FunctionProvider, Incrementable
 {
     
     /**
@@ -88,5 +88,20 @@ class FixedMicrotimeFunction implements FunctionProvider
             return $this->timestamp;
             
         }
+    }
+    
+    /**
+     * Returns the time without the microseconds.
+     * 
+     * @return int The time.
+     */
+    public function getTime()
+    {
+        return (int) $this->getMicrotime(true);
+    }
+
+    public function increment($increment)
+    {
+        $this->setMicrotimeAsFloat($this->getMicrotime(true) + $increment);
     }
 }
