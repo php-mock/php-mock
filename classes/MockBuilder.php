@@ -2,7 +2,6 @@
 
 namespace malkusch\phpmock;
 
-use malkusch\phpmock\functions\CallableProvider;
 use malkusch\phpmock\functions\FunctionProvider;
 
 /**
@@ -20,7 +19,7 @@ use malkusch\phpmock\functions\FunctionProvider;
  * $builder = new MockBuilder();
  * $builder->setNamespace(__NAMESPACE__)
  *         ->setName(__NAMESPACE__)
- *         ->setCallableProvider(new FixedValueFunction(1417011228));
+ *         ->setFunctionProvider(new FixedValueFunction(1417011228));
  * 
  * $mock = $builder->build();
  * 
@@ -87,25 +86,12 @@ class MockBuilder
      * 
      * @param callable $function The mock function.
      * @return MockBuilder
-     * @see setCallableProvider()
+     * @see setFunctionProvider()
      */
     public function setFunction(callable $function)
     {
         $this->function = $function;
         return $this;
-    }
-    
-    /**
-     * Sets the mock function.
-     * 
-     * @param CallableProvider $provider The mock function provider.
-     * @return MockBuilder
-     * @see setFunctionProvider()
-     * @deprecated since version 0.3
-     */
-    public function setCallableProvider(CallableProvider $provider)
-    {
-        return $this->setFunctionProvider($provider);
     }
     
     /**
