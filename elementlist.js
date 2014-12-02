@@ -1,3 +1,3 @@
 
 var ApiGen = ApiGen || {};
-ApiGen.elements = [["c","malkusch\\phpmock\\CallableProvider"],["c","malkusch\\phpmock\\FixedMicrotimeFunction"],["c","malkusch\\phpmock\\FixedValueFunction"],["c","malkusch\\phpmock\\Mock"],["c","malkusch\\phpmock\\MockBuilder"]];
+ApiGen.elements = [["c","Exception"],["c","malkusch\\phpmock\\functions\\AbstractSleepFunction"],["c","malkusch\\phpmock\\functions\\FixedMicrotimeFunction"],["c","malkusch\\phpmock\\functions\\FixedValueFunction"],["c","malkusch\\phpmock\\functions\\FunctionProvider"],["c","malkusch\\phpmock\\functions\\Incrementable"],["c","malkusch\\phpmock\\functions\\SleepFunction"],["c","malkusch\\phpmock\\functions\\UsleepFunction"],["c","malkusch\\phpmock\\Mock"],["c","malkusch\\phpmock\\MockBuilder"],["c","malkusch\\phpmock\\MockEnabledException"],["c","malkusch\\phpmock\\MockEnvironment"],["c","malkusch\\phpmock\\Recorder"],["c","malkusch\\phpmock\\SleepEnvironmentBuilder"]];

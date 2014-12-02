@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\phpmock\Mock</title>
+	<title>Class malkusch\phpmock\SleepEnvironmentBuilder</title>
 
 	<link rel="stylesheet" href="resources/style.css?331665766">
 
@@ -50,11 +50,11 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-malkusch.phpmock.Mock.html">Mock</a></li>
+				<li><a href="class-malkusch.phpmock.Mock.html">Mock</a></li>
 				<li><a href="class-malkusch.phpmock.MockBuilder.html">MockBuilder</a></li>
 				<li><a href="class-malkusch.phpmock.MockEnvironment.html">MockEnvironment</a></li>
 				<li><a href="class-malkusch.phpmock.Recorder.html">Recorder</a></li>
-				<li><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">SleepEnvironmentBuilder</a></li>
+				<li class="active"><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">SleepEnvironmentBuilder</a></li>
 			</ul>
 
 
@@ -100,15 +100,15 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Mock</h1>
+	<h1>Class SleepEnvironmentBuilder</h1>
 
 
 	<div class="description">
-	<p>Mocking framework for built-in PHP functions.</p>
+	<p>Builds a sleep(), usleep(), time() and microtime() mock environment.</p>
 
-<p>Mocking a build-in PHP function is achieved by using
-PHP's namespace fallback policy. A mock will provide the namespaced function.
-I.e. only unqualified functions in a non-global namespace can be mocked.</p>
+<p>In this environment sleep() and usleep() don't sleep for real. Instead
+they return immediatly and increase the amount of time in the mocks for
+time() and microtime().</p>
 
 	</div>
 
@@ -131,54 +131,50 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 				<b>Author:</b>
 				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a>
 <br>
-				<b>See:</b>
-				<code><code><a href="class-malkusch.phpmock.MockBuilder.html">malkusch\phpmock\MockBuilder</a></code></code><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.Mock.html#5-158" title="Go to source code">Mock.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#9-98" title="Go to source code">SleepEnvironmentBuilder.php</a><br>
 	</div>
 
 
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="__construct" id="___construct">
+	<tr data-order="setNamespace" id="_setNamespace">
 
 		<td class="attributes"><code>
 			 public 
 
-			
+			<code><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">malkusch\phpmock\SleepEnvironmentBuilder</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#40-53" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
+		<a class="anchor" href="#_setNamespace">#</a>
+		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#33-43" title="Go to source code">setNamespace</a>( <span>string <var>$namespace</var></span> )</code>
 
 		<div class="description short">
-			<p>Set the namespace, function name and the mock function.</p>
+			<p>Sets the namespace for the mock environment.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Set the namespace, function name and the mock function.</p>
+			<p>Sets the namespace for the mock environment.</p>
 
 
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
 					<dt><var>$namespace</var></dt>
-					<dd>The namespace for the mock function.
-</dd>
-					<dt><var>$name</var></dt>
-					<dd>The function name of the mocked function.
-</dd>
-					<dt><var>$function</var></dt>
-					<dd>The mock function.
+					<dd>The namespace for the mock environment.
 </dd>
 				</dl></div>
 
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">malkusch\phpmock\SleepEnvironmentBuilder</a></code></code>
+				</div>
 
 
 
@@ -186,107 +182,81 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getRecorder" id="_getRecorder">
+	<tr data-order="setTimestamp" id="_setTimestamp">
 
 		<td class="attributes"><code>
 			 public 
 
-			<code><a href="class-malkusch.phpmock.Recorder.html">malkusch\phpmock\Recorder</a></code>
+			<code><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">malkusch\phpmock\SleepEnvironmentBuilder</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_getRecorder">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#55-65" title="Go to source code">getRecorder</a>( )</code>
+		<a class="anchor" href="#_setTimestamp">#</a>
+		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#45-59" title="Go to source code">setTimestamp</a>( <span>mixed <var>$timestamp</var></span> )</code>
 
 		<div class="description short">
-			<p>Returns the call recorder.</p>
+			<p>Sets the mocked timestamp.</p>
 
 		</div>
 
 		<div class="description detailed hidden">
-			<p>Returns the call recorder.</p>
+			<p>Sets the mocked timestamp.</p>
 
-<p>Every call to the mocked function was recorded to this call recorder.</p>
+<p>If not set the mock will use the current time at creation time.
+The timestamp can be an int, a float with microseconds or a string
+in the microtime() format.</p>
+
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$timestamp</var></dt>
+					<dd>The timestamp.
+</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><code><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">malkusch\phpmock\SleepEnvironmentBuilder</a></code></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="build" id="_build">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-malkusch.phpmock.MockEnvironment.html">malkusch\phpmock\MockEnvironment</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_build">#</a>
+		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#61-97" title="Go to source code">build</a>( )</code>
+
+		<div class="description short">
+			<p>Builds a sleep(), usleep(), time() and microtime() mock environment.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Builds a sleep(), usleep(), time() and microtime() mock environment.</p>
 
 
 
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-malkusch.phpmock.Recorder.html">malkusch\phpmock\Recorder</a></code></code><br>The call recorder.
-
+					<code><code><a href="class-malkusch.phpmock.MockEnvironment.html">malkusch\phpmock\MockEnvironment</a></code></code>
 				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="enable" id="_enable">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_enable">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#67-84" title="Go to source code">enable</a>( )</code>
-
-		<div class="description short">
-			<p>Enables this mock.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Enables this mock.</p>
-
-
-
-
-
-				<h4>Throws</h4>
-				<div class="list">
-					<code><a href="class-malkusch.phpmock.MockEnabledException.html">malkusch\phpmock\MockEnabledException</a></code><br>If the function has already an enabled mock.
-
-				</div>
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="disable" id="_disable">
-
-		<td class="attributes"><code>
-			 public 
-
-			
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_disable">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#86-92" title="Go to source code">disable</a>( )</code>
-
-		<div class="description short">
-			<p>Disable this mock.</p>
-
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Disable this mock.</p>
-
-
-
-
 
 
 

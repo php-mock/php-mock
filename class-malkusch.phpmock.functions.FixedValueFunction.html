@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\phpmock\FixedValueFunction</title>
+	<title>Class malkusch\phpmock\functions\FixedValueFunction</title>
 
 	<link rel="stylesheet" href="resources/style.css?331665766">
 
@@ -26,10 +26,21 @@
 						<ul>
 				<li class="active">
 					<a href="namespace-malkusch.phpmock.html">
-						phpmock					</a>
+						phpmock<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-malkusch.phpmock.functions.html">
+						functions					</a>
 
 						</li>
-							</ul></li>
+							</ul></li></ul></li>
+				<li>
+					<a href="namespace-PHP.html">
+						PHP					</a>
+
+						</li>
 			</ul>
 		</div>
 
@@ -39,15 +50,17 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.phpmock.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></li>
-				<li class="active"><a href="class-malkusch.phpmock.FixedValueFunction.html">FixedValueFunction</a></li>
-				<li><a href="class-malkusch.phpmock.Mock.html">Mock</a></li>
-				<li><a href="class-malkusch.phpmock.MockBuilder.html">MockBuilder</a></li>
+				<li><a href="class-malkusch.phpmock.functions.AbstractSleepFunction.html">AbstractSleepFunction</a></li>
+				<li><a href="class-malkusch.phpmock.functions.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></li>
+				<li class="active"><a href="class-malkusch.phpmock.functions.FixedValueFunction.html">FixedValueFunction</a></li>
+				<li><a href="class-malkusch.phpmock.functions.SleepFunction.html">SleepFunction</a></li>
+				<li><a href="class-malkusch.phpmock.functions.UsleepFunction.html">UsleepFunction</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-malkusch.phpmock.CallableProvider.html">CallableProvider</a></li>
+				<li><a href="class-malkusch.phpmock.functions.FunctionProvider.html">FunctionProvider</a></li>
+				<li><a href="class-malkusch.phpmock.functions.Incrementable.html">Incrementable</a></li>
 			</ul>
 
 
@@ -73,7 +86,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-malkusch.phpmock.html" title="Summary of malkusch\phpmock"><span>Namespace</span></a>
+				<a href="namespace-malkusch.phpmock.functions.html" title="Summary of malkusch\phpmock\functions"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -98,9 +111,11 @@
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-<b><span>malkusch\phpmock\FixedValueFunction</span></b>			
+<b><span>malkusch\phpmock\functions\FixedValueFunction</span></b>			
 			 implements 
-				<a href="class-malkusch.phpmock.CallableProvider.html"><span>malkusch\phpmock\CallableProvider</span></a>
+				<a href="class-malkusch.phpmock.functions.FunctionProvider.html"><span>malkusch\phpmock\functions\FunctionProvider</span></a>, 
+			
+				<a href="class-malkusch.phpmock.functions.Incrementable.html"><span>malkusch\phpmock\functions\Incrementable</span></a>
 			
 			
 		</dd>
@@ -116,7 +131,7 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> malkusch\phpmock<br>
+		<b>Namespace:</b> malkusch\phpmock\functions<br>
 		
 
 				<b>License:</b>
@@ -126,7 +141,7 @@
 <br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.FixedValueFunction.html#5-59" title="Go to source code">FixedValueFunction.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.functions.FixedValueFunction.html#5-64" title="Go to source code">functions/FixedValueFunction.php</a><br>
 	</div>
 
 
@@ -145,7 +160,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedValueFunction.html#20-28" title="Go to source code">__construct</a>( <span>mixed <var>$value</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedValueFunction.html#20-28" title="Go to source code">__construct</a>( <span>mixed <var>$value</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Set the value.</p>
@@ -183,7 +198,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCallable">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedValueFunction.html#30-38" title="Go to source code">getCallable</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedValueFunction.html#30-38" title="Go to source code">getCallable</a>( )</code>
 
 		<div class="description short">
 			<p>Returns this object as a callable for the mock function.</p>
@@ -206,7 +221,7 @@
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-malkusch.phpmock.CallableProvider.html#_getCallable">malkusch\phpmock\CallableProvider::getCallable()</a></code></div>
+				<div class="list"><code><a href="class-malkusch.phpmock.functions.FunctionProvider.html#_getCallable">malkusch\phpmock\functions\FunctionProvider::getCallable()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -222,7 +237,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setValue">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedValueFunction.html#40-48" title="Go to source code">setValue</a>( <span>mixed <var>$value</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedValueFunction.html#40-48" title="Go to source code">setValue</a>( <span>mixed <var>$value</var></span> )</code>
 
 		<div class="description short">
 			<p>Set the value.</p>
@@ -260,7 +275,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getValue">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedValueFunction.html#50-58" title="Go to source code">getValue</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedValueFunction.html#50-58" title="Go to source code">getValue</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the value.</p>
@@ -312,6 +327,6 @@
 </div>
 </div>
 <script src="resources/combined.js?721046668"></script>
-<script src="elementlist.js?1069941999"></script>
+<script src="elementlist.js?2287431977"></script>
 </body>
 </html>

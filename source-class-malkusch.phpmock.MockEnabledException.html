@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="robots" content="noindex">
 
-	<title>File CallableProvider.php</title>
+	<title>File MockEnabledException.php</title>
 
 	<link rel="stylesheet" href="resources/style.css?331665766">
 
@@ -27,10 +27,21 @@
 						<ul>
 				<li class="active">
 					<a href="namespace-malkusch.phpmock.html">
-						phpmock					</a>
+						phpmock<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-malkusch.phpmock.functions.html">
+						functions					</a>
 
 						</li>
-							</ul></li>
+							</ul></li></ul></li>
+				<li>
+					<a href="namespace-PHP.html">
+						PHP					</a>
+
+						</li>
 			</ul>
 		</div>
 
@@ -40,18 +51,19 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.phpmock.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></li>
-				<li><a href="class-malkusch.phpmock.FixedValueFunction.html">FixedValueFunction</a></li>
 				<li><a href="class-malkusch.phpmock.Mock.html">Mock</a></li>
 				<li><a href="class-malkusch.phpmock.MockBuilder.html">MockBuilder</a></li>
+				<li><a href="class-malkusch.phpmock.MockEnvironment.html">MockEnvironment</a></li>
+				<li><a href="class-malkusch.phpmock.Recorder.html">Recorder</a></li>
+				<li><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">SleepEnvironmentBuilder</a></li>
 			</ul>
 
-			<h3>Interfaces</h3>
+
+
+			<h3>Exceptions</h3>
 			<ul>
-				<li class="active"><a href="class-malkusch.phpmock.CallableProvider.html">CallableProvider</a></li>
+				<li class="active"><a href="class-malkusch.phpmock.MockEnabledException.html">MockEnabledException</a></li>
 			</ul>
-
-
 
 
 		</div>
@@ -77,7 +89,7 @@
 				<a href="namespace-malkusch.phpmock.html" title="Summary of malkusch\phpmock"><span>Namespace</span></a>
 			</li>
 			<li>
-				<a href="class-malkusch.phpmock.CallableProvider.html" title="Summary of malkusch\phpmock\CallableProvider"><span>Class</span></a>
+				<a href="class-malkusch.phpmock.MockEnabledException.html" title="Summary of malkusch\phpmock\MockEnabledException"><span>Class</span></a>
 			</li>
 		</ul>
 		<ul>
@@ -94,24 +106,27 @@
 </span><span id="3" class="l"><a class="l" href="#3"> 3: </a><span class="php-keyword1">namespace</span> malkusch\phpmock;
 </span><span id="4" class="l"><a class="l" href="#4"> 4: </a>
 </span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment">/**
-</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Provides a callable for a mock function.
+</span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Exception when enabling a mock for an already mocked function.
 </span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
 </span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * @author Markus Malkusch &lt;markus@malkusch.de&gt;
 </span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
 </span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> * @license WTFPL
-</span></span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment"> * @see MockBuilder::setCallableProvider()
+</span></span><span id="11" class="l"><a class="l" href="#11">11: </a><span class="php-comment"> * @see Mock::enable()
 </span></span><span id="12" class="l"><a class="l" href="#12">12: </a><span class="php-comment"> */</span>
-</span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-keyword1">interface</span> <a id="CallableProvider" href="#CallableProvider">CallableProvider</a>
+</span><span id="13" class="l"><a class="l" href="#13">13: </a><span class="php-keyword1">class</span> <a id="MockEnabledException" href="#MockEnabledException">MockEnabledException</a> <span class="php-keyword1">extends</span> \Exception
 </span><span id="14" class="l"><a class="l" href="#14">14: </a>{
-</span><span id="15" class="l"><a class="l" href="#15">15: </a>
+</span><span id="15" class="l"><a class="l" href="#15">15: </a>    
 </span><span id="16" class="l"><a class="l" href="#16">16: </a>    <span class="php-comment">/**
-</span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment">     * Returns this object as a callable for the mock function.
+</span></span><span id="17" class="l"><a class="l" href="#17">17: </a><span class="php-comment">     * Sets the message.
 </span></span><span id="18" class="l"><a class="l" href="#18">18: </a><span class="php-comment">     * 
-</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment">     * @return callable The callable for this object.
+</span></span><span id="19" class="l"><a class="l" href="#19">19: </a><span class="php-comment">     * @param string $message Exception message.
 </span></span><span id="20" class="l"><a class="l" href="#20">20: </a><span class="php-comment">     */</span>
-</span><span id="21" class="l"><a class="l" href="#21">21: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_getCallable" href="#_getCallable">getCallable</a>();
-</span><span id="22" class="l"><a class="l" href="#22">22: </a>}
-</span><span id="23" class="l"><a class="l" href="#23">23: </a></span></code></pre>
+</span><span id="21" class="l"><a class="l" href="#21">21: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="___construct" href="#___construct">__construct</a>(<span class="php-var">$message</span>)
+</span><span id="22" class="l"><a class="l" href="#22">22: </a>    {
+</span><span id="23" class="l"><a class="l" href="#23">23: </a>        parent::__construct(<span class="php-var">$message</span>);
+</span><span id="24" class="l"><a class="l" href="#24">24: </a>    }
+</span><span id="25" class="l"><a class="l" href="#25">25: </a>}
+</span><span id="26" class="l"><a class="l" href="#26">26: </a></span></code></pre>
 
 	<div id="footer">
 		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
@@ -119,6 +134,6 @@
 </div>
 </div>
 <script src="resources/combined.js?721046668"></script>
-<script src="elementlist.js?1069941999"></script>
+<script src="elementlist.js?2287431977"></script>
 </body>
 </html>

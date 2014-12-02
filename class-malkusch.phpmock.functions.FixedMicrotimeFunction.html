@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class malkusch\phpmock\FixedMicrotimeFunction</title>
+	<title>Class malkusch\phpmock\functions\FixedMicrotimeFunction</title>
 
 	<link rel="stylesheet" href="resources/style.css?331665766">
 
@@ -26,10 +26,21 @@
 						<ul>
 				<li class="active">
 					<a href="namespace-malkusch.phpmock.html">
-						phpmock					</a>
+						phpmock<span></span>
+					</a>
+
+						<ul>
+				<li class="active">
+					<a href="namespace-malkusch.phpmock.functions.html">
+						functions					</a>
 
 						</li>
-							</ul></li>
+							</ul></li></ul></li>
+				<li>
+					<a href="namespace-PHP.html">
+						PHP					</a>
+
+						</li>
 			</ul>
 		</div>
 
@@ -39,15 +50,17 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li class="active"><a href="class-malkusch.phpmock.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></li>
-				<li><a href="class-malkusch.phpmock.FixedValueFunction.html">FixedValueFunction</a></li>
-				<li><a href="class-malkusch.phpmock.Mock.html">Mock</a></li>
-				<li><a href="class-malkusch.phpmock.MockBuilder.html">MockBuilder</a></li>
+				<li><a href="class-malkusch.phpmock.functions.AbstractSleepFunction.html">AbstractSleepFunction</a></li>
+				<li class="active"><a href="class-malkusch.phpmock.functions.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></li>
+				<li><a href="class-malkusch.phpmock.functions.FixedValueFunction.html">FixedValueFunction</a></li>
+				<li><a href="class-malkusch.phpmock.functions.SleepFunction.html">SleepFunction</a></li>
+				<li><a href="class-malkusch.phpmock.functions.UsleepFunction.html">UsleepFunction</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
-				<li><a href="class-malkusch.phpmock.CallableProvider.html">CallableProvider</a></li>
+				<li><a href="class-malkusch.phpmock.functions.FunctionProvider.html">FunctionProvider</a></li>
+				<li><a href="class-malkusch.phpmock.functions.Incrementable.html">Incrementable</a></li>
 			</ul>
 
 
@@ -73,7 +86,7 @@
 				<a href="index.html" title="Overview"><span>Overview</span></a>
 			</li>
 			<li>
-				<a href="namespace-malkusch.phpmock.html" title="Summary of malkusch\phpmock"><span>Namespace</span></a>
+				<a href="namespace-malkusch.phpmock.functions.html" title="Summary of malkusch\phpmock\functions"><span>Namespace</span></a>
 			</li>
 			<li class="active">
 <span>Class</span>			</li>
@@ -98,9 +111,11 @@
 
 	<dl class="tree">
 		<dd style="padding-left:0px">
-<b><span>malkusch\phpmock\FixedMicrotimeFunction</span></b>			
+<b><span>malkusch\phpmock\functions\FixedMicrotimeFunction</span></b>			
 			 implements 
-				<a href="class-malkusch.phpmock.CallableProvider.html"><span>malkusch\phpmock\CallableProvider</span></a>
+				<a href="class-malkusch.phpmock.functions.FunctionProvider.html"><span>malkusch\phpmock\functions\FunctionProvider</span></a>, 
+			
+				<a href="class-malkusch.phpmock.functions.Incrementable.html"><span>malkusch\phpmock\functions\Incrementable</span></a>
 			
 			
 		</dd>
@@ -116,7 +131,7 @@
 	<div class="info">
 		
 		
-		<b>Namespace:</b> malkusch\phpmock<br>
+		<b>Namespace:</b> malkusch\phpmock\functions<br>
 		
 
 				<b>License:</b>
@@ -126,7 +141,7 @@
 <br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.FixedMicrotimeFunction.html#5-92" title="Go to source code">FixedMicrotimeFunction.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.functions.FixedMicrotimeFunction.html#5-107" title="Go to source code">functions/FixedMicrotimeFunction.php</a><br>
 	</div>
 
 
@@ -145,7 +160,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedMicrotimeFunction.html#20-42" title="Go to source code">__construct</a>( <span>mixed <var>$timestamp</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedMicrotimeFunction.html#20-42" title="Go to source code">__construct</a>( <span>mixed <var>$timestamp</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			<p>Set the timestamp.</p>
@@ -183,7 +198,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getCallable">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedMicrotimeFunction.html#44-52" title="Go to source code">getCallable</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedMicrotimeFunction.html#44-52" title="Go to source code">getCallable</a>( )</code>
 
 		<div class="description short">
 			<p>Returns this object as a callable for the mock function.</p>
@@ -206,7 +221,7 @@
 
 
 				<h4>Implementation of</h4>
-				<div class="list"><code><a href="class-malkusch.phpmock.CallableProvider.html#_getCallable">malkusch\phpmock\CallableProvider::getCallable()</a></code></div>
+				<div class="list"><code><a href="class-malkusch.phpmock.functions.FunctionProvider.html#_getCallable">malkusch\phpmock\functions\FunctionProvider::getCallable()</a></code></div>
 		</div>
 		</div></td>
 	</tr>
@@ -222,7 +237,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMicrotime">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedMicrotimeFunction.html#54-62" title="Go to source code">setMicrotime</a>( <span>string <var>$timestamp</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedMicrotimeFunction.html#54-62" title="Go to source code">setMicrotime</a>( <span>string <var>$timestamp</var></span> )</code>
 
 		<div class="description short">
 			<p>Set the timestamp as string.</p>
@@ -260,7 +275,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setMicrotimeAsFloat">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedMicrotimeFunction.html#64-73" title="Go to source code">setMicrotimeAsFloat</a>( <span>float <var>$timestamp</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedMicrotimeFunction.html#64-73" title="Go to source code">setMicrotimeAsFloat</a>( <span>float <var>$timestamp</var></span> )</code>
 
 		<div class="description short">
 			<p>Set the timestamp as float.</p>
@@ -298,7 +313,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getMicrotime">#</a>
-		<code><a href="source-class-malkusch.phpmock.FixedMicrotimeFunction.html#75-91" title="Go to source code">getMicrotime</a>( <span>boolean <var>$get_as_float</var> = <span class="php-keyword1">false</span></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedMicrotimeFunction.html#75-91" title="Go to source code">getMicrotime</a>( <span>boolean <var>$get_as_float</var> = <span class="php-keyword1">false</span></span> )</code>
 
 		<div class="description short">
 			<p>Returns the microtime.</p>
@@ -320,6 +335,43 @@
 				<h4>Returns</h4>
 				<div class="list">
 					<code>mixed</code><br>The value.
+
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getTime" id="_getTime">
+
+		<td class="attributes"><code>
+			 public 
+
+			integer
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getTime">#</a>
+		<code><a href="source-class-malkusch.phpmock.functions.FixedMicrotimeFunction.html#93-101" title="Go to source code">getTime</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the time without the microseconds.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the time without the microseconds.</p>
+
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code>integer</code><br>The time.
 
 				</div>
 
@@ -356,6 +408,6 @@
 </div>
 </div>
 <script src="resources/combined.js?721046668"></script>
-<script src="elementlist.js?1069941999"></script>
+<script src="elementlist.js?2287431977"></script>
 </body>
 </html>

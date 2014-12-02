@@ -26,10 +26,21 @@
 						<ul>
 				<li class="active">
 					<a href="namespace-malkusch.phpmock.html">
-						phpmock					</a>
+						phpmock<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-malkusch.phpmock.functions.html">
+						functions					</a>
 
 						</li>
-							</ul></li>
+							</ul></li></ul></li>
+				<li>
+					<a href="namespace-PHP.html">
+						PHP					</a>
+
+						</li>
 			</ul>
 		</div>
 
@@ -39,18 +50,19 @@
 		<div id="elements">
 			<h3>Classes</h3>
 			<ul>
-				<li><a href="class-malkusch.phpmock.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></li>
-				<li><a href="class-malkusch.phpmock.FixedValueFunction.html">FixedValueFunction</a></li>
 				<li><a href="class-malkusch.phpmock.Mock.html">Mock</a></li>
 				<li><a href="class-malkusch.phpmock.MockBuilder.html">MockBuilder</a></li>
+				<li><a href="class-malkusch.phpmock.MockEnvironment.html">MockEnvironment</a></li>
+				<li><a href="class-malkusch.phpmock.Recorder.html">Recorder</a></li>
+				<li><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">SleepEnvironmentBuilder</a></li>
 			</ul>
 
-			<h3>Interfaces</h3>
+
+
+			<h3>Exceptions</h3>
 			<ul>
-				<li><a href="class-malkusch.phpmock.CallableProvider.html">CallableProvider</a></li>
+				<li><a href="class-malkusch.phpmock.MockEnabledException.html">MockEnabledException</a></li>
 			</ul>
-
-
 
 
 		</div>
@@ -89,20 +101,16 @@
 <div id="content" class="namespace">
 	<h1>Namespace malkusch\phpmock</h1>
 
+	<table class="summary" id="namespaces">
+	<caption>Namespaces summary</caption>
+	<tr>
+		<td class="name"><a href="namespace-malkusch.phpmock.functions.html">malkusch\phpmock\functions</a></td>
+	</tr>
+	</table>
 
 
 <table class="summary" id="classes">
 <caption>Classes summary</caption>
-<tr>
-	<td class="name"><a href="class-malkusch.phpmock.FixedMicrotimeFunction.html">FixedMicrotimeFunction</a></td>
-	<td>Mock function for microtime which returns always the same time.
-</td>
-</tr>
-<tr>
-	<td class="name"><a href="class-malkusch.phpmock.FixedValueFunction.html">FixedValueFunction</a></td>
-	<td>Mock function which returns always the same value.
-</td>
-</tr>
 <tr>
 	<td class="name"><a href="class-malkusch.phpmock.Mock.html">Mock</a></td>
 	<td>Mocking framework for built-in PHP functions.
@@ -113,18 +121,33 @@
 	<td>Fluent API mock builder.
 </td>
 </tr>
-</table>
-
-<table class="summary" id="interfaces">
-<caption>Interfaces summary</caption>
 <tr>
-	<td class="name"><a href="class-malkusch.phpmock.CallableProvider.html">CallableProvider</a></td>
-	<td>Provides a callable for a mock function.
+	<td class="name"><a href="class-malkusch.phpmock.MockEnvironment.html">MockEnvironment</a></td>
+	<td>Container for several mocks.
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-malkusch.phpmock.Recorder.html">Recorder</a></td>
+	<td>Call recorder.
+</td>
+</tr>
+<tr>
+	<td class="name"><a href="class-malkusch.phpmock.SleepEnvironmentBuilder.html">SleepEnvironmentBuilder</a></td>
+	<td>Builds a sleep(), usleep(), time() and microtime() mock environment.
 </td>
 </tr>
 </table>
 
 
+
+<table class="summary" id="exceptions">
+<caption>Exceptions summary</caption>
+<tr>
+	<td class="name"><a href="class-malkusch.phpmock.MockEnabledException.html">MockEnabledException</a></td>
+	<td>Exception when enabling a mock for an already mocked function.
+</td>
+</tr>
+</table>
 
 
 </div>
@@ -135,6 +158,6 @@
 </div>
 </div>
 <script src="resources/combined.js?721046668"></script>
-<script src="elementlist.js?1069941999"></script>
+<script src="elementlist.js?2287431977"></script>
 </body>
 </html>
