@@ -9,7 +9,7 @@ namespace malkusch\phpmock\functions;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
  */
-class FixedMicrotimeFunction implements CallableProvider
+class FixedMicrotimeFunction implements FunctionProvider
 {
     
     /**

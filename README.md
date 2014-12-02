@@ -70,9 +70,9 @@ object. You can do this with the fluent API of [`MockBuilder`](http://malkusch.g
 * [`MockBuilder::setFunction()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setFunction)
   sets the concrete mock implementation.
 
-* [`MockBuilder::setCallableProvider()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setCallableProvider)
+* [`MockBuilder::setFunctionProvider()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setFunctionProvider)
   sets alternativly to `MockBuilder::setFunction()` the mock implementation as a
-  [`CallableProvider`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.CallableProvider.html):
+  [`FunctionProvider`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.FunctionProvider.html):
 
    * [`FixedValueFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.FixedValueFunction.html)
      is a simple implementation which returns always the same value.
@@ -136,7 +136,7 @@ use malkusch\phpmock\functions\FixedValueFunction;
 $builder = new MockBuilder();
 $builder->setNamespace(__NAMESPACE__)
         ->setName("time")
-        ->setCallableProvider(new FixedValueFunction(1417011228));
+        ->setFunctionProvider(new FixedValueFunction(1417011228));
 
 $mock = $builder->build();
 ```
@@ -201,7 +201,7 @@ class AlarmTest extends \PHPUnit_Framework_TestCase
 
         $this->mock = $builder->setNamespace(__NAMESPACE__)
                               ->setName("time")
-                              ->setCallableProvider($this->time)
+                              ->setFunctionProvider($this->time)
                               ->build();
 
         $this->mock->enable();

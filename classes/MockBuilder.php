@@ -3,6 +3,7 @@
 namespace malkusch\phpmock;
 
 use malkusch\phpmock\functions\CallableProvider;
+use malkusch\phpmock\functions\FunctionProvider;
 
 /**
  * Fluent API mock builder.
@@ -99,9 +100,22 @@ class MockBuilder
      * 
      * @param CallableProvider $provider The mock function provider.
      * @return MockBuilder
-     * @see setFunction()
+     * @see setFunctionProvider()
+     * @deprecated since version 0.3
      */
     public function setCallableProvider(CallableProvider $provider)
+    {
+        return $this->setFunctionProvider($provider);
+    }
+    
+    /**
+     * Sets the mock function.
+     * 
+     * @param FunctionProvider $provider The mock function provider.
+     * @return MockBuilder
+     * @see setFunction()
+     */
+    public function setFunctionProvider(FunctionProvider $provider)
     {
         return $this->setFunction($provider->getCallable());
     }

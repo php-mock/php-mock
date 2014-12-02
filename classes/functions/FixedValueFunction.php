@@ -9,7 +9,7 @@ namespace malkusch\phpmock\functions;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
  */
-class FixedValueFunction implements CallableProvider
+class FixedValueFunction implements FunctionProvider
 {
     
     /**

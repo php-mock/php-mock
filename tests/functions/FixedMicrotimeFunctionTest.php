@@ -65,7 +65,7 @@ class FixedMicrotimeFunctionTest extends \PHPUnit_Framework_TestCase
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
                 ->setName("microtime")
-                ->setCallableProvider($function);
+                ->setFunctionProvider($function);
                     
         $mock = $builder->build();
         $mock->enable();

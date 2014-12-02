@@ -37,7 +37,7 @@ class MockBuilderTest extends \PHPUnit_Framework_TestCase
         $mock->disable();
         
         
-        $builder->setCallableProvider(new FixedValueFunction(123));
+        $builder->setFunctionProvider(new FixedValueFunction(123));
         $mock = $builder->build();
         $mock->enable();
         $this->assertEquals(123, time());

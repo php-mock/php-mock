@@ -40,7 +40,7 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
                 ->setName(strtolower($mockName))
-                ->setCallableProvider(new FixedValueFunction(1234));
+                ->setFunctionProvider(new FixedValueFunction(1234));
 
         $this->mock = $builder->build();
         $this->mock->enable();
@@ -62,7 +62,7 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
                 ->setName($mockName)
-                ->setCallableProvider(new FixedValueFunction(1234));
+                ->setFunctionProvider(new FixedValueFunction(1234));
 
         $this->mock = $builder->build();
         $this->mock->enable();

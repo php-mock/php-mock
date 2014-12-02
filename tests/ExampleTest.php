@@ -49,7 +49,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
                 ->setName("time")
-                ->setCallableProvider(new FixedValueFunction(12345));
+                ->setFunctionProvider(new FixedValueFunction(12345));
                     
         $mock = $builder->build();
         $mock->enable();
