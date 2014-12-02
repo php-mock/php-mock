@@ -2,6 +2,8 @@
 
 namespace malkusch\phpmock;
 
+use malkusch\phpmock\functions\FixedValueFunction;
+
 /**
  * Tests MockBuilder.
  *

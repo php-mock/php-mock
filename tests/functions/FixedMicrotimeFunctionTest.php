@@ -1,6 +1,8 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace malkusch\phpmock\functions;
+
+use malkusch\phpmock\MockBuilder;
 
 /**
  * Tests FixedMicrotimeFunction.

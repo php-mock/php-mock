@@ -3,7 +3,7 @@
 namespace foo;
 
 use malkusch\phpmock\MockBuilder;
-use malkusch\phpmock\FixedValueFunction;
+use malkusch\phpmock\functions\FixedValueFunction;
 
 /**
  * Tests the example from the documentation.

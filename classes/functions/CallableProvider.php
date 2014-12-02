@@ -1,6 +1,6 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace malkusch\phpmock\functions;
 
 /**
  * Provides a callable for a mock function.
@@ -8,7 +8,7 @@ namespace malkusch\phpmock;
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
- * @see MockBuilder::setCallableProvider()
+ * @see malkusch\phpmock\MockBuilder::setCallableProvider()
  */
 interface CallableProvider
 {

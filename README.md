@@ -72,12 +72,12 @@ object. You can do this with the fluent API of [`MockBuilder`](http://malkusch.g
 
 * [`MockBuilder::setCallableProvider()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html#_setCallableProvider)
   sets alternativly to `MockBuilder::setFunction()` the mock implementation as a
-  [`CallableProvider`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.CallableProvider.html):
+  [`CallableProvider`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.CallableProvider.html):
 
-   * [`FixedValueFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.FixedValueFunction.html)
+   * [`FixedValueFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.FixedValueFunction.html)
      is a simple implementation which returns always the same value.
 
-   * [`FixedMicrotimeFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.FixedMicrotimeFunction.html)
+   * [`FixedMicrotimeFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.FixedMicrotimeFunction.html)
      is a simple implementation which returns always the same microtime. This
      class is different to `FixedValueFunction` as it contains a converter for
      `microtime()`'s float and string format.
@@ -123,10 +123,22 @@ assert (time() != 1417011228);
 ```
 
 Instead of setting the mock function with `MockBuilder::setFunction()` you could also
-use the existing [`FixedValueFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.FixedValueFunction.html):
+use the existing [`FixedValueFunction`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.functions.FixedValueFunction.html):
 
 ```php
-$builder->setCallableProvider(new FixedValueFunction(1417011228));
+<?php
+
+namespace foo;
+
+use malkusch\phpmock\MockBuilder;
+use malkusch\phpmock\functions\FixedValueFunction;
+
+$builder = new MockBuilder();
+$builder->setNamespace(__NAMESPACE__)
+        ->setName("time")
+        ->setCallableProvider(new FixedValueFunction(1417011228));
+
+$mock = $builder->build();
 ```
 
 ## Unit testing
@@ -167,7 +179,7 @@ This would be the unit test for `Alarm::isRinging()`:
 namespace foo;
 
 use malkusch\phpmock\MockBuilder;
-use malkusch\phpmock\FixedValueFunction;
+use malkusch\phpmock\functions\FixedValueFunction;
 
 class AlarmTest extends \PHPUnit_Framework_TestCase
 {

@@ -2,6 +2,8 @@
 
 namespace malkusch\phpmock;
 
+use malkusch\phpmock\functions\CallableProvider;
+
 /**
  * Fluent API mock builder.
  *
