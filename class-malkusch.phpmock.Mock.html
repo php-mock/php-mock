@@ -135,7 +135,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 				<code><code><a href="class-malkusch.phpmock.MockBuilder.html">malkusch\phpmock\MockBuilder</a></code></code><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.Mock.html#5-158" title="Go to source code">Mock.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.Mock.html#5-167" title="Go to source code">Mock.php</a><br>
 	</div>
 
 
@@ -289,6 +289,54 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 
 
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="define" id="_define">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_define">#</a>
+		<code><a href="source-class-malkusch.phpmock.Mock.html#121-166" title="Go to source code">define</a>( )</code>
+
+		<div class="description short">
+			<p>Defines the mocked function in the given namespace.</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Defines the mocked function in the given namespace.</p>
+
+<p>In most cases you don't have to call this method. enable() is doing this
+for you. But if the mock is defined after the first call in the
+tested class, the tested class doesn't resolve to the mock. This is
+documented in Bug #68541. You therefore have to define the namespaced
+function before the first call. Defining the function has no side
+effects as you still have to enable the mock. If the function was
+already defined this method does nothing.</p>
+
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><code><a href="class-malkusch.phpmock.Mock.html#_enable">malkusch\phpmock\Mock::enable()</a></code></code><br>
+				</div>
+				<h4>Link</h4>
+				<div class="list">
+						<a href="https://bugs.php.net/bug.php?id=68541">Bug #68541</a><br>
+				</div>
 
 
 		</div>
