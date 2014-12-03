@@ -36,6 +36,22 @@ class MockTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests define().
+     * 
+     * @test
+     */
+    public function testDefine()
+    {
+        $mock = new Mock(__NAMESPACE__, "abs", "sqrt");
+        $function = __NAMESPACE__ . '\abs';
+        
+        $this->assertFalse(function_exists($function));
+        $mock->define();
+        $this->assertTrue(function_exists($function));
+        $this->assertEquals(1, abs(-1));
+    }
+    
+    /**
      * Test function call recording.
      * 
      * @test

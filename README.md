@@ -18,13 +18,20 @@ namespace foo;
 $time = time(); // This call can be mocked, a call to \time() can't.
 ```
 
-## Requirements
+## Requirements and restrictions
 
 * PHP-5.4 or newer. There's also a [PHP-5.3 branch](https://github.com/malkusch/php-mock/tree/php-5.3).
 
 * Only *unqualified* function calls in a namespace context can be mocked.
   E.g. a call for `time()` in the namespace `foo` is mockable,
   a call for `\time()` is not.
+
+* The mock has to be defined before the first call to the unqualified function
+  in the tested class. This is documented in [Bug #68541](https://bugs.php.net/bug.php?id=68541).
+  In most cases you can ignore this restriction. But if you happen to run into
+  this issue you can call [`Mock::define()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html#_define)
+  before that first call. This would define a side effectless namespaced
+  function which can be enabled later.
 
 ## Alternatives
 

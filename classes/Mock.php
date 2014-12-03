@@ -79,7 +79,7 @@ class Mock
             );
             
         }
-        $this->defineMockFunction();
+        $this->define();
         $registry->register($this);
     }
 
@@ -121,9 +121,18 @@ class Mock
     /**
      * Defines the mocked function in the given namespace.
      * 
-     * If the function was already defined this method does nothing.
+     * In most cases you don't have to call this method. enable() is doing this
+     * for you. But if the mock is defined after the first call in the
+     * tested class, the tested class doesn't resolve to the mock. This is
+     * documented in Bug #68541. You therefore have to define the namespaced
+     * function before the first call. Defining the function has no side
+     * effects as you still have to enable the mock. If the function was
+     * already defined this method does nothing.
+     * 
+     * @see enable()
+     * @link https://bugs.php.net/bug.php?id=68541 Bug #68541
      */
-    private function defineMockFunction()
+    public function define()
     {
         $canonicalFunctionName = $this->getCanonicalFunctionName();
         if (function_exists($canonicalFunctionName)) {
@@ -132,25 +141,24 @@ class Mock
         }
         
         $definition = "
-            namespace $this->namespace {
+            namespace $this->namespace;
                 
-                use \malkusch\phpmock\MockRegistry;
+            use \malkusch\phpmock\MockRegistry;
 
-                function $this->name()
-                {
-                    \$registry = MockRegistry::getInstance();
-                    \$mock = \$registry->getMock('$canonicalFunctionName');
-                    
-                    // call the built-in function if the mock was not enabled.
-                    if (empty(\$mock)) {
-                        return call_user_func_array(
-                            '$this->name', func_get_args()
-                        );
-                    }
-                    
-                    // call the mock function.
-                    return \$mock->call(func_get_args());
+            function $this->name()
+            {
+                \$registry = MockRegistry::getInstance();
+                \$mock = \$registry->getMock('$canonicalFunctionName');
+
+                // call the built-in function if the mock was not enabled.
+                if (empty(\$mock)) {
+                    return call_user_func_array(
+                        '$this->name', func_get_args()
+                    );
                 }
+
+                // call the mock function.
+                return \$mock->call(func_get_args());
             }";
                 
         eval($definition);
