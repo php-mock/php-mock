@@ -15,12 +15,12 @@ class IncrementableTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Tests increment().
-     * 
+     *
      * @param mixed $expected               The expected value.
      * @param mixed $increment              The amount of increase.
      * @param Incrementable $incrementable  The tested Incrementable.
      * @param callable $getValue            The lambda for getting the value.
-     *  
+     *
      * @test
      * @dataProvider provideTestIncrement
      */
@@ -36,7 +36,7 @@ class IncrementableTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Test cases for testIncrement().
-     * 
+     *
      * @return array Test cases.
      */
     public function provideTestIncrement()

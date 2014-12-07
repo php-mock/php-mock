@@ -4,7 +4,7 @@ namespace malkusch\phpmock\functions;
 
 /**
  * Mock function for microtime which returns always the same time.
- * 
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
@@ -19,7 +19,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     
     /**
      * Set the timestamp.
-     * 
+     *
      * @param mixed $timestamp The timestamp, if ommited the current time.
      */
     public function __construct($timestamp = null)
@@ -43,7 +43,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     
     /**
      * Returns this object as a callable for the mock function.
-     * 
+     *
      * @return callable The callable for this object.
      */
     public function getCallable()
@@ -53,7 +53,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
 
     /**
      * Set the timestamp as string.
-     * 
+     *
      * @param string $timestamp The timestamp as string.
      */
     public function setMicrotime($timestamp)
@@ -63,7 +63,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
 
     /**
      * Set the timestamp as float.
-     * 
+     *
      * @param float $timestamp The timestamp as float.
      */
     public function setMicrotimeAsFloat($timestamp)
@@ -74,7 +74,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     
     /**
      * Returns the microtime.
-     * 
+     *
      * @param bool $get_as_float If true returns timestamp as float, else string
      * @return mixed The value.
      */
@@ -92,7 +92,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     
     /**
      * Returns the time without the microseconds.
-     * 
+     *
      * @return int The time.
      */
     public function getTime()

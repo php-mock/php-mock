@@ -35,7 +35,7 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests sleep()
-     * 
+     *
      * @test
      */
     public function testSleep()
@@ -50,9 +50,9 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Tests usleep()
-     * 
+     *
      * @param int $microseconds Microseconds.
-     * 
+     *
      * @test
      * @dataProvider provideTestUsleep
      */
@@ -69,7 +69,7 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Returns test cases for testUsleep().
-     * 
+     *
      * @return int[][] Test cases.
      */
     public function provideTestUsleep()

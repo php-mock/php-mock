@@ -26,7 +26,7 @@ class MockRegistry
     
     /**
      * Returns the singleton.
-     * 
+     *
      * @return MockRegistry The singleton.
      */
     public static function getInstance()
@@ -40,7 +40,7 @@ class MockRegistry
     
     /**
      * Returns true if the mock is already registered.
-     * 
+     *
      * @param Mock $mock The mock.
      * @return bool True if the mock is registered.
      */
@@ -51,7 +51,7 @@ class MockRegistry
     
     /**
      * Returns the registered mock.
-     * 
+     *
      * @param string $canonicalFunctionName The canonical mocked function name.
      * @return Mock The registered Mock.
      * @see Mock::getCanonicalFunctionName()
@@ -66,7 +66,7 @@ class MockRegistry
     
     /**
      * Registers a mock.
-     * 
+     *
      * @param Mock $mock The mock.
      */
     public function register(Mock $mock)
@@ -84,7 +84,7 @@ class MockRegistry
     
     /**
      * Unregisters a mock.
-     * 
+     *
      * @param Mock $mock The mock.
      */
     public function unregister(Mock $mock)

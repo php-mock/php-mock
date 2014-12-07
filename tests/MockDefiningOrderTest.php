@@ -6,7 +6,7 @@ use malkusch\phpmock\functions\FixedValueFunction;
 
 /**
  * Tests the ordering of the mock creation.
- * 
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
@@ -29,7 +29,7 @@ class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Returns the built-in call to escapeshellcmd().
-     * 
+     *
      * @param string $command Shell command.
      * @return String The built-in call.
      */
@@ -40,11 +40,11 @@ class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests the restriction of Bug #68541.
-     * 
+     *
      * The fallback policy seems to be static for called class methods. This
      * is documented in Bug #68541. The mock function has to be defined before
      * the first call in a class.
-     * 
+     *
      * When this bug fails, PHP behaviour changed its behaviour and the
      * documentation can be updated.
      *
@@ -73,7 +73,7 @@ class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests defining the mock after calling the unqualified function name.
-     * 
+     *
      * @test
      */
     public function testDefiningAfterCallingUnqualified()
@@ -96,7 +96,7 @@ class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests defining the mock after calling the qualified function name.
-     * 
+     *
      * @test
      */
     public function testDefiningAfterCallingQualified()

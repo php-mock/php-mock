@@ -40,7 +40,7 @@ class MockNamespaceTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests mocking in a different namespace.
-     * 
+     *
      * @test
      */
     public function testNamespace()

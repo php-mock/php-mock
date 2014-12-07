@@ -14,7 +14,7 @@ interface Incrementable
 
     /**
      * Increments a value.
-     * 
+     *
      * @param mixed $increment The amount of increase.
      * @internal
      */

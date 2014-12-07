@@ -15,7 +15,7 @@ class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Tests incrementation of all Incrementables
-     * 
+     *
      * @test
      */
     public function testSleepIncrementationOfAllIncrementables()
@@ -32,11 +32,11 @@ class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Tests incrementation of Incrementables
-     * 
+     *
      * @param AbstractSleepFunction $sleepFunction Tested implementation.
      * @param int $amount                          Amount of time units.
      * @param mixed $expected                      Expected seconds.
-     * 
+     *
      * @test
      * @dataProvider provideTestSleepIncrementation
      */
@@ -53,7 +53,7 @@ class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Returns test cases for testSleepIncrementation().
-     * 
+     *
      * @return array Test cases.
      */
     public function provideTestSleepIncrementation()

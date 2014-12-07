@@ -4,7 +4,7 @@ namespace malkusch\phpmock;
 
 /**
  * Mocking framework for built-in PHP functions.
- * 
+ *
  * Mocking a build-in PHP function is achieved by using
  * PHP's namespace fallback policy. A mock will provide the namespaced function.
  * I.e. only unqualified functions in a non-global namespace can be mocked.
@@ -39,7 +39,7 @@ class Mock
     
     /**
      * Set the namespace, function name and the mock function.
-     * 
+     *
      * @param string   $namespace  The namespace for the mock function.
      * @param string   $name       The function name of the mocked function.
      * @param callable $function   The mock function.
@@ -54,9 +54,9 @@ class Mock
     
     /**
      * Returns the call recorder.
-     * 
+     *
      * Every call to the mocked function was recorded to this call recorder.
-     * 
+     *
      * @return Recorder The call recorder.
      */
     public function getRecorder()
@@ -66,7 +66,7 @@ class Mock
     
     /**
      * Enables this mock.
-     * 
+     *
      * @throws MockEnabledException If the function has already an enabled mock.
      */
     public function enable()
@@ -93,10 +93,10 @@ class Mock
     
     /**
      * Calls the mocked function.
-     * 
+     *
      * This method is called from the namespaced function.
      * It also records the call in the call recorder.
-     * 
+     *
      * @param array $arguments the call arguments.
      * @return mixed
      * @internal
@@ -109,7 +109,7 @@ class Mock
     
     /**
      * Returns the function name with its namespace.
-     * 
+     *
      * @return String The function name with its namespace.
      * @internal
      */
@@ -120,7 +120,7 @@ class Mock
 
     /**
      * Defines the mocked function in the given namespace.
-     * 
+     *
      * In most cases you don't have to call this method. enable() is doing this
      * for you. But if the mock is defined after the first call in the
      * tested class, the tested class doesn't resolve to the mock. This is
@@ -128,7 +128,7 @@ class Mock
      * function before the first call. Defining the function has no side
      * effects as you still have to enable the mock. If the function was
      * already defined this method does nothing.
-     * 
+     *
      * @see enable()
      * @link https://bugs.php.net/bug.php?id=68541 Bug #68541
      */

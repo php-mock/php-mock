@@ -8,11 +8,11 @@ use malkusch\phpmock\functions\UsleepFunction;
 
 /**
  * Builds a sleep(), usleep(), time() and microtime() mock environment.
- * 
+ *
  * In this environment sleep() and usleep() don't sleep for real. Instead
  * they return immediatly and increase the amount of time in the mocks for
  * time() and microtime().
- * 
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
@@ -32,7 +32,7 @@ class SleepEnvironmentBuilder
     
     /**
      * Sets the namespace for the mock environment.
-     * 
+     *
      * @param string $namespace The namespace for the mock environment.
      * @return SleepEnvironmentBuilder
      */
@@ -44,11 +44,11 @@ class SleepEnvironmentBuilder
     
     /**
      * Sets the mocked timestamp.
-     * 
+     *
      * If not set the mock will use the current time at creation time.
      * The timestamp can be an int, a float with microseconds or a string
      * in the microtime() format.
-     * 
+     *
      * @param mixed $timestamp The timestamp.
      * @return SleepEnvironmentBuilder
      */
@@ -60,7 +60,7 @@ class SleepEnvironmentBuilder
     
     /**
      * Builds a sleep(), usleep(), time() and microtime() mock environment.
-     * 
+     *
      * @return MockEnvironment
      */
     public function build()

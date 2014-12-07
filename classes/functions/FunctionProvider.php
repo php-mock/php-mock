@@ -15,7 +15,7 @@ interface FunctionProvider
 
     /**
      * Returns this object as a callable for the mock function.
-     * 
+     *
      * @return callable The callable for this object.
      */
     public function getCallable();

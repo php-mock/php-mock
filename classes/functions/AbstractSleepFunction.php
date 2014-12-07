@@ -4,7 +4,7 @@ namespace malkusch\phpmock\functions;
 
 /**
  * Abstract class for sleep() and usleep() functions.
- * 
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
@@ -19,7 +19,7 @@ abstract class AbstractSleepFunction implements FunctionProvider
     
     /**
      * Sets the Incrementable objects.
-     * 
+     *
      * @param Incrementable[] $incrementables Observing Incrementables.
      * @see addIncrementable()
      */
@@ -35,9 +35,9 @@ abstract class AbstractSleepFunction implements FunctionProvider
     
     /**
      * Mock function.
-     * 
+     *
      * A call will increase all registered Increment objects.
-     * 
+     *
      * @param int $amount Amount of time units.
      * @internal
      */
@@ -50,7 +50,7 @@ abstract class AbstractSleepFunction implements FunctionProvider
 
     /**
      * Converts the sleep() paramater into seconds.
-     * 
+     *
      * @param int $amount Amount of time units.
      * @return mixed Seconds.
      * @internal
@@ -59,11 +59,11 @@ abstract class AbstractSleepFunction implements FunctionProvider
 
     /**
      * Adds an Incrementable object.
-     * 
+     *
      * These objects are observing this function and get notified by
      * increasing the amount of passed time. Incrementables are used
      * for time() and microtime() mocks.
-     * 
+     *
      * @param Incrementable $incrementable Observing Incrementable.
      */
     public function addIncrementable(Incrementable $incrementable)

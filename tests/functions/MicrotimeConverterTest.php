@@ -15,10 +15,10 @@ class MicrotimeConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test convertStringToFloat().
-     * 
+     *
      * @param float  $float   The timestamp.
      * @param string $string  The timestamp.
-     * 
+     *
      * @test
      * @dataProvider provideFloatAndStrings
      */
@@ -30,10 +30,10 @@ class MicrotimeConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test convertFloatToString().
-     * 
+     *
      * @param float  $float   The timestamp.
      * @param string $string  The timestamp.
-     * 
+     *
      * @test
      * @dataProvider provideFloatAndStrings
      */
@@ -45,7 +45,7 @@ class MicrotimeConverterTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Returns convert test cases.
-     * 
+     *
      * @return array
      */
     public function provideFloatAndStrings()

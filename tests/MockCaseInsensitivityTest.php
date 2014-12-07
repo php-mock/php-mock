@@ -30,7 +30,7 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param string $mockName  The mock function name.
-     * 
+     *
      * @expectedException malkusch\phpmock\MockEnabledException
      * @dataProvider provideTestCaseSensitivity
      * @test
@@ -51,9 +51,9 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Tests case insensitive mocks.
-     * 
+     *
      * @param string $mockName  The mock function name.
-     * 
+     *
      * @test
      * @dataProvider provideTestCaseSensitivity
      */
@@ -74,7 +74,7 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Returns test cases for testCaseSensitivity().
-     * 
+     *
      * @return string[][] Test cases.
      */
     public function provideTestCaseSensitivity()

@@ -15,7 +15,7 @@ class MockEnabledException extends \Exception
     
     /**
      * Sets the message.
-     * 
+     *
      * @param string $message Exception message.
      */
     public function __construct($message)

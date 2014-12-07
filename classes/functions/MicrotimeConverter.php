@@ -4,7 +4,7 @@ namespace malkusch\phpmock\functions;
 
 /**
  * Converts PHP's microtime string format into a float and vice versa.
- * 
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
@@ -15,7 +15,7 @@ class MicrotimeConverter
     
     /**
      * Converts a string microtime into a float.
-     * 
+     *
      * @param string $microtime The microtime.
      * @return float The microtime as float.
      */
@@ -27,7 +27,7 @@ class MicrotimeConverter
     
     /**
      * Converts a float microtime in PHP's microtime() string format.
-     * 
+     *
      * @param float $microtime The microtime.
      * @return String The microtime as string.
      */

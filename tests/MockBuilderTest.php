@@ -17,7 +17,7 @@ class MockBuilderTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Tests build().
-     * 
+     *
      * @test
      */
     public function testBuild()

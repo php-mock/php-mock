@@ -4,7 +4,7 @@ namespace malkusch\phpmock;
 
 /**
  * Container for several mocks.
- * 
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license WTFPL
@@ -19,7 +19,7 @@ class MockEnvironment
     
     /**
      * Sets the mocks for this environment.
-     * 
+     *
      * @param Mock[] $mocks The mocks for this environment.
      */
     public function __construct(array $mocks = array())
@@ -29,7 +29,7 @@ class MockEnvironment
     
     /**
      * Adds a mock to this environment.
-     * 
+     *
      * @param Mock $mock Mock.
      */
     public function addMock(Mock $mock)

@@ -19,7 +19,7 @@ class Recorder
     
     /**
      * Records a function calls and its arguments.
-     * 
+     *
      * @param array $arguments The function arguments.
      */
     public function record(array $arguments)
@@ -29,7 +29,7 @@ class Recorder
 
     /**
      * Returns the recorded function calls and its arguments.
-     * 
+     *
      * @return array The recorded function arguments.
      */
     public function getCalls()

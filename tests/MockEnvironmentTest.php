@@ -38,7 +38,7 @@ class MockEnvironmentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests enable()
-     * 
+     *
      * @test
      */
     public function testEnable()
@@ -51,7 +51,7 @@ class MockEnvironmentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests disable()
-     * 
+     *
      * @test
      */
     public function testDisable()
