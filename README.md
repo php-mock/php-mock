@@ -3,8 +3,8 @@
 PHP-Mock is a testing library which mocks non deterministic built-in PHP functions like
 `time()` or `rand()`. This is achived by [PHP's namespace fallback policy](http://php.net/manual/en/language.namespaces.fallback.php):
 
-> For functions […], PHP will fall back to global functions […] if a
-> namespaced function […] does not exist.
+> PHP will fall back to global functions […]
+> if a namespaced function […] does not exist.
 
 PHP-Mock uses that feature by providing the namespaced function. I.e. you have
 to be in a **non global namespace** context and call the function
@@ -41,8 +41,8 @@ there are alternative techniques to mock built-in PHP functions:
 * [**PHPBuiltinMock**](https://github.com/jadell/PHPBuiltinMock) relies on
   the [APD](http://php.net/manual/en/book.apd.php) extension.
 
-* [**phpunit-mockfunction**](https://github.com/tcz/phpunit-mockfunction)
-  uses the [runkit](http://php.net/manual/en/book.runkit.php) extension.
+* [**MockFunction**](https://github.com/tcz/phpunit-mockfunction) is a PHPUnit
+  extension. It uses the [runkit](http://php.net/manual/en/book.runkit.php) extension.
 
 * [**vfsStream**](https://github.com/mikey179/vfsStream) is a stream wrapper for
   a virtual file system. This will help you write tests which covers PHP
@@ -159,7 +159,16 @@ $mock = $builder->build();
 
 ## Mock environments
 
-Complex mock environments can be grouped in a [`MockEnvironment`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockEnvironment.html).
+Complex mock environments of several mocked functions can be grouped in a [`MockEnvironment`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockEnvironment.html):
+
+* [`MockEnvironment::enable()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockEnvironment.html#_enable)
+  enables all mocked functions of this environment.
+
+* [`MockEnvironment::disable()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockEnvironment.html#_disable)
+  disables all mocked functions of this environment.
+
+### SleepEnvironmentBuilder
+
 The [`SleepEnvironmentBuilder`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.SleepEnvironmentBuilder.html)
 builds a mock environment where `sleep()` and `usleep()` return immediatly.
 Furthermore they increase the amount of time in the mocked `time()` and
@@ -187,7 +196,8 @@ assert(1417011228 + 10 == time());
 
 ## Unit testing
 
-PHP-Mock is meant to be used for unit testing. You should always disable a mock
+PHP-Mock is meant to be used for unit testing, but not coupled to PHPUnit. You
+can use an arbitrary testing framework. You should always disable a mock
 after the test case. Otherwise you change the global state and might break
 subsequent tests. Use PHPUnit's `tearDown()` or PHP's `finally` to disable the
 mock.
