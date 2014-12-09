@@ -115,9 +115,19 @@ class Mock
      */
     public function getCanonicalFunctionName()
     {
-        return strtolower("$this->namespace\\$this->name");
+        return strtolower("{$this->getNamespace()}\\$this->name");
     }
 
+    /**
+     * Returns the namespace without enclosing slashes.
+     *
+     * @return string The namespace
+     */
+    private function getNamespace()
+    {
+        return trim($this->namespace, "\\");
+    }
+    
     /**
      * Defines the mocked function in the given namespace.
      *
@@ -141,9 +151,9 @@ class Mock
         }
         
         $definition = "
-            namespace $this->namespace;
+            namespace {$this->getNamespace()};
                 
-            use \malkusch\phpmock\MockRegistry;
+            use malkusch\phpmock\MockRegistry;
 
             function $this->name()
             {
@@ -160,7 +170,7 @@ class Mock
                 // call the mock function.
                 return \$mock->call(func_get_args());
             }";
-                
+        
         eval($definition);
     }
 }

@@ -4,6 +4,8 @@
 namespace malkusch\phpmock\test;
 
 use malkusch\phpmock\Mock;
+use malkusch\phpmock\MockBuilder;
+use malkusch\phpmock\functions\FixedValueFunction;
 
 /**
  * Tests Mock in a different namespace.
@@ -21,30 +23,72 @@ class MockNamespaceTest extends \PHPUnit_Framework_TestCase
      */
     private $mock;
     
+    /**
+     * @var MockBuilder
+     */
+    private $builder;
+    
     protected function setUp()
     {
-        $this->mock = new Mock(
-            __NAMESPACE__,
-            "time",
-            function () {
-                return 1234;
-            }
-        );
-        $this->mock->enable();
+        $this->builder = new MockBuilder();
+        $this->builder
+                ->setName("time")
+                ->setFunctionProvider(new FixedValueFunction(1234));
     }
     
     protected function tearDown()
     {
-        $this->mock->disable();
+        if (! empty($this->mock)) {
+            $this->mock->disable();
+            unset($this->mock);
+            
+        }
     }
 
     /**
-     * Tests mocking in a different namespace.
+     * Tests defining mocks in a different namespace.
      *
      * @test
+     * @dataprovider provideTestNamespace
+     * @runInSeparateProcess
      */
-    public function testNamespace()
+    public function testDefiningNamespaces()
     {
+        $this->builder->setNamespace(__NAMESPACE__);
+        $this->mock = $this->builder->build();
+        $this->mock->enable();
+        
         $this->assertEquals(1234, time());
+    }
+
+    /**
+     * Tests redefining mocks in a different namespace.
+     *
+     * @test
+     * @dataprovider provideTestNamespace
+     */
+    public function testRedefiningNamespaces()
+    {
+        $this->builder->setNamespace(__NAMESPACE__);
+        $this->mock = $this->builder->build();
+        $this->mock->enable();
+        
+        $this->assertEquals(1234, time());
+    }
+    
+    /**
+     * Provides namespaces for testNamespace().
+     *
+     * @return string[][] Namespaces.
+     */
+    public function provideTestNamespace()
+    {
+        return array(
+            array(__NAMESPACE__),
+            array('malkusch\phpmock\test'),
+            array('\malkusch\phpmock\test'),
+            array('malkusch\phpmock\test\\'),
+            array('\malkusch\phpmock\test\\')
+        );
     }
 }
