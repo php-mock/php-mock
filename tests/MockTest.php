@@ -111,4 +111,20 @@ class MockTest extends \PHPUnit_Framework_TestCase
         $this->mock->disable();
         $this->assertNotEquals(1234, time());
     }
+    
+    /**
+     * Tests disableAll().
+     *
+     * @test
+     */
+    public function testDisableAll()
+    {
+        $mock2 = new Mock(__NAMESPACE__, "min", "max");
+        $mock2->enable();
+
+        Mock::disableAll();
+
+        $this->assertNotEquals(1234, time());
+        $this->assertEquals(1, min(1, 2));
+    }
 }

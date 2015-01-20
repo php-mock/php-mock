@@ -55,7 +55,7 @@ Use [Composer](https://getcomposer.org/):
 ```json
 {
     "require": {
-        "malkusch/php-mock": "0.3"
+        "malkusch/php-mock": "dev-master"
     }
 }
 ```
@@ -197,10 +197,60 @@ assert(1417011228 + 10 == time());
 ## Unit testing
 
 PHP-Mock is meant to be used for unit testing, but not coupled to PHPUnit. You
-can use an arbitrary testing framework. You should always disable a mock
-after the test case. Otherwise you change the global state and might break
-subsequent tests. Use PHPUnit's `tearDown()` or PHP's `finally` to disable the
-mock.
+can use an arbitrary testing framework.
+
+### Reset global state
+
+An enabled mock changes global state. This will break subsequent tests if
+they run code which would call the mock unintentionally. Therefore
+you should always disable a mock after the test case. You can do this in
+several ways:
+
+#### PHPUnit's `tearDown()`
+
+If you defined the mock as a test member in `setup()` you can disable it
+with `tearDown()`:
+
+```php
+    protected function tearDown()
+    {
+        $this->mock->disable();
+    }
+```
+
+#### PHP's `finally`
+
+If you have defined the mock locally you should disable it in a `finally` block.
+This will guarantee the reseting of the global state in case of an exception:
+
+```php
+    /**
+     * @expectedException Exception
+     */
+    public function testFoo()
+    {
+        $function = function () {
+            throw new \Exception();
+        };
+        $mock = new Mock(__NAMESPACE__, "time", $function);
+        $mock->enable();
+        try {
+            time();
+
+        } finally {
+            $mock->disable();
+
+        }
+    }
+```
+
+#### Disable all mocks statically
+
+If you don't have the created mock objects anymore you can disable all mocks
+in a `finally` or `tearDown()` by calling the static method
+[`Mock::disableAll()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html#_disableAll).
+
+### Example
 
 Let's assume we want to test a class `Alarm` which rings an alarm on the second
 we set:

@@ -68,6 +68,8 @@ class Mock
      * Enables this mock.
      *
      * @throws MockEnabledException If the function has already an enabled mock.
+     * @see Mock::disable()
+     * @see Mock::disableAll()
      */
     public function enable()
     {
@@ -85,10 +87,24 @@ class Mock
 
     /**
      * Disable this mock.
+     *
+     * @see Mock::enable()
+     * @see Mock::disableAll()
      */
     public function disable()
     {
         MockRegistry::getInstance()->unregister($this);
+    }
+    
+    /**
+     * Disable all mocks.
+     *
+     * @see Mock::enable()
+     * @see Mock::disable()
+     */
+    public static function disableAll()
+    {
+        MockRegistry::getInstance()->unregisterAll();
     }
     
     /**

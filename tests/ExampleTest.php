@@ -2,6 +2,7 @@
 
 namespace foo;
 
+use malkusch\phpmock\Mock;
 use malkusch\phpmock\MockBuilder;
 use malkusch\phpmock\MockRegistry;
 use malkusch\phpmock\functions\FixedValueFunction;
@@ -80,5 +81,26 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
         assert(12345 + 10 == time());
         $this->assertEquals(12345 + 10, time());
+    }
+
+    /**
+     * Tests the example from the documentation.
+     *
+     * @expectedException Exception
+     */
+    public function testExample4()
+    {
+        $function = function () {
+            throw new \Exception();
+        };
+        $mock = new Mock(__NAMESPACE__, "time", $function);
+        $mock->enable();
+        try {
+            time();
+
+        } finally {
+            $mock->disable();
+
+        }
     }
 }
