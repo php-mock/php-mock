@@ -118,7 +118,7 @@
 <span class="php-var">$builder</span> = <span class="php-keyword1">new</span> MockBuilder();
 <span class="php-var">$builder</span>-&gt;setNamespace(__NAMESPACE__)
         -&gt;setName(__NAMESPACE__)
-        -&gt;setCallableProvider(<span class="php-keyword1">new</span> FixedValueFunction(<span class="php-num">1417011228</span>));
+        -&gt;setFunctionProvider(<span class="php-keyword1">new</span> FixedValueFunction(<span class="php-num">1417011228</span>));
 
 <span class="php-var">$mock</span> = <span class="php-var">$builder</span>-&gt;build();
 
@@ -157,7 +157,7 @@
 				<code><code><a href="class-malkusch.phpmock.Mock.html">malkusch\phpmock\Mock</a></code></code><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.MockBuilder.html#8-119" title="Go to source code">MockBuilder.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.MockBuilder.html#7-118" title="Go to source code">MockBuilder.php</a><br>
 	</div>
 
 
@@ -176,7 +176,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setNamespace">#</a>
-		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#61-71" title="Go to source code">setNamespace</a>( <span>string <var>$namespace</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#60-70" title="Go to source code">setNamespace</a>( <span>string <var>$namespace</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the mock namespace.</p>
@@ -218,7 +218,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setName">#</a>
-		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#73-83" title="Go to source code">setName</a>( <span>string <var>$name</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#72-82" title="Go to source code">setName</a>( <span>string <var>$name</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the mocked function name.</p>
@@ -260,7 +260,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFunction">#</a>
-		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#85-96" title="Go to source code">setFunction</a>( <span>callable <var>$function</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#84-95" title="Go to source code">setFunction</a>( <span>callable <var>$function</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the mock function.</p>
@@ -287,8 +287,7 @@
 
 				<h4>See</h4>
 				<div class="list">
-						setCallableProvider()
-<br>
+						<code><code><a href="class-malkusch.phpmock.MockBuilder.html#_setFunctionProvider">malkusch\phpmock\MockBuilder::setFunctionProvider()</a></code></code><br>
 				</div>
 
 
@@ -307,7 +306,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFunctionProvider">#</a>
-		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#98-108" title="Go to source code">setFunctionProvider</a>( <span><code><a href="class-malkusch.phpmock.functions.FunctionProvider.html">malkusch\phpmock\functions\FunctionProvider</a></code> <var>$provider</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#97-107" title="Go to source code">setFunctionProvider</a>( <span><code><a href="class-malkusch.phpmock.functions.FunctionProvider.html">malkusch\phpmock\functions\FunctionProvider</a></code> <var>$provider</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the mock function.</p>
@@ -353,7 +352,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_build">#</a>
-		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#110-118" title="Go to source code">build</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.MockBuilder.html#109-117" title="Go to source code">build</a>( )</code>
 
 		<div class="description short">
 			<p>Builds a mock.</p>

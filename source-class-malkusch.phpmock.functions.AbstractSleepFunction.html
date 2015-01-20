@@ -108,7 +108,7 @@
 </span><span id="4" class="l"><a class="l" href="#4"> 4: </a>
 </span><span id="5" class="l"><a class="l" href="#5"> 5: </a><span class="php-comment">/**
 </span></span><span id="6" class="l"><a class="l" href="#6"> 6: </a><span class="php-comment"> * Abstract class for sleep() and usleep() functions.
-</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> * 
+</span></span><span id="7" class="l"><a class="l" href="#7"> 7: </a><span class="php-comment"> *
 </span></span><span id="8" class="l"><a class="l" href="#8"> 8: </a><span class="php-comment"> * @author Markus Malkusch &lt;markus@malkusch.de&gt;
 </span></span><span id="9" class="l"><a class="l" href="#9"> 9: </a><span class="php-comment"> * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
 </span></span><span id="10" class="l"><a class="l" href="#10">10: </a><span class="php-comment"> * @license WTFPL
@@ -123,7 +123,7 @@
 </span><span id="19" class="l"><a class="l" href="#19">19: </a>    
 </span><span id="20" class="l"><a class="l" href="#20">20: </a>    <span class="php-comment">/**
 </span></span><span id="21" class="l"><a class="l" href="#21">21: </a><span class="php-comment">     * Sets the Incrementable objects.
-</span></span><span id="22" class="l"><a class="l" href="#22">22: </a><span class="php-comment">     * 
+</span></span><span id="22" class="l"><a class="l" href="#22">22: </a><span class="php-comment">     *
 </span></span><span id="23" class="l"><a class="l" href="#23">23: </a><span class="php-comment">     * @param Incrementable[] $incrementables Observing Incrementables.
 </span></span><span id="24" class="l"><a class="l" href="#24">24: </a><span class="php-comment">     * @see addIncrementable()
 </span></span><span id="25" class="l"><a class="l" href="#25">25: </a><span class="php-comment">     */</span>
@@ -139,9 +139,9 @@
 </span><span id="35" class="l"><a class="l" href="#35">35: </a>    
 </span><span id="36" class="l"><a class="l" href="#36">36: </a>    <span class="php-comment">/**
 </span></span><span id="37" class="l"><a class="l" href="#37">37: </a><span class="php-comment">     * Mock function.
-</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment">     * 
+</span></span><span id="38" class="l"><a class="l" href="#38">38: </a><span class="php-comment">     *
 </span></span><span id="39" class="l"><a class="l" href="#39">39: </a><span class="php-comment">     * A call will increase all registered Increment objects.
-</span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment">     * 
+</span></span><span id="40" class="l"><a class="l" href="#40">40: </a><span class="php-comment">     *
 </span></span><span id="41" class="l"><a class="l" href="#41">41: </a><span class="php-comment">     * @param int $amount Amount of time units.
 </span></span><span id="42" class="l"><a class="l" href="#42">42: </a><span class="php-comment">     * @internal
 </span></span><span id="43" class="l"><a class="l" href="#43">43: </a><span class="php-comment">     */</span>
@@ -154,7 +154,7 @@
 </span><span id="50" class="l"><a class="l" href="#50">50: </a>
 </span><span id="51" class="l"><a class="l" href="#51">51: </a>    <span class="php-comment">/**
 </span></span><span id="52" class="l"><a class="l" href="#52">52: </a><span class="php-comment">     * Converts the sleep() paramater into seconds.
-</span></span><span id="53" class="l"><a class="l" href="#53">53: </a><span class="php-comment">     * 
+</span></span><span id="53" class="l"><a class="l" href="#53">53: </a><span class="php-comment">     *
 </span></span><span id="54" class="l"><a class="l" href="#54">54: </a><span class="php-comment">     * @param int $amount Amount of time units.
 </span></span><span id="55" class="l"><a class="l" href="#55">55: </a><span class="php-comment">     * @return mixed Seconds.
 </span></span><span id="56" class="l"><a class="l" href="#56">56: </a><span class="php-comment">     * @internal
@@ -163,11 +163,11 @@
 </span><span id="59" class="l"><a class="l" href="#59">59: </a>
 </span><span id="60" class="l"><a class="l" href="#60">60: </a>    <span class="php-comment">/**
 </span></span><span id="61" class="l"><a class="l" href="#61">61: </a><span class="php-comment">     * Adds an Incrementable object.
-</span></span><span id="62" class="l"><a class="l" href="#62">62: </a><span class="php-comment">     * 
+</span></span><span id="62" class="l"><a class="l" href="#62">62: </a><span class="php-comment">     *
 </span></span><span id="63" class="l"><a class="l" href="#63">63: </a><span class="php-comment">     * These objects are observing this function and get notified by
 </span></span><span id="64" class="l"><a class="l" href="#64">64: </a><span class="php-comment">     * increasing the amount of passed time. Incrementables are used
 </span></span><span id="65" class="l"><a class="l" href="#65">65: </a><span class="php-comment">     * for time() and microtime() mocks.
-</span></span><span id="66" class="l"><a class="l" href="#66">66: </a><span class="php-comment">     * 
+</span></span><span id="66" class="l"><a class="l" href="#66">66: </a><span class="php-comment">     *
 </span></span><span id="67" class="l"><a class="l" href="#67">67: </a><span class="php-comment">     * @param Incrementable $incrementable Observing Incrementable.
 </span></span><span id="68" class="l"><a class="l" href="#68">68: </a><span class="php-comment">     */</span>
 </span><span id="69" class="l"><a class="l" href="#69">69: </a>    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> <a id="_addIncrementable" href="#_addIncrementable">addIncrementable</a>(Incrementable <span class="php-var">$incrementable</span>)
