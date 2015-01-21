@@ -88,6 +88,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
      *
      * @expectedException Exception
      */
+    /*
     public function testExample4()
     {
         $function = function () {
@@ -103,4 +104,5 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
 
         }
     }
+     */
 }
