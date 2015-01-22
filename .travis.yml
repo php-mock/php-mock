@@ -1,5 +1,13 @@
 language: php
 
+env:
+    - PHPUNIT_VERSION=dev-master
+    - PHPUNIT_VERSION=~4.4.0
+    - PHPUNIT_VERSION=~4.3.0
+    - PHPUNIT_VERSION=~4.2.0
+    - PHPUNIT_VERSION=~4.1.0
+    - PHPUNIT_VERSION=~4.0.0
+
 php:
     - 5.6
     - 5.5
@@ -10,9 +18,9 @@ install:
     - phpenv rehash
 
 before_script:
-    - composer install
+    - composer require phpunit/phpunit:${PHPUNIT_VERSION}
 
 script:
-    - phpunit
+    - vendor/bin/phpunit
     - phpcs --standard=PSR2 classes/ tests/
 

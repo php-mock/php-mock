@@ -63,6 +63,8 @@ Use [Composer](https://getcomposer.org/):
 
 # Usage
 
+If you plan to use PHPUnit you can skip to the [PHPUnit integration](#phpunit-integration).
+
 You find the API in the namespace [`malkusch\phpmock`](http://malkusch.github.io/php-mock/namespace-malkusch.phpmock.html).
 
 Create a [`Mock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html)
@@ -198,6 +200,40 @@ assert(1417011228 + 10 == time());
 
 PHP-Mock is meant to be used for unit testing, but not coupled to PHPUnit. You
 can use an arbitrary testing framework.
+
+### PHPUnit integration
+
+PHP-Mock comes with the trait
+[`PHPMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.phpunit.PHPMock.html)
+to integrate into your PHPUnit-4 test case. This trait extends the framework
+by the method
+[`getFunctionMock()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.phpunit.PHPMock.html#_getFunctionMock).
+With this method you can build a mock in the way you are used to build a
+PHPUnit mock:
+
+```php
+<?php
+
+namespace foo;
+
+use malkusch\phpmock\phpunit\PHPMock;
+
+class FooTest extends \PHPUnit_Framework_TestCase
+{
+
+    use PHPMock;
+
+    public function testBar()
+    {
+        $time = $this->getFunctionMock(__NAMESPACE__, "time");
+        $time->expects($this->once())->willReturn(3);
+        $this->assertEquals(3, time());
+    }
+}
+```
+
+Note that this integration doesn't require you to disable the mock after the
+test. This is done automatically.
 
 ### Reset global state
 
