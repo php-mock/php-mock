@@ -44,6 +44,9 @@ there are alternative techniques to mock built-in PHP functions:
 * [**MockFunction**](https://github.com/tcz/phpunit-mockfunction) is a PHPUnit
   extension. It uses the [runkit](http://php.net/manual/en/book.runkit.php) extension.
 
+* [**UOPZ**](https://github.com/krakjoe/uopz) is a Zend extension which
+  allows, among others, renaming and deletion of functions.
+
 * [**vfsStream**](https://github.com/mikey179/vfsStream) is a stream wrapper for
   a virtual file system. This will help you write tests which covers PHP
   stream functions (e.g. `fread()` or `readdir()`).
