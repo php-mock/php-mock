@@ -7,7 +7,7 @@ namespace malkusch\phpmock\functions;
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
- * @license WTFPL
+ * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
 abstract class AbstractSleepFunction implements FunctionProvider
 {

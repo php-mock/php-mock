@@ -9,7 +9,7 @@ use PHPUnit_Framework_MockObject_MockObject as MockObject;
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
- * @license WTFPL
+ * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @internal
  */
 class MockObjectProxy implements MockObject

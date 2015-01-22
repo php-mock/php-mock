@@ -11,7 +11,7 @@ use malkusch\phpmock\Mock;
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
- * @license WTFPL
+ * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @internal
  */
 class MockDisabler extends \PHPUnit_Framework_BaseTestListener
