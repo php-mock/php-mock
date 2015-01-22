@@ -1,4 +1,4 @@
-# About PHP-Mock
+# PHP-Mock: mocking built-in PHP functions
 
 PHP-Mock is a testing library which mocks non deterministic built-in PHP functions like
 `time()` or `rand()`. This is achived by [PHP's namespace fallback policy](http://php.net/manual/en/language.namespaces.fallback.php):
@@ -66,9 +66,41 @@ Use [Composer](https://getcomposer.org/):
 
 # Usage
 
-If you plan to use PHPUnit you can skip to the [PHPUnit integration](#phpunit-integration).
+## PHPUnit integration
 
-You find the API in the namespace [`malkusch\phpmock`](http://malkusch.github.io/php-mock/namespace-malkusch.phpmock.html).
+PHP-Mock comes with the trait
+[`PHPMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.phpunit.PHPMock.html)
+to integrate into your PHPUnit-4 test case. This trait extends the framework
+by the method
+[`getFunctionMock()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.phpunit.PHPMock.html#_getFunctionMock).
+With this method you can build a mock in the way you are used to build a
+PHPUnit mock:
+
+```php
+<?php
+
+namespace foo;
+
+use malkusch\phpmock\phpunit\PHPMock;
+
+class FooTest extends \PHPUnit_Framework_TestCase
+{
+
+    use PHPMock;
+
+    public function testBar()
+    {
+        $time = $this->getFunctionMock(__NAMESPACE__, "time");
+        $time->expects($this->once())->willReturn(3);
+        $this->assertEquals(3, time());
+    }
+}
+```
+
+## PHP-mock API
+
+PHP-Mock is not coupled to PHPUnit. You find the API in the namespace
+[`malkusch\phpmock`](http://malkusch.github.io/php-mock/namespace-malkusch.phpmock.html).
 
 Create a [`Mock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html)
 object. You can do this with the fluent API of [`MockBuilder`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockBuilder.html):
@@ -162,7 +194,7 @@ $builder->setNamespace(__NAMESPACE__)
 $mock = $builder->build();
 ```
 
-## Mock environments
+### Mock environments
 
 Complex mock environments of several mocked functions can be grouped in a [`MockEnvironment`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockEnvironment.html):
 
@@ -172,7 +204,7 @@ Complex mock environments of several mocked functions can be grouped in a [`Mock
 * [`MockEnvironment::disable()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.MockEnvironment.html#_disable)
   disables all mocked functions of this environment.
 
-### SleepEnvironmentBuilder
+#### SleepEnvironmentBuilder
 
 The [`SleepEnvironmentBuilder`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.SleepEnvironmentBuilder.html)
 builds a mock environment where `sleep()` and `usleep()` return immediatly.
@@ -199,179 +231,15 @@ sleep(10);
 assert(1417011228 + 10 == time());
 ```
 
-## Unit testing
-
-PHP-Mock is meant to be used for unit testing, but not coupled to PHPUnit. You
-can use an arbitrary testing framework.
-
-### PHPUnit integration
-
-PHP-Mock comes with the trait
-[`PHPMock`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.phpunit.PHPMock.html)
-to integrate into your PHPUnit-4 test case. This trait extends the framework
-by the method
-[`getFunctionMock()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.phpunit.PHPMock.html#_getFunctionMock).
-With this method you can build a mock in the way you are used to build a
-PHPUnit mock:
-
-```php
-<?php
-
-namespace foo;
-
-use malkusch\phpmock\phpunit\PHPMock;
-
-class FooTest extends \PHPUnit_Framework_TestCase
-{
-
-    use PHPMock;
-
-    public function testBar()
-    {
-        $time = $this->getFunctionMock(__NAMESPACE__, "time");
-        $time->expects($this->once())->willReturn(3);
-        $this->assertEquals(3, time());
-    }
-}
-```
-
-Note that this integration doesn't require you to disable the mock after the
-test. This is done automatically.
-
 ### Reset global state
 
 An enabled mock changes global state. This will break subsequent tests if
 they run code which would call the mock unintentionally. Therefore
-you should always disable a mock after the test case. You can do this in
-several ways:
-
-#### PHPUnit's `tearDown()`
-
-If you defined the mock as a test member in `setup()` you can disable it
-with `tearDown()`:
-
-```php
-    protected function tearDown()
-    {
-        $this->mock->disable();
-    }
-```
-
-#### PHP's `finally`
-
-If you have defined the mock locally you should disable it in a `finally` block.
-This will guarantee the reseting of the global state in case of an exception:
-
-```php
-    /**
-     * @expectedException Exception
-     */
-    public function testFoo()
-    {
-        $function = function () {
-            throw new \Exception();
-        };
-        $mock = new Mock(__NAMESPACE__, "time", $function);
-        $mock->enable();
-        try {
-            time();
-
-        } finally {
-            $mock->disable();
-
-        }
-    }
-```
-
-#### Disable all mocks statically
-
-If you don't have the created mock objects anymore you can disable all mocks
-in a `finally` or `tearDown()` by calling the static method
+you should always disable a mock after the test case. If you are using the
+php-mock API outside of the PHPUnit integration you will have to disable
+the created mock by yourself. You could do this for all mocks by calling the
+static method
 [`Mock::disableAll()`](http://malkusch.github.io/php-mock/class-malkusch.phpmock.Mock.html#_disableAll).
-
-### Example
-
-Let's assume we want to test a class `Alarm` which rings an alarm on the second
-we set:
-
-```php
-<?php
-
-namespace foo;
-
-class Alarm
-{
-
-    private $timestamp;
-
-    //…
-
-    public function isRinging()
-    {
-        // Note: time() is an unqualified function name in the namespace foo.
-        return time() == $this->timestamp;
-    }
-}
-```
-
-This would be the unit test for `Alarm::isRinging()`:
-
-```php
-<?php
-
-namespace foo;
-
-use malkusch\phpmock\MockBuilder;
-use malkusch\phpmock\functions\FixedValueFunction;
-
-class AlarmTest extends \PHPUnit_Framework_TestCase
-{
-
-    /**
-     * @var Mock The time() mock.
-     */
-    private $mock;
-
-    /**
-     * @var FixedValueFunction The mock function.
-     */
-    private $time;
-    
-    protected function setup()
-    {
-        $this->time = new FixedValueFunction();
-        $builder = new MockBuilder();
-
-        $this->mock = $builder->setNamespace(__NAMESPACE__)
-                              ->setName("time")
-                              ->setFunctionProvider($this->time)
-                              ->build();
-
-        $this->mock->enable();
-    }
-    
-    protected function tearDown()
-    {
-        $this->mock->disable();
-    }
-
-    public function testRingAlarm()
-    {
-        $timestamp = 1417011228;
-        $alarm = new Alarm($timestamp);
-
-        $this->time->setValue($timestamp - 1);
-        $this->assertFalse($alarm->isRinging());
-
-        $this->time->setValue($timestamp);
-        $this->assertTrue($alarm->isRinging());
-
-        $this->time->setValue($timestamp + 1);
-        $this->assertFalse($alarm->isRinging());
-    }
-
-}
-```
 
 
 # License and authors
