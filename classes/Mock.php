@@ -169,22 +169,15 @@ class Mock
         $definition = "
             namespace {$this->getNamespace()};
                 
-            use malkusch\phpmock\MockRegistry;
+            use malkusch\phpmock\MockCallHelper;
 
             function $this->name()
             {
-                \$registry = MockRegistry::getInstance();
-                \$mock = \$registry->getMock('$canonicalFunctionName');
-
-                // call the built-in function if the mock was not enabled.
-                if (empty(\$mock)) {
-                    return call_user_func_array(
-                        '$this->name', func_get_args()
-                    );
-                }
-
-                // call the mock function.
-                return \$mock->call(func_get_args());
+                return MockCallHelper::call(
+                    '$this->name',
+                    '$canonicalFunctionName',
+                    func_get_args()
+                );
             }";
         
         eval($definition);
