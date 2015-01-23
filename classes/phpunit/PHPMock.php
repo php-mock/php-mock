@@ -37,6 +37,29 @@ trait PHPMock
 {
 
     /**
+     * Returns a builder object to create mock objects using a fluent interface.
+     *
+     * This method exists in PHPUnit_Framework_TestCase.
+     *
+     * @param string $className Name of the class to mock.
+     * @return \PHPUnit_Framework_MockObject_MockBuilder
+     * @see \PHPUnit_Framework_TestCase::getMockBuilder()
+     * @internal
+     */
+    abstract protected function getMockBuilder($className);
+
+    /**
+     * Returns the test result.
+     *
+     * This method exists in PHPUnit_Framework_TestCase.
+     *
+     * @return \PHPUnit_Framework_TestResult The test result.
+     * @see \PHPUnit_Framework_TestCase::getTestResultObject()
+     * @internal
+     */
+    abstract protected function getTestResultObject();
+
+    /**
      * Returns the enabled function mock.
      *
      * This mock will be disabled automatically after the test run.
@@ -48,7 +71,7 @@ trait PHPMock
      */
     public function getFunctionMock($namespace, $name)
     {
-        $mock = $this->getMock('malkusch\phpmock\phpunit\MockDelegate');
+        $mock = $this->getMockBuilder('malkusch\phpmock\phpunit\MockDelegate')->getMock();
         
         $functionMockBuilder = new MockBuilder();
         $functionMockBuilder->setNamespace($namespace)
