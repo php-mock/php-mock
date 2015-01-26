@@ -89,6 +89,31 @@ class FixedMicrotimeFunctionTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
+     * Tests exception for invalid argument in constructor.
+     *
+     * @test
+     * @expectedException \InvalidArgumentException
+     * @dataProvider provideTestConstructFailsForInvalidArgument
+     */
+    public function testConstructFailsForInvalidArgument($timestamp)
+    {
+        new FixedMicrotimeFunction($timestamp);
+    }
+    
+    /**
+     * Returns test cases for testConstructFailsForInvalidArgument()
+     *
+     * @return array Test cases.
+     */
+    public function provideTestConstructFailsForInvalidArgument()
+    {
+        return [
+            [true],
+            [new \stdClass()]
+        ];
+    }
+    
+    /**
      * Tests initializing with a timestamp.
      *
      * @param mixed $timestamp The tested timestamp.
