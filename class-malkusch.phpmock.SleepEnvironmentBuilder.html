@@ -115,6 +115,24 @@
 they return immediatly and increase the amount of time in the mocks for
 time() and microtime().</p>
 
+<p>Example:</p>
+
+<pre><span class="php-keyword1">namespace</span> foo;
+
+<span class="php-keyword1">use</span> malkusch\phpmock\SleepEnvironmentBuilder;
+
+<span class="php-var">$builder</span> = <span class="php-keyword1">new</span> SleepEnvironmentBuilder();
+<span class="php-var">$builder</span>-&gt;setNamespace(__NAMESPACE__)
+        -&gt;setTimestamp(<span class="php-num">1417011228</span>);
+
+<span class="php-var">$environment</span> = <span class="php-var">$builder</span>-&gt;build();
+<span class="php-var">$environment</span>-&gt;enable();
+
+<span class="php-comment">// This won't delay the test for 10 seconds, but increase time().</span>
+<span class="php-keyword2">sleep</span>(<span class="php-num">10</span>);
+
+<span class="php-keyword2">assert</span>(<span class="php-num">1417011228</span> + <span class="php-num">10</span> == <span class="php-keyword2">time</span>());</pre>
+
 	</div>
 
 
@@ -138,7 +156,7 @@ time() and microtime().</p>
 <br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#9-98" title="Go to source code">SleepEnvironmentBuilder.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#9-117" title="Go to source code">SleepEnvironmentBuilder.php</a><br>
 	</div>
 
 
@@ -157,7 +175,7 @@ time() and microtime().</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setNamespace">#</a>
-		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#33-43" title="Go to source code">setNamespace</a>( <span>string <var>$namespace</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#52-62" title="Go to source code">setNamespace</a>( <span>string <var>$namespace</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the namespace for the mock environment.</p>
@@ -199,7 +217,7 @@ time() and microtime().</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setTimestamp">#</a>
-		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#45-59" title="Go to source code">setTimestamp</a>( <span>mixed <var>$timestamp</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#64-78" title="Go to source code">setTimestamp</a>( <span>mixed <var>$timestamp</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the mocked timestamp.</p>
@@ -245,7 +263,7 @@ in the microtime() format.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_build">#</a>
-		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#61-97" title="Go to source code">build</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.SleepEnvironmentBuilder.html#80-116" title="Go to source code">build</a>( )</code>
 
 		<div class="description short">
 			<p>Builds a sleep(), usleep(), time() and microtime() mock environment.</p>

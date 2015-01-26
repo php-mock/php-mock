@@ -115,6 +115,16 @@
 PHP's namespace fallback policy. A mock will provide the namespaced function.
 I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
+<p>Example:</p>
+
+<pre><span class="php-keyword1">namespace</span> foo;
+
+<span class="php-keyword1">use</span> malkusch\phpmock\Mock;
+
+<span class="php-var">$time</span> = <span class="php-keyword1">new</span> Mock(__NAMESPACE__, <span class="php-quote">&quot;time&quot;</span>, <span class="php-keyword1">function</span> () { <span class="php-keyword1">return</span> <span class="php-num">3</span>; });
+<span class="php-var">$time</span>-&gt;enable();
+<span class="php-keyword2">assert</span> (<span class="php-num">3</span> == <span class="php-keyword2">time</span>());</pre>
+
 	</div>
 
 
@@ -140,7 +150,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 				<code><code><a href="class-malkusch.phpmock.MockBuilder.html">malkusch\phpmock\MockBuilder</a></code></code><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-		<b>Located at</b> <a href="source-class-malkusch.phpmock.Mock.html#5-192" title="Go to source code">Mock.php</a><br>
+		<b>Located at</b> <a href="source-class-malkusch.phpmock.Mock.html#5-196" title="Go to source code">Mock.php</a><br>
 	</div>
 
 
@@ -159,7 +169,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#40-53" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
+		<code><a href="source-class-malkusch.phpmock.Mock.html#51-64" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
 
 		<div class="description short">
 			<p>Set the namespace, function name and the mock function.</p>
@@ -203,7 +213,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getRecorder">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#55-65" title="Go to source code">getRecorder</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.Mock.html#66-76" title="Go to source code">getRecorder</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the call recorder.</p>
@@ -242,7 +252,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_enable">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#67-86" title="Go to source code">enable</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.Mock.html#78-97" title="Go to source code">enable</a>( )</code>
 
 		<div class="description short">
 			<p>Enables this mock.</p>
@@ -284,7 +294,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disable">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#88-97" title="Go to source code">disable</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.Mock.html#99-108" title="Go to source code">disable</a>( )</code>
 
 		<div class="description short">
 			<p>Disable this mock.</p>
@@ -321,7 +331,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disableAll">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#99-108" title="Go to source code">disableAll</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.Mock.html#110-119" title="Go to source code">disableAll</a>( )</code>
 
 		<div class="description short">
 			<p>Disable all mocks.</p>
@@ -358,7 +368,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_define">#</a>
-		<code><a href="source-class-malkusch.phpmock.Mock.html#147-191" title="Go to source code">define</a>( )</code>
+		<code><a href="source-class-malkusch.phpmock.Mock.html#158-195" title="Go to source code">define</a>( )</code>
 
 		<div class="description short">
 			<p>Defines the mocked function in the given namespace.</p>
