@@ -82,7 +82,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         assert(12345 + 10 == time());
         $this->assertEquals(12345 + 10, time());
     }
-
+    
     /**
      * Tests the example from the documentation.
      *
@@ -105,4 +105,22 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         }
     }
      */
+    
+    /**
+     * Tests the example from the documentation.
+     *
+     * @test
+     */
+    public function testExample5()
+    {
+        $time = new Mock(
+            __NAMESPACE__,
+            "time",
+            function () {
+                return 3;
+            }
+        );
+        $time->enable();
+        assert(3 == time());
+    }
 }

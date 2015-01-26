@@ -9,8 +9,6 @@ use malkusch\phpmock\functions\FunctionProvider;
  *
  * Example:
  * <code>
- * <?php
- *
  * namespace foo;
  *
  * use malkusch\phpmock\MockBuilder;

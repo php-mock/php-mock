@@ -13,6 +13,25 @@ use malkusch\phpmock\functions\UsleepFunction;
  * they return immediatly and increase the amount of time in the mocks for
  * time() and microtime().
  *
+ * Example:
+ * <code>
+ * namespace foo;
+ *
+ * use malkusch\phpmock\SleepEnvironmentBuilder;
+ *
+ * $builder = new SleepEnvironmentBuilder();
+ * $builder->setNamespace(__NAMESPACE__)
+ *         ->setTimestamp(1417011228);
+ *
+ * $environment = $builder->build();
+ * $environment->enable();
+ *
+ * // This won't delay the test for 10 seconds, but increase time().
+ * sleep(10);
+ *
+ * assert(1417011228 + 10 == time());
+ * </code>
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL

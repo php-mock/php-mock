@@ -9,6 +9,23 @@ namespace malkusch\phpmock;
  * PHP's namespace fallback policy. A mock will provide the namespaced function.
  * I.e. only unqualified functions in a non-global namespace can be mocked.
  *
+ * Example:
+ * <code>
+ * namespace foo;
+ *
+ * use malkusch\phpmock\Mock;
+ *
+ * $time = new Mock(
+ *     __NAMESPACE__,
+ *     "time",
+ *     function () {
+ *         return 3;
+ *     }
+ * );
+ * $time->enable();
+ * assert (3 == time());
+ * </code>
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
