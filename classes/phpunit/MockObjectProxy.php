@@ -64,6 +64,6 @@ class MockObjectProxy implements MockObject
     public function __phpunit_hasMatchers()
     {
         // @codingStandardsIgnoreEnd
-        return $this->mockObject->__phpunit_getInvocationMocker()->hasMatchers();
+        return $this->mockObject->__phpunit_hasMatchers();
     }
 }
