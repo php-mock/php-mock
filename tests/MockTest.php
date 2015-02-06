@@ -60,12 +60,21 @@ class MockTest extends \PHPUnit_Framework_TestCase
     {
         $recorder = $this->mock->getRecorder();
         $this->assertEmpty($recorder->getCalls());
-        
+
         time();
         $this->assertEquals(array(array()), $recorder->getCalls());
-        
+
         time(true);
-        $this->assertEquals(array(array(), array(true)), $recorder->getCalls());
+        $this->assertEquals(array(array(), array()), $recorder->getCalls());
+
+        $mock = new Mock(__NAMESPACE__, "abs", 'emptyFunc');
+        $mock->enable();
+        $recorder = $mock->getRecorder();
+        $this->assertEmpty($recorder->getCalls());
+
+        abs(12);
+        $this->assertEquals(array(array(12)), $recorder->getCalls());
+
     }
     
     /**
@@ -125,6 +134,82 @@ class MockTest extends \PHPUnit_Framework_TestCase
         Mock::disableAll();
 
         $this->assertNotEquals(1234, time());
-        $this->assertEquals(1, min(1, 2));
+        $this->assertEquals(1, min(array(1, 2)));
+    }
+
+    /**
+     * Test getArgumentsList().
+     *
+     * @test
+     * @dataProvider gettingArgumentsListProvider
+     */
+    public function testGettingArgumentsList($name, $arguments)
+    {
+        $mock = new Mock(__NAMESPACE__, $name, '\\emptyFunc');
+
+        $class = new \ReflectionClass($mock);
+        $method = $class->getMethod('getArgumentsList');
+        $method->setAccessible(true);
+
+        $this->assertEquals($arguments, $method->invoke($mock, array()));
+    }
+
+    public function gettingArgumentsListProvider()
+    {
+        return array(
+            array('exec', 'array($command, &$output, &$return_value)'),
+            array('time', 'array()'),
+            array('highlight_string', 'array($string, $return)'),
+
+        );
+    }
+
+    /**
+     * Test Parameters List
+     *
+     * @test
+     * @dataProvider gettingParametersListProvider
+     */
+    public function testGettingParametersList($name, $parametersList)
+    {
+        $mock = new Mock(__NAMESPACE__, $name, 'emptyFunc');
+
+        $class = new \ReflectionClass($mock);
+        $method = $class->getMethod('getParametersList');
+        $method->setAccessible(true);
+
+        $this->assertEquals($parametersList, $method->invoke($mock, array()));
+    }
+
+    public function gettingParametersListProvider()
+    {
+        return array(
+            array('exec', '$command, &$output = \'optionalParameter\', &$return_value = \'optionalParameter\''),
+            array('time', ''),
+            array('highlight_string', '$string, $return = \'optionalParameter\''),
+        );
+    }
+
+    /**
+     * Test whether passing by reference does work
+     *
+     * @test
+     */
+    public function testPassingByReference()
+    {
+        $mock = new Mock(__NAMESPACE__, 'exec', function($a, &$b, &$c) {
+            $b[] = 'test1';
+            $b[] = 'test2';
+            $c = 'test';
+        });
+
+        $mock->enable();
+        $b = array();
+        $c = '';
+
+        exec('test', $b, $c);
+        $this->assertEquals(array('test1', 'test2'), $b);
+        $this->assertEquals('test', $c);
+
     }
 }

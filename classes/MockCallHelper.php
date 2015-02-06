@@ -23,14 +23,16 @@ class MockCallHelper
      * @return mixed The result of the called function.
      * @see Mock::define()
      */
-    public static function call(
-        $functionName,
-        $canonicalFunctionName,
-        array $arguments
-    ) {
+    public static function call($functionName, $canonicalFunctionName, &$arguments)
+    {
         $registry = MockRegistry::getInstance();
         $mock     = $registry->getMock($canonicalFunctionName);
 
+        foreach ($arguments as $key => $arg) {
+            if ($arg === Mock::DEFAULT_ARGUMENT) {
+                unset($arguments[$key]);
+            }
+        }
         if (empty($mock)) {
             // call the built-in function if the mock was not enabled.
             return call_user_func_array($functionName, $arguments);

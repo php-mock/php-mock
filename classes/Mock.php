@@ -2,6 +2,8 @@
 
 namespace malkusch\phpmock;
 
+use ReflectionFunction;
+
 /**
  * Mocking framework for built-in PHP functions.
  *
@@ -33,6 +35,8 @@ namespace malkusch\phpmock;
  */
 class Mock
 {
+
+    const DEFAULT_ARGUMENT = 'optionalParameter';
     
     /**
      * @var string namespace for the mock function.
@@ -137,7 +141,13 @@ class Mock
     public function call(array $arguments)
     {
         $this->recorder->record($arguments);
-        return call_user_func_array($this->function, $arguments);
+        
+        $args = array();
+        foreach ($arguments as $k => &$arg) {
+            $args[$k] = &$arg;
+        }
+        
+        return call_user_func_array($this->function, $args);
     }
     
     /**
@@ -188,15 +198,84 @@ class Mock
                 
             use malkusch\phpmock\MockCallHelper;
 
-            function $this->name()
+            function $this->name({$this->getParametersList()})
             {
+                \$arguments = {$this->getArgumentsList()};
                 return MockCallHelper::call(
                     '$this->name',
                     '$canonicalFunctionName',
-                    func_get_args()
+                    \$arguments
                 );
             }";
-        
+
         eval($definition);
+    }
+
+    /**
+     * Get a list of parameters for the function-definition
+     *
+     * @return string
+     */
+    private function getParametersList()
+    {
+        $functionReflection = new ReflectionFunction('\\' . $this->name);
+        $argsReflection = $functionReflection->getParameters();
+        $arguments = array();
+
+        foreach ($argsReflection as $arg) {
+            if ($arg->name == '...') {
+                // If '...' is set as name of a parameter this is a variadic
+                // C-implementation before PHP5.5 - There is no way of knowing
+                // how many parameters there might be given, so lets simply
+                // use the func_get_args for getting the params. As these
+                // "variadic" functions do not use pas-by-reference it doesn't
+                // matter.
+                return '';
+            }
+            $argument = '';
+            if (true === $arg->isPassedByReference()) {
+                $argument .= '&';
+            }
+            $argument .= '$' . $arg->name;
+
+            if ($arg->isOptional()) {
+                $argument .= ' = \'' . self::DEFAULT_ARGUMENT . '\'';
+            }
+            $arguments[ ] = $argument;
+        }
+
+        return implode(', ', $arguments);
+    }
+
+    /**
+     * Get a string representation of the params array
+     *
+     * @return string
+     */
+    private function getArgumentsList()
+    {
+        $functionReflection = new ReflectionFunction('\\' . $this->name);
+        $argsReflection = $functionReflection->getParameters();
+        $arguments = array();
+
+        foreach ($argsReflection as $arg) {
+            if ($arg->name == '...') {
+                // If '...' is set as name of a parameter this is a variadic
+                // C-implementation before PHP5.5 - There is no way of knowing
+                // how many parameters there might be given, so lets simply
+                // use the func_get_args for getting the params. As these
+                // "variadic" functions do not use pas-by-reference it doesn't
+                // matter.
+                return 'func_get_args()';
+            }
+
+            if (true === $arg->isPassedByReference()) {
+                $arguments[] = '&$' . $arg->name;
+            } else {
+                $arguments[] = '$' . $arg->name;
+            }
+        }
+
+        return 'array(' . implode(', ', $arguments) . ')';
     }
 }
