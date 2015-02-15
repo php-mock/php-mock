@@ -67,7 +67,9 @@ class MockTest extends \PHPUnit_Framework_TestCase
         time(true);
         $this->assertEquals(array(array(), array()), $recorder->getCalls());
 
-        $mock = new Mock(__NAMESPACE__, "abs", 'emptyFunc');
+        $function = function () {
+        };
+        $mock = new Mock(__NAMESPACE__, "abs", $function);
         $mock->enable();
         $recorder = $mock->getRecorder();
         $this->assertEmpty($recorder->getCalls());
@@ -145,7 +147,9 @@ class MockTest extends \PHPUnit_Framework_TestCase
      */
     public function testGettingArgumentsList($name, $arguments)
     {
-        $mock = new Mock(__NAMESPACE__, $name, '\\emptyFunc');
+        $function = function () {
+        };
+        $mock = new Mock(__NAMESPACE__, $name, $function);
 
         $class = new \ReflectionClass($mock);
         $method = $class->getMethod('getArgumentsList');
@@ -172,7 +176,9 @@ class MockTest extends \PHPUnit_Framework_TestCase
      */
     public function testGettingParametersList($name, $parametersList)
     {
-        $mock = new Mock(__NAMESPACE__, $name, 'emptyFunc');
+        $function = function () {
+        };
+        $mock = new Mock(__NAMESPACE__, $name, $function);
 
         $class = new \ReflectionClass($mock);
         $method = $class->getMethod('getParametersList');
