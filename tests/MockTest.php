@@ -140,63 +140,6 @@ class MockTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test getArgumentsList().
-     *
-     * @test
-     * @dataProvider gettingArgumentsListProvider
-     */
-    public function testGettingArgumentsList($name, $arguments)
-    {
-        $function = function () {
-        };
-        $mock = new Mock(__NAMESPACE__, $name, $function);
-
-        $class = new \ReflectionClass($mock);
-        $method = $class->getMethod('getArgumentsList');
-        $method->setAccessible(true);
-
-        $this->assertEquals($arguments, $method->invoke($mock, array()));
-    }
-
-    public function gettingArgumentsListProvider()
-    {
-        return array(
-            array('exec', 'array($command, &$output, &$return_value)'),
-            array('time', 'array()'),
-            array('highlight_string', 'array($string, $return)'),
-
-        );
-    }
-
-    /**
-     * Test Parameters List
-     *
-     * @test
-     * @dataProvider gettingParametersListProvider
-     */
-    public function testGettingParametersList($name, $parametersList)
-    {
-        $function = function () {
-        };
-        $mock = new Mock(__NAMESPACE__, $name, $function);
-
-        $class = new \ReflectionClass($mock);
-        $method = $class->getMethod('getParametersList');
-        $method->setAccessible(true);
-
-        $this->assertEquals($parametersList, $method->invoke($mock, array()));
-    }
-
-    public function gettingParametersListProvider()
-    {
-        return array(
-            array('exec', '$command, &$output = \'optionalParameter\', &$return_value = \'optionalParameter\''),
-            array('time', ''),
-            array('highlight_string', '$string, $return = \'optionalParameter\''),
-        );
-    }
-    
-    /**
      * Tests passing by value.
      *
      * @test
@@ -219,22 +162,22 @@ class MockTest extends \PHPUnit_Framework_TestCase
      */
     public function testPassingByReference()
     {
-        $mock = new Mock(__NAMESPACE__, 'exec', function($a, &$b, &$c) {
+        $mock = new Mock(__NAMESPACE__, "exec", function($a, &$b, &$c) {
             $a   = "notExpected";
-            $b[] = 'test1';
-            $b[] = 'test2';
-            $c = 'test';
+            $b[] = "test1";
+            $b[] = "test2";
+            $c = "test";
         });
 
         $mock->enable();
         $noReference = "expected";
         $b = array();
-        $c = '';
+        $c = "";
 
         exec($noReference, $b, $c);
-        $this->assertEquals(array('test1', 'test2'), $b);
-        $this->assertEquals('test', $c);
-        $this->assertEquals('test', $c);
+        $this->assertEquals(array("test1", "test2"), $b);
+        $this->assertEquals("test", $c);
+        $this->assertEquals("test", $c);
         $this->assertEquals("expected", $noReference);
     }
 }
