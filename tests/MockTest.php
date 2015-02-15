@@ -195,27 +195,46 @@ class MockTest extends \PHPUnit_Framework_TestCase
             array('highlight_string', '$string, $return = \'optionalParameter\''),
         );
     }
+    
+    /**
+     * Tests passing by value.
+     *
+     * @test
+     */
+    public function testPassingByValue()
+    {
+        $mock = new Mock(__NAMESPACE__, "sqrt", function($a) {
+            return $a + 1;
+        });
+        $mock->enable();
+        
+        // Tests passing directly the value.
+        $this->assertEquals(3, sqrt(2));
+    }
 
     /**
-     * Test whether passing by reference does work
+     * Test passing by reference.
      *
      * @test
      */
     public function testPassingByReference()
     {
         $mock = new Mock(__NAMESPACE__, 'exec', function($a, &$b, &$c) {
+            $a   = "notExpected";
             $b[] = 'test1';
             $b[] = 'test2';
             $c = 'test';
         });
 
         $mock->enable();
+        $noReference = "expected";
         $b = array();
         $c = '';
 
-        exec('test', $b, $c);
+        exec($noReference, $b, $c);
         $this->assertEquals(array('test1', 'test2'), $b);
         $this->assertEquals('test', $c);
-
+        $this->assertEquals('test', $c);
+        $this->assertEquals("expected", $noReference);
     }
 }
