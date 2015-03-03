@@ -163,7 +163,7 @@ class Mock
     
     /**
      * Returns the unqualified function name.
-     * 
+     *
      * @return string The name of the mocked function.
      */
     public function getName()

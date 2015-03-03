@@ -35,7 +35,7 @@ class MockFunctionHelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Returns test cases for testGettingArgumentsList().
-     * 
+     *
      * @return array Test cases.
      */
     public function gettingArgumentsListProvider()
@@ -69,7 +69,7 @@ class MockFunctionHelperTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Returns test cases for testGettingParametersList().
-     * 
+     *
      * @return array Test cases.
      */
     public function gettingParametersListProvider()
@@ -80,5 +80,4 @@ class MockFunctionHelperTest extends \PHPUnit_Framework_TestCase
             array("highlight_string", '$string, $return = \'optionalParameter\''),
         );
     }
-    
 }

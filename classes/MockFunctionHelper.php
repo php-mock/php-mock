@@ -19,13 +19,13 @@ class MockFunctionHelper
     const DEFAULT_ARGUMENT = "optionalParameter";
  
     /**
-     * @var Mock The mock. 
+     * @var Mock The mock.
      */
     private $mock;
     
     /**
      * Sets the mock.
-     * 
+     *
      * @param Mock $mock The mock.
      */
     public function __construct(Mock $mock)
@@ -62,7 +62,7 @@ class MockFunctionHelper
      * Get a list of parameters for the function-definition
      *
      * @param bool $signature If the list is the signature definition.
-     * 
+     *
      * @return string
      */
     private function getParametersList($signature)

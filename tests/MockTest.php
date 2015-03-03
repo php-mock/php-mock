@@ -32,7 +32,7 @@ class MockTest extends \PHPUnit_Framework_TestCase
     
     protected function tearDown()
     {
-        $this->mock->disable();
+        Mock::disableAll();
     }
 
     /**
@@ -179,5 +179,26 @@ class MockTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("test", $c);
         $this->assertEquals("test", $c);
         $this->assertEquals("expected", $noReference);
+    }
+    
+    /**
+     * Tests that the mock preserves the default argument
+     *
+     * @test
+     */
+    public function testPreserveArgumentDefaultValue()
+    {
+        $function = function($input, $pad_length, $pad_string = " ") {
+            return $pad_string;
+        };
+        $mock = new Mock(__NAMESPACE__, "str_pad", $function);
+        $mock->enable();
+        
+        $result1 = str_pad("foo", 5);
+        $this->assertEquals(" ", $result1);
+        
+        $mock->disable();
+        $result2 = str_pad("foo", 5);
+        $this->assertEquals("foo  ", $result2);
     }
 }
