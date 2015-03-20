@@ -1,4 +1,4 @@
-destination: .
+destination: api
 source:
 	- vendor/malkusch/php-mock/classes/
 	
