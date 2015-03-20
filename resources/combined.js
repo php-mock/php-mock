@@ -1,6 +1,6 @@
 
 var ApiGen = ApiGen || {};
-ApiGen.config = {"resources":{"resources":"resources"},"templates":{"common":{"overview.latte":"index.html","combined.js.latte":"resources\/combined.js","elementlist.js.latte":"elementlist.js","404.latte":"404.html"},"main":{"package":{"filename":"package-%s.html","template":"package.latte"},"namespace":{"filename":"namespace-%s.html","template":"namespace.latte"},"class":{"filename":"class-%s.html","template":"class.latte"},"constant":{"filename":"constant-%s.html","template":"constant.latte"},"function":{"filename":"function-%s.html","template":"function.latte"},"source":{"filename":"source-%s.html","template":"source.latte"},"tree":{"filename":"tree.html","template":"tree.latte"},"deprecated":{"filename":"deprecated.html","template":"deprecated.latte"},"todo":{"filename":"todo.html","template":"todo.latte"}},"optional":{"sitemap":{"filename":"sitemap.xml","template":"sitemap.xml.latte"},"opensearch":{"filename":"opensearch.xml","template":"opensearch.xml.latte"},"robots":{"filename":"robots.txt","template":"robots.txt.latte"}}},"options":{"elementDetailsCollapsed":true,"elementsOrder":"natural"}};
+ApiGen.config = {"options":{"elementDetailsCollapsed":true,"elementsOrder":"natural"},"name":"ApiGen theme","templatesPath":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default","resources":{"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/resources":"resources"},"templates":{"overview":{"filename":"index.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/overview.latte"},"combined":{"filename":"resources\/combined.js","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/combined.js.latte"},"elementlist":{"filename":"elementlist.js","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/elementlist.js.latte"},"404":{"filename":"404.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/404.latte"},"package":{"filename":"package-%s.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/package.latte"},"namespace":{"filename":"namespace-%s.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/namespace.latte"},"class":{"filename":"class-%s.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/class.latte"},"constant":{"filename":"constant-%s.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/constant.latte"},"function":{"filename":"function-%s.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/function.latte"},"source":{"filename":"source-%s.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/source.latte"},"tree":{"filename":"tree.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/tree.latte"},"deprecated":{"filename":"deprecated.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/deprecated.latte"},"todo":{"filename":"todo.html","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/todo.latte"},"sitemap":{"filename":"sitemap.xml","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/sitemap.xml.latte"},"opensearch":{"filename":"opensearch.xml","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/opensearch.xml.latte"},"robots":{"filename":"robots.txt","template":"\/home\/malkusch\/workspace\/oss\/php-mock\/vendor\/apigen\/apigen\/src\/templates\/default\/robots.txt.latte"}}};
 
 
 	/*! jQuery v1.10.2 | (c) 2005, 2013 jQuery Foundation, Inc. | jquery.org/license
@@ -295,7 +295,6 @@ $.Autocompleter = function(input, options) {
   		}
 		}
 	}).bind("search", function() {
-		// TODO why not just specifying both arguments?
 		var fn = (arguments.length > 1) ? arguments[1] : null;
 		function findValueCallback(q, data) {
 			var result;
@@ -350,7 +349,6 @@ $.Autocompleter = function(input, options) {
 					progress += seperator;
 				});
 				words[wordAt] = v;
-				// TODO this should set the cursor to the right position, but it gets overriden somewhere
 				//$.Autocompleter.Selection(input, progress + seperator, progress + seperator);
 				v = words.join( options.multipleSeparator );
 			}
@@ -1022,18 +1020,7 @@ jQuery.fn.sortElements = (function(){
     };
 
 })();
-	/*!
- * ApiGen 2.8.0 - API documentation generator for PHP 5.3+
- *
- * Copyright (c) 2010-2011 David Grudl (http://davidgrudl.com)
- * Copyright (c) 2011-2012 Jaroslav Hanslík (https://github.com/kukulich)
- * Copyright (c) 2011-2012 Ondřej Nešpor (https://github.com/Andrewsville)
- *
- * For the full copyright and license information, please view
- * the file LICENSE.md that was distributed with this source code.
- */
-
-$(window).load(function() {
+	$(window).load(function() {
 	var $document = $(document);
 	var $left = $('#left');
 	var $right = $('#right');
@@ -1112,7 +1099,7 @@ $(window).load(function() {
 			var location = window.location.href.split('/');
 			location.pop();
 			var parts = data[1].split(/::|$/);
-			var file = $.sprintf(ApiGen.config.templates.main[autocompleteFiles[data[0]]].filename, parts[0].replace(/\(\)/, '').replace(/[^\w]/g, '.'));
+			var file = $.sprintf(ApiGen.config.templates[autocompleteFiles[data[0]]].filename, parts[0].replace(/\(\)/, '').replace(/[^\w]/g, '.'));
 			if (parts[1]) {
 				file += '#' + ('mm' === data[0] || 'mp' === data[0] ? 'm' : '') + parts[1].replace(/([\w]+)\(\)/, '_$1');
 			}
@@ -1259,7 +1246,7 @@ $(window).load(function() {
 
 	// Save selected lines
 	var lastLine;
-	$('a.l').click(function(event) {
+	$('.l a').click(function(event) {
 		event.preventDefault();
 
 		var $selectedLine = $(this).parent();

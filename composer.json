@@ -3,6 +3,6 @@
     "require": {
         "php": ">=5",
 	"malkusch/php-mock": "dev-master",
-	"apigen/apigen": "4.0.0-RC4"
+	"apigen/apigen": "^4"
     }
 }
