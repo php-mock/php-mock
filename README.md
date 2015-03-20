@@ -58,7 +58,7 @@ Use [Composer](https://getcomposer.org/):
 ```json
 {
     "require": {
-        "malkusch/php-mock": "0.4.1"
+        "malkusch/php-mock": "0.5"
     }
 }
 ```
@@ -97,7 +97,11 @@ class FooTest extends \PHPUnit_Framework_TestCase
 }
 ```
 
-## PHP-mock API
+Note: It's a known limitation that you can't pass values by reference
+with a PHPUnit mock (e.g. if you want to mock `exec()`).
+Use PHP-Mock's API directly instead.
+
+## PHP-Mock API
 
 PHP-Mock is not coupled to PHPUnit. You find the API in the namespace
 [`malkusch\phpmock`](http://malkusch.github.io/php-mock/namespace-malkusch.phpmock.html).

@@ -29,6 +29,10 @@ use malkusch\phpmock\MockBuilder;
  * }
  * </code>
  *
+ * Note: It's a known limitation that you can't pass values by reference
+ * with a PHPUnit mock (e.g. if you want to mock exec()).
+ * Use PHP-Mock's API directly instead.
+ *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
