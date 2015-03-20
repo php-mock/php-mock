@@ -22,5 +22,5 @@ before_script:
 
 script:
     - vendor/bin/phpunit
-    - phpcs --standard=PSR2 classes/ tests/
+    - phpcs --standard=PSR2 classes/ tests*
 

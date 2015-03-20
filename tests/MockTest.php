@@ -62,10 +62,10 @@ class MockTest extends \PHPUnit_Framework_TestCase
         $this->assertEmpty($recorder->getCalls());
 
         time();
-        $this->assertEquals(array(array()), $recorder->getCalls());
+        $this->assertEquals([[]], $recorder->getCalls());
 
         time(true);
-        $this->assertEquals(array(array(), array()), $recorder->getCalls());
+        $this->assertEquals([[],[true]], $recorder->getCalls());
 
         $function = function () {
         };
@@ -75,7 +75,7 @@ class MockTest extends \PHPUnit_Framework_TestCase
         $this->assertEmpty($recorder->getCalls());
 
         abs(12);
-        $this->assertEquals(array(array(12)), $recorder->getCalls());
+        $this->assertEquals([[12]], $recorder->getCalls());
 
     }
     
@@ -146,7 +146,7 @@ class MockTest extends \PHPUnit_Framework_TestCase
      */
     public function testPassingByValue()
     {
-        $mock = new Mock(__NAMESPACE__, "sqrt", function($a) {
+        $mock = new Mock(__NAMESPACE__, "sqrt", function ($a) {
             return $a + 1;
         });
         $mock->enable();
@@ -162,7 +162,7 @@ class MockTest extends \PHPUnit_Framework_TestCase
      */
     public function testPassingByReference()
     {
-        $mock = new Mock(__NAMESPACE__, "exec", function($a, &$b, &$c) {
+        $mock = new Mock(__NAMESPACE__, "exec", function ($a, &$b, &$c) {
             $a   = "notExpected";
             $b[] = "test1";
             $b[] = "test2";
@@ -188,7 +188,7 @@ class MockTest extends \PHPUnit_Framework_TestCase
      */
     public function testPreserveArgumentDefaultValue()
     {
-        $function = function($input, $pad_length, $pad_string = " ") {
+        $function = function ($input, $pad_length, $pad_string = " ") {
             return $pad_string;
         };
         $mock = new Mock(__NAMESPACE__, "str_pad", $function);
@@ -200,5 +200,24 @@ class MockTest extends \PHPUnit_Framework_TestCase
         $mock->disable();
         $result2 = str_pad("foo", 5);
         $this->assertEquals("foo  ", $result2);
+    }
+    
+    /**
+     * Tests some methods which use the varname "...".
+     *
+     * @test
+     */
+    public function testCVariadic()
+    {
+        $mock = new Mock(__NAMESPACE__, "min", "max");
+        $mock->define();
+        
+        $this->assertEquals(1, min(2, 1));
+        $this->assertEquals(1, min([2, 1]));
+        
+        $mock->enable();
+
+        $this->assertEquals(2, min(2, 1));
+        $this->assertEquals(2, min([2, 1]));
     }
 }

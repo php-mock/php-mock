@@ -4,5 +4,7 @@
          bootstrap="vendor/autoload.php">
     <testsuite>
         <directory>tests</directory>
+        <directory phpVersion="5.6">tests-5.6</directory>
+        <directory phpVersion="5.6"  phpVersionOperator="&lt;">tests-before-5.6</directory>
     </testsuite>
 </phpunit>

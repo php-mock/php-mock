@@ -38,17 +38,26 @@ class MockFunctionHelper
      */
     public function defineFunction()
     {
-        $name = $this->mock->getName();
+        $name                  = $this->mock->getName();
         $canonicalFunctionName = $this->mock->getCanonicalFunctionName();
-        
+
+        $parameterBuilder = new ParameterBuilder();
+        $parameterBuilder->build($name);
+        $signatureParameters = $parameterBuilder->getSignatureParameters();
+        $bodyParameters      = $parameterBuilder->getBodyParameters();
+
         $definition = "
             namespace {$this->mock->getNamespace()};
                 
             use malkusch\phpmock\MockFunctionHelper;
 
-            function $name({$this->getParametersList(true)})
+            function $name($signatureParameters)
             {
-                \$arguments = [{$this->getParametersList(false)}];
+                \$arguments = [$bodyParameters];
+
+                \$variadics = \\array_slice(\\func_get_args(), \\count(\$arguments));
+                \$arguments = \\array_merge(\$arguments, \$variadics);
+
                 return MockFunctionHelper::call(
                     '$name',
                     '$canonicalFunctionName',
@@ -57,45 +66,7 @@ class MockFunctionHelper
             }";
         eval($definition);
     }
-
-    /**
-     * Get a list of parameters for the function-definition
-     *
-     * @param bool $signature If the list is the signature definition.
-     *
-     * @return string
-     */
-    private function getParametersList($signature)
-    {
-        $functionReflection = new \ReflectionFunction($this->mock->getName());
-        $argsReflection = $functionReflection->getParameters();
-        $arguments = array();
-
-        foreach ($argsReflection as $arg) {
-            if ($arg->name == "...") {
-                // If '...' is set as name of a parameter this is a variadic
-                // C-implementation before PHP5.5 - There is no way of knowing
-                // how many parameters there might be given, so lets simply
-                // use the func_get_args for getting the params. As these
-                // "variadic" functions do not use pas-by-reference it doesn't
-                // matter.
-                return $signature ? "" : "func_get_args()";
-            }
-            $argument = "";
-            if (true === $arg->isPassedByReference()) {
-                $argument .= "&";
-            }
-            $argument .= '$' . $arg->name;
-
-            if ($signature && $arg->isOptional()) {
-                $argument .= " = '" . self::DEFAULT_ARGUMENT . "'";
-            }
-            $arguments[] = $argument;
-        }
-
-        return implode(", ", $arguments);
-    }
-
+    
     /**
      * Calls the enabled mock, or the built-in function otherwise.
      *
