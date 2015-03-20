@@ -34,7 +34,7 @@ class FixedValueFunction implements FunctionProvider, Incrementable
      */
     public function getCallable()
     {
-        return array($this, "getValue");
+        return [$this, "getValue"];
     }
 
     /**

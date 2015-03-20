@@ -83,12 +83,12 @@ class MockNamespaceTest extends \PHPUnit_Framework_TestCase
      */
     public function provideTestNamespace()
     {
-        return array(
-            array(__NAMESPACE__),
-            array('malkusch\phpmock\test'),
-            array('\malkusch\phpmock\test'),
-            array('malkusch\phpmock\test\\'),
-            array('\malkusch\phpmock\test\\')
-        );
+        return [
+            [__NAMESPACE__],
+            ['malkusch\phpmock\test'],
+            ['\malkusch\phpmock\test'],
+            ['malkusch\phpmock\test\\'],
+            ['\malkusch\phpmock\test\\']
+        ];
     }
 }

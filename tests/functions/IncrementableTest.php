@@ -47,27 +47,27 @@ class IncrementableTest extends \PHPUnit_Framework_TestCase
         $getMicrotime = function (FixedMicrotimeFunction $function) {
             return $function->getMicrotime(true);
         };
-        return array(
-            array(1, 1, new FixedValueFunction(0), $getFixedValue),
-            array(2, 1, new FixedValueFunction(1), $getFixedValue),
-            array(-1, -1, new FixedValueFunction(0), $getFixedValue),
+        return [
+            [1, 1, new FixedValueFunction(0), $getFixedValue],
+            [2, 1, new FixedValueFunction(1), $getFixedValue],
+            [-1, -1, new FixedValueFunction(0), $getFixedValue],
             
-            array(1, 1, new FixedMicrotimeFunction(0), $getMicrotime),
-            array(-1, -1, new FixedMicrotimeFunction(0), $getMicrotime),
-            array(2, 1, new FixedMicrotimeFunction(1), $getMicrotime),
+            [1, 1, new FixedMicrotimeFunction(0), $getMicrotime],
+            [-1, -1, new FixedMicrotimeFunction(0), $getMicrotime],
+            [2, 1, new FixedMicrotimeFunction(1), $getMicrotime],
             
-            array(
+            [
                 1.00000001,
                 0.00000001,
                 new FixedMicrotimeFunction(1),
                 $getMicrotime
-            ),
-            array(
+            ],
+            [
                 1.00000009,
                 0.00000009,
                 new FixedMicrotimeFunction(1),
                 $getMicrotime
-            ),
-        );
+            ],
+        ];
     }
 }

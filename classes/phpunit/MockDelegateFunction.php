@@ -35,7 +35,7 @@ class MockDelegateFunction implements FunctionProvider
         $delegate = $this->delegate;
         return function () use ($delegate) {
             return call_user_func_array(
-                array($delegate, MockDelegate::METHOD),
+                [$delegate, MockDelegate::METHOD],
                 func_get_args()
             );
         };

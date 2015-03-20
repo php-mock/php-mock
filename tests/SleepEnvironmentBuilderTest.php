@@ -74,10 +74,10 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
      */
     public function provideTestUsleep()
     {
-        return array(
-            array(1000),
-            array(999999),
-            array(1000000),
-        );
+        return [
+            [1000],
+            [999999],
+            [1000000],
+        ];
     }
 }

@@ -22,7 +22,7 @@ class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
     {
         $value1 = new FixedValueFunction(1);
         $value2 = new FixedValueFunction(2);
-        $sleep = new SleepFunction(array($value1, $value2));
+        $sleep = new SleepFunction([$value1, $value2]);
         
         $sleep->sleep(1);
         
@@ -58,13 +58,13 @@ class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
      */
     public function provideTestSleepIncrementation()
     {
-        return array(
-            array(new SleepFunction(), 1, 1),
-            array(new SleepFunction(), 0, 0),
+        return [
+            [new SleepFunction(), 1, 1],
+            [new SleepFunction(), 0, 0],
 
-            array(new UsleepFunction(), 0, 0),
-            array(new UsleepFunction(), 1000, 0.001),
-            array(new UsleepFunction(), 1000000, 1),
-        );
+            [new UsleepFunction(), 0, 0],
+            [new UsleepFunction(), 1000, 0.001],
+            [new UsleepFunction(), 1000000, 1],
+        ];
     }
 }

@@ -15,14 +15,14 @@ class MockEnvironment
     /**
      * @var Mock[] Mock environment.
      */
-    private $mocks = array();
+    private $mocks = [];
     
     /**
      * Sets the mocks for this environment.
      *
      * @param Mock[] $mocks The mocks for this environment.
      */
-    public function __construct(array $mocks = array())
+    public function __construct(array $mocks = [])
     {
         $this->mocks = $mocks;
     }

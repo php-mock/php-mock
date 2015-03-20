@@ -97,10 +97,10 @@ class SleepEnvironmentBuilder
         
         // time() mock
         $builder->setName("time")
-                ->setFunction(array($microtime, "getTime"));
+                ->setFunction([$microtime, "getTime"]);
         $environment->addMock($builder->build());
         
-        $incrementables = array($microtime);
+        $incrementables = [$microtime];
         
         // sleep() mock
         $builder->setName("sleep")

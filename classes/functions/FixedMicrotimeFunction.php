@@ -48,7 +48,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
      */
     public function getCallable()
     {
-        return array($this, "getMicrotime");
+        return [$this, "getMicrotime"];
     }
 
     /**

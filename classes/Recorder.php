@@ -15,7 +15,7 @@ class Recorder
     /**
      * @var array Recorded calls.
      */
-    private $calls = array();
+    private $calls = [];
     
     /**
      * Records a function calls and its arguments.

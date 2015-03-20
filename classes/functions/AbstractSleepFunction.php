@@ -15,7 +15,7 @@ abstract class AbstractSleepFunction implements FunctionProvider
     /**
      * @var Incrementable[] Observing Incrementables.
      */
-    private $incrementables = array();
+    private $incrementables = [];
     
     /**
      * Sets the Incrementable objects.
@@ -23,14 +23,14 @@ abstract class AbstractSleepFunction implements FunctionProvider
      * @param Incrementable[] $incrementables Observing Incrementables.
      * @see addIncrementable()
      */
-    public function __construct(array $incrementables = array())
+    public function __construct(array $incrementables = [])
     {
         $this->incrementables = $incrementables;
     }
     
     public function getCallable()
     {
-        return array($this, "sleep");
+        return [$this, "sleep"];
     }
     
     /**

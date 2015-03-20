@@ -136,9 +136,9 @@ class FixedMicrotimeFunctionTest extends \PHPUnit_Framework_TestCase
      */
     public function provideTestConstruct()
     {
-        return array(
-            array("0.00000001 1", 1.00000001),
-            array(1.00000001, 1.00000001),
-        );
+        return [
+            ["0.00000001 1", 1.00000001],
+            [1.00000001, 1.00000001],
+        ];
     }
 }

@@ -79,10 +79,10 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
      */
     public function provideTestCaseSensitivity()
     {
-        return array(
-            array("TIME"),
-            array("Time"),
-            array("time"),
-        );
+        return [
+            ["TIME"],
+            ["Time"],
+            ["time"],
+        ];
     }
 }

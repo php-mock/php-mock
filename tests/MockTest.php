@@ -136,7 +136,7 @@ class MockTest extends \PHPUnit_Framework_TestCase
         Mock::disableAll();
 
         $this->assertNotEquals(1234, time());
-        $this->assertEquals(1, min(array(1, 2)));
+        $this->assertEquals(1, min([1, 2]));
     }
 
     /**
@@ -171,11 +171,11 @@ class MockTest extends \PHPUnit_Framework_TestCase
 
         $mock->enable();
         $noReference = "expected";
-        $b = array();
+        $b = [];
         $c = "";
 
         exec($noReference, $b, $c);
-        $this->assertEquals(array("test1", "test2"), $b);
+        $this->assertEquals(["test1", "test2"], $b);
         $this->assertEquals("test", $c);
         $this->assertEquals("test", $c);
         $this->assertEquals("expected", $noReference);

@@ -40,7 +40,7 @@ class MockObjectProxyTest extends \PHPUnit_Framework_TestCase
         $mock->shouldReceive($method)
              ->once()->withArgs($arguments)->andReturn($expected);
         
-        $result = call_user_func_array(array($proxy, $method), $arguments);
+        $result = call_user_func_array([$proxy, $method], $arguments);
         $this->assertEquals($expected, $result);
     }
 

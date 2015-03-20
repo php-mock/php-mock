@@ -17,7 +17,7 @@ class MockRegistry
     /**
      * @var Mock[] Enabled mocks.
      */
-    private $mocks = array();
+    private $mocks = [];
     
     /**
      * @var MockRegistry Singleton.
@@ -79,7 +79,7 @@ class MockRegistry
      */
     public function unregisterAll()
     {
-        $this->mocks = array();
+        $this->mocks = [];
     }
     
     /**
