@@ -24,13 +24,19 @@ class MockFunctionHelper
     private $mock;
     
     /**
+     * @var \Text_Template The function template.
+     */
+    private $template;
+    
+    /**
      * Sets the mock.
      *
      * @param Mock $mock The mock.
      */
     public function __construct(Mock $mock)
     {
-        $this->mock = $mock;
+        $this->mock     = $mock;
+        $this->template = new \Text_Template(__DIR__ . "/function.tpl");
     }
     
     /**
@@ -38,32 +44,21 @@ class MockFunctionHelper
      */
     public function defineFunction()
     {
-        $name                  = $this->mock->getName();
-        $canonicalFunctionName = $this->mock->getCanonicalFunctionName();
+        $name = $this->mock->getName();
 
         $parameterBuilder = new ParameterBuilder();
         $parameterBuilder->build($name);
-        $signatureParameters = $parameterBuilder->getSignatureParameters();
-        $bodyParameters      = $parameterBuilder->getBodyParameters();
 
-        $definition = "
-            namespace {$this->mock->getNamespace()};
-                
-            use malkusch\phpmock\MockFunctionHelper;
+        $data = [
+            "namespace" => $this->mock->getNamespace(),
+            "name"      => $name,
+            "signatureParameters"   => $parameterBuilder->getSignatureParameters(),
+            "bodyParameters"        => $parameterBuilder->getBodyParameters(),
+            "canonicalFunctionName" => $this->mock->getCanonicalFunctionName()
+        ];
+        $this->template->setVar($data, false);
+        $definition = $this->template->render();
 
-            function $name($signatureParameters)
-            {
-                \$arguments = [$bodyParameters];
-
-                \$variadics = \\array_slice(\\func_get_args(), \\count(\$arguments));
-                \$arguments = \\array_merge(\$arguments, \$variadics);
-
-                return MockFunctionHelper::call(
-                    '$name',
-                    '$canonicalFunctionName',
-                    \$arguments
-                );
-            }";
         eval($definition);
     }
     
