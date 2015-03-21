@@ -75,4 +75,18 @@ class PHPMockTest extends \PHPUnit_Framework_TestCase
 
         }
     }
+
+    /**
+     * Tests passing by value.
+     *
+     * @test
+     */
+    public function testPassingByValue()
+    {
+        $mock = $this->getFunctionMock(__NAMESPACE__, "sqrt");
+        $mock->expects($this->once())->willReturn(3);
+
+        // Tests passing directly the value.
+        $this->assertEquals(3, sqrt(2));
+    }
 }
