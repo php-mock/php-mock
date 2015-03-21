@@ -89,6 +89,26 @@ class PHPMockTest extends \PHPUnit_Framework_TestCase
         // Tests passing directly the value.
         $this->assertEquals(3, sqrt(2));
     }
+
+    /**
+     * Tests passing by reference.
+     *
+     * @test
+     */
+    public function testPassingByReference()
+    {
+        $mock = $this->getFunctionMock(__NAMESPACE__, "exec");
+        $mock->expects($this->once())->willReturnCallback(
+            function ($a, &$b, &$c) {
+                $b = $a;
+                $c = $a;
+            }
+        );
+
+        exec("expected", $b, $c);
+        $this->assertEquals("expected", $b);
+        $this->assertEquals("expected", $c);
+    }
     
     /**
      * Tests that the mock preserves the default argument

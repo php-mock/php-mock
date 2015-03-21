@@ -97,10 +97,6 @@ class FooTest extends \PHPUnit_Framework_TestCase
 }
 ```
 
-Note: It's a known limitation that you can't pass values by reference
-with a PHPUnit mock (e.g. if you want to mock `exec()`).
-Use PHP-Mock's API directly instead.
-
 ## PHP-Mock API
 
 PHP-Mock is not coupled to PHPUnit. You find the API in the namespace

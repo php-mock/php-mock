@@ -65,6 +65,20 @@ class MockFunctionHelper
     }
     
     /**
+     * Removes optional arguments.
+     *
+     * @param array $arguments The arguments.
+     */
+    public static function removeDefaultArguments(&$arguments)
+    {
+        foreach ($arguments as $key => $argument) {
+            if ($argument === self::DEFAULT_ARGUMENT) {
+                unset($arguments[$key]);
+            }
+        }
+    }
+    
+    /**
      * Calls the enabled mock, or the built-in function otherwise.
      *
      * @param string $functionName The function name.
@@ -80,11 +94,8 @@ class MockFunctionHelper
         $registry = MockRegistry::getInstance();
         $mock     = $registry->getMock($fqfn);
 
-        foreach ($arguments as $key => $argument) {
-            if ($argument === self::DEFAULT_ARGUMENT) {
-                unset($arguments[$key]);
-            }
-        }
+        self::removeDefaultArguments($arguments);
+
         if (empty($mock)) {
             // call the built-in function if the mock was not enabled.
             return call_user_func_array($functionName, $arguments);

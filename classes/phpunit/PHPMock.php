@@ -30,10 +30,6 @@ use malkusch\phpmock\Deactivatable;
  * }
  * </code>
  *
- * Note: It's a known limitation that you can't pass values by reference
- * with a PHPUnit mock (e.g. if you want to mock exec()).
- * Use PHP-Mock's API directly instead.
- *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
@@ -76,12 +72,17 @@ trait PHPMock
      */
     public function getFunctionMock($namespace, $name)
     {
-        $mock = $this->getMockBuilder('malkusch\phpmock\phpunit\MockDelegate')->getMock();
+        $delegateBuilder = new MockDelegateFunctionBuilder();
+        $delegateBuilder->build($name);
+        
+        $mock = $this->getMockBuilder($delegateBuilder->getFullyQualifiedClassName())->getMockForAbstractClass();
+        
+        $mock->__phpunit_getInvocationMocker()->addMatcher(new DefaultArgumentRemover());
         
         $functionMockBuilder = new MockBuilder();
         $functionMockBuilder->setNamespace($namespace)
                             ->setName($name)
-                            ->setFunctionProvider(new MockDelegateFunction($mock));
+                            ->setFunctionProvider($mock);
                 
         $functionMock = $functionMockBuilder->build();
         $functionMock->enable();

@@ -53,7 +53,7 @@ class MockObjectProxyTest extends \PHPUnit_Framework_TestCase
     {
         $expects = Mockery::mock("PHPUnit_Framework_MockObject_Builder_InvocationMocker");
         $expects->shouldReceive("method")
-                ->withArgs([MockDelegate::METHOD])
+                ->withArgs([MockObjectProxy::METHOD])
                 ->andReturn($expects);
         
         return [

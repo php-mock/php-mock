@@ -14,6 +14,11 @@ use PHPUnit_Framework_MockObject_MockObject as MockObject;
  */
 class MockObjectProxy implements MockObject
 {
+    
+    /**
+     * The delegation method name.
+     */
+    const METHOD = "delegate";
 
     /**
      * @var MockObject $mockObject The mock object.
@@ -62,7 +67,7 @@ class MockObjectProxy implements MockObject
 
     public function expects(\PHPUnit_Framework_MockObject_Matcher_Invocation $matcher)
     {
-        return $this->mockObject->expects($matcher)->method(MockDelegate::METHOD);
+        return $this->mockObject->expects($matcher)->method(self::METHOD);
     }
     
     /**
