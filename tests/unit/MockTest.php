@@ -220,4 +220,20 @@ class MockTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(2, min(2, 1));
         $this->assertEquals(2, min([2, 1]));
     }
+
+    /**
+     * Tests mocking of an undefined function.
+     *
+     * @test
+     */
+    public function testUndefinedFunction()
+    {
+        $this->assertFalse(function_exists("testUndefinedFunction"));
+        $mock = new Mock(__NAMESPACE__, "testUndefinedFunction", function ($arg) {
+            return $arg + 1;
+        });
+        $mock->enable();
+        $result = testUndefinedFunction(1);
+        $this->assertEquals(2, $result);
+    }
 }

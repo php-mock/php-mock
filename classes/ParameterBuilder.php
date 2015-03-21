@@ -30,6 +30,10 @@ class ParameterBuilder
      */
     public function build($functionName)
     {
+        if (!function_exists($functionName)) {
+            return;
+
+        }
         $function            = new \ReflectionFunction($functionName);
         $signatureParameters = [];
         $bodyParameters      = [];
