@@ -89,4 +89,25 @@ class PHPMockTest extends \PHPUnit_Framework_TestCase
         // Tests passing directly the value.
         $this->assertEquals(3, sqrt(2));
     }
+    
+    /**
+     * Tests that the mock preserves the default argument
+     *
+     * @test
+     */
+    public function testPreserveArgumentDefaultValue()
+    {
+        eval('
+            function testPreserveArgumentDefaultValue($b = "default") {
+                return $b;
+            }
+        ');
+        
+        $mock = $this->getFunctionMock(__NAMESPACE__, "testPreserveArgumentDefaultValue");
+        $mock->expects($this->once())->willReturnCallback(function ($arg = "expected") {
+            return $arg;
+        });
+        $result = testPreserveArgumentDefaultValue();
+        $this->assertEquals("expected", $result);
+    }
 }
