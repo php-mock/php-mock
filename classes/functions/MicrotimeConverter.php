@@ -37,7 +37,7 @@ class MicrotimeConverter
      * Converts a float microtime in PHP's microtime() string format.
      *
      * @param float $microtime The microtime.
-     * @return String The microtime as string.
+     * @return string The microtime as string.
      */
     public function convertFloatToString($microtime)
     {

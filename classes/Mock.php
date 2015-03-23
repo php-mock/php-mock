@@ -143,7 +143,7 @@ class Mock
     /**
      * Returns the function name with its namespace.
      *
-     * @return String The function name with its namespace.
+     * @return string The function name with its namespace.
      * @internal
      */
     public function getCanonicalFunctionName()

@@ -31,7 +31,8 @@ class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
      * Returns the built-in call to escapeshellcmd().
      *
      * @param string $command Shell command.
-     * @return String The built-in call.
+     *
+     * @return string The built-in call.
      */
     private static function escapeshellcmd($command)
     {
