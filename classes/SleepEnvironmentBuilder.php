@@ -7,11 +7,11 @@ use malkusch\phpmock\functions\SleepFunction;
 use malkusch\phpmock\functions\UsleepFunction;
 
 /**
- * Builds a sleep(), usleep(), time() and microtime() mock environment.
+ * Builds a sleep(), usleep(), date(), time() and microtime() mock environment.
  *
  * In this environment sleep() and usleep() don't sleep for real. Instead
  * they return immediatly and increase the amount of time in the mocks for
- * time() and microtime().
+ * date(), time() and microtime().
  *
  * Example:
  * <code>
@@ -38,17 +38,17 @@ use malkusch\phpmock\functions\UsleepFunction;
  */
 class SleepEnvironmentBuilder
 {
-    
+
     /**
      * @var string The namespace for the mock environment.
      */
     private $namespace;
-    
+
     /**
      * @var mixed the timestamp.
      */
     private $timestamp;
-    
+
     /**
      * Sets the namespace for the mock environment.
      *
@@ -60,7 +60,7 @@ class SleepEnvironmentBuilder
         $this->namespace = $namespace;
         return $this;
     }
-    
+
     /**
      * Sets the mocked timestamp.
      *
@@ -76,42 +76,47 @@ class SleepEnvironmentBuilder
         $this->timestamp = $timestamp;
         return $this;
     }
-    
+
     /**
-     * Builds a sleep(), usleep(), time() and microtime() mock environment.
+     * Builds a sleep(), usleep(), date(), time() and microtime() mock environment.
      *
      * @return MockEnvironment
      */
     public function build()
     {
         $environment = new MockEnvironment();
-        
+
         $builder = new MockBuilder();
         $builder->setNamespace($this->namespace);
-        
+
         // microtime() mock
         $microtime = new FixedMicrotimeFunction($this->timestamp);
         $builder->setName("microtime")
                 ->setFunctionProvider($microtime);
         $environment->addMock($builder->build());
-        
+
         // time() mock
         $builder->setName("time")
                 ->setFunction([$microtime, "getTime"]);
         $environment->addMock($builder->build());
-        
+
+        // date() mock
+        $builder->setName("date")
+                ->setFunction([$microtime, "getDate"]);
+        $environment->addMock($builder->build());
+
         $incrementables = [$microtime];
-        
+
         // sleep() mock
         $builder->setName("sleep")
                 ->setFunctionProvider(new SleepFunction($incrementables));
         $environment->addMock($builder->build());
-        
+
         // usleep() mock
         $builder->setName("usleep")
                 ->setFunctionProvider(new UsleepFunction($incrementables));
         $environment->addMock($builder->build());
-        
+
         return $environment;
     }
 }

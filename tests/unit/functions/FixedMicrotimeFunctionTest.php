@@ -141,4 +141,16 @@ class FixedMicrotimeFunctionTest extends \PHPUnit_Framework_TestCase
             [1.00000001, 1.00000001],
         ];
     }
+
+    /**
+     * Tests getDate().
+     *
+     * @test
+     */
+    public function testGetDate()
+    {
+        $function = new FixedMicrotimeFunction(strtotime("2013-3-3"));
+        $this->assertEquals("3. 3. 2013", $function->getDate("j. n. Y"));
+        $this->assertEquals("24. 3. 2015", $function->getDate("j. n. Y", strtotime("2015-3-24")));
+    }
 }

@@ -11,12 +11,12 @@ namespace malkusch\phpmock\functions;
  */
 class FixedMicrotimeFunction implements FunctionProvider, Incrementable
 {
-    
+
     /**
      * @var string the timestamp in PHP's microtime() string format.
      */
     private $timestamp;
-    
+
     /**
      * Set the timestamp.
      *
@@ -28,21 +28,21 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     {
         if (is_null($timestamp)) {
             $this->setMicrotime(\microtime());
-            
+
         } elseif (is_string($timestamp)) {
             $this->setMicrotime($timestamp);
-            
+
         } elseif (is_numeric($timestamp)) {
             $this->setMicrotimeAsFloat($timestamp);
-            
+
         } else {
             throw new \InvalidArgumentException(
                 "Timestamp parameter is invalid type."
             );
-            
+
         }
     }
-    
+
     /**
      * Returns this object as a callable for the mock function.
      *
@@ -73,7 +73,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
         $converter = new MicrotimeConverter();
         $this->timestamp = $converter->convertFloatToString($timestamp);
     }
-    
+
     /**
      * Returns the microtime.
      *
@@ -86,13 +86,13 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
         if ($get_as_float) {
             $converter = new MicrotimeConverter();
             return $converter->convertStringToFloat($this->timestamp);
-            
+
         } else {
             return $this->timestamp;
-            
+
         }
     }
-    
+
     /**
      * Returns the time without the microseconds.
      *
@@ -101,6 +101,23 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     public function getTime()
     {
         return (int) $this->getMicrotime(true);
+    }
+
+    /**
+     * Returns a formatted date string.
+     *
+     * @param string $format The format of the outputted date string
+     * @param int $timestamp The optional timestamp parameter as an integer timestamp. Default is $this->getTime().
+     * @return bool|string Returns a formatted date string. If a non-numeric value is used for timestamp,
+     * FALSE is returned and an E_WARNING level error is emitted.
+     * @see \date()
+     */
+    public function getDate($format, $timestamp = null)
+    {
+        if ($timestamp === null) {
+            $timestamp = $this->getTime();
+        }
+        return \date($format, $timestamp);
     }
 
     public function increment($increment)
