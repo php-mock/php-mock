@@ -41,6 +41,8 @@ class MockFunctionHelper
     
     /**
      * Defines the mock function.
+     *
+     * @SuppressWarnings(PHPMD)
      */
     public function defineFunction()
     {
@@ -52,9 +54,9 @@ class MockFunctionHelper
         $data = [
             "namespace" => $this->mock->getNamespace(),
             "name"      => $name,
+            "fqfn"      => $this->mock->getFQFN(),
             "signatureParameters"   => $parameterBuilder->getSignatureParameters(),
             "bodyParameters"        => $parameterBuilder->getBodyParameters(),
-            "canonicalFunctionName" => $this->mock->getCanonicalFunctionName()
         ];
         $this->template->setVar($data, false);
         $definition = $this->template->render();
@@ -65,17 +67,18 @@ class MockFunctionHelper
     /**
      * Calls the enabled mock, or the built-in function otherwise.
      *
-     * @param string $functionName          The function name.
-     * @param string $canonicalFunctionName The canonical function name.
-     * @param array  $arguments             The arguments.
+     * @param string $functionName The function name.
+     * @param string $fqfn         The fully qualified function name.
+     * @param array  $arguments    The arguments.
      *
      * @return mixed The result of the called function.
      * @see Mock::define()
+     * @SuppressWarnings(PHPMD)
      */
-    public static function call($functionName, $canonicalFunctionName, &$arguments)
+    public static function call($functionName, $fqfn, &$arguments)
     {
         $registry = MockRegistry::getInstance();
-        $mock     = $registry->getMock($canonicalFunctionName);
+        $mock     = $registry->getMock($fqfn);
 
         foreach ($arguments as $key => $argument) {
             if ($argument === self::DEFAULT_ARGUMENT) {

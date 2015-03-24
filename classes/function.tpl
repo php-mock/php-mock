@@ -11,7 +11,7 @@ function {name}({signatureParameters})
 
     return MockFunctionHelper::call(
         '{name}',
-        '{canonicalFunctionName}',
+        '{fqfn}',
         $arguments
     );
 }

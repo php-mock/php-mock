@@ -30,6 +30,9 @@ class MockObjectProxy implements MockObject
         $this->mockObject = $mockObject;
     }
     
+    /**
+     * @SuppressWarnings(PHPMD)
+     */
     // @codingStandardsIgnoreStart
     public function __phpunit_getInvocationMocker()
     {
@@ -37,6 +40,9 @@ class MockObjectProxy implements MockObject
         return $this->mockObject->__phpunit_getInvocationMocker();
     }
 
+    /**
+     * @SuppressWarnings(PHPMD)
+     */
     // @codingStandardsIgnoreStart
     public function __phpunit_setOriginalObject($originalObject)
     {
@@ -44,6 +50,9 @@ class MockObjectProxy implements MockObject
         return $this->mockObject->__phpunit_setOriginalObject($originalObject);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD)
+     */
     // @codingStandardsIgnoreStart
     public function __phpunit_verify()
     {
@@ -59,6 +68,8 @@ class MockObjectProxy implements MockObject
     /**
      * This method is not part of the contract but was found in
      * PHPUnit's mocked_class.tpl.dist.
+     *
+     * @SuppressWarnings(PHPMD)
      */
     // @codingStandardsIgnoreStart
     public function __phpunit_hasMatchers()

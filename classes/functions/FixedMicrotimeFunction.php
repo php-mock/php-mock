@@ -21,6 +21,8 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
      * Set the timestamp.
      *
      * @param mixed $timestamp The timestamp, if ommited the current time.
+     *
+     * @SuppressWarnings(PHPMD)
      */
     public function __construct($timestamp = null)
     {
@@ -77,6 +79,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
      *
      * @param bool $get_as_float If true returns timestamp as float, else string
      * @return mixed The value.
+     * @SuppressWarnings(PHPMD)
      */
     public function getMicrotime($get_as_float = false)
     {

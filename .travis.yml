@@ -18,9 +18,10 @@ install:
     - phpenv rehash
 
 before_script:
-    - composer require phpunit/phpunit:${PHPUNIT_VERSION}
+    - composer require phpunit/phpunit:${PHPUNIT_VERSION} phpmd/phpmd
 
 script:
     - vendor/bin/phpunit
     - phpcs --standard=PSR2 classes/ tests/
+    - ./vendor/bin/phpmd classes/ text cleancode,codesize,controversial,design,naming,unusedcode
 

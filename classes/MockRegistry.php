@@ -46,22 +46,22 @@ class MockRegistry
      */
     public function isRegistered(Mock $mock)
     {
-        return isset($this->mocks[$mock->getCanonicalFunctionName()]);
+        return isset($this->mocks[$mock->getFQFN()]);
     }
     
     /**
      * Returns the registered mock.
      *
-     * @param string $canonicalFunctionName The canonical mocked function name.
+     * @param string $fqfn The fully qualified function name.
      * @return Mock The registered Mock.
-     * @see Mock::getCanonicalFunctionName()
+     * @see Mock::getFQFN()
      */
-    public function getMock($canonicalFunctionName)
+    public function getMock($fqfn)
     {
-        if (! isset($this->mocks[$canonicalFunctionName])) {
+        if (! isset($this->mocks[$fqfn])) {
             return null;
         }
-        return $this->mocks[$canonicalFunctionName];
+        return $this->mocks[$fqfn];
     }
     
     /**
@@ -71,7 +71,7 @@ class MockRegistry
      */
     public function register(Mock $mock)
     {
-        $this->mocks[$mock->getCanonicalFunctionName()] = $mock;
+        $this->mocks[$mock->getFQFN()] = $mock;
     }
     
     /**
@@ -89,6 +89,6 @@ class MockRegistry
      */
     public function unregister(Mock $mock)
     {
-        unset($this->mocks[$mock->getCanonicalFunctionName()]);
+        unset($this->mocks[$mock->getFQFN()]);
     }
 }

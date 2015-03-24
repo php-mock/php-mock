@@ -87,6 +87,8 @@ class Mock
      * @throws MockEnabledException If the function has already an enabled mock.
      * @see Mock::disable()
      * @see Mock::disableAll()
+     *
+     * @SuppressWarnings(PHPMD)
      */
     public function enable()
     {
@@ -141,14 +143,31 @@ class Mock
     }
     
     /**
-     * Returns the function name with its namespace.
+     * Returns the fully qualified function name.
      *
      * @return string The function name with its namespace.
      * @internal
      */
-    public function getCanonicalFunctionName()
+    public function getFQFN()
     {
         return strtolower("{$this->getNamespace()}\\$this->name");
+    }
+
+    /**
+     * Returns the function name with its namespace.
+     *
+     * @return string The function name with its namespace.
+     * @internal
+     * @deprecated since version 0.6, use getFQFN().
+     * @see Mock::getFQFN()
+     */
+    public function getCanonicalFunctionName()
+    {
+        trigger_error(
+            "Mock::getCanonicalFunctionName() became deprecated in 0.6. Use Mock::getFQFN() instead.",
+            E_USER_DEPRECATED
+        );
+        return $this->getFQFN();
     }
 
     /**
@@ -187,8 +206,8 @@ class Mock
      */
     public function define()
     {
-        $canonicalFunctionName = $this->getCanonicalFunctionName();
-        if (function_exists($canonicalFunctionName)) {
+        $fqfn = $this->getFQFN();
+        if (function_exists($fqfn)) {
             return;
             
         }
