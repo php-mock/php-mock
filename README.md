@@ -212,7 +212,7 @@ Complex mock environments of several mocked functions can be grouped in a [`Mock
 
 The [`SleepEnvironmentBuilder`](http://malkusch.github.io/php-mock/api/class-malkusch.phpmock.SleepEnvironmentBuilder.html)
 builds a mock environment where `sleep()` and `usleep()` return immediatly.
-Furthermore they increase the amount of time in the mocked `time()` and
+Furthermore they increase the amount of time in the mocked `date()`, `time()` and
 `microtime()`:
 
 ```php

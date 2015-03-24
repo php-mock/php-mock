@@ -7,11 +7,11 @@ use malkusch\phpmock\functions\SleepFunction;
 use malkusch\phpmock\functions\UsleepFunction;
 
 /**
- * Builds a sleep(), usleep(), time() and microtime() mock environment.
+ * Builds a sleep(), usleep(), date(), time() and microtime() mock environment.
  *
  * In this environment sleep() and usleep() don't sleep for real. Instead
  * they return immediatly and increase the amount of time in the mocks for
- * time() and microtime().
+ * date(), time() and microtime().
  *
  * Example:
  * <code>
@@ -78,7 +78,7 @@ class SleepEnvironmentBuilder
     }
 
     /**
-     * Builds a sleep(), usleep(), time() and microtime() mock environment.
+     * Builds a sleep(), usleep(), date(), time() and microtime() mock environment.
      *
      * @return MockEnvironment
      */
