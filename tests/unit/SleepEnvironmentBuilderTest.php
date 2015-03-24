@@ -80,4 +80,17 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
             [1000000],
         ];
     }
+
+    /**
+     * Tests date()
+     *
+     * @test
+     */
+    public function testDate()
+    {
+        $time = time();
+        sleep(100);
+        
+        $this->assertEquals($time + 100, date("U"));
+    }
 }
