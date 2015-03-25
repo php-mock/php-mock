@@ -57,7 +57,7 @@ Use [Composer](https://getcomposer.org/):
 
 ```json
 {
-    "require": {
+    "require-dev": {
         "malkusch/php-mock": "0.5"
     }
 }
