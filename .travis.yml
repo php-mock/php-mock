@@ -2,6 +2,10 @@ language: php
 
 sudo: false
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 env:
   - PHPUNIT_VERSION=dev-master
   - PHPUNIT_VERSION=~4.4.0
@@ -16,14 +20,12 @@ php:
   - 5.4
 
 install:
-  - pyrus install pear/PHP_CodeSniffer
-  - phpenv rehash
-
-before_script:
-  - composer require phpunit/phpunit:${PHPUNIT_VERSION} phpmd/phpmd
+  - composer require phpunit/phpunit:${PHPUNIT_VERSION}
+  - composer require squizlabs/php_codesniffer
+  - composer require phpmd/phpmd
 
 script:
   - vendor/bin/phpunit
-  - phpcs --standard=PSR2 classes/ tests/
-  - ./vendor/bin/phpmd classes/ text cleancode,codesize,controversial,design,naming,unusedcode
+  - vendor/bin/phpcs --standard=PSR2 classes/ tests/
+  - vendor/bin/phpmd classes/ text cleancode,codesize,controversial,design,naming,unusedcode
 
