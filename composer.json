@@ -4,7 +4,7 @@
     "description": "PHP-Mock can mock built-in PHP functions (e.g. time()). PHP-Mock relies on PHP's namespace fallback policy. No further extension is needed.",
     "keywords": ["mock", "stub", "test double", "function", "test", "TDD", "BDD"],
     "homepage": "https://github.com/malkusch/php-mock",
-    "license": "WTFPL-2.0",
+    "license": "WTFPL",
     "authors": [
         {
             "name": "Markus Malkusch",
