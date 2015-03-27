@@ -2,6 +2,7 @@
 
 namespace malkusch\phpmock;
 
+use malkusch\phpmock\functions\FixedDateFunction;
 use malkusch\phpmock\functions\FixedMicrotimeFunction;
 use malkusch\phpmock\functions\SleepFunction;
 use malkusch\phpmock\functions\UsleepFunction;
@@ -101,11 +102,12 @@ class SleepEnvironmentBuilder
         $environment->addMock($builder->build());
 
         // date() mock
+        $date = new FixedDateFunction($this->timestamp);
         $builder->setName("date")
-                ->setFunction([$microtime, "getDate"]);
+                ->setFunctionProvider($date);
         $environment->addMock($builder->build());
 
-        $incrementables = [$microtime];
+        $incrementables = [$microtime, $date];
 
         // sleep() mock
         $builder->setName("sleep")

@@ -47,6 +47,9 @@ class IncrementableTest extends \PHPUnit_Framework_TestCase
         $getMicrotime = function (FixedMicrotimeFunction $function) {
             return $function->getMicrotime(true);
         };
+        $getDate = function (FixedDateFunction $function) {
+            return $function->getDate("U");
+        };
         return [
             [1, 1, new FixedValueFunction(0), $getFixedValue],
             [2, 1, new FixedValueFunction(1), $getFixedValue],
@@ -55,6 +58,10 @@ class IncrementableTest extends \PHPUnit_Framework_TestCase
             [1, 1, new FixedMicrotimeFunction(0), $getMicrotime],
             [-1, -1, new FixedMicrotimeFunction(0), $getMicrotime],
             [2, 1, new FixedMicrotimeFunction(1), $getMicrotime],
+            
+            [1, 1, new FixedDateFunction(0), $getDate],
+            [-1, -1, new FixedDateFunction(0), $getDate],
+            [2, 1, new FixedDateFunction(1), $getDate],
             
             [
                 1.00000001,

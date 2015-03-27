@@ -130,6 +130,9 @@ object. You can do this with the fluent API of [`MockBuilder`](http://malkusch.g
      class is different to `FixedValueFunction` as it contains a converter for
      `microtime()`'s float and string format.
 
+   * [`FixedDateFunction`](http://malkusch.github.io/php-mock/api/class-malkusch.phpmock.functions.FixedDateFunction.html)
+     is a simple implementation which returns always a formated date for the fixed timestamp.
+
    * [`SleepFunction`](http://malkusch.github.io/php-mock/api/class-malkusch.phpmock.functions.SleepFunction.html)
      is a `sleep()` implementation, which doesn't halt but increases an
      [`Incrementable`](http://malkusch.github.io/php-mock/api/class-malkusch.phpmock.functions.Incrementable.html)

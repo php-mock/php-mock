@@ -46,6 +46,7 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
         
         $this->assertEquals($time + 1, time());
         $this->assertEquals($microtime + 1, microtime(true));
+        $this->assertEquals($time + 1, date("U"));
     }
     
     /**
@@ -64,6 +65,7 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
         
         $delta = $microseconds / 1000000;
         $this->assertEquals((int)($time + $delta), time());
+        $this->assertEquals((int)($time + $delta), date("U"));
         $this->assertEquals($microtime + $delta, microtime(true));
     }
     

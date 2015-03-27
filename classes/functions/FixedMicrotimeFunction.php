@@ -111,13 +111,17 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
      * @return bool|string Returns a formatted date string. If a non-numeric value is used for timestamp,
      * FALSE is returned and an E_WARNING level error is emitted.
      * @see \date()
+     *
+     * @deprecated since 0.6, use FixedDateFunction::getDate() instead.
      */
     public function getDate($format, $timestamp = null)
     {
-        if ($timestamp === null) {
-            $timestamp = $this->getTime();
-        }
-        return \date($format, $timestamp);
+        trigger_error(
+            "deprecated since 0.6, use FixedDateFunction::getDate() instead.",
+            E_USER_DEPRECATED
+        );
+        $date = new FixedDateFunction($this->getTime());
+        return $date->getDate($format, $timestamp);
     }
 
     public function increment($increment)
