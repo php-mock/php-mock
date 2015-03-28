@@ -9,14 +9,14 @@ namespace malkusch\phpmock;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
-class MockEnvironment
+class MockEnvironment extends Mock
 {
-    
+
     /**
      * @var Mock[] Mock environment.
      */
     private $mocks = [];
-    
+
     /**
      * Sets the mocks for this environment.
      *
@@ -26,7 +26,7 @@ class MockEnvironment
     {
         $this->mocks = $mocks;
     }
-    
+
     /**
      * Adds a mock to this environment.
      *
@@ -36,7 +36,7 @@ class MockEnvironment
     {
         $this->mocks[] = $mock;
     }
-    
+
     /**
      * Enable all mocks in this environment.
      */
@@ -44,10 +44,10 @@ class MockEnvironment
     {
         foreach ($this->mocks as $mock) {
             $mock->enable();
-            
+
         }
     }
-    
+
     /**
      * Disable all mocks in this environment.
      */
@@ -55,7 +55,7 @@ class MockEnvironment
     {
         foreach ($this->mocks as $mock) {
             $mock->disable();
-            
+
         }
     }
 }
