@@ -31,7 +31,7 @@ namespace malkusch\phpmock;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see MockBuilder
  */
-class Mock
+class Mock implements Deactivatable
 {
 
     /**

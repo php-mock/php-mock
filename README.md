@@ -209,7 +209,9 @@ Complex mock environments of several mocked functions can be grouped in a [`Mock
   enables all mocked functions of this environment.
 
 * [`MockEnvironment::disable()`](http://malkusch.github.io/php-mock/api/class-malkusch.phpmock.MockEnvironment.html#_disable)
-  disables all mocked functions of this environment.
+  disables all mocked functions of this environment. If you're using PHPUnit
+  you can delegate that call to PHPUnit with
+  [`PHPMock::registerForTearDown()`](http://malkusch.github.io/php-mock/api/class-malkusch.phpmock.phpunit.PHPMock.html#_registerForTearDown).
 
 #### SleepEnvironmentBuilder
 

@@ -3,6 +3,7 @@
 namespace malkusch\phpmock\phpunit;
 
 use malkusch\phpmock\MockBuilder;
+use malkusch\phpmock\Deactivatable;
 
 /**
  * Adds building a function mock functionality into PHPUnit_Framework_TestCase.
@@ -85,13 +86,24 @@ trait PHPMock
         $functionMock = $functionMockBuilder->build();
         $functionMock->enable();
         
-        /**
-         * @var \PHPUnit_Framework_TestResult $result Disables the mock automatically.
-         */
-        $result = $this->getTestResultObject();
-        $result->addListener(new MockDisabler($functionMock));
+        $this->registerForTearDown($functionMock);
         
         $proxy = new MockObjectProxy($mock);
         return $proxy;
+    }
+    
+    /**
+     * Automatically disable function mocks after the test was run.
+     *
+     * If you use getFunctionMock() you don't need this method. This method
+     * is meant for a Deactivatable (e.g. a MockEnvironment) which was
+     * directly created with PHPMock's API.
+     *
+     * @param Deactivatable $deactivatable The function mocks.
+     */
+    public function registerForTearDown(Deactivatable $deactivatable)
+    {
+        $result = $this->getTestResultObject();
+        $result->addListener(new MockDisabler($deactivatable));
     }
 }

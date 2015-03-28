@@ -2,12 +2,12 @@
 
 namespace malkusch\phpmock\phpunit;
 
-use malkusch\phpmock\Mock;
+use malkusch\phpmock\Deactivatable;
 
 /**
  * Test listener for PHPUnit integration.
  *
- * This class disables the mock function after a test was run.
+ * This class disables mock functions after a test was run.
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
@@ -18,22 +18,22 @@ class MockDisabler extends \PHPUnit_Framework_BaseTestListener
 {
 
     /**
-     * @var Mock The function mock.
+     * @var Deactivatable The function mocks.
      */
-    private $mock;
+    private $deactivatable;
     
     /**
-     * Sets the function mock.
+     * Sets the function mocks.
      *
-     * @param Mock $mock The function mock.
+     * @param Deactivatable $deactivatable The function mocks.
      */
-    public function __construct(Mock $mock)
+    public function __construct(Deactivatable $deactivatable)
     {
-        $this->mock = $mock;
+        $this->deactivatable = $deactivatable;
     }
     
     /**
-     * Disables the function mock.
+     * Disables the function mocks.
      *
      * @param \PHPUnit_Framework_Test $test The test.
      * @param int                     $time The test duration.
@@ -44,6 +44,6 @@ class MockDisabler extends \PHPUnit_Framework_BaseTestListener
     {
         parent::endTest($test, $time);
         
-        $this->mock->disable();
+        $this->deactivatable->disable();
     }
 }
