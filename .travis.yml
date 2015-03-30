@@ -8,6 +8,7 @@ cache:
 
 env:
   - PHPUNIT_VERSION=dev-master
+  - PHPUNIT_VERSION=~4.5.0
   - PHPUNIT_VERSION=~4.4.0
   - PHPUNIT_VERSION=~4.3.0
   - PHPUNIT_VERSION=~4.2.0
