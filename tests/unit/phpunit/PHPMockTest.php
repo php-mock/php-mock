@@ -2,6 +2,8 @@
 
 namespace malkusch\phpmock\phpunit;
 
+use malkusch\phpmock\AbstractMockTest;
+
 /**
  * Tests PHPMock.
  *
@@ -10,37 +12,19 @@ namespace malkusch\phpmock\phpunit;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see PHPMock
  */
-class PHPMockTest extends \PHPUnit_Framework_TestCase
+class PHPMockTest extends AbstractMockTest
 {
 
     use PHPMock;
     
-    /**
-     * Tests building a simple mock.
-     *
-     * @test
-     */
-    public function testFunctionMock()
+    protected function mockFunction($namespace, $functionName, callable $function)
     {
-        $time = $this->getFunctionMock(__NAMESPACE__, "time");
-        $time->expects($this->once())->willReturn(3);
-        
-        $this->assertEquals(3, time());
+        $mock = $this->getFunctionMock($namespace, $functionName);
+        $mock->expects($this->any())->willReturnCallback($function);
     }
     
-    /**
-     * Tests automatic disabling of the mock.
-     *
-     * @depends testFunctionMock
-     * @test
-     */
-    public function testFunctionMockDisablesMockedFunctions()
+    protected function disableMocks()
     {
-        $this->assertNotEquals(3, time());
-        
-        $time = $this->getFunctionMock(__NAMESPACE__, "time");
-        $time->expects($this->once());
-        time();
     }
     
     /**
@@ -74,60 +58,5 @@ class PHPMockTest extends \PHPUnit_Framework_TestCase
             time(); // satisfy the expectation
 
         }
-    }
-
-    /**
-     * Tests passing by value.
-     *
-     * @test
-     */
-    public function testPassingByValue()
-    {
-        $mock = $this->getFunctionMock(__NAMESPACE__, "sqrt");
-        $mock->expects($this->once())->willReturn(3);
-
-        // Tests passing directly the value.
-        $this->assertEquals(3, sqrt(2));
-    }
-
-    /**
-     * Tests passing by reference.
-     *
-     * @test
-     */
-    public function testPassingByReference()
-    {
-        $mock = $this->getFunctionMock(__NAMESPACE__, "exec");
-        $mock->expects($this->once())->willReturnCallback(
-            function ($a, &$b, &$c) {
-                $b = $a;
-                $c = $a;
-            }
-        );
-
-        exec("expected", $b, $c);
-        $this->assertEquals("expected", $b);
-        $this->assertEquals("expected", $c);
-    }
-    
-    /**
-     * Tests that the mock preserves the default argument
-     *
-     * @test
-     */
-    public function testPreserveArgumentDefaultValue()
-    {
-        eval('
-            function testPreserveArgumentDefaultValue($b = "default") {
-                return $b;
-            }
-        ');
-        
-        $mock = $this->getFunctionMock(__NAMESPACE__, "testPreserveArgumentDefaultValue");
-        $mock->expects($this->once())->willReturnCallback(function ($arg = "expected") {
-            return $arg;
-        });
-        $result = testPreserveArgumentDefaultValue();
-        $this->assertEquals("expected", $result);
     }
 }
