@@ -1,8 +1,8 @@
 {
-    "name": "malkusch/php-mock-doc",
+    "name": "php-mock/php-mock-doc",
     "require": {
         "php": ">=5",
-	"malkusch/php-mock": "dev-master",
+	"php-mock/php-mock": "dev-master",
 	"apigen/apigen": "^4"
     }
 }
