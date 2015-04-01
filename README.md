@@ -66,40 +66,15 @@ Use [Composer](https://getcomposer.org/):
 
 # Usage
 
-## PHPUnit integration
+PHP-Mock has integrations for these testing frameworks:
 
-PHP-Mock comes with the trait
-[`PHPMock`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.phpunit.PHPMock.html)
-to integrate into your PHPUnit-4 test case. This trait extends the framework
-by the method
-[`getFunctionMock()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.phpunit.PHPMock.html#_getFunctionMock).
-With this method you can build a mock in the way you are used to build a
-PHPUnit mock:
+- [php-mock/phpunit](https://github.com/php-mock/phpunit) - PHPUnit integration
 
-```php
-<?php
-
-namespace foo;
-
-use malkusch\phpmock\phpunit\PHPMock;
-
-class FooTest extends \PHPUnit_Framework_TestCase
-{
-
-    use PHPMock;
-
-    public function testBar()
-    {
-        $time = $this->getFunctionMock(__NAMESPACE__, "time");
-        $time->expects($this->once())->willReturn(3);
-        $this->assertEquals(3, time());
-    }
-}
-```
+- [php-mock/mockery](https://github.com/php-mock/mockery) - Mockery integration
 
 ## PHP-Mock API
 
-PHP-Mock is not coupled to PHPUnit. You find the API in the namespace
+You find the API in the namespace
 [`malkusch\phpmock`](http://php-mock.github.io/php-mock/api/namespace-malkusch.phpmock.html).
 
 Create a [`Mock`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.Mock.html)
@@ -205,9 +180,7 @@ Complex mock environments of several mocked functions can be grouped in a [`Mock
   enables all mocked functions of this environment.
 
 * [`MockEnvironment::disable()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockEnvironment.html#_disable)
-  disables all mocked functions of this environment. If you're using PHPUnit
-  you can delegate that call to PHPUnit with
-  [`PHPMock::registerForTearDown()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.phpunit.PHPMock.html#_registerForTearDown).
+  disables all mocked functions of this environment.
 
 #### SleepEnvironmentBuilder
 
@@ -240,9 +213,8 @@ assert(1417011228 + 10 == time());
 
 An enabled mock changes global state. This will break subsequent tests if
 they run code which would call the mock unintentionally. Therefore
-you should always disable a mock after the test case. If you are using the
-php-mock API outside of the PHPUnit integration you will have to disable
-the created mock by yourself. You could do this for all mocks by calling the
+you should always disable a mock after the test case. You will have to disable
+the created mock. You could do this for all mocks by calling the
 static method
 [`Mock::disableAll()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.Mock.html#_disableAll).
 

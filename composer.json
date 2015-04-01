@@ -14,21 +14,21 @@
         }
     ],
     "autoload": {
-        "psr-4": {"malkusch\\phpmock\\": "classes/"}
+        "psr-4": {"malkusch\\phpmock\\": ["classes/", "tests/unit/"] }
     },
     "require": {
         "php": ">=5.4",
         "phpunit/php-text-template": "^1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4",
-        "mockery/mockery": "^0.9"
+        "phpunit/phpunit": "^4"
     },
     "replace": {
-	    "malkusch/php-mock": "*"
+        "malkusch/php-mock": "^0.5"
     },
     "suggest": {
-	"phpunit/phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock."
+	"php-mock/phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock.",
+        "php-mock/mockery": "Allows using PHPMockery for Mockery integration"
     },
     "archive": {
         "exclude": ["/tests"]
