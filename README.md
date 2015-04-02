@@ -68,9 +68,9 @@ Use [Composer](https://getcomposer.org/):
 
 PHP-Mock has integrations for these testing frameworks:
 
-- [php-mock/phpunit](https://github.com/php-mock/phpunit) - PHPUnit integration
+- [php-mock/php-mock-phpunit](https://github.com/php-mock/php-mock-phpunit) - PHPUnit integration
 
-- [php-mock/mockery](https://github.com/php-mock/mockery) - Mockery integration
+- [php-mock/php-mock-mockery](https://github.com/php-mock/php-mock-mockery) - Mockery integration
 
 ## PHP-Mock API
 
