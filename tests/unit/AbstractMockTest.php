@@ -260,4 +260,29 @@ abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
     {
         return $name . str_replace("\\", "_", get_class($this));
     }
+    
+    /**
+     * Tests declaring repeatedly a mock with enabled backupStaticAttributes.
+     *
+     * @test
+     * @backupStaticAttributes enabled
+     * @dataProvider provideTestBackupStaticAttributes
+     */
+    public function testBackupStaticAttributes()
+    {
+        $this->mockFunction(__NAMESPACE__, "testBackupStaticAttributes", "sqrt");
+    }
+    
+    /**
+     * Just repeat testBackupStaticAttributes a few times.
+     *
+     * @return array Test cases.
+     */
+    public function provideTestBackupStaticAttributes()
+    {
+        return [
+            [],
+            []
+        ];
+    }
 }
