@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class phpmock\Mock</title>
+
+	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-phpmock.html">
+						phpmock<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-phpmock.functions.html">
+						functions					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li class="active"><a href="class-phpmock.Mock.html">Mock</a></li>
+				<li><a href="class-phpmock.MockBuilder.html">MockBuilder</a></li>
+				<li><a href="class-phpmock.MockEnvironment.html">MockEnvironment</a></li>
+				<li><a href="class-phpmock.Recorder.html">Recorder</a></li>
+				<li><a href="class-phpmock.SleepEnvironmentBuilder.html">SleepEnvironmentBuilder</a></li>
+			</ul>
+
+			<h3>Interfaces</h3>
+			<ul>
+				<li><a href="class-phpmock.Deactivatable.html">Deactivatable</a></li>
+				<li><a href="class-phpmock.MockEnabledException.html">MockEnabledException</a></li>
+			</ul>
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-phpmock.html" title="Summary of phpmock"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Mock</h1>
+
+
+	<div class="description">
+	<p>Mocking framework for built-in PHP functions.</p>
+
+<p>Mocking a build-in PHP function is achieved by using
+PHP's namespace fallback policy. A mock will provide the namespaced function.
+I.e. only unqualified functions in a non-global namespace can be mocked.</p>
+
+<p>Example:</p>
+
+<pre><span class="php-keyword1">namespace</span> foo;
+
+<span class="php-keyword1">use</span> phpmock\Mock;
+
+<span class="php-var">$time</span> = <span class="php-keyword1">new</span> Mock(
+    __NAMESPACE__,
+    <span class="php-quote">&quot;time&quot;</span>,
+    <span class="php-keyword1">function</span> () {
+        <span class="php-keyword1">return</span> <span class="php-num">3</span>;
+    }
+);
+<span class="php-var">$time</span>-&gt;enable();
+<span class="php-keyword2">assert</span> (<span class="php-num">3</span> == <span class="php-keyword2">time</span>());</pre>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+<b><span>phpmock\Mock</span></b>			
+			 implements 
+				<a href="class-phpmock.Deactivatable.html"><span>phpmock\Deactivatable</span></a>
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-phpmock.html">phpmock</a><br>
+		
+
+				<b>License:</b>
+				<a href="http://www.wtfpl.net/txt/copying/">WTFPL</a><br>
+				<b>Author:</b>
+				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
+				<b>See:</b>
+				<code><a href="class-phpmock.MockBuilder.html">phpmock\MockBuilder</a></code><br>
+				<b>Link:</b>
+				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
+			<b>Located at</b> <a href="source-class-phpmock.Mock.html#5-200" title="Go to source code">Mock.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-phpmock.Mock.html#57-70" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
+
+		<div class="description short">
+			<p>Set the namespace, function name and the mock function.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Set the namespace, function name and the mock function.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$namespace</var></dt>
+					<dd>The namespace for the mock function.</dd>
+					<dt><var>$name</var></dt>
+					<dd>The function name of the mocked function.</dd>
+					<dt><var>$function</var></dt>
+					<dd>The mock function.</dd>
+				</dl></div>
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRecorder" id="_getRecorder">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-phpmock.Recorder.html">phpmock\Recorder</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRecorder">#</a>
+		<code><a href="source-class-phpmock.Mock.html#72-82" title="Go to source code">getRecorder</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the call recorder.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the call recorder.</p>
+
+<p>Every call to the mocked function was recorded to this call recorder.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-phpmock.Recorder.html">phpmock\Recorder</a></code><br>The call recorder.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="enable" id="_enable">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_enable">#</a>
+		<code><a href="source-class-phpmock.Mock.html#84-105" title="Go to source code">enable</a>( )</code>
+
+		<div class="description short">
+			<p>Enables this mock.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Enables this mock.</p>
+
+
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					<code><a href="class-phpmock.MockEnabledException.html">phpmock\MockEnabledException</a></code><br>If the function has already an enabled mock.
+				</div>
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-phpmock.Mock.html#_disable">phpmock\Mock::disable()</a></code><br>
+						<code><a href="class-phpmock.Mock.html#_disableAll">phpmock\Mock::disableAll()</a></code><br>
+				</div>
+				<h4>Suppresswarnings(phpmd)</h4>
+				<div class="list">
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="disable" id="_disable">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_disable">#</a>
+		<code><a href="source-class-phpmock.Mock.html#107-116" title="Go to source code">disable</a>( )</code>
+
+		<div class="description short">
+			<p>Disable this mock.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Disable this mock.</p>
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-phpmock.Mock.html#_enable">phpmock\Mock::enable()</a></code><br>
+						<code><a href="class-phpmock.Mock.html#_disableAll">phpmock\Mock::disableAll()</a></code><br>
+				</div>
+
+
+				<h4>Implementation of</h4>
+				<div class="list"><code><a href="class-phpmock.Deactivatable.html#_disable">phpmock\Deactivatable::disable()</a></code></div>
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="disableAll" id="_disableAll">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_disableAll">#</a>
+		<code><a href="source-class-phpmock.Mock.html#118-127" title="Go to source code">disableAll</a>( )</code>
+
+		<div class="description short">
+			<p>Disable all mocks.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Disable all mocks.</p>
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-phpmock.Mock.html#_enable">phpmock\Mock::enable()</a></code><br>
+						<code><a href="class-phpmock.Mock.html#_disable">phpmock\Mock::disable()</a></code><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getNamespace" id="_getNamespace">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getNamespace">#</a>
+		<code><a href="source-class-phpmock.Mock.html#156-164" title="Go to source code">getNamespace</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the namespace without enclosing slashes.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the namespace without enclosing slashes.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>The namespace
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getName" id="_getName">
+
+		<td class="attributes"><code>
+			 public 
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getName">#</a>
+		<code><a href="source-class-phpmock.Mock.html#166-174" title="Go to source code">getName</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the unqualified function name.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the unqualified function name.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					string<br>The name of the mocked function.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="define" id="_define">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_define">#</a>
+		<code><a href="source-class-phpmock.Mock.html#176-199" title="Go to source code">define</a>( )</code>
+
+		<div class="description short">
+			<p>Defines the mocked function in the given namespace.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Defines the mocked function in the given namespace.</p>
+
+<p>In most cases you don't have to call this method. enable() is doing this
+for you. But if the mock is defined after the first call in the
+tested class, the tested class doesn't resolve to the mock. This is
+documented in Bug #68541. You therefore have to define the namespaced
+function before the first call. Defining the function has no side
+effects as you still have to enable the mock. If the function was
+already defined this method does nothing.</p>
+
+
+
+
+
+				<h4>See</h4>
+				<div class="list">
+						<code><a href="class-phpmock.Mock.html#_enable">phpmock\Mock::enable()</a></code><br>
+				</div>
+				<h4>Link</h4>
+				<div class="list">
+						<a href="https://bugs.php.net/bug.php?id=68541">Bug #68541</a><br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
