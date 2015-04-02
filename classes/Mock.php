@@ -154,23 +154,6 @@ class Mock implements Deactivatable
     }
 
     /**
-     * Returns the function name with its namespace.
-     *
-     * @return string The function name with its namespace.
-     * @internal
-     * @deprecated since version 0.6, use getFQFN().
-     * @see Mock::getFQFN()
-     */
-    public function getCanonicalFunctionName()
-    {
-        trigger_error(
-            "Mock::getCanonicalFunctionName() became deprecated in 0.6. Use Mock::getFQFN() instead.",
-            E_USER_DEPRECATED
-        );
-        return $this->getFQFN();
-    }
-
-    /**
      * Returns the namespace without enclosing slashes.
      *
      * @return string The namespace
