@@ -1,6 +1,6 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace phpmock;
 
 /**
  * Enabled mock registry.

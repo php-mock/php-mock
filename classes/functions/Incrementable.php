@@ -1,6 +1,6 @@
 <?php
 
-namespace malkusch\phpmock\functions;
+namespace phpmock\functions;
 
 /**
  * Incrementable allows incrementing a value.

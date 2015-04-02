@@ -2,11 +2,11 @@
 
 namespace foo;
 
-use malkusch\phpmock\Mock;
-use malkusch\phpmock\MockBuilder;
-use malkusch\phpmock\MockRegistry;
-use malkusch\phpmock\functions\FixedValueFunction;
-use malkusch\phpmock\SleepEnvironmentBuilder;
+use phpmock\Mock;
+use phpmock\MockBuilder;
+use phpmock\MockRegistry;
+use phpmock\functions\FixedValueFunction;
+use phpmock\SleepEnvironmentBuilder;
 
 /**
  * Tests the example from the documentation.

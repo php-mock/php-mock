@@ -1,6 +1,6 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace phpmock;
 
 /**
  * Common tests for mocks.
@@ -92,7 +92,7 @@ abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
     /**
      * Tests failing enabling an already enabled mock.
      *
-     * @expectedException malkusch\phpmock\MockEnabledException
+     * @expectedException phpmock\MockEnabledException
      * @test
      */
     public function testFailEnable()

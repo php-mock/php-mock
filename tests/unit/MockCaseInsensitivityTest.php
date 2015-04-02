@@ -1,8 +1,8 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace phpmock;
 
-use malkusch\phpmock\functions\FixedValueFunction;
+use phpmock\functions\FixedValueFunction;
 
 /**
  * Tests Mock's case insensitivity.
@@ -31,7 +31,7 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
     /**
      * @param string $mockName  The mock function name.
      *
-     * @expectedException malkusch\phpmock\MockEnabledException
+     * @expectedException phpmock\MockEnabledException
      * @dataProvider provideTestCaseSensitivity
      * @test
      */

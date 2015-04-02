@@ -1,6 +1,6 @@
 <?php
 
-namespace malkusch\phpmock\functions;
+namespace phpmock\functions;
 
 /**
  * Converts PHP's microtime string format into a float and vice versa.

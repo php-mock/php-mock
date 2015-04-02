@@ -1,11 +1,11 @@
 <?php
 
 // A different namespace
-namespace malkusch\phpmock\test;
+namespace phpmock\test;
 
-use malkusch\phpmock\Mock;
-use malkusch\phpmock\MockBuilder;
-use malkusch\phpmock\functions\FixedValueFunction;
+use phpmock\Mock;
+use phpmock\MockBuilder;
+use phpmock\functions\FixedValueFunction;
 
 /**
  * Tests Mock in a different namespace.
@@ -85,10 +85,10 @@ class MockNamespaceTest extends \PHPUnit_Framework_TestCase
     {
         return [
             [__NAMESPACE__],
-            ['malkusch\phpmock\test'],
-            ['\malkusch\phpmock\test'],
-            ['malkusch\phpmock\test\\'],
-            ['\malkusch\phpmock\test\\']
+            ['phpmock\test'],
+            ['\phpmock\test'],
+            ['phpmock\test\\'],
+            ['\phpmock\test\\']
         ];
     }
 }

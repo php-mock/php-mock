@@ -1,6 +1,6 @@
 <?php
 
-namespace malkusch\phpmock\functions;
+namespace phpmock\functions;
 
 /**
  * Mock function which returns always the same value.

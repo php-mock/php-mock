@@ -1,6 +1,6 @@
 namespace {namespace};
 
-use malkusch\phpmock\MockFunctionHelper;
+use phpmock\MockFunctionHelper;
 
 function {name}({signatureParameters})
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace phpmock;
 
-use malkusch\phpmock\functions\FunctionProvider;
+use phpmock\functions\FunctionProvider;
 
 /**
  * Fluent API mock builder.
@@ -11,8 +11,8 @@ use malkusch\phpmock\functions\FunctionProvider;
  * <code>
  * namespace foo;
  *
- * use malkusch\phpmock\MockBuilder;
- * use malkusch\phpmock\FixedValueFunction;
+ * use phpmock\MockBuilder;
+ * use phpmock\FixedValueFunction;
  *
  * $builder = new MockBuilder();
  * $builder->setNamespace(__NAMESPACE__)

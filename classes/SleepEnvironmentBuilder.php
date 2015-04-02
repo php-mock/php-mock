@@ -1,11 +1,11 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace phpmock;
 
-use malkusch\phpmock\functions\FixedDateFunction;
-use malkusch\phpmock\functions\FixedMicrotimeFunction;
-use malkusch\phpmock\functions\SleepFunction;
-use malkusch\phpmock\functions\UsleepFunction;
+use phpmock\functions\FixedDateFunction;
+use phpmock\functions\FixedMicrotimeFunction;
+use phpmock\functions\SleepFunction;
+use phpmock\functions\UsleepFunction;
 
 /**
  * Builds a sleep(), usleep(), date(), time() and microtime() mock environment.
@@ -18,7 +18,7 @@ use malkusch\phpmock\functions\UsleepFunction;
  * <code>
  * namespace foo;
  *
- * use malkusch\phpmock\SleepEnvironmentBuilder;
+ * use phpmock\SleepEnvironmentBuilder;
  *
  * $builder = new SleepEnvironmentBuilder();
  * $builder->setNamespace(__NAMESPACE__)

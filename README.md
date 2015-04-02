@@ -29,7 +29,7 @@ $time = time(); // This call can be mocked, a call to \time() can't.
 * The mock has to be defined before the first call to the unqualified function
   in the tested class. This is documented in [Bug #68541](https://bugs.php.net/bug.php?id=68541).
   In most cases you can ignore this restriction. But if you happen to run into
-  this issue you can call [`Mock::define()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.Mock.html#_define)
+  this issue you can call [`Mock::define()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_define)
   before that first call. This would define a side effectless namespaced
   function which can be enabled later.
 
@@ -75,50 +75,50 @@ PHP-Mock has integrations for these testing frameworks:
 ## PHP-Mock API
 
 You find the API in the namespace
-[`malkusch\phpmock`](http://php-mock.github.io/php-mock/api/namespace-malkusch.phpmock.html).
+[`phpmock`](http://php-mock.github.io/php-mock/api/namespace-phpmock.html).
 
-Create a [`Mock`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.Mock.html)
-object. You can do this with the fluent API of [`MockBuilder`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockBuilder.html):
+Create a [`Mock`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html)
+object. You can do this with the fluent API of [`MockBuilder`](http://php-mock.github.io/php-mock/api/class-phpmock.MockBuilder.html):
 
-* [`MockBuilder::setNamespace()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockBuilder.html#_setNamespace)
+* [`MockBuilder::setNamespace()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockBuilder.html#_setNamespace)
   sets the target namespace of the mocked function.
 
-* [`MockBuilder::setName()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockBuilder.html#_setName)
+* [`MockBuilder::setName()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockBuilder.html#_setName)
   sets the name of the mocked function (e.g. `time()`).
 
-* [`MockBuilder::setFunction()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockBuilder.html#_setFunction)
+* [`MockBuilder::setFunction()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockBuilder.html#_setFunction)
   sets the concrete mock implementation.
 
-* [`MockBuilder::setFunctionProvider()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockBuilder.html#_setFunctionProvider)
+* [`MockBuilder::setFunctionProvider()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockBuilder.html#_setFunctionProvider)
   sets alternativly to `MockBuilder::setFunction()` the mock implementation as a
-  [`FunctionProvider`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.FunctionProvider.html):
+  [`FunctionProvider`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FunctionProvider.html):
 
-   * [`FixedValueFunction`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.FixedValueFunction.html)
+   * [`FixedValueFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FixedValueFunction.html)
      is a simple implementation which returns always the same value.
 
-   * [`FixedMicrotimeFunction`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.FixedMicrotimeFunction.html)
+   * [`FixedMicrotimeFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FixedMicrotimeFunction.html)
      is a simple implementation which returns always the same microtime. This
      class is different to `FixedValueFunction` as it contains a converter for
      `microtime()`'s float and string format.
 
-   * [`FixedDateFunction`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.FixedDateFunction.html)
+   * [`FixedDateFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FixedDateFunction.html)
      is a simple implementation which returns always a formated date for the fixed timestamp.
 
-   * [`SleepFunction`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.SleepFunction.html)
+   * [`SleepFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.SleepFunction.html)
      is a `sleep()` implementation, which doesn't halt but increases an
-     [`Incrementable`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.Incrementable.html)
+     [`Incrementable`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.Incrementable.html)
      e.g. a `time()` mock.
 
-   * [`UsleepFunction`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.UsleepFunction.html)
+   * [`UsleepFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.UsleepFunction.html)
      is an `usleep()` implementation, which doesn't halt but increases an
      `Incrementable` e.g. a `microtime()` mock.
 
-* [`MockBuilder::build()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockBuilder.html#_build)
+* [`MockBuilder::build()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockBuilder.html#_build)
   builds a `Mock` object.
 
-After you have build your `Mock` object you have to call [`enable()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.Mock.html#_enable)
+After you have build your `Mock` object you have to call [`enable()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_enable)
 to enable the mock in the given namespace. When you are finished with that mock you
-should disable it by calling [`disable()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.Mock.html#_disable)
+should disable it by calling [`disable()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_disable)
 on the mock instance. 
 
 This example illustrates mocking of the unqualified function `time()` in the 
@@ -154,7 +154,7 @@ assert (time() != 1417011228);
 ```
 
 Instead of setting the mock function with `MockBuilder::setFunction()` you could also
-use the existing [`FixedValueFunction`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.functions.FixedValueFunction.html):
+use the existing [`FixedValueFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FixedValueFunction.html):
 
 ```php
 <?php
@@ -174,17 +174,17 @@ $mock = $builder->build();
 
 ### Mock environments
 
-Complex mock environments of several mocked functions can be grouped in a [`MockEnvironment`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockEnvironment.html):
+Complex mock environments of several mocked functions can be grouped in a [`MockEnvironment`](http://php-mock.github.io/php-mock/api/class-phpmock.MockEnvironment.html):
 
-* [`MockEnvironment::enable()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockEnvironment.html#_enable)
+* [`MockEnvironment::enable()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockEnvironment.html#_enable)
   enables all mocked functions of this environment.
 
-* [`MockEnvironment::disable()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.MockEnvironment.html#_disable)
+* [`MockEnvironment::disable()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockEnvironment.html#_disable)
   disables all mocked functions of this environment.
 
 #### SleepEnvironmentBuilder
 
-The [`SleepEnvironmentBuilder`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.SleepEnvironmentBuilder.html)
+The [`SleepEnvironmentBuilder`](http://php-mock.github.io/php-mock/api/class-phpmock.SleepEnvironmentBuilder.html)
 builds a mock environment where `sleep()` and `usleep()` return immediatly.
 Furthermore they increase the amount of time in the mocked `date()`, `time()` and
 `microtime()`:
@@ -216,7 +216,7 @@ they run code which would call the mock unintentionally. Therefore
 you should always disable a mock after the test case. You will have to disable
 the created mock. You could do this for all mocks by calling the
 static method
-[`Mock::disableAll()`](http://php-mock.github.io/php-mock/api/class-malkusch.phpmock.Mock.html#_disableAll).
+[`Mock::disableAll()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_disableAll).
 
 
 # License and authors

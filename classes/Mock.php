@@ -1,6 +1,6 @@
 <?php
 
-namespace malkusch\phpmock;
+namespace phpmock;
 
 /**
  * Mocking framework for built-in PHP functions.
@@ -13,7 +13,7 @@ namespace malkusch\phpmock;
  * <code>
  * namespace foo;
  *
- * use malkusch\phpmock\Mock;
+ * use phpmock\Mock;
  *
  * $time = new Mock(
  *     __NAMESPACE__,

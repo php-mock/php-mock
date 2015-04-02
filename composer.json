@@ -14,7 +14,9 @@
         }
     ],
     "autoload": {
-        "psr-4": {"malkusch\\phpmock\\": ["classes/", "tests/unit/"] }
+        "psr-4": {
+            "phpmock\\": ["classes/", "tests/unit/"]
+        }
     },
     "require": {
         "php": ">=5.4",
