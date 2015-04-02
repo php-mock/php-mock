@@ -129,7 +129,7 @@ namespace `foo`:
 
 namespace foo;
 
-use malkusch\phpmock\MockBuilder;
+use phpmock\MockBuilder;
 
 $builder = new MockBuilder();
 $builder->setNamespace(__NAMESPACE__)
@@ -161,8 +161,8 @@ use the existing [`FixedValueFunction`](http://php-mock.github.io/php-mock/api/c
 
 namespace foo;
 
-use malkusch\phpmock\MockBuilder;
-use malkusch\phpmock\functions\FixedValueFunction;
+use phpmock\MockBuilder;
+use phpmock\functions\FixedValueFunction;
 
 $builder = new MockBuilder();
 $builder->setNamespace(__NAMESPACE__)
@@ -194,7 +194,7 @@ Furthermore they increase the amount of time in the mocked `date()`, `time()` an
 
 namespace foo;
 
-use malkusch\phpmock\SleepEnvironmentBuilder;
+use phpmock\SleepEnvironmentBuilder;
 
 $builder = new SleepEnvironmentBuilder();
 $builder->setNamespace(__NAMESPACE__)
