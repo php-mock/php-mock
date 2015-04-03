@@ -285,4 +285,18 @@ abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
             []
         ];
     }
+
+    /**
+     * Tests the mock in a separate process.
+     *
+     * @test
+     * @runInSeparateProcess
+     */
+    public function testRunInSeparateProcess()
+    {
+        $this->mockFunction(__NAMESPACE__, "time", function () {
+            return 123;
+        });
+        $this->assertEquals(123, time());
+    }
 }
