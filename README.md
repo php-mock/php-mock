@@ -58,7 +58,7 @@ Use [Composer](https://getcomposer.org/):
 ```json
 {
     "require-dev": {
-        "php-mock/php-mock": "0.6"
+        "php-mock/php-mock": "^0.7"
     }
 }
 ```
@@ -66,7 +66,8 @@ Use [Composer](https://getcomposer.org/):
 
 # Usage
 
-PHP-Mock has integrations for these testing frameworks:
+You don't need to learn yet another API. PHP-Mock has integrations
+for these testing frameworks:
 
 - [php-mock/php-mock-phpunit](https://github.com/php-mock/php-mock-phpunit) - PHPUnit integration
 
