@@ -26,7 +26,7 @@
         "phpunit/phpunit": "^4"
     },
     "replace": {
-        "malkusch/php-mock": "^0.5"
+        "malkusch/php-mock": "*"
     },
     "suggest": {
 	"php-mock/php-mock-phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock.",
