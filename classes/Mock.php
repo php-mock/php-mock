@@ -51,6 +51,7 @@ class Mock implements Deactivatable
     
     /**
      * @var Recorder Call recorder.
+     * @deprecated since 0.8 use Spy::getInvocations() instead.
      */
     private $recorder;
     
@@ -75,9 +76,12 @@ class Mock implements Deactivatable
      * Every call to the mocked function was recorded to this call recorder.
      *
      * @return Recorder The call recorder.
+     * @deprecated since 0.8 use Spy::getInvocations() instead.
+     * @see spy\Spy::getInvocations();
      */
     public function getRecorder()
     {
+        trigger_error("Use Spy::getInvocations() instead.", E_USER_DEPRECATED);
         return $this->recorder;
     }
     

@@ -8,6 +8,8 @@ namespace phpmock;
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
+ * @deprecated since 0.8 Use Spy::getInvocations() instead.
+ * @see spy\Spy::getInvocations()
  */
 class Recorder
 {

@@ -173,6 +173,15 @@ $builder->setNamespace(__NAMESPACE__)
 $mock = $builder->build();
 ```
 
+### Reset global state
+
+An enabled mock changes global state. This will break subsequent tests if
+they run code which would call the mock unintentionally. Therefore
+you should always disable a mock after the test case. You will have to disable
+the created mock. You could do this for all mocks by calling the
+static method
+[`Mock::disableAll()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_disableAll).
+
 ### Mock environments
 
 Complex mock environments of several mocked functions can be grouped in a [`MockEnvironment`](http://php-mock.github.io/php-mock/api/class-phpmock.MockEnvironment.html):
@@ -210,14 +219,38 @@ sleep(10);
 assert(1417011228 + 10 == time());
 ```
 
-### Reset global state
+### Spies
 
-An enabled mock changes global state. This will break subsequent tests if
-they run code which would call the mock unintentionally. Therefore
-you should always disable a mock after the test case. You will have to disable
-the created mock. You could do this for all mocks by calling the
-static method
-[`Mock::disableAll()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_disableAll).
+A [`Spy`](http://php-mock.github.io/php-mock/api/class-phpmock.spy.Spy.html)
+gives you access to the function invocations.
+[`Spy::getInvocations()`](http://php-mock.github.io/php-mock/api/class-phpmock.spy.Spy.html#_getInvocations)
+gives you access to the arguments and return value.
+
+As a `Spy` is a specialization of `Mock` it behaves identically. However you
+could ommit the third constructor parameter `callable $function` which
+would then create a spy using the existing function.
+E.g. a `new Spy(__NAMESPACE__ , "rand")` would create a spy which basically
+proxies PHP's built-in `rand()`:
+
+```php
+<?php
+
+namespace foo;
+
+use phpmock\spy\Spy;
+
+function bar($min, $max) {
+    return rand($min, $max) + 3;
+}
+
+$spy = new Spy(__NAMESPACE__, "rand");
+$spy->enable();
+
+$result = bar(1, 2);
+
+assert ([1, 2]  == $spy->getInvocations()[0]->getArguments());
+assert ($result == $spy->getInvocations()[0]->getReturn() + 3);
+```
 
 
 # License and authors

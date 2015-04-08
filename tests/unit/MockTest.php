@@ -28,6 +28,7 @@ class MockTest extends AbstractMockTest
      * Test function call recording.
      *
      * @test
+     * @expectedException PHPUnit_Framework_Error_Deprecated
      */
     public function testRecording()
     {
