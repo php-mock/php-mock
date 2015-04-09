@@ -2,6 +2,8 @@
 
 namespace phpmock;
 
+use phpmock\generator\MockFunctionGenerator;
+
 /**
  * Mocking framework for built-in PHP functions.
  *
@@ -198,7 +200,7 @@ class Mock implements Deactivatable
             return;
             
         }
-        $functionHelper = new MockFunctionHelper($this);
-        $functionHelper->defineFunction();
+        $functionGenerator = new MockFunctionGenerator($this);
+        $functionGenerator->defineFunction();
     }
 }

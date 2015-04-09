@@ -1,6 +1,6 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\generator;
 
 /**
  * Builder for the mocked function parameters.
@@ -47,7 +47,7 @@ class ParameterBuilder
                 : "$$reflectionParameter->name";
             
             $signatureParameter = $reflectionParameter->isOptional()
-                ? sprintf("%s = '%s'", $parameter, MockFunctionHelper::DEFAULT_ARGUMENT)
+                ? sprintf("%s = '%s'", $parameter, MockFunctionGenerator::DEFAULT_ARGUMENT)
                 : $parameter;
 
             $signatureParameters[] = $signatureParameter;

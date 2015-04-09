@@ -1,6 +1,6 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\generator;
 
 /**
  * Tests ParameterBuilder for <PHP-5.6.
@@ -42,7 +42,7 @@ class ParameterBuilderBefore56Test extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$arg1, \$arg2 = '%s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$arg1, $arg2',
                 "min"

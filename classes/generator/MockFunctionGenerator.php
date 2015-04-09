@@ -1,16 +1,19 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\generator;
+
+use phpmock\Mock;
+use phpmock\MockRegistry;
 
 /**
- * Helper which builds the mock function.
+ * Generates the mock function.
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @internal
  */
-class MockFunctionHelper
+class MockFunctionGenerator
 {
     
     /**

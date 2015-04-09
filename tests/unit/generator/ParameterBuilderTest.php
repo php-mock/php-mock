@@ -1,6 +1,6 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\generator;
 
 /**
  * Tests ParameterBuilder.
@@ -102,7 +102,7 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$command, &\$output = '%1\$s', &\$return_value = '%1\$s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 "\$command, &\$output, &\$return_value",
                 "exec"
@@ -110,7 +110,7 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$one = '%s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one',
                 __NAMESPACE__."\\testOptionalParameters1"
@@ -118,7 +118,7 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$one = '%1\$s', \$two = '%1\$s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, $two',
                 __NAMESPACE__."\\testOptionalParameters2"
@@ -126,7 +126,7 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$one, \$two = '%s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, $two',
                 __NAMESPACE__."\\testOptionalParameters3"
@@ -134,7 +134,7 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$one, \$two",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, $two',
                 __NAMESPACE__."\\testOptionalParameters4"
@@ -142,7 +142,7 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$one, &\$two, \$three = '%1\$s', &\$four = '%1\$s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, &$two, $three, &$four',
                 __NAMESPACE__."\\testCombined"

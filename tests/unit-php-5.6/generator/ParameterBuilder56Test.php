@@ -1,6 +1,6 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\generator;
 
 /**
  * Tests ParameterBuilder for PHP-5.6.
@@ -65,7 +65,7 @@ class ParameterBuilder56Test extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "\$one, \$two = '%s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, $two',
                 __NAMESPACE__."\\testPHPVariadics3"
@@ -73,7 +73,7 @@ class ParameterBuilder56Test extends \PHPUnit_Framework_TestCase
             [
                 sprintf(
                     "&\$one, \$two = '%s'",
-                    MockFunctionHelper::DEFAULT_ARGUMENT
+                    MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '&$one, $two',
                 __NAMESPACE__."\\testPHPVariadics4"

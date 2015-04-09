@@ -1,6 +1,6 @@
 namespace {namespace};
 
-use phpmock\MockFunctionHelper;
+use phpmock\generator\MockFunctionGenerator;
 
 function {name}({signatureParameters})
 {
@@ -9,7 +9,7 @@ function {name}({signatureParameters})
     $variadics = \array_slice(\func_get_args(), \count($arguments));
     $arguments = \array_merge($arguments, $variadics);
 
-    return MockFunctionHelper::call(
+    return MockFunctionGenerator::call(
         '{name}',
         '{fqfn}',
         $arguments

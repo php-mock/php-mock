@@ -1,16 +1,16 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\generator;
 
 /**
- * Tests MockFunctionHelper.
+ * Tests MockFunctionGenerator.
  *
  * @author Markus Malkusch <markus@malkusch.de>
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
- * @see MockFunctionHelper
+ * @see MockFunctionGenerator
  */
-class MockFunctionHelperTest extends \PHPUnit_Framework_TestCase
+class MockFunctionGeneratorTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -24,7 +24,7 @@ class MockFunctionHelperTest extends \PHPUnit_Framework_TestCase
      */
     public function testRemoveDefaultArguments(array $expected, array $arguments)
     {
-        MockFunctionHelper::removeDefaultArguments($arguments);
+        MockFunctionGenerator::removeDefaultArguments($arguments);
         $this->assertEquals($expected, $arguments);
     }
     
@@ -40,11 +40,11 @@ class MockFunctionHelperTest extends \PHPUnit_Framework_TestCase
             [[1], [1]],
             [[1, 2], [1, 2]],
             [[null], [null]],
-            [[], [MockFunctionHelper::DEFAULT_ARGUMENT]],
-            [[], [MockFunctionHelper::DEFAULT_ARGUMENT, MockFunctionHelper::DEFAULT_ARGUMENT]],
-            [[1], [1, MockFunctionHelper::DEFAULT_ARGUMENT]],
-            [[null], [null, MockFunctionHelper::DEFAULT_ARGUMENT]],
-            [[1], [1, MockFunctionHelper::DEFAULT_ARGUMENT, MockFunctionHelper::DEFAULT_ARGUMENT]],
+            [[], [MockFunctionGenerator::DEFAULT_ARGUMENT]],
+            [[], [MockFunctionGenerator::DEFAULT_ARGUMENT, MockFunctionGenerator::DEFAULT_ARGUMENT]],
+            [[1], [1, MockFunctionGenerator::DEFAULT_ARGUMENT]],
+            [[null], [null, MockFunctionGenerator::DEFAULT_ARGUMENT]],
+            [[1], [1, MockFunctionGenerator::DEFAULT_ARGUMENT, MockFunctionGenerator::DEFAULT_ARGUMENT]],
         ];
     }
 }
