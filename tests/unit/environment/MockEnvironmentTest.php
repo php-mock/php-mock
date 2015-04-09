@@ -1,7 +1,8 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\environment;
 
+use phpmock\MockBuilder;
 use phpmock\functions\FixedValueFunction;
 
 /**

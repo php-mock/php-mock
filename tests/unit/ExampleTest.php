@@ -6,7 +6,7 @@ use phpmock\Mock;
 use phpmock\MockBuilder;
 use phpmock\MockRegistry;
 use phpmock\functions\FixedValueFunction;
-use phpmock\SleepEnvironmentBuilder;
+use phpmock\environment\SleepEnvironmentBuilder;
 
 /**
  * Tests the example from the documentation.

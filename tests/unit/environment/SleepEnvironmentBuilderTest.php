@@ -1,6 +1,6 @@
 <?php
 
-namespace phpmock;
+namespace phpmock\environment;
 
 /**
  * Tests SleepEnvironmentBuilder.

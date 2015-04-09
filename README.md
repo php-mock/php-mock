@@ -184,17 +184,17 @@ static method
 
 ### Mock environments
 
-Complex mock environments of several mocked functions can be grouped in a [`MockEnvironment`](http://php-mock.github.io/php-mock/api/class-phpmock.MockEnvironment.html):
+Complex mock environments of several mocked functions can be grouped in a [`MockEnvironment`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.MockEnvironment.html):
 
-* [`MockEnvironment::enable()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockEnvironment.html#_enable)
+* [`MockEnvironment::enable()`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.MockEnvironment.html#_enable)
   enables all mocked functions of this environment.
 
-* [`MockEnvironment::disable()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockEnvironment.html#_disable)
+* [`MockEnvironment::disable()`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.MockEnvironment.html#_disable)
   disables all mocked functions of this environment.
 
 #### SleepEnvironmentBuilder
 
-The [`SleepEnvironmentBuilder`](http://php-mock.github.io/php-mock/api/class-phpmock.SleepEnvironmentBuilder.html)
+The [`SleepEnvironmentBuilder`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.SleepEnvironmentBuilder.html)
 builds a mock environment where `sleep()` and `usleep()` return immediatly.
 Furthermore they increase the amount of time in the mocked `date()`, `time()` and
 `microtime()`:
@@ -204,7 +204,7 @@ Furthermore they increase the amount of time in the mocked `date()`, `time()` an
 
 namespace foo;
 
-use phpmock\SleepEnvironmentBuilder;
+use phpmock\environment\SleepEnvironmentBuilder;
 
 $builder = new SleepEnvironmentBuilder();
 $builder->addNamespace(__NAMESPACE__)
@@ -220,7 +220,7 @@ assert(1417011228 + 10 == time());
 ```
 
 If the mocked functions should be in different namespaces you can
-add more namespaces with [`SleepEnvironmentBuilder::addNamespace()`](http://php-mock.github.io/php-mock/api/class-phpmock.SleepEnvironmentBuilder.html#_addNamespace)
+add more namespaces with [`SleepEnvironmentBuilder::addNamespace()`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.SleepEnvironmentBuilder.html#_addNamespace)
 
 ### Spies
 
