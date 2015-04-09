@@ -21,16 +21,40 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $builder = new SleepEnvironmentBuilder();
-        $builder->setNamespace(__NAMESPACE__)
+        $builder->addNamespace(__NAMESPACE__)
                 ->setTimestamp(1234);
         
-        $this->environment = $builder->build(__NAMESPACE__);
+        $this->environment = $builder->build();
         $this->environment->enable();
     }
 
     protected function tearDown()
     {
         $this->environment->disable();
+    }
+    
+    /**
+     * Tests mocking functions accross several namespaces.
+     *
+     * @test
+     */
+    public function testAddNamespace()
+    {
+        $builder = new SleepEnvironmentBuilder();
+        $builder->addNamespace(__NAMESPACE__)
+                ->addNamespace("testAddNamespace")
+                ->setTimestamp(1234);
+
+        $this->environment->disable();
+        $this->environment = $builder->build();
+        $this->environment->enable();
+        
+        $time = time();
+        \testAddNamespace\sleep(123);
+        sleep(123);
+        
+        $this->assertEquals(2 * 123 + $time, time());
+        $this->assertEquals(2 * 123 + $time, \testAddNamespace\time());
     }
 
     /**
