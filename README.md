@@ -207,7 +207,7 @@ namespace foo;
 use phpmock\SleepEnvironmentBuilder;
 
 $builder = new SleepEnvironmentBuilder();
-$builder->setNamespace(__NAMESPACE__)
+$builder->addNamespace(__NAMESPACE__)
         ->setTimestamp(1417011228);
 
 $environment = $builder->build();
@@ -218,6 +218,9 @@ sleep(10);
 
 assert(1417011228 + 10 == time());
 ```
+
+If the mocked functions should be in different namespaces you can
+add more namespaces with [`SleepEnvironmentBuilder::addNamespace()`](http://php-mock.github.io/php-mock/api/class-phpmock.SleepEnvironmentBuilder.html#_addNamespace)
 
 ### Spies
 

@@ -41,24 +41,38 @@ class SleepEnvironmentBuilder
 {
 
     /**
-     * @var string The namespace for the mock environment.
+     * @var array The namespaces for the mock environment.
      */
-    private $namespace;
+    private $namespaces;
 
     /**
      * @var mixed the timestamp.
      */
     private $timestamp;
-
+    
     /**
      * Sets the namespace for the mock environment.
      *
      * @param string $namespace The namespace for the mock environment.
      * @return SleepEnvironmentBuilder
+     * @deprecated since 0.8, use SleepEnvironmentBuilder::addNamespace().
+     * @see SleepEnvironmentBuilder::addNamespace()
      */
     public function setNamespace($namespace)
     {
-        $this->namespace = $namespace;
+        trigger_error("Use SleepEnvironmentBuilder::addNamespace().", E_USER_DEPRECATED);
+        return $this->addNamespace($namespace);
+    }
+
+    /**
+     * Add a namespace for the mock environment.
+     *
+     * @param string $namespace A namespace for the mock environment.
+     * @return SleepEnvironmentBuilder
+     */
+    public function addNamespace($namespace)
+    {
+        $this->namespaces[] = $namespace;
         return $this;
     }
 
@@ -86,38 +100,46 @@ class SleepEnvironmentBuilder
     public function build()
     {
         $environment = new MockEnvironment();
-
         $builder = new MockBuilder();
-        $builder->setNamespace($this->namespace);
 
-        // microtime() mock
-        $microtime = new FixedMicrotimeFunction($this->timestamp);
-        $builder->setName("microtime")
+        $incrementables = [];
+        foreach ($this->namespaces as $namespace) {
+            $builder->setNamespace($namespace);
+
+            // microtime() mock
+            $microtime = new FixedMicrotimeFunction($this->timestamp);
+            $builder->setName("microtime")
                 ->setFunctionProvider($microtime);
-        $environment->addMock($builder->build());
+            $environment->addMock($builder->build());
 
-        // time() mock
-        $builder->setName("time")
+            // time() mock
+            $builder->setName("time")
                 ->setFunction([$microtime, "getTime"]);
-        $environment->addMock($builder->build());
+            $environment->addMock($builder->build());
 
-        // date() mock
-        $date = new FixedDateFunction($this->timestamp);
-        $builder->setName("date")
-                ->setFunctionProvider($date);
-        $environment->addMock($builder->build());
+            // date() mock
+            $date = new FixedDateFunction($this->timestamp);
+            $builder->setName("date")
+                    ->setFunctionProvider($date);
+            $environment->addMock($builder->build());
 
-        $incrementables = [$microtime, $date];
+            $incrementables[] = $microtime;
+            $incrementables[] = $date;
+        }
 
-        // sleep() mock
-        $builder->setName("sleep")
+        // Need a complete list of $incrementables.
+        foreach ($this->namespaces as $namespace) {
+            $builder->setNamespace($namespace);
+            // sleep() mock
+            $builder->setName("sleep")
                 ->setFunctionProvider(new SleepFunction($incrementables));
-        $environment->addMock($builder->build());
+            $environment->addMock($builder->build());
 
-        // usleep() mock
-        $builder->setName("usleep")
+            // usleep() mock
+            $builder->setName("usleep")
                 ->setFunctionProvider(new UsleepFunction($incrementables));
-        $environment->addMock($builder->build());
+            $environment->addMock($builder->build());
+        }
 
         return $environment;
     }

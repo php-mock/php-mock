@@ -71,7 +71,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     public function testExample3()
     {
         $builder = new SleepEnvironmentBuilder();
-        $builder->setNamespace(__NAMESPACE__)
+        $builder->addNamespace(__NAMESPACE__)
                 ->setTimestamp(12345);
 
         $environment = $builder->build();
