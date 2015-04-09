@@ -52,20 +52,6 @@ class SleepEnvironmentBuilder
     private $timestamp;
     
     /**
-     * Sets the namespace for the mock environment.
-     *
-     * @param string $namespace The namespace for the mock environment.
-     * @return SleepEnvironmentBuilder
-     * @deprecated since 0.8, use SleepEnvironmentBuilder::addNamespace().
-     * @see SleepEnvironmentBuilder::addNamespace()
-     */
-    public function setNamespace($namespace)
-    {
-        trigger_error("Use SleepEnvironmentBuilder::addNamespace().", E_USER_DEPRECATED);
-        return $this->addNamespace($namespace);
-    }
-
-    /**
      * Add a namespace for the mock environment.
      *
      * @param string $namespace A namespace for the mock environment.
