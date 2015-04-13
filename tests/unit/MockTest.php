@@ -25,44 +25,6 @@ class MockTest extends AbstractMockTest
     }
     
     /**
-     * Test function call recording.
-     *
-     * @test
-     * @expectedException PHPUnit_Framework_Error_Deprecated
-     */
-    public function testRecording()
-    {
-        $mock = new Mock(
-            __NAMESPACE__,
-            "time",
-            function () {
-                return 1234;
-            }
-        );
-        $mock->enable();
-        
-        $recorder = $mock->getRecorder();
-        $this->assertEmpty($recorder->getCalls());
-
-        time();
-        $this->assertEquals([[]], $recorder->getCalls());
-
-        time(true);
-        $this->assertEquals([[],[true]], $recorder->getCalls());
-
-        $function = function () {
-        };
-        $mock2 = new Mock(__NAMESPACE__, "abs", $function);
-        $mock2->enable();
-        $recorder = $mock2->getRecorder();
-        $this->assertEmpty($recorder->getCalls());
-
-        abs(12);
-        $this->assertEquals([[12]], $recorder->getCalls());
-
-    }
-    
-    /**
      * Tests enable().
      *
      * @test

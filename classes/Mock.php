@@ -52,12 +52,6 @@ class Mock implements Deactivatable
     private $function;
     
     /**
-     * @var Recorder Call recorder.
-     * @deprecated since 0.8 use Spy::getInvocations() instead.
-     */
-    private $recorder;
-    
-    /**
      * Set the namespace, function name and the mock function.
      *
      * @param string   $namespace  The namespace for the mock function.
@@ -67,24 +61,8 @@ class Mock implements Deactivatable
     public function __construct($namespace, $name, callable $function)
     {
         $this->namespace = $namespace;
-        $this->name = $name;
-        $this->function = $function;
-        $this->recorder = new Recorder();
-    }
-    
-    /**
-     * Returns the call recorder.
-     *
-     * Every call to the mocked function was recorded to this call recorder.
-     *
-     * @return Recorder The call recorder.
-     * @deprecated since 0.8 use Spy::getInvocations() instead.
-     * @see spy\Spy::getInvocations();
-     */
-    public function getRecorder()
-    {
-        trigger_error("Use Spy::getInvocations() instead.", E_USER_DEPRECATED);
-        return $this->recorder;
+        $this->name      = $name;
+        $this->function  = $function;
     }
     
     /**
@@ -144,7 +122,6 @@ class Mock implements Deactivatable
      */
     public function call(array $arguments)
     {
-        $this->recorder->record($arguments);
         return call_user_func_array($this->function, $arguments);
     }
     
