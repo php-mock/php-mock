@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class phpmock\spy\Spy</title>
+
+	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-phpmock.html">
+						phpmock<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-phpmock.environment.html">
+						environment					</a>
+
+						</li>
+				<li>
+					<a href="namespace-phpmock.functions.html">
+						functions					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-phpmock.spy.html">
+						spy					</a>
+
+						</li>
+							</ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-phpmock.spy.Invocation.html">Invocation</a></li>
+				<li class="active"><a href="class-phpmock.spy.Spy.html">Spy</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-phpmock.spy.html" title="Summary of phpmock\spy"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class Spy</h1>
+
+
+	<div class="description">
+	<p>A spy records the arguments and results of function calls.</p>
+
+<p>If you create a Spy without a mock function, it will use the existing
+function.</p>
+
+<p>Example:</p>
+
+<pre><span class="php-keyword1">namespace</span> foo;
+
+<span class="php-keyword1">use</span> phpmock\spy\Spy;
+
+<span class="php-keyword1">function</span> bar(<span class="php-var">$min</span>, <span class="php-var">$max</span>) {
+    <span class="php-keyword1">return</span> <span class="php-keyword2">rand</span>(<span class="php-var">$min</span>, <span class="php-var">$max</span>) + <span class="php-num">3</span>;
+}
+
+<span class="php-var">$spy</span> = <span class="php-keyword1">new</span> Spy(__NAMESPACE__, <span class="php-quote">&quot;rand&quot;</span>);
+<span class="php-var">$spy</span>-&gt;enable();
+
+<span class="php-var">$result</span> = bar(<span class="php-num">1</span>, <span class="php-num">2</span>);
+
+<span class="php-keyword2">assert</span> ([<span class="php-num">1</span>, <span class="php-num">2</span>]  == <span class="php-var">$spy</span>-&gt;getInvocations()[<span class="php-num">0</span>]-&gt;getArguments());
+<span class="php-keyword2">assert</span> (<span class="php-var">$result</span> == <span class="php-var">$spy</span>-&gt;getInvocations()[<span class="php-num">0</span>]-&gt;getReturn() + <span class="php-num">3</span>);</pre>
+	</div>
+
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-phpmock.Mock.html"><span>phpmock\Mock</span></a>
+			
+			 implements 
+				<a href="class-phpmock.Deactivatable.html"><span>phpmock\Deactivatable</span></a>
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span>phpmock\spy\Spy</span></b>			
+			
+			
+		</dd>
+	</dl>
+
+
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-phpmock.html">phpmock</a>\<a href="namespace-phpmock.spy.html">spy</a><br>
+		
+
+				<b>License:</b>
+				<a href="http://www.wtfpl.net/txt/copying/">WTFPL</a><br>
+				<b>Author:</b>
+				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
+				<b>Link:</b>
+				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
+			<b>Located at</b> <a href="source-class-phpmock.spy.Spy.html#7-74" title="Go to source code">spy/Spy.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="__construct" id="___construct">
+
+		<td class="attributes"><code>
+			 public 
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-phpmock.spy.Spy.html#44-56" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var> = <span class="php-keyword1">null</span></span> )</code>
+
+		<div class="description short">
+			<p>Initializes the spy.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Initializes the spy.</p>
+
+<p>If no function is specified it will use the existing function.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$namespace</var></dt>
+					<dd>The namespace for the mock function.</dd>
+					<dt><var>$name</var></dt>
+					<dd>The function name of the mocked function.</dd>
+					<dt><var>$function</var></dt>
+					<dd>The mock function, or null for using the existing function.</dd>
+				</dl></div>
+
+
+
+
+				<h4>Overrides</h4>
+				<div class="list"><code><a href="class-phpmock.Mock.html#___construct">phpmock\Mock::__construct()</a></code></div>
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getInvocations" id="_getInvocations">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-phpmock.spy.Invocation.html">phpmock\spy\Invocation</a>[]</code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getInvocations">#</a>
+		<code><a href="source-class-phpmock.spy.Spy.html#65-73" title="Go to source code">getInvocations</a>( )</code>
+
+		<div class="description short">
+			<p>Returns the recorded function calls and its arguments.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Returns the recorded function calls and its arguments.</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-phpmock.spy.Invocation.html">phpmock\spy\Invocation</a>[]</code><br>The recorded function arguments.
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-phpmock.Mock.html#methods">phpmock\Mock</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-phpmock.Mock.html#_define">define()</a>, 
+			<a href="class-phpmock.Mock.html#_disable">disable()</a>, 
+			<a href="class-phpmock.Mock.html#_disableAll">disableAll()</a>, 
+			<a href="class-phpmock.Mock.html#_enable">enable()</a>, 
+			<a href="class-phpmock.Mock.html#_getName">getName()</a>, 
+			<a href="class-phpmock.Mock.html#_getNamespace">getNamespace()</a>, 
+			<a href="class-phpmock.Mock.html#_getRecorder"><span class="deprecated">getRecorder()</span></a>
+		</code></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		 API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

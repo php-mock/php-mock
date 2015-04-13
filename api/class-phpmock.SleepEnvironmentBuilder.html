@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 
-	<title>Class phpmock\SleepEnvironmentBuilder</title>
+	<title>Deprecated Class phpmock\SleepEnvironmentBuilder</title>
 
-	<link rel="stylesheet" href="resources/style.css?e99947befd7bf673c6b43ff75e9e0f170c88a60e">
+	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
 
 </head>
 
@@ -25,8 +25,18 @@
 
 						<ul>
 				<li>
+					<a href="namespace-phpmock.environment.html">
+						environment					</a>
+
+						</li>
+				<li>
 					<a href="namespace-phpmock.functions.html">
 						functions					</a>
+
+						</li>
+				<li>
+					<a href="namespace-phpmock.spy.html">
+						spy					</a>
 
 						</li>
 							</ul></li>
@@ -41,18 +51,21 @@
 			<ul>
 				<li><a href="class-phpmock.Mock.html">Mock</a></li>
 				<li><a href="class-phpmock.MockBuilder.html">MockBuilder</a></li>
-				<li><a href="class-phpmock.MockEnvironment.html">MockEnvironment</a></li>
-				<li><a href="class-phpmock.Recorder.html">Recorder</a></li>
-				<li class="active"><a href="class-phpmock.SleepEnvironmentBuilder.html">SleepEnvironmentBuilder</a></li>
+				<li><a href="class-phpmock.MockEnvironment.html" class="deprecated">MockEnvironment</a></li>
+				<li><a href="class-phpmock.Recorder.html" class="deprecated">Recorder</a></li>
+				<li class="active"><a href="class-phpmock.SleepEnvironmentBuilder.html" class="deprecated">SleepEnvironmentBuilder</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
 			<ul>
 				<li><a href="class-phpmock.Deactivatable.html">Deactivatable</a></li>
-				<li><a href="class-phpmock.MockEnabledException.html">MockEnabledException</a></li>
 			</ul>
 
 
+			<h3>Exceptions</h3>
+			<ul>
+				<li><a href="class-phpmock.MockEnabledException.html">MockEnabledException</a></li>
+			</ul>
 
 
 		</div>
@@ -87,35 +100,24 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class SleepEnvironmentBuilder</h1>
+	<h1 class="deprecated">Class SleepEnvironmentBuilder</h1>
 
 
-	<div class="description">
-	<p>Builds a sleep(), usleep(), date(), time() and microtime() mock environment.</p>
 
-<p>In this environment sleep() and usleep() don't sleep for real. Instead
-they return immediatly and increase the amount of time in the mocks for
-date(), time() and microtime().</p>
-
-<p>Example:</p>
-
-<pre><span class="php-keyword1">namespace</span> foo;
-
-<span class="php-keyword1">use</span> phpmock\SleepEnvironmentBuilder;
-
-<span class="php-var">$builder</span> = <span class="php-keyword1">new</span> SleepEnvironmentBuilder();
-<span class="php-var">$builder</span>-&gt;setNamespace(__NAMESPACE__)
-        -&gt;setTimestamp(<span class="php-num">1417011228</span>);
-
-<span class="php-var">$environment</span> = <span class="php-var">$builder</span>-&gt;build();
-<span class="php-var">$environment</span>-&gt;enable();
-
-<span class="php-comment">// This won't delay the test for 10 seconds, but increase time().</span>
-<span class="php-keyword2">sleep</span>(<span class="php-num">10</span>);
-
-<span class="php-keyword2">assert</span>(<span class="php-num">1417011228</span> + <span class="php-num">10</span> == <span class="php-keyword2">time</span>());</pre>
-	</div>
-
+	<dl class="tree">
+		<dd style="padding-left:0px">
+			<a href="class-phpmock.environment.SleepEnvironmentBuilder.html"><span>phpmock\environment\SleepEnvironmentBuilder</span></a>
+			
+			
+			
+		</dd>
+		<dd style="padding-left:30px">
+			<img src="resources/inherit.png" alt="Extended by">
+<b><span class="deprecated">phpmock\SleepEnvironmentBuilder</span></b>			
+			
+			
+		</dd>
+	</dl>
 
 
 
@@ -130,13 +132,11 @@ date(), time() and microtime().</p>
 		<b>Namespace:</b> <a href="namespace-phpmock.html">phpmock</a><br>
 		
 
-				<b>License:</b>
-				<a href="http://www.wtfpl.net/txt/copying/">WTFPL</a><br>
-				<b>Author:</b>
-				Markus Malkusch <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;">&#x6d;&#x61;&#114;&#107;&#117;&#115;&#64;&#x6d;&#x61;&#x6c;&#x6b;u&#115;&#99;&#104;&#46;&#x64;&#x65;</a><br>
-				<b>Link:</b>
-				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-phpmock.SleepEnvironmentBuilder.html#10-124" title="Go to source code">SleepEnvironmentBuilder.php</a>
+				<b>Deprecated:</b>
+				since 0.8, use phpmock\environment\SleepEnvironmentBuilder.<br>
+				<b>See:</b>
+				<code><a href="class-phpmock.environment.SleepEnvironmentBuilder.html">phpmock\environment\SleepEnvironmentBuilder</a></code><br>
+			<b>Located at</b> <a href="source-class-phpmock.SleepEnvironmentBuilder.html#5-30" title="Go to source code">SleepEnvironmentBuilder.php</a>
 		<br>
 	</div>
 
@@ -144,19 +144,49 @@ date(), time() and microtime().</p>
 
 	<table class="summary methods" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="setNamespace" id="_setNamespace">
+	<tr data-order="__construct" id="___construct" class="deprecated">
 
 		<td class="attributes"><code>
 			 public 
 
-			<code><a href="class-phpmock.SleepEnvironmentBuilder.html">phpmock\SleepEnvironmentBuilder</a></code>
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#___construct">#</a>
+		<code><a href="source-class-phpmock.SleepEnvironmentBuilder.html#12-15" title="Go to source code">__construct</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setNamespace" id="_setNamespace" class="deprecated">
+
+		<td class="attributes"><code>
+			 public 
+
+			<code><a href="class-phpmock.SleepEnvironmentBuilder.html" class="deprecated">phpmock\SleepEnvironmentBuilder</a></code>
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setNamespace">#</a>
-		<code><a href="source-class-phpmock.SleepEnvironmentBuilder.html#53-63" title="Go to source code">setNamespace</a>( <span>string <var>$namespace</var></span> )</code>
+		<code><a href="source-class-phpmock.SleepEnvironmentBuilder.html#17-29" title="Go to source code">setNamespace</a>( <span>string <var>$namespace</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the namespace for the mock environment.</p>
@@ -174,87 +204,14 @@ date(), time() and microtime().</p>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><a href="class-phpmock.SleepEnvironmentBuilder.html">phpmock\SleepEnvironmentBuilder</a></code>
+					<code><a href="class-phpmock.SleepEnvironmentBuilder.html" class="deprecated">phpmock\SleepEnvironmentBuilder</a></code>
 				</div>
 
 
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="setTimestamp" id="_setTimestamp">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-phpmock.SleepEnvironmentBuilder.html">phpmock\SleepEnvironmentBuilder</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_setTimestamp">#</a>
-		<code><a href="source-class-phpmock.SleepEnvironmentBuilder.html#65-79" title="Go to source code">setTimestamp</a>( <span>mixed <var>$timestamp</var></span> )</code>
-
-		<div class="description short">
-			<p>Sets the mocked timestamp.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Sets the mocked timestamp.</p>
-
-<p>If not set the mock will use the current time at creation time.
-The timestamp can be an int, a float with microseconds or a string
-in the microtime() format.</p>
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$timestamp</var></dt>
-					<dd>The timestamp.</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
+				<h4>See</h4>
 				<div class="list">
-					<code><a href="class-phpmock.SleepEnvironmentBuilder.html">phpmock\SleepEnvironmentBuilder</a></code>
+						<code><a href="class-phpmock.environment.SleepEnvironmentBuilder.html#_addNamespace">phpmock\environment\SleepEnvironmentBuilder::addNamespace()</a></code><br>
 				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="build" id="_build">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-phpmock.MockEnvironment.html">phpmock\MockEnvironment</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_build">#</a>
-		<code><a href="source-class-phpmock.SleepEnvironmentBuilder.html#81-123" title="Go to source code">build</a>( )</code>
-
-		<div class="description short">
-			<p>Builds a sleep(), usleep(), date(), time() and microtime() mock environment.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Builds a sleep(), usleep(), date(), time() and microtime() mock environment.</p>
-
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-phpmock.MockEnvironment.html">phpmock\MockEnvironment</a></code>
-				</div>
-
-
 
 
 		</div>
@@ -262,6 +219,16 @@ in the microtime() format.</p>
 	</tr>
 	</table>
 
+	<table class="summary inherited">
+	<caption>Methods inherited from <a href="class-phpmock.environment.SleepEnvironmentBuilder.html#methods">phpmock\environment\SleepEnvironmentBuilder</a></caption>
+	<tr>
+		<td><code>
+			<a href="class-phpmock.environment.SleepEnvironmentBuilder.html#_addNamespace">addNamespace()</a>, 
+			<a href="class-phpmock.environment.SleepEnvironmentBuilder.html#_build">build()</a>, 
+			<a href="class-phpmock.environment.SleepEnvironmentBuilder.html#_setTimestamp">setTimestamp()</a>
+		</code></td>
+	</tr>
+	</table>
 
 
 
