@@ -42,13 +42,13 @@ class IncrementableTest extends \PHPUnit_Framework_TestCase
     public function provideTestIncrement()
     {
         $getFixedValue = function (FixedValueFunction $function) {
-            return $function->getValue();
+            return call_user_func($function->getCallable());
         };
         $getMicrotime = function (FixedMicrotimeFunction $function) {
             return $function->getMicrotime(true);
         };
         $getDate = function (FixedDateFunction $function) {
-            return $function->getDate("U");
+            return call_user_func($function->getCallable(), "U");
         };
         return [
             [1, 1, new FixedValueFunction(0), $getFixedValue],

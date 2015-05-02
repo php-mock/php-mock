@@ -31,32 +31,18 @@ class FixedDateFunction implements FunctionProvider, Incrementable
     }
 
     /**
-     * Returns this object as a callable for the mock function.
+     * Returns the mocked date() function.
      *
      * @return callable The callable for this object.
      */
     public function getCallable()
     {
-        return [$this, "getDate"];
-    }
-
-    /**
-     * Returns a formatted date string.
-     *
-     * @param string $format The format of the outputted date string
-     * @param int $timestamp The optional timestamp parameter as an integer timestamp. Default is $this->timestamp.
-     *
-     * @return bool|string Returns a formatted date string. If a non-numeric value is used for timestamp,
-     * FALSE is returned and an E_WARNING level error is emitted.
-     *
-     * @see \date()
-     */
-    public function getDate($format, $timestamp = null)
-    {
-        if (is_null($timestamp)) {
-            $timestamp = $this->timestamp;
-        }
-        return \date($format, $timestamp);
+        return function ($format, $timestamp = null) {
+            if (is_null($timestamp)) {
+                $timestamp = $this->timestamp;
+            }
+            return \date($format, $timestamp);
+        };
     }
 
     public function increment($increment)

@@ -24,10 +24,10 @@ class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
         $value2 = new FixedValueFunction(2);
         $sleep = new SleepFunction([$value1, $value2]);
         
-        $sleep->sleep(1);
+        call_user_func($sleep->getCallable(), 1);
         
-        $this->assertEquals(2, $value1->getValue());
-        $this->assertEquals(3, $value2->getValue());
+        $this->assertEquals(2, call_user_func($value1->getCallable()));
+        $this->assertEquals(3, call_user_func($value2->getCallable()));
     }
     
     /**
@@ -47,8 +47,8 @@ class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
     ) {
         $value = new FixedValueFunction(0);
         $sleepFunction->addIncrementable($value);
-        $sleepFunction->sleep($amount);
-        $this->assertEquals($expected, $value->getValue());
+        call_user_func($sleepFunction->getCallable(), $amount);
+        $this->assertEquals($expected, call_user_func($value->getCallable()));
     }
     
     /**

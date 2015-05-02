@@ -28,24 +28,20 @@ abstract class AbstractSleepFunction implements FunctionProvider
         $this->incrementables = $incrementables;
     }
     
-    public function getCallable()
-    {
-        return [$this, "sleep"];
-    }
-    
     /**
-     * Mock function.
+     * Returns the sleep() mock function.
      *
      * A call will increase all registered Increment objects.
      *
-     * @param int $amount Amount of time units.
-     * @internal
+     * @return callable The callable for this object.
      */
-    public function sleep($amount)
+    public function getCallable()
     {
-        foreach ($this->incrementables as $incrementable) {
-            $incrementable->increment($this->convertToSeconds($amount));
-        }
+        return function ($amount) {
+            foreach ($this->incrementables as $incrementable) {
+                $incrementable->increment($this->convertToSeconds($amount));
+            }
+        };
     }
 
     /**
