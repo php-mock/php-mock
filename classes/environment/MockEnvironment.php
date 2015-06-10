@@ -52,6 +52,19 @@ class MockEnvironment implements Deactivatable
     }
     
     /**
+     * Define all mocks in this environment.
+     * 
+     * @see Mock::define()
+     */
+    public function define()
+    {
+        foreach ($this->mocks as $mock) {
+            $mock->define();
+            
+        }
+    }
+    
+    /**
      * Disable all mocks in this environment.
      */
     public function disable()
