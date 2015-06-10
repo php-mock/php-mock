@@ -2,6 +2,7 @@
 
 namespace phpmock\environment;
 
+use phpmock\Mock;
 use phpmock\MockBuilder;
 use phpmock\functions\FixedValueFunction;
 
@@ -50,6 +51,25 @@ class MockEnvironmentTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1234, rand());
     }
 
+    /**
+     * Tests define()
+     *
+     * @test
+     */
+    public function testDefine()
+    {
+        $this->environment->addMock(
+            new Mock(__NAMESPACE__, "testDefine", function () {
+            })
+        );
+        
+        $this->environment->define();
+
+        $this->assertTrue(function_exists("phpmock\\environment\\time"));
+        $this->assertTrue(function_exists("phpmock\\environment\\rand"));
+        $this->assertTrue(function_exists("phpmock\\environment\\testDefine"));
+    }
+    
     /**
      * Tests disable()
      *

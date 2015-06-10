@@ -192,6 +192,9 @@ Complex mock environments of several mocked functions can be grouped in a [`Mock
 * [`MockEnvironment::disable()`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.MockEnvironment.html#_disable)
   disables all mocked functions of this environment.
 
+* [`MockEnvironment::define()`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.MockEnvironment.html#_define)
+  defines all mocked functions of this environment.
+
 #### SleepEnvironmentBuilder
 
 The [`SleepEnvironmentBuilder`](http://php-mock.github.io/php-mock/api/class-phpmock.environment.SleepEnvironmentBuilder.html)

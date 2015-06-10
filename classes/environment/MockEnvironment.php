@@ -53,8 +53,8 @@ class MockEnvironment implements Deactivatable
     
     /**
      * Define all mocks in this environment.
-     * 
-     * @see Mock::define()
+     *
+     * @see phpmock\Mock::define()
      */
     public function define()
     {
