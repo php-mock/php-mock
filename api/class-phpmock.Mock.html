@@ -51,9 +51,6 @@
 			<ul>
 				<li class="active"><a href="class-phpmock.Mock.html">Mock</a></li>
 				<li><a href="class-phpmock.MockBuilder.html">MockBuilder</a></li>
-				<li><a href="class-phpmock.MockEnvironment.html" class="deprecated">MockEnvironment</a></li>
-				<li><a href="class-phpmock.Recorder.html" class="deprecated">Recorder</a></li>
-				<li><a href="class-phpmock.SleepEnvironmentBuilder.html" class="deprecated">SleepEnvironmentBuilder</a></li>
 			</ul>
 
 			<h3>Interfaces</h3>
@@ -162,7 +159,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 				<code><a href="class-phpmock.MockBuilder.html">phpmock\MockBuilder</a></code><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-phpmock.Mock.html#7-206" title="Go to source code">Mock.php</a>
+			<b>Located at</b> <a href="source-class-phpmock.Mock.html#7-183" title="Go to source code">Mock.php</a>
 		<br>
 	</div>
 
@@ -182,7 +179,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-phpmock.Mock.html#60-73" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
+		<code><a href="source-class-phpmock.Mock.html#54-66" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
 
 		<div class="description short">
 			<p>Set the namespace, function name and the mock function.</p>
@@ -209,50 +206,6 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 		</div>
 		</div></td>
 	</tr>
-	<tr data-order="getRecorder" id="_getRecorder" class="deprecated">
-
-		<td class="attributes"><code>
-			 public 
-
-			<code><a href="class-phpmock.Recorder.html" class="deprecated">phpmock\Recorder</a></code>
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_getRecorder">#</a>
-		<code><a href="source-class-phpmock.Mock.html#75-88" title="Go to source code">getRecorder</a>( )</code>
-
-		<div class="description short">
-			<p>Returns the call recorder.</p>
-		</div>
-
-		<div class="description detailed hidden">
-			<p>Returns the call recorder.</p>
-
-<p>Every call to the mocked function was recorded to this call recorder.</p>
-
-				<h4>Deprecated</h4>
-				<div class="list">
-						since 0.8 use Spy::getInvocations() instead.<br>
-				</div>
-
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><a href="class-phpmock.Recorder.html" class="deprecated">phpmock\Recorder</a></code><br>The call recorder.
-				</div>
-
-
-				<h4>See</h4>
-				<div class="list">
-						spy\Spy::getInvocations();<br>
-				</div>
-
-
-		</div>
-		</div></td>
-	</tr>
 	<tr data-order="enable" id="_enable">
 
 		<td class="attributes"><code>
@@ -265,7 +218,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_enable">#</a>
-		<code><a href="source-class-phpmock.Mock.html#90-111" title="Go to source code">enable</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#68-89" title="Go to source code">enable</a>( )</code>
 
 		<div class="description short">
 			<p>Enables this mock.</p>
@@ -307,7 +260,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disable">#</a>
-		<code><a href="source-class-phpmock.Mock.html#113-122" title="Go to source code">disable</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#91-100" title="Go to source code">disable</a>( )</code>
 
 		<div class="description short">
 			<p>Disable this mock.</p>
@@ -344,7 +297,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disableAll">#</a>
-		<code><a href="source-class-phpmock.Mock.html#124-133" title="Go to source code">disableAll</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#102-111" title="Go to source code">disableAll</a>( )</code>
 
 		<div class="description short">
 			<p>Disable all mocks.</p>
@@ -379,7 +332,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getNamespace">#</a>
-		<code><a href="source-class-phpmock.Mock.html#162-170" title="Go to source code">getNamespace</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#139-147" title="Go to source code">getNamespace</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the namespace without enclosing slashes.</p>
@@ -413,7 +366,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getName">#</a>
-		<code><a href="source-class-phpmock.Mock.html#172-180" title="Go to source code">getName</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#149-157" title="Go to source code">getName</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the unqualified function name.</p>
@@ -447,7 +400,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_define">#</a>
-		<code><a href="source-class-phpmock.Mock.html#182-205" title="Go to source code">define</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#159-182" title="Go to source code">define</a>( )</code>
 
 		<div class="description short">
 			<p>Defines the mocked function in the given namespace.</p>
