@@ -55,12 +55,8 @@ there are alternative techniques to mock built-in PHP functions:
 
 Use [Composer](https://getcomposer.org/):
 
-```json
-{
-    "require-dev": {
-        "php-mock/php-mock": "^0.8"
-    }
-}
+```sh
+composer require php-mock/php-mock
 ```
 
 
@@ -72,6 +68,9 @@ for these testing frameworks:
 - [php-mock/php-mock-phpunit](https://github.com/php-mock/php-mock-phpunit) - PHPUnit integration
 
 - [php-mock/php-mock-mockery](https://github.com/php-mock/php-mock-mockery) - Mockery integration
+
+**Note:** If you plan to use one of the above mentioned testing frameworks. You can skip
+reading any further and just go to the particular integration project.
 
 ## PHP-Mock API
 
