@@ -114,7 +114,6 @@ class Mock implements Deactivatable
      * Calls the mocked function.
      *
      * This method is called from the namespaced function.
-     * It also records the call in the call recorder.
      *
      * @param array $arguments the call arguments.
      * @return mixed
