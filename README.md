@@ -67,6 +67,8 @@ for these testing frameworks:
 
 - [php-mock/php-mock-mockery](https://github.com/php-mock/php-mock-mockery) - Mockery integration
 
+- [php-mock/php-mock-prophecy](https://github.com/php-mock/php-mock-prophecy) - Prophecy (phpspec) integration
+
 **Note:** If you plan to use one of the above mentioned testing frameworks. You can skip
 reading any further and just go to the particular integration project.
 
