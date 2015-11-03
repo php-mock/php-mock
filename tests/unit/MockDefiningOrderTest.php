@@ -54,6 +54,16 @@ class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
      */
     public function testDefineBeforeFirstCallRestriction()
     {
+        /*
+         * HHVM did fix this bug already.
+         * 
+         * See https://github.com/sebastianbergmann/phpunit/issues/1356
+         * for a better syntax.
+         */
+        if (defined('HHVM_VERSION')) {
+            $this->markTestSkipped();
+        }
+        
         $function = __NAMESPACE__ . '\escapeshellcmd';
         $this->assertFalse(function_exists($function));
         
