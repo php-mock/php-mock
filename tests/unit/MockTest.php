@@ -13,6 +13,13 @@ namespace phpmock;
 class MockTest extends AbstractMockTest
 {
     
+    protected function defineFunction($namespace, $functionName)
+    {
+        $mock = new Mock($namespace, $functionName, function () {
+        });
+        $mock->define();
+    }
+    
     protected function mockFunction($namespace, $functionName, callable $function)
     {
         $mock = new Mock($namespace, $functionName, $function);

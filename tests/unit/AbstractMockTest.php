@@ -26,6 +26,14 @@ abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
      * @param callable $function     The function mock.
      */
     abstract protected function mockFunction($namespace, $functionName, callable $function);
+    
+    /**
+     * Defines the function mock.
+     *
+     * @param string   $namespace    The namespace.
+     * @param string   $functionName The function name.
+     */
+    abstract protected function defineFunction($namespace, $functionName);
 
     protected function tearDown()
     {
@@ -236,17 +244,46 @@ abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests defining the mock.
+     * Tests mocking the function implicitely defines the function.
      *
      * @test
      */
-    public function testDefine()
+    public function testImplicitDefine()
     {
         $functionName = $this->buildPrivateFunctionName("testDefine");
         $fqfn         = __NAMESPACE__."\\$functionName";
         $this->assertFalse(function_exists($fqfn));
         $this->mockFunction(__NAMESPACE__, $functionName, "sqrt");
         $this->assertTrue(function_exists($fqfn));
+    }
+    
+    /**
+     * Tests explicit function defining.
+     *
+     * @test
+     */
+    public function testExplicitDefine()
+    {
+        $this->defineFunction(__NAMESPACE__, "escapeshellcmd");
+        $this->escapeshellcmd("foo");
+        
+        $this->mockFunction(__NAMESPACE__, "escapeshellcmd", function () {
+            return "bar";
+        });
+        
+        $this->assertEquals("bar", self::escapeshellcmd("foo"));
+    }
+    
+    /**
+     * Returns the built-in call to escapeshellcmd().
+     *
+     * @param string $command Shell command.
+     *
+     * @return string The built-in call.
+     */
+    private function escapeshellcmd($command)
+    {
+        return escapeshellcmd($command);
     }
 
     /**
