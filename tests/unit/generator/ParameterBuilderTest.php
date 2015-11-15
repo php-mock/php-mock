@@ -89,6 +89,12 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
         }
         
         // @codingStandardsIgnoreEnd
+
+        // HHVM has a different signature wording.
+        $return_value = "return_value";
+        if (defined('HHVM_VERSION')) {
+            $return_value = "return_var";
+        }
         
         return [
             ["", "", __NAMESPACE__."\\testNoParameter"],
@@ -101,10 +107,10 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             ['&$one, &$two', '&$one, &$two', __NAMESPACE__."\\testReference4"],
             [
                 sprintf(
-                    "\$command, &\$output = '%1\$s', &\$return_value = '%1\$s'",
+                    "\$command, &\$output = '%1\$s', &\${$return_value} = '%1\$s'",
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
-                "\$command, &\$output, &\$return_value",
+                "\$command, &\$output, &\${$return_value}",
                 "exec"
             ],
             [
