@@ -58,26 +58,41 @@ class ParameterBuilder56Test extends \PHPUnit_Framework_TestCase
         
         // @codingStandardsIgnoreEnd
         
-        return [
-            ["", "", "min"],
+        $cases = [
             ["", "", __NAMESPACE__."\\testPHPVariadics1"],
             ['$one', '$one', __NAMESPACE__."\\testPHPVariadics2"],
-            [
-                sprintf(
-                    "\$one, \$two = '%s'",
-                    MockFunctionGenerator::DEFAULT_ARGUMENT
-                ),
-                '$one, $two',
-                __NAMESPACE__."\\testPHPVariadics3"
-            ],
-            [
-                sprintf(
-                    "&\$one, \$two = '%s'",
-                    MockFunctionGenerator::DEFAULT_ARGUMENT
-                ),
-                '&$one, $two',
-                __NAMESPACE__."\\testPHPVariadics4"
-            ],
         ];
+        
+        if (defined('HHVM_VERSION')) {
+            // HHVM has different implementation details
+            $cases = array_merge($cases, [
+                ['$value1', '$value1', "min"],
+                ['$one, $two', '$one, $two', __NAMESPACE__."\\testPHPVariadics3"],
+                ['&$one, $two', '&$one, $two', __NAMESPACE__."\\testPHPVariadics4"],
+            ]);
+            
+        } else {
+            $cases = array_merge($cases, [
+                ["", "", "min"],
+                [
+                    sprintf(
+                        "\$one, \$two = '%s'",
+                        MockFunctionGenerator::DEFAULT_ARGUMENT
+                    ),
+                    '$one, $two',
+                    __NAMESPACE__."\\testPHPVariadics3"
+                ],
+                [
+                    sprintf(
+                        "&\$one, \$two = '%s'",
+                        MockFunctionGenerator::DEFAULT_ARGUMENT
+                    ),
+                    '&$one, $two',
+                    __NAMESPACE__."\\testPHPVariadics4"
+                ],
+            ]);
+        }
+
+        return $cases;
     }
 }
