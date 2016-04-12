@@ -1,7 +1,7 @@
 # PHP-Mock: mocking built-in PHP functions
 
 PHP-Mock is a testing library which mocks non deterministic built-in PHP functions like
-`time()` or `rand()`. This is achived by [PHP's namespace fallback policy](http://php.net/manual/en/language.namespaces.fallback.php):
+`time()` or `rand()`. This is achieved by [PHP's namespace fallback policy](http://php.net/manual/en/language.namespaces.fallback.php):
 
 > PHP will fall back to global functions […]
 > if a namespaced function […] does not exist.
@@ -26,7 +26,7 @@ $time = time(); // This call can be mocked, a call to \time() can't.
 
 * The mock has to be defined before the first call to the unqualified function
   in the tested class. This is documented in [Bug #68541](https://bugs.php.net/bug.php?id=68541).
-  In most cases you can ignore this restriction. But if you happen to run into
+  In most cases, you can ignore this restriction but if you happen to run into
   this issue you can call [`Mock::define()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_define)
   before that first call. This would define a side effectless namespaced
   function which can be enabled later.
@@ -69,7 +69,7 @@ for these testing frameworks:
 
 - [php-mock/php-mock-prophecy](https://github.com/php-mock/php-mock-prophecy) - Prophecy (phpspec) integration
 
-**Note:** If you plan to use one of the above mentioned testing frameworks. You can skip
+**Note:** If you plan to use one of the above mentioned testing frameworks you can skip
 reading any further and just go to the particular integration project.
 
 ## PHP-Mock API
