@@ -102,7 +102,6 @@ class MockFunctionGenerator
         if (empty($mock)) {
             // call the built-in function if the mock was not enabled.
             return call_user_func_array($functionName, $arguments);
-        
         } else {
             // call the mock function.
             return $mock->call($arguments);

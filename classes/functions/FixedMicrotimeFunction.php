@@ -28,18 +28,14 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     {
         if (is_null($timestamp)) {
             $this->setMicrotime(\microtime());
-
         } elseif (is_string($timestamp)) {
             $this->setMicrotime($timestamp);
-
         } elseif (is_numeric($timestamp)) {
             $this->setMicrotimeAsFloat($timestamp);
-
         } else {
             throw new \InvalidArgumentException(
                 "Timestamp parameter is invalid type."
             );
-
         }
     }
 
@@ -86,10 +82,8 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
         if ($get_as_float) {
             $converter = new MicrotimeConverter();
             return $converter->convertStringToFloat($this->timestamp);
-
         } else {
             return $this->timestamp;
-
         }
     }
 

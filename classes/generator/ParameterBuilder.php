@@ -32,7 +32,6 @@ class ParameterBuilder
     {
         if (!function_exists($functionName)) {
             return;
-
         }
         $function            = new \ReflectionFunction($functionName);
         $signatureParameters = [];
@@ -40,7 +39,6 @@ class ParameterBuilder
         foreach ($function->getParameters() as $reflectionParameter) {
             if ($this->isVariadic($reflectionParameter)) {
                 break;
-
             }
             $parameter = $reflectionParameter->isPassedByReference()
                 ? "&$$reflectionParameter->name"
@@ -52,7 +50,6 @@ class ParameterBuilder
 
             $signatureParameters[] = $signatureParameter;
             $bodyParameters[]      = $parameter;
-
         }
         $this->signatureParameters = implode(", ", $signatureParameters);
         $this->bodyParameters      = implode(", ", $bodyParameters);
@@ -70,11 +67,9 @@ class ParameterBuilder
         if ($parameter->name == "...") {
             // This is a variadic C-implementation before PHP-5.6.
             return true;
-
         }
         if (method_exists($parameter, "isVariadic")) {
             return $parameter->isVariadic();
-            
         }
         return false;
     }

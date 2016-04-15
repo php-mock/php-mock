@@ -82,7 +82,6 @@ class Mock implements Deactivatable
                 "$this->name is already enabled."
                 . "Call disable() on the existing mock."
             );
-            
         }
         $this->define();
         $registry->register($this);
@@ -174,7 +173,6 @@ class Mock implements Deactivatable
         $fqfn = $this->getFQFN();
         if (function_exists($fqfn)) {
             return;
-            
         }
         $functionGenerator = new MockFunctionGenerator($this);
         $functionGenerator->defineFunction();

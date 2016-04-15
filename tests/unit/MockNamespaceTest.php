@@ -41,7 +41,6 @@ class MockNamespaceTest extends \PHPUnit_Framework_TestCase
         if (! empty($this->mock)) {
             $this->mock->disable();
             unset($this->mock);
-            
         }
     }
 

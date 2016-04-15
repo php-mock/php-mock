@@ -70,7 +70,6 @@ class ParameterBuilder56Test extends \PHPUnit_Framework_TestCase
                 ['$one, $two', '$one, $two', __NAMESPACE__."\\testPHPVariadics3"],
                 ['&$one, $two', '&$one, $two', __NAMESPACE__."\\testPHPVariadics4"],
             ]);
-            
         } else {
             $cases = array_merge($cases, [
                 ["", "", "min"],

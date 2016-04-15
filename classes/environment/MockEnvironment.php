@@ -47,7 +47,6 @@ class MockEnvironment implements Deactivatable
     {
         foreach ($this->mocks as $mock) {
             $mock->enable();
-            
         }
     }
     
@@ -60,7 +59,6 @@ class MockEnvironment implements Deactivatable
     {
         foreach ($this->mocks as $mock) {
             $mock->define();
-            
         }
     }
     
@@ -71,7 +69,6 @@ class MockEnvironment implements Deactivatable
     {
         foreach ($this->mocks as $mock) {
             $mock->disable();
-            
         }
     }
 }

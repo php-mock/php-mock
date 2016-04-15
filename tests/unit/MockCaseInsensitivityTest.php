@@ -24,7 +24,6 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
     {
         if (isset($this->mock)) {
             $this->mock->disable();
-            
         }
     }
 
