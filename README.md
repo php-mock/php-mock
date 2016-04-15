@@ -29,7 +29,8 @@ $time = time(); // This call can be mocked, a call to \time() can't.
   In most cases, you can ignore this restriction but if you happen to run into
   this issue you can call [`Mock::define()`](http://php-mock.github.io/php-mock/api/class-phpmock.Mock.html#_define)
   before that first call. This would define a side effectless namespaced
-  function which can be enabled later.
+  function which can be enabled later. Another effective
+  approach is running your test in an isolated process.
 
 ## Alternatives
 
