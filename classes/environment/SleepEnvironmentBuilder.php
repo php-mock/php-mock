@@ -22,7 +22,7 @@ use phpmock\functions\UsleepFunction;
  * use phpmock\environment\SleepEnvironmentBuilder;
  *
  * $builder = new SleepEnvironmentBuilder();
- * $builder->setNamespace(__NAMESPACE__)
+ * $builder->addNamespace(__NAMESPACE__)
  *         ->setTimestamp(1417011228);
  *
  * $environment = $builder->build();
@@ -30,8 +30,10 @@ use phpmock\functions\UsleepFunction;
  *
  * // This won't delay the test for 10 seconds, but increase time().
  * sleep(10);
- *
  * assert(1417011228 + 10 == time());
+ *
+ * // Now revert the effect so that sleep() and time() are not mocked anymore.
+ * $environment->disable();
  * </code>
  *
  * @author Markus Malkusch <markus@malkusch.de>

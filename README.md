@@ -11,8 +11,6 @@ to be in a **non global namespace** context and call the function
 **unqualified**:
 
 ```php
-<?php
-
 namespace foo;
 
 $time = time(); // This call can be mocked, a call to \time() can't.
@@ -126,8 +124,6 @@ This example illustrates mocking of the unqualified function `time()` in the
 namespace `foo`:
 
 ```php
-<?php
-
 namespace foo;
 
 use phpmock\MockBuilder;
@@ -158,8 +154,6 @@ Instead of setting the mock function with `MockBuilder::setFunction()` you could
 use the existing [`FixedValueFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FixedValueFunction.html):
 
 ```php
-<?php
-
 namespace foo;
 
 use phpmock\MockBuilder;
@@ -203,8 +197,6 @@ Furthermore they increase the amount of time in the mocked `date()`, `time()` an
 `microtime()`:
 
 ```php
-<?php
-
 namespace foo;
 
 use phpmock\environment\SleepEnvironmentBuilder;
@@ -239,8 +231,6 @@ E.g. a `new Spy(__NAMESPACE__ , "rand")` would create a spy which basically
 proxies PHP's built-in `rand()`:
 
 ```php
-<?php
-
 namespace foo;
 
 use phpmock\spy\Spy;

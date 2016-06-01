@@ -12,11 +12,11 @@ use phpmock\functions\FunctionProvider;
  * namespace foo;
  *
  * use phpmock\MockBuilder;
- * use phpmock\FixedValueFunction;
+ * use phpmock\functions\FixedValueFunction;
  *
  * $builder = new MockBuilder();
  * $builder->setNamespace(__NAMESPACE__)
- *         ->setName(__NAMESPACE__)
+ *         ->setName("time")
  *         ->setFunctionProvider(new FixedValueFunction(1417011228));
  *
  * $mock = $builder->build();

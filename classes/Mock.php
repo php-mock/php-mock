@@ -26,6 +26,9 @@ use phpmock\generator\MockFunctionGenerator;
  * );
  * $time->enable();
  * assert (3 == time());
+ *
+ * $time->disable();
+ * assert (3 != time());
  * </code>
  *
  * @author Markus Malkusch <markus@malkusch.de>
