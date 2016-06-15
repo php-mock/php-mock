@@ -53,7 +53,7 @@ there are alternative techniques to mock built-in PHP functions:
 Use [Composer](https://getcomposer.org/):
 
 ```sh
-composer require php-mock/php-mock
+composer require --dev php-mock/php-mock
 ```
 
 
