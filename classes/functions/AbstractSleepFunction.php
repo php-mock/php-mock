@@ -45,7 +45,7 @@ abstract class AbstractSleepFunction implements FunctionProvider
     }
 
     /**
-     * Converts the sleep() paramater into seconds.
+     * Converts the sleep() parameter into seconds.
      *
      * @param int $amount Amount of time units.
      * @return mixed Seconds.
