@@ -27,6 +27,9 @@ class FixedDateFunction implements FunctionProvider, Incrementable
         if (is_null($timestamp)) {
             $timestamp = \time();
         }
+        if (!is_numeric($timestamp)) {
+            throw new \InvalidArgumentException("Timestamp should be numeric");
+        }
         $this->timestamp = $timestamp;
     }
 

@@ -56,6 +56,9 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
      */
     public function setMicrotime($timestamp)
     {
+        if (empty($timestamp)) {
+            throw new \InvalidArgumentException("Timestamp should not be empty");
+        }
         $this->timestamp = $timestamp;
     }
 
@@ -66,6 +69,9 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
      */
     public function setMicrotimeAsFloat($timestamp)
     {
+        if (!is_numeric($timestamp)) {
+            throw new \InvalidArgumentException("Timestamp should be numeric");
+        }
         $converter = new MicrotimeConverter();
         $this->timestamp = $converter->convertFloatToString($timestamp);
     }
