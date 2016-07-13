@@ -57,9 +57,17 @@ class Spy extends Mock
     
     public function call(array $arguments)
     {
-        $return = parent::call($arguments);
-        $this->invocations[] = new Invocation($arguments, $return);
-        return $return;
+        $return = null;
+        $exception = null;
+        try {
+            $return = parent::call($arguments);
+            return $return;
+        } catch (\Exception $e) {
+            $exception = $e;
+            throw $e;
+        } finally {
+            $this->invocations[] = new Invocation($arguments, $return, $exception);
+        }
     }
     
     /**

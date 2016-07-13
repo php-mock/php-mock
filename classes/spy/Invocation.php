@@ -21,19 +21,26 @@ class Invocation
      * @var array The function call's arguments.
      */
     private $arguments;
+    
+    /**
+     * @var \Exception|null The exception thrown by the function.
+     */
+    private $exception;
 
     /**
      * Sets the arguments and return value
      *
-     * @param array $arguments The arguments.
-     * @param mixed $return    The return value.
+     * @param array $arguments Function's arguments
+     * @param mixed $return Function's return value
+     * @param \Exception $exception The exception thrown by the function
      *
      * @internal
      */
-    public function __construct(array $arguments, $return)
+    public function __construct(array $arguments, $return, \Exception $exception = null)
     {
         $this->arguments = $arguments;
         $this->return    = $return;
+        $this->exception = $exception;
     }
 
     /**
@@ -54,5 +61,25 @@ class Invocation
     public function getReturn()
     {
         return $this->return;
+    }
+    
+    /**
+     * Returns if the spied function threw an exception.
+     *
+     * @return bool TRUE if an exception was thrown.
+     */
+    public function isExceptionThrown()
+    {
+        return !is_null($this->exception);
+    }
+    
+    /**
+     * Return the exception which was thrown by the spoed function.
+     *
+     * @return \Exception|null function's exception or null if none was thrown
+     */
+    public function getException()
+    {
+        return $this->exception;
     }
 }

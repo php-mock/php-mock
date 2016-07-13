@@ -15,25 +15,25 @@ use phpmock\AbstractMockTest;
  */
 class SpyTest extends AbstractMockTest
 {
-    
+
     protected function defineFunction($namespace, $functionName)
     {
         $mock = new Spy($namespace, $functionName, function () {
         });
         $mock->define();
     }
-    
+
     protected function mockFunction($namespace, $functionName, callable $function)
     {
         $mock = new Spy($namespace, $functionName, $function);
         $mock->enable();
     }
-    
+
     protected function disableMocks()
     {
         Mock::disableAll();
     }
-    
+
     /**
      * Tests spying.
      *
@@ -51,7 +51,7 @@ class SpyTest extends AbstractMockTest
         call_user_func($invocations);
         $this->assertEquals($expected, $spy->getInvocations());
     }
-    
+
     /**
      * Returns test cases for testGetInvocations().
      *
@@ -63,7 +63,7 @@ class SpyTest extends AbstractMockTest
         eval("function testGetInvocations_oneParameter(\$a) { return \$a + 1; }");
         eval("function testGetInvocations_twoParameters(\$a, \$b) { return \$a + \$b; }");
         eval("function testGetInvocations_optionalParameter(\$a = null) { return \$a; }");
-        
+
         return [
             [
                 [],
@@ -133,5 +133,47 @@ class SpyTest extends AbstractMockTest
 
         $result = testDefaultFunction();
         $this->assertEquals(123, $result);
+    }
+
+    /**
+     * An exception should still be recorded.
+     *
+     * @test
+     */
+    public function testException()
+    {
+        eval('function testException($foo) { throw new \Exception(); }');
+        $spy = new Spy(__NAMESPACE__, "testException");
+        $spy->enable();
+
+        try {
+            testException("foo");
+            $this->fail("Expected exception");
+        } catch (\Exception $e) {
+            $invocation = $spy->getInvocations()[0];
+            
+            $this->assertEquals(["foo"], $invocation->getArguments());
+            $this->assertNull($invocation->getReturn());
+            $this->assertTrue($invocation->isExceptionThrown());
+            $this->assertEquals($e, $invocation->getException());
+        }
+    }
+
+    /**
+     * Test the invocation of a none exception call.
+     *
+     * @test
+     */
+    public function testNoException()
+    {
+        eval("function testNoException() { }");
+        $spy = new Spy(__NAMESPACE__, "testNoException");
+        $spy->enable();
+
+        testNoException();
+        
+        $invocation = $spy->getInvocations()[0];
+        $this->assertFalse($invocation->isExceptionThrown());
+        $this->assertNull($invocation->getException());
     }
 }
