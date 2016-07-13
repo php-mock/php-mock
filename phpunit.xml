@@ -3,12 +3,6 @@
          xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.3/phpunit.xsd"
          bootstrap="vendor/autoload.php">
     <testsuite name="Unit tests">
-        <directory>tests/unit</directory>
-    </testsuite>
-    <testsuite name="PHP-5.6 specific tests">
-        <directory phpVersion="5.6">tests/unit-php-5.6</directory>
-    </testsuite>
-    <testsuite name="&lt;PHP-5.6 specific tests">
-        <directory phpVersion="5.6"  phpVersionOperator="&lt;">tests/unit-before-php-5.6</directory>
+        <directory>tests/</directory>
     </testsuite>
 </phpunit>

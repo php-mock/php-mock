@@ -88,6 +88,22 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
         {
         }
         
+        function testPHPVariadics1(...$one)
+        {
+        }
+
+        function testPHPVariadics2($one, ...$two)
+        {
+        }
+
+        function testPHPVariadics3($one, $two = 2, ...$three)
+        {
+        }
+
+        function testPHPVariadics4(&$one, $two = 2, ...$three)
+        {
+        }
+        
         // @codingStandardsIgnoreEnd
 
         // HHVM has a different signature wording.
@@ -96,7 +112,7 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
             $return_value = "return_var";
         }
         
-        return [
+        $cases = [
             ["", "", __NAMESPACE__."\\testNoParameter"],
             ['$one', '$one', __NAMESPACE__."\\testOneParameter"],
             ['$one, $two', '$one, $two', __NAMESPACE__."\\testTwoParameters"],
@@ -153,6 +169,39 @@ class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
                 '$one, &$two, $three, &$four',
                 __NAMESPACE__."\\testCombined"
             ],
+            ["", "", __NAMESPACE__."\\testPHPVariadics1"],
+            ['$one', '$one', __NAMESPACE__."\\testPHPVariadics2"],
         ];
+                
+        if (defined('HHVM_VERSION')) {
+            // HHVM has different implementation details
+            $cases = array_merge($cases, [
+                ['$value1', '$value1', "min"],
+                ['$one, $two', '$one, $two', __NAMESPACE__."\\testPHPVariadics3"],
+                ['&$one, $two', '&$one, $two', __NAMESPACE__."\\testPHPVariadics4"],
+            ]);
+        } else {
+            $cases = array_merge($cases, [
+                ["", "", "min"],
+                [
+                    sprintf(
+                        "\$one, \$two = '%s'",
+                        MockFunctionGenerator::DEFAULT_ARGUMENT
+                    ),
+                    '$one, $two',
+                    __NAMESPACE__."\\testPHPVariadics3"
+                ],
+                [
+                    sprintf(
+                        "&\$one, \$two = '%s'",
+                        MockFunctionGenerator::DEFAULT_ARGUMENT
+                    ),
+                    '&$one, $two',
+                    __NAMESPACE__."\\testPHPVariadics4"
+                ],
+            ]);
+        }
+                
+        return $cases;
     }
 }
