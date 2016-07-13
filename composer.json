@@ -29,8 +29,7 @@
         "malkusch/php-mock": "*"
     },
     "suggest": {
-	"php-mock/php-mock-phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock.",
-        "php-mock/php-mock-mockery": "Allows using PHPMockery for Mockery integration"
+	"php-mock/php-mock-phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock."
     },
     "archive": {
         "exclude": ["/tests"]
