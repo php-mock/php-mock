@@ -74,7 +74,7 @@ class Invocation
     }
     
     /**
-     * Return the exception which was thrown by the spoed function.
+     * Return the exception which was thrown by the spied function.
      *
      * @return \Exception|null function's exception or null if none was thrown
      */
