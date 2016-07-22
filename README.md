@@ -89,7 +89,7 @@ object. You can do this with the fluent API of [`MockBuilder`](http://php-mock.g
   sets the concrete mock implementation.
 
 * [`MockBuilder::setFunctionProvider()`](http://php-mock.github.io/php-mock/api/class-phpmock.MockBuilder.html#_setFunctionProvider)
-  sets alternativly to `MockBuilder::setFunction()` the mock implementation as a
+  sets, alternativly to `MockBuilder::setFunction()`, the mock implementation as a
   [`FunctionProvider`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FunctionProvider.html):
 
    * [`FixedValueFunction`](http://php-mock.github.io/php-mock/api/class-phpmock.functions.FixedValueFunction.html)

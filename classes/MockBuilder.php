@@ -82,6 +82,10 @@ class MockBuilder
     /**
      * Sets the mock function.
      *
+     * Use this method if you want to set the mocked behaviour with
+     * a callable. Alternatively, you can use {@link setFunctionProvider()}
+     * to set it with a {@link FunctionProvider}.
+     *
      * @param callable $function The mock function.
      * @return MockBuilder
      * @see setFunctionProvider()
@@ -94,6 +98,10 @@ class MockBuilder
     
     /**
      * Sets the mock function.
+     *
+     * Use this method if you want to set the mocked behaviour with
+     * a {@link FunctionProvider}. Alternatively, you can use
+     * {@link setFunction()} to set it with a callable.
      *
      * @param FunctionProvider $provider The mock function provider.
      * @return MockBuilder
