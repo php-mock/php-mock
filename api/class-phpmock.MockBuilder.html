@@ -5,7 +5,7 @@
 
 	<title>Class phpmock\MockBuilder</title>
 
-	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
 
 </head>
 
@@ -108,11 +108,11 @@
 <pre><span class="php-keyword1">namespace</span> foo;
 
 <span class="php-keyword1">use</span> phpmock\MockBuilder;
-<span class="php-keyword1">use</span> phpmock\FixedValueFunction;
+<span class="php-keyword1">use</span> phpmock\functions\FixedValueFunction;
 
 <span class="php-var">$builder</span> = <span class="php-keyword1">new</span> MockBuilder();
 <span class="php-var">$builder</span>-&gt;setNamespace(__NAMESPACE__)
-        -&gt;setName(__NAMESPACE__)
+        -&gt;setName(<span class="php-quote">&quot;time&quot;</span>)
         -&gt;setFunctionProvider(<span class="php-keyword1">new</span> FixedValueFunction(<span class="php-num">1417011228</span>));
 
 <span class="php-var">$mock</span> = <span class="php-var">$builder</span>-&gt;build();
@@ -150,7 +150,7 @@
 				<code><a href="class-phpmock.Mock.html">phpmock\Mock</a></code><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-phpmock.MockBuilder.html#7-116" title="Go to source code">MockBuilder.php</a>
+			<b>Located at</b> <a href="source-class-phpmock.MockBuilder.html#7-124" title="Go to source code">MockBuilder.php</a>
 		<br>
 	</div>
 
@@ -248,7 +248,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFunction">#</a>
-		<code><a href="source-class-phpmock.MockBuilder.html#82-93" title="Go to source code">setFunction</a>( <span>callable <var>$function</var></span> )</code>
+		<code><a href="source-class-phpmock.MockBuilder.html#82-97" title="Go to source code">setFunction</a>( <span>callable <var>$function</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the mock function.</p>
@@ -256,6 +256,10 @@
 
 		<div class="description detailed hidden">
 			<p>Sets the mock function.</p>
+
+<p>Use this method if you want to set the mocked behaviour with
+a callable. Alternatively, you can use <code><a href="class-phpmock.MockBuilder.html#_setFunctionProvider">phpmock\MockBuilder::setFunctionProvider()</a></code>
+to set it with a <code><a href="class-phpmock.functions.FunctionProvider.html">phpmock\functions\FunctionProvider</a></code>.</p>
 
 
 				<h4>Parameters</h4>
@@ -291,7 +295,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_setFunctionProvider">#</a>
-		<code><a href="source-class-phpmock.MockBuilder.html#95-105" title="Go to source code">setFunctionProvider</a>( <span><code><a href="class-phpmock.functions.FunctionProvider.html">phpmock\functions\FunctionProvider</a></code> <var>$provider</var></span> )</code>
+		<code><a href="source-class-phpmock.MockBuilder.html#99-113" title="Go to source code">setFunctionProvider</a>( <span><code><a href="class-phpmock.functions.FunctionProvider.html">phpmock\functions\FunctionProvider</a></code> <var>$provider</var></span> )</code>
 
 		<div class="description short">
 			<p>Sets the mock function.</p>
@@ -299,6 +303,10 @@
 
 		<div class="description detailed hidden">
 			<p>Sets the mock function.</p>
+
+<p>Use this method if you want to set the mocked behaviour with
+a <code><a href="class-phpmock.functions.FunctionProvider.html">phpmock\functions\FunctionProvider</a></code>. Alternatively, you can use
+<code><a href="class-phpmock.MockBuilder.html#_setFunction">phpmock\MockBuilder::setFunction()</a></code> to set it with a callable.</p>
 
 
 				<h4>Parameters</h4>
@@ -334,7 +342,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_build">#</a>
-		<code><a href="source-class-phpmock.MockBuilder.html#107-115" title="Go to source code">build</a>( )</code>
+		<code><a href="source-class-phpmock.MockBuilder.html#115-123" title="Go to source code">build</a>( )</code>
 
 		<div class="description short">
 			<p>Builds a mock.</p>

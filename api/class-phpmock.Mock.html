@@ -5,7 +5,7 @@
 
 	<title>Class phpmock\Mock</title>
 
-	<link rel="stylesheet" href="resources/style.css?95ada9fb523b6ab4fd1c47bb375f713f2cc65542">
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
 
 </head>
 
@@ -121,7 +121,10 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
     }
 );
 <span class="php-var">$time</span>-&gt;enable();
-<span class="php-keyword2">assert</span> (<span class="php-num">3</span> == <span class="php-keyword2">time</span>());</pre>
+<span class="php-keyword2">assert</span> (<span class="php-num">3</span> == <span class="php-keyword2">time</span>());
+
+<span class="php-var">$time</span>-&gt;disable();
+<span class="php-keyword2">assert</span> (<span class="php-num">3</span> != <span class="php-keyword2">time</span>());</pre>
 	</div>
 
 	<dl class="tree">
@@ -159,7 +162,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 				<code><a href="class-phpmock.MockBuilder.html">phpmock\MockBuilder</a></code><br>
 				<b>Link:</b>
 				<a href="bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK">Donations</a><br>
-			<b>Located at</b> <a href="source-class-phpmock.Mock.html#7-183" title="Go to source code">Mock.php</a>
+			<b>Located at</b> <a href="source-class-phpmock.Mock.html#7-190" title="Go to source code">Mock.php</a>
 		<br>
 	</div>
 
@@ -179,7 +182,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-phpmock.Mock.html#54-66" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
+		<code><a href="source-class-phpmock.Mock.html#57-76" title="Go to source code">__construct</a>( <span>string <var>$namespace</var></span>, <span>string <var>$name</var></span>, <span>callable <var>$function</var></span> )</code>
 
 		<div class="description short">
 			<p>Set the namespace, function name and the mock function.</p>
@@ -218,7 +221,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_enable">#</a>
-		<code><a href="source-class-phpmock.Mock.html#68-89" title="Go to source code">enable</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#78-98" title="Go to source code">enable</a>( )</code>
 
 		<div class="description short">
 			<p>Enables this mock.</p>
@@ -237,8 +240,8 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						<code><a href="class-phpmock.Mock.html#_disable">phpmock\Mock::disable()</a></code><br>
-						<code><a href="class-phpmock.Mock.html#_disableAll">phpmock\Mock::disableAll()</a></code><br>
+						Mock::disable()<br>
+						Mock::disableAll()<br>
 				</div>
 				<h4>Suppresswarnings(phpmd)</h4>
 				<div class="list">
@@ -260,7 +263,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disable">#</a>
-		<code><a href="source-class-phpmock.Mock.html#91-100" title="Go to source code">disable</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#100-109" title="Go to source code">disable</a>( )</code>
 
 		<div class="description short">
 			<p>Disable this mock.</p>
@@ -275,8 +278,8 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						<code><a href="class-phpmock.Mock.html#_enable">phpmock\Mock::enable()</a></code><br>
-						<code><a href="class-phpmock.Mock.html#_disableAll">phpmock\Mock::disableAll()</a></code><br>
+						Mock::enable()<br>
+						Mock::disableAll()<br>
 				</div>
 
 
@@ -297,7 +300,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_disableAll">#</a>
-		<code><a href="source-class-phpmock.Mock.html#102-111" title="Go to source code">disableAll</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#111-120" title="Go to source code">disableAll</a>( )</code>
 
 		<div class="description short">
 			<p>Disable all mocks.</p>
@@ -312,8 +315,8 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 				<h4>See</h4>
 				<div class="list">
-						<code><a href="class-phpmock.Mock.html#_enable">phpmock\Mock::enable()</a></code><br>
-						<code><a href="class-phpmock.Mock.html#_disable">phpmock\Mock::disable()</a></code><br>
+						Mock::enable()<br>
+						Mock::disable()<br>
 				</div>
 
 
@@ -332,7 +335,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getNamespace">#</a>
-		<code><a href="source-class-phpmock.Mock.html#139-147" title="Go to source code">getNamespace</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#147-155" title="Go to source code">getNamespace</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the namespace without enclosing slashes.</p>
@@ -366,7 +369,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getName">#</a>
-		<code><a href="source-class-phpmock.Mock.html#149-157" title="Go to source code">getName</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#157-165" title="Go to source code">getName</a>( )</code>
 
 		<div class="description short">
 			<p>Returns the unqualified function name.</p>
@@ -400,7 +403,7 @@ I.e. only unqualified functions in a non-global namespace can be mocked.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_define">#</a>
-		<code><a href="source-class-phpmock.Mock.html#159-182" title="Go to source code">define</a>( )</code>
+		<code><a href="source-class-phpmock.Mock.html#167-189" title="Go to source code">define</a>( )</code>
 
 		<div class="description short">
 			<p>Defines the mocked function in the given namespace.</p>
