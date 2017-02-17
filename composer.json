@@ -23,7 +23,7 @@
         "phpunit/php-text-template": "^1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4|^5"
+        "phpunit/phpunit": "^5.7"
     },
     "replace": {
         "malkusch/php-mock": "*"

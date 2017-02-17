@@ -2,6 +2,8 @@
 
 namespace phpmock;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Common tests for mocks.
  *
@@ -10,7 +12,7 @@ namespace phpmock;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Mock
  */
-abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractMockTest extends TestCase
 {
 
     /**
@@ -229,6 +231,8 @@ abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
         $this->mockFunction(__NAMESPACE__, "mt_rand", function () {
             return 1234;
         });
+        $this->assertEquals(1234, rand());
+        $this->assertEquals(1234, mt_rand());
     }
 
     /**
@@ -308,6 +312,7 @@ abstract class AbstractMockTest extends \PHPUnit_Framework_TestCase
     public function testBackupStaticAttributes()
     {
         $this->mockFunction(__NAMESPACE__, "testBackupStaticAttributes", "sqrt");
+        $this->assertEquals(2, testBackupStaticAttributes(4));
     }
     
     /**
