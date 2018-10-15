@@ -56,7 +56,7 @@ class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
     {
         /*
          * HHVM did fix this bug already.
-         * 
+         *
          * See https://github.com/sebastianbergmann/phpunit/issues/1356
          * for a better syntax.
          */
