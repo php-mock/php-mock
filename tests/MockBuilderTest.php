@@ -3,6 +3,7 @@
 namespace phpmock;
 
 use phpmock\functions\FixedValueFunction;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests MockBuilder.
@@ -12,7 +13,7 @@ use phpmock\functions\FixedValueFunction;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see MockBuilder
  */
-class MockBuilderTest extends \PHPUnit_Framework_TestCase
+class MockBuilderTest extends TestCase
 {
     
     /**

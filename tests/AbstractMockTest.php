@@ -14,6 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractMockTest extends TestCase
 {
+    use TestCaseTrait;
 
     /**
      * Disable all mocks.
@@ -37,7 +38,7 @@ abstract class AbstractMockTest extends TestCase
      */
     abstract protected function defineFunction($namespace, $functionName);
 
-    protected function tearDown()
+    protected function tearDownCompat()
     {
         parent::tearDown();
 
@@ -102,13 +103,14 @@ abstract class AbstractMockTest extends TestCase
     /**
      * Tests failing enabling an already enabled mock.
      *
-     * @expectedException phpmock\MockEnabledException
      * @test
      */
     public function testFailEnable()
     {
         $name = "testFailEnable";
         $this->mockFunction(__NAMESPACE__, $name, "sqrt");
+
+        $this->expectException(MockEnabledException::class);
         $this->mockFunction(__NAMESPACE__, $name, "sqrt");
     }
     

@@ -16,14 +16,15 @@
     "autoload": {
         "psr-4": {
             "phpmock\\": ["classes/", "tests/"]
-        }
+        },
+        "files": ["autoload.php"]
     },
     "require": {
-        "php": ">=5.6",
+        "php": "^5.6 || ^7.0",
         "phpunit/php-text-template": "^1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.0"
     },
     "replace": {
         "malkusch/php-mock": "*"

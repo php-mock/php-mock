@@ -2,6 +2,8 @@
 
 namespace phpmock\generator;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests MockFunctionGenerator.
  *
@@ -10,7 +12,7 @@ namespace phpmock\generator;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see MockFunctionGenerator
  */
-class MockFunctionGeneratorTest extends \PHPUnit_Framework_TestCase
+class MockFunctionGeneratorTest extends TestCase
 {
 
     /**

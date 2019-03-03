@@ -5,6 +5,8 @@ namespace phpmock\environment;
 use phpmock\Mock;
 use phpmock\MockBuilder;
 use phpmock\functions\FixedValueFunction;
+use phpmock\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests MockEnvironment.
@@ -14,15 +16,16 @@ use phpmock\functions\FixedValueFunction;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see MockEnvironment
  */
-class MockEnvironmentTest extends \PHPUnit_Framework_TestCase
+class MockEnvironmentTest extends TestCase
 {
+    use TestCaseTrait;
     
     /**
      * @var MockEnvironment The tested environment.
      */
     private $environment;
     
-    protected function setUp()
+    protected function setUpCompat()
     {
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
@@ -33,7 +36,7 @@ class MockEnvironmentTest extends \PHPUnit_Framework_TestCase
         $this->environment->addMock($builder->setName("rand")->build());
     }
 
-    protected function tearDown()
+    protected function tearDownCompat()
     {
         $this->environment->disable();
     }

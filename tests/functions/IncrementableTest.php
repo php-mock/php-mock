@@ -2,6 +2,8 @@
 
 namespace phpmock\functions;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests Incrementable and all its implementations.
  *
@@ -10,7 +12,7 @@ namespace phpmock\functions;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Incrementable
  */
-class IncrementableTest extends \PHPUnit_Framework_TestCase
+class IncrementableTest extends TestCase
 {
     
     /**

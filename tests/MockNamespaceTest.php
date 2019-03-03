@@ -6,6 +6,8 @@ namespace phpmock\test;
 use phpmock\Mock;
 use phpmock\MockBuilder;
 use phpmock\functions\FixedValueFunction;
+use phpmock\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests Mock in a different namespace.
@@ -15,8 +17,9 @@ use phpmock\functions\FixedValueFunction;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Mock
  */
-class MockNamespaceTest extends \PHPUnit_Framework_TestCase
+class MockNamespaceTest extends TestCase
 {
+    use TestCaseTrait;
     
     /**
      * @var Mock
@@ -28,7 +31,7 @@ class MockNamespaceTest extends \PHPUnit_Framework_TestCase
      */
     private $builder;
     
-    protected function setUp()
+    protected function setUpCompat()
     {
         $this->builder = new MockBuilder();
         $this->builder
@@ -36,7 +39,7 @@ class MockNamespaceTest extends \PHPUnit_Framework_TestCase
                 ->setFunctionProvider(new FixedValueFunction(1234));
     }
     
-    protected function tearDown()
+    protected function tearDownCompat()
     {
         if (! empty($this->mock)) {
             $this->mock->disable();
