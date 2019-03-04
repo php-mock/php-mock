@@ -3,6 +3,7 @@
 namespace phpmock;
 
 use phpmock\functions\FixedValueFunction;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests Mock's case insensitivity.
@@ -12,15 +13,16 @@ use phpmock\functions\FixedValueFunction;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Mock
  */
-class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
+class MockCaseInsensitivityTest extends TestCase
 {
+    use TestCaseTrait;
     
     /**
      * @var Mock
      */
     private $mock;
     
-    protected function tearDown()
+    protected function tearDownCompat()
     {
         if (isset($this->mock)) {
             $this->mock->disable();
@@ -30,7 +32,6 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
     /**
      * @param string $mockName  The mock function name.
      *
-     * @expectedException phpmock\MockEnabledException
      * @dataProvider provideTestCaseSensitivity
      * @test
      */
@@ -45,6 +46,7 @@ class MockCaseInsensitivityTest extends \PHPUnit_Framework_TestCase
         $this->mock->enable();
         
         $failingMock = $builder->setName($mockName)->build();
+        $this->expectException(MockEnabledException::class);
         $failingMock->enable();
     }
     

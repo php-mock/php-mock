@@ -2,6 +2,8 @@
 
 namespace phpmock\generator;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests ParameterBuilder.
  *
@@ -10,7 +12,7 @@ namespace phpmock\generator;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see ParameterBuilder
  */
-class ParameterBuilderTest extends \PHPUnit_Framework_TestCase
+class ParameterBuilderTest extends TestCase
 {
     
     /**

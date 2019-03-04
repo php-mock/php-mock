@@ -2,6 +2,8 @@
 
 namespace phpmock\functions;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests MicrotimeConverter.
  *
@@ -10,7 +12,7 @@ namespace phpmock\functions;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see MicrotimeConverter
  */
-class MicrotimeConverterTest extends \PHPUnit_Framework_TestCase
+class MicrotimeConverterTest extends TestCase
 {
 
     /**

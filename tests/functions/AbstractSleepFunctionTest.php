@@ -2,6 +2,8 @@
 
 namespace phpmock\functions;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests AbstractSleepFunction and all its implementations.
  *
@@ -10,7 +12,7 @@ namespace phpmock\functions;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see AbstractSleepFunction
  */
-class AbstractSleepFunctionTest extends \PHPUnit_Framework_TestCase
+class AbstractSleepFunctionTest extends TestCase
 {
     
     /**

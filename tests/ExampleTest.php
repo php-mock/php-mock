@@ -7,6 +7,8 @@ use phpmock\MockBuilder;
 use phpmock\MockRegistry;
 use phpmock\functions\FixedValueFunction;
 use phpmock\environment\SleepEnvironmentBuilder;
+use phpmock\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the example from the documentation.
@@ -15,10 +17,11 @@ use phpmock\environment\SleepEnvironmentBuilder;
  * @link bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK Donations
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  */
-class ExampleTest extends \PHPUnit_Framework_TestCase
+class ExampleTest extends TestCase
 {
+    use TestCaseTrait;
     
-    protected function tearDown()
+    protected function tearDownCompat()
     {
         MockRegistry::getInstance()->unregisterAll();
     }
@@ -85,8 +88,6 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
     
     /**
      * Tests the example from the documentation.
-     *
-     * @expectedException Exception
      */
     public function testExample4()
     {
@@ -96,6 +97,7 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
         $mock = new Mock(__NAMESPACE__, "time", $function);
         $mock->enable();
         try {
+            $this->expectException(\Exception::class);
             time();
         } finally {
             $mock->disable();
@@ -117,6 +119,6 @@ class ExampleTest extends \PHPUnit_Framework_TestCase
             }
         );
         $time->enable();
-        assert(3 == time());
+        $this->assertSame(3, time());
     }
 }

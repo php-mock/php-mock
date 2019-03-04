@@ -3,6 +3,7 @@
 namespace phpmock;
 
 use phpmock\functions\FixedValueFunction;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the ordering of the mock creation.
@@ -12,15 +13,16 @@ use phpmock\functions\FixedValueFunction;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Mock
  */
-class MockDefiningOrderTest extends \PHPUnit_Framework_TestCase
+class MockDefiningOrderTest extends TestCase
 {
+    use TestCaseTrait;
 
     /**
      * @var Mock The mock.
      */
     private $mock;
 
-    protected function tearDown()
+    protected function tearDownCompat()
     {
         if (isset($this->mock)) {
             $this->mock->disable();

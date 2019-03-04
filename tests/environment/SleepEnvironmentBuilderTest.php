@@ -2,6 +2,9 @@
 
 namespace phpmock\environment;
 
+use phpmock\TestCaseTrait;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests SleepEnvironmentBuilder.
  *
@@ -10,15 +13,16 @@ namespace phpmock\environment;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see SleepEnvironmentBuilder
  */
-class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
+class SleepEnvironmentBuilderTest extends TestCase
 {
+    use TestCaseTrait;
     
     /**
      * @var MockEnvironment The build environment.
      */
     private $environment;
     
-    protected function setUp()
+    protected function setUpCompat()
     {
         $builder = new SleepEnvironmentBuilder();
         $builder->addNamespace(__NAMESPACE__)
@@ -28,7 +32,7 @@ class SleepEnvironmentBuilderTest extends \PHPUnit_Framework_TestCase
         $this->environment->enable();
     }
 
-    protected function tearDown()
+    protected function tearDownCompat()
     {
         $this->environment->disable();
     }

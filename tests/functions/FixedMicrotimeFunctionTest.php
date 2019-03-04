@@ -3,6 +3,7 @@
 namespace phpmock\functions;
 
 use phpmock\MockBuilder;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests FixedMicrotimeFunction.
@@ -12,7 +13,7 @@ use phpmock\MockBuilder;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see FixedMicrotimeFunction
  */
-class FixedMicrotimeFunctionTest extends \PHPUnit_Framework_TestCase
+class FixedMicrotimeFunctionTest extends TestCase
 {
     
     /**
@@ -92,11 +93,11 @@ class FixedMicrotimeFunctionTest extends \PHPUnit_Framework_TestCase
      * Tests exception for invalid argument in constructor.
      *
      * @test
-     * @expectedException \InvalidArgumentException
      * @dataProvider provideTestConstructFailsForInvalidArgument
      */
     public function testConstructFailsForInvalidArgument($timestamp)
     {
+        $this->expectException(\InvalidArgumentException::class);
         new FixedMicrotimeFunction($timestamp);
     }
     
