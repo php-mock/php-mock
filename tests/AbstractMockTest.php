@@ -308,7 +308,7 @@ abstract class AbstractMockTest extends TestCase
      * Tests declaring repeatedly a mock with enabled backupStaticAttributes.
      *
      * @test
-     * @backupStaticAttributes enabled
+     * @backupStaticAttributes
      * @dataProvider provideTestBackupStaticAttributes
      */
     public function testBackupStaticAttributes()
