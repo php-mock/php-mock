@@ -4,6 +4,11 @@ namespace phpmock;
 
 use PHPUnit\Framework\TestCase;
 
+// When class is used in related repositories we need to add autoloader for PHPUnit 8 compatibility
+if (!trait_exists(TestCaseTrait::class)) {
+    require __DIR__ . '/../autoload.php';
+}
+
 /**
  * Common tests for mocks.
  *

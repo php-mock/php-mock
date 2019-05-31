@@ -16,7 +16,9 @@
     "autoload": {
         "psr-4": {
             "phpmock\\": ["classes/", "tests/"]
-        },
+        }
+    },
+    "autoload-dev": {
         "files": ["autoload.php"]
     },
     "require": {
