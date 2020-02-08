@@ -262,7 +262,7 @@ abstract class AbstractMockTest extends TestCase
     public function testImplicitDefine()
     {
         $functionName = $this->buildPrivateFunctionName("testDefine");
-        $fqfn         = __NAMESPACE__."\\$functionName";
+        $fqfn         = __NAMESPACE__ . "\\$functionName";
         $this->assertFalse(function_exists($fqfn));
         $this->mockFunction(__NAMESPACE__, $functionName, "sqrt");
         $this->assertTrue(function_exists($fqfn));

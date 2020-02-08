@@ -2,6 +2,8 @@
 
 namespace phpmock\functions;
 
+use InvalidArgumentException;
+
 /**
  * Mock function for date() which returns always the same time.
  *
@@ -28,7 +30,7 @@ class FixedDateFunction implements FunctionProvider, Incrementable
             $timestamp = \time();
         }
         if (!is_numeric($timestamp)) {
-            throw new \InvalidArgumentException("Timestamp should be numeric");
+            throw new InvalidArgumentException('Timestamp should be numeric');
         }
         $this->timestamp = $timestamp;
     }

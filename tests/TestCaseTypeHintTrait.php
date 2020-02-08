@@ -7,14 +7,14 @@ namespace phpmock;
  */
 trait TestCaseTypeHintTrait
 {
-    protected function setUp() : void
+    protected function setUp(): void
     {
         if (method_exists($this, 'setUpCompat')) {
             $this->setUpCompat();
         }
     }
 
-    protected function tearDown() : void
+    protected function tearDown(): void
     {
         if (method_exists($this, 'tearDownCompat')) {
             $this->tearDownCompat();

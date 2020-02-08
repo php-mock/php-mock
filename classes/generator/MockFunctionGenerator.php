@@ -4,6 +4,7 @@ namespace phpmock\generator;
 
 use phpmock\Mock;
 use phpmock\MockRegistry;
+use SebastianBergmann\Template\Template;
 
 /**
  * Generates the mock function.
@@ -27,7 +28,7 @@ class MockFunctionGenerator
     private $mock;
     
     /**
-     * @var \Text_Template The function template.
+     * @var Template The function template.
      */
     private $template;
     
@@ -39,7 +40,7 @@ class MockFunctionGenerator
     public function __construct(Mock $mock)
     {
         $this->mock     = $mock;
-        $this->template = new \Text_Template(__DIR__ . "/function.tpl");
+        $this->template = new Template(__DIR__ . '/function.tpl');
     }
     
     /**

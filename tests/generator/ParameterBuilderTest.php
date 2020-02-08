@@ -115,14 +115,14 @@ class ParameterBuilderTest extends TestCase
         }
         
         $cases = [
-            ["", "", __NAMESPACE__."\\testNoParameter"],
-            ['$one', '$one', __NAMESPACE__."\\testOneParameter"],
-            ['$one, $two', '$one, $two', __NAMESPACE__."\\testTwoParameters"],
-            ['$one, $two', '$one, $two', __NAMESPACE__."\\testTwoParameters"],
-            ['&$one', '&$one', __NAMESPACE__."\\testReference1"],
-            ['&$one, $two', '&$one, $two', __NAMESPACE__."\\testReference2"],
-            ['$one, &$two', '$one, &$two', __NAMESPACE__."\\testReference3"],
-            ['&$one, &$two', '&$one, &$two', __NAMESPACE__."\\testReference4"],
+            ["", "", __NAMESPACE__ . "\\testNoParameter"],
+            ['$one', '$one', __NAMESPACE__ . "\\testOneParameter"],
+            ['$one, $two', '$one, $two', __NAMESPACE__ . "\\testTwoParameters"],
+            ['$one, $two', '$one, $two', __NAMESPACE__ . "\\testTwoParameters"],
+            ['&$one', '&$one', __NAMESPACE__ . "\\testReference1"],
+            ['&$one, $two', '&$one, $two', __NAMESPACE__ . "\\testReference2"],
+            ['$one, &$two', '$one, &$two', __NAMESPACE__ . "\\testReference3"],
+            ['&$one, &$two', '&$one, &$two', __NAMESPACE__ . "\\testReference4"],
             [
                 sprintf(
                     "\$command, &\$output = '%1\$s', &\${$return_value} = '%1\$s'",
@@ -137,7 +137,7 @@ class ParameterBuilderTest extends TestCase
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one',
-                __NAMESPACE__."\\testOptionalParameters1"
+                __NAMESPACE__ . "\\testOptionalParameters1"
             ],
             [
                 sprintf(
@@ -145,7 +145,7 @@ class ParameterBuilderTest extends TestCase
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, $two',
-                __NAMESPACE__."\\testOptionalParameters2"
+                __NAMESPACE__ . "\\testOptionalParameters2"
             ],
             [
                 sprintf(
@@ -153,7 +153,7 @@ class ParameterBuilderTest extends TestCase
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, $two',
-                __NAMESPACE__."\\testOptionalParameters3"
+                __NAMESPACE__ . "\\testOptionalParameters3"
             ],
             [
                 sprintf(
@@ -161,7 +161,7 @@ class ParameterBuilderTest extends TestCase
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, $two',
-                __NAMESPACE__."\\testOptionalParameters4"
+                __NAMESPACE__ . "\\testOptionalParameters4"
             ],
             [
                 sprintf(
@@ -169,18 +169,18 @@ class ParameterBuilderTest extends TestCase
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
                 '$one, &$two, $three, &$four',
-                __NAMESPACE__."\\testCombined"
+                __NAMESPACE__ . "\\testCombined"
             ],
-            ["", "", __NAMESPACE__."\\testPHPVariadics1"],
-            ['$one', '$one', __NAMESPACE__."\\testPHPVariadics2"],
+            ["", "", __NAMESPACE__ . "\\testPHPVariadics1"],
+            ['$one', '$one', __NAMESPACE__ . "\\testPHPVariadics2"],
         ];
                 
         if (defined('HHVM_VERSION')) {
             // HHVM has different implementation details
             $cases = array_merge($cases, [
                 ['$value1', '$value1', "min"],
-                ['$one, $two', '$one, $two', __NAMESPACE__."\\testPHPVariadics3"],
-                ['&$one, $two', '&$one, $two', __NAMESPACE__."\\testPHPVariadics4"],
+                ['$one, $two', '$one, $two', __NAMESPACE__ . "\\testPHPVariadics3"],
+                ['&$one, $two', '&$one, $two', __NAMESPACE__ . "\\testPHPVariadics4"],
             ]);
         } else {
             $cases = array_merge($cases, [
@@ -191,7 +191,7 @@ class ParameterBuilderTest extends TestCase
                         MockFunctionGenerator::DEFAULT_ARGUMENT
                     ),
                     '$one, $two',
-                    __NAMESPACE__."\\testPHPVariadics3"
+                    __NAMESPACE__ . "\\testPHPVariadics3"
                 ],
                 [
                     sprintf(
@@ -199,7 +199,7 @@ class ParameterBuilderTest extends TestCase
                         MockFunctionGenerator::DEFAULT_ARGUMENT
                     ),
                     '&$one, $two',
-                    __NAMESPACE__."\\testPHPVariadics4"
+                    __NAMESPACE__ . "\\testPHPVariadics4"
                 ],
             ]);
         }

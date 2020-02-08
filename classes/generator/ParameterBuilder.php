@@ -2,6 +2,8 @@
 
 namespace phpmock\generator;
 
+use ReflectionFunction;
+
 /**
  * Builder for the mocked function parameters.
  *
@@ -33,7 +35,7 @@ class ParameterBuilder
         if (!function_exists($functionName)) {
             return;
         }
-        $function            = new \ReflectionFunction($functionName);
+        $function            = new ReflectionFunction($functionName);
         $signatureParameters = [];
         $bodyParameters      = [];
         foreach ($function->getParameters() as $reflectionParameter) {
