@@ -1,15 +1,9 @@
 <?php
 
-use PHPUnit\Runner\Version;
+// Compatibility with phpunit/php-text-template v2
 
-// Compatibility with PHPUnit 8.0
-// We need to use "magic" trait \phpmock\TestCaseTrait
-// and instead of setUp/tearDown method in test case
-// we should have setUpCompat/tearDownCompat.
-if (class_exists(Version::class)
-    && version_compare(Version::id(), '8.0.0') >= 0
+if (!class_exists(SebastianBergmann\Template\Template::class)
+    && class_exists(Text_Template::class)
 ) {
-    class_alias(\phpmock\TestCaseTypeHintTrait::class, \phpmock\TestCaseTrait::class);
-} else {
-    class_alias(\phpmock\TestCaseNoTypeHintTrait::class, \phpmock\TestCaseTrait::class);
+    class_alias(Text_Template::class, SebastianBergmann\Template\Template::class);
 }

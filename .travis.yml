@@ -1,13 +1,11 @@
 language: php
 
-sudo: false
-
 cache:
   directories:
     - $HOME/.composer/cache
 
 php:
-  - 7.4snapshot
+  - 7.4
   - 7.3
   - 7.2
   - 7.1
@@ -16,8 +14,6 @@ php:
 
 matrix:
   fast_finish: true
-  allow_failures:
-    - php: 7.4snapshot
 
 install:
   - composer require cundd/test-flight squizlabs/php_codesniffer phpmd/phpmd
