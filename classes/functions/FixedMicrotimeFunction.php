@@ -2,6 +2,8 @@
 
 namespace phpmock\functions;
 
+use InvalidArgumentException;
+
 /**
  * Mock function for microtime which returns always the same time.
  *
@@ -33,7 +35,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
         } elseif (is_numeric($timestamp)) {
             $this->setMicrotimeAsFloat($timestamp);
         } else {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 "Timestamp parameter is invalid type."
             );
         }
@@ -57,7 +59,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     public function setMicrotime($timestamp)
     {
         if (empty($timestamp)) {
-            throw new \InvalidArgumentException("Timestamp should not be empty");
+            throw new InvalidArgumentException('Timestamp should not be empty');
         }
         $this->timestamp = $timestamp;
     }
@@ -70,7 +72,7 @@ class FixedMicrotimeFunction implements FunctionProvider, Incrementable
     public function setMicrotimeAsFloat($timestamp)
     {
         if (!is_numeric($timestamp)) {
-            throw new \InvalidArgumentException("Timestamp should be numeric");
+            throw new InvalidArgumentException('Timestamp should be numeric');
         }
         $converter = new MicrotimeConverter();
         $this->timestamp = $converter->convertFloatToString($timestamp);
