@@ -1,7 +1,7 @@
 <?php
 
 // A different namespace
-namespace phpmock\test;
+namespace phpmocktest;
 
 use phpmock\Mock;
 use phpmock\MockBuilder;
