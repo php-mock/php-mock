@@ -108,8 +108,9 @@ class ParameterBuilderTest extends TestCase
         
         // @codingStandardsIgnoreEnd
 
+        // PHP8.0+ has a different signature wording.
+        $return_value = version_compare(PHP_VERSION, '8', '<') ? "return_value" : "result_code";
         // HHVM has a different signature wording.
-        $return_value = "return_value";
         if (defined('HHVM_VERSION')) {
             $return_value = "return_var";
         }
@@ -184,7 +185,7 @@ class ParameterBuilderTest extends TestCase
             ]);
         } else {
             $cases = array_merge($cases, [
-                ["", "", "min"],
+                version_compare(PHP_VERSION, '8', '<') ? ["", "", "min"] : ['$value', '$value', "min"],
                 [
                     sprintf(
                         "\$one, \$two = '%s'",
