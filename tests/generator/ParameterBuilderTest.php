@@ -66,10 +66,6 @@ class ParameterBuilderTest extends TestCase
         {
         }
 
-        function testOptionalParameters4($one = 1, $two)
-        {
-        }
-        
         function testReference1(&$one)
         {
         }
@@ -104,6 +100,14 @@ class ParameterBuilderTest extends TestCase
 
         function testPHPVariadics4(&$one, $two = 2, ...$three)
         {
+        }
+
+        // When declaring a function or a method, adding a required parameter
+        // after optional parameters is deprecated since PHP 8.0. So, let's
+        // use conditional eval() here and avoid parsing this part of file
+        // as a function in PHP8.0+.
+        if (version_compare(PHP_VERSION, '8.0', '<')) {
+          eval('function testOptionalParametersBeforeRequired($one = 1, $two) {}');
         }
         
         // @codingStandardsIgnoreEnd
@@ -158,14 +162,6 @@ class ParameterBuilderTest extends TestCase
             ],
             [
                 sprintf(
-                    "\$one, \$two",
-                    MockFunctionGenerator::DEFAULT_ARGUMENT
-                ),
-                '$one, $two',
-                __NAMESPACE__ . "\\testOptionalParameters4"
-            ],
-            [
-                sprintf(
                     "\$one, &\$two, \$three = '%1\$s', &\$four = '%1\$s'",
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
@@ -205,6 +201,19 @@ class ParameterBuilderTest extends TestCase
             ]);
         }
 
+        if (version_compare(PHP_VERSION, '8.0', '<')) {
+            $cases = array_merge($cases, [
+                [
+                    sprintf(
+                        "\$one, \$two",
+                        MockFunctionGenerator::DEFAULT_ARGUMENT
+                    ),
+                    '$one, $two',
+                    __NAMESPACE__ . "\\testOptionalParametersBeforeRequired"
+                ],
+            ]);
+        }
+                
         return $cases;
     }
 }
