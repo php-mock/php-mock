@@ -107,7 +107,12 @@ class ParameterBuilderTest extends TestCase
         // use conditional eval() here and avoid parsing this part of file
         // as a function in PHP8.0+.
         if (version_compare(PHP_VERSION, '8.0', '<')) {
-          eval('function testOptionalParametersBeforeRequired($one = 1, $two) {}');
+          eval(
+              'namespace ' . __NAMESPACE__ . ';
+               function testOptionalParametersBeforeRequired($one = 1, $two)
+               {
+               }'
+          );
         }
         
         // @codingStandardsIgnoreEnd
@@ -213,7 +218,7 @@ class ParameterBuilderTest extends TestCase
                 ],
             ]);
         }
-                
+
         return $cases;
     }
 }
