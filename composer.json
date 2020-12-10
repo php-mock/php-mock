@@ -23,7 +23,7 @@
         "files": ["tests/autoload.php"]
     },
     "require": {
-        "php": "^5.6 || ^7.0",
+        "php": "^5.6 || ^7.0 || ^8.0",
         "phpunit/php-text-template": "^1 || ^2"
     },
     "require-dev": {
