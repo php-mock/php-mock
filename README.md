@@ -261,4 +261,4 @@ This library was inspired by Fabian Schmengler's article
 If you like PHP-Mock and feel generous donate a few Bitcoins here:
 [1335STSwu9hST4vcMRppEPgENMHD2r1REK](bitcoin:1335STSwu9hST4vcMRppEPgENMHD2r1REK)
 
-[![Build Status](https://travis-ci.org/php-mock/php-mock.svg?branch=master)](https://travis-ci.org/php-mock/php-mock)
+[![Build Status](https://travis-ci.com/php-mock/php-mock.svg?branch=master)](https://travis-ci.com/php-mock/php-mock)
