@@ -29,7 +29,7 @@ class MockFunctionGeneratorTest extends TestCase
         MockFunctionGenerator::removeDefaultArguments($arguments);
         $this->assertEquals($expected, $arguments);
     }
-    
+
     /**
      * Returns test cases for testRemoveDefaultArguments().
      *

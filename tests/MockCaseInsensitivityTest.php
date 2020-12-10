@@ -16,12 +16,12 @@ use PHPUnit\Framework\TestCase;
 class MockCaseInsensitivityTest extends TestCase
 {
     use TestCaseTrait;
-    
+
     /**
      * @var Mock
      */
     private $mock;
-    
+
     protected function tearDownCompat()
     {
         if (isset($this->mock)) {
@@ -44,12 +44,12 @@ class MockCaseInsensitivityTest extends TestCase
 
         $this->mock = $builder->build();
         $this->mock->enable();
-        
+
         $failingMock = $builder->setName($mockName)->build();
         $this->expectException(MockEnabledException::class);
         $failingMock->enable();
     }
-    
+
     /**
      * Tests case insensitive mocks.
      *
@@ -67,12 +67,12 @@ class MockCaseInsensitivityTest extends TestCase
 
         $this->mock = $builder->build();
         $this->mock->enable();
-        
+
         $this->assertEquals(1234, time(), "time() is not mocked");
         $this->assertEquals(1234, Time(), "Time() is not mocked");
         $this->assertEquals(1234, TIME(), "TIME() is not mocked");
     }
-    
+
     /**
      * Returns test cases for testCaseSensitivity().
      *

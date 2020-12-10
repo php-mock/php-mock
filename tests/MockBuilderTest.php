@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class MockBuilderTest extends TestCase
 {
-    
+
     /**
      * Tests build().
      *
@@ -31,13 +31,13 @@ class MockBuilderTest extends TestCase
                         return 1234;
                     }
                 );
-        
+
         $mock = $builder->build();
         $mock->enable();
         $this->assertEquals(1234, time());
         $mock->disable();
-        
-        
+
+
         $builder->setFunctionProvider(new FixedValueFunction(123));
         $mock = $builder->build();
         $mock->enable();

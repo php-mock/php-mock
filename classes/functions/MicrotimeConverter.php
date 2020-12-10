@@ -12,7 +12,7 @@ namespace phpmock\functions;
  */
 class MicrotimeConverter
 {
-    
+
     /**
      * Converts a string microtime into a float.
      *
@@ -26,13 +26,13 @@ class MicrotimeConverter
          * http://php.net/manual/en/function.microtime.php
          */
         // list($usec, $sec) = explode(" ", $microtime);
-        
+
         // This seems to be more intuitive as an inverse function.
         list($usec, $sec) = sscanf($microtime, "%f %d");
-        
+
         return ((float)$usec + (float)$sec);
     }
-    
+
     /**
      * Converts a float microtime in PHP's microtime() string format.
      *

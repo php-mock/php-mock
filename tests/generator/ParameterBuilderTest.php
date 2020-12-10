@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ParameterBuilderTest extends TestCase
 {
-    
+
     /**
      * Tests build().
      *
@@ -32,7 +32,7 @@ class ParameterBuilderTest extends TestCase
         $this->assertEquals($expectedSignature, $builder->getSignatureParameters());
         $this->assertEquals($expectedBody, $builder->getBodyParameters());
     }
-    
+
     /**
      * Returns test cases for testBuild().
      *
@@ -113,7 +113,7 @@ class ParameterBuilderTest extends TestCase
         if (defined('HHVM_VERSION')) {
             $return_value = "return_var";
         }
-        
+
         $cases = [
             ["", "", __NAMESPACE__ . "\\testNoParameter"],
             ['$one', '$one', __NAMESPACE__ . "\\testOneParameter"],
@@ -174,7 +174,7 @@ class ParameterBuilderTest extends TestCase
             ["", "", __NAMESPACE__ . "\\testPHPVariadics1"],
             ['$one', '$one', __NAMESPACE__ . "\\testPHPVariadics2"],
         ];
-                
+
         if (defined('HHVM_VERSION')) {
             // HHVM has different implementation details
             $cases = array_merge($cases, [
@@ -203,7 +203,7 @@ class ParameterBuilderTest extends TestCase
                 ],
             ]);
         }
-                
+
         return $cases;
     }
 }

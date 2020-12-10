@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset name="Coding Standards">
+    <rule ref="PSR12">
+        <exclude name="PSR12.Properties.ConstantVisibility.NotFound"/>
+    </rule>
+
+    <arg name="colors"/>
+    <arg value="p"/>
+
+    <file>classes</file>
+    <file>tests</file>
+</ruleset>

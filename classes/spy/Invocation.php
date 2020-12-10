@@ -11,17 +11,17 @@ namespace phpmock\spy;
  */
 class Invocation
 {
-    
+
     /**
      * @var mixed The function call's return value.
      */
     private $return;
-    
+
     /**
      * @var array The function call's arguments.
      */
     private $arguments;
-    
+
     /**
      * @var \Exception|null The exception thrown by the function.
      */
@@ -62,7 +62,7 @@ class Invocation
     {
         return $this->return;
     }
-    
+
     /**
      * Returns if the spied function threw an exception.
      *
@@ -72,7 +72,7 @@ class Invocation
     {
         return !is_null($this->exception);
     }
-    
+
     /**
      * Return the exception which was thrown by the spied function.
      *
