@@ -16,11 +16,11 @@ matrix:
   fast_finish: true
 
 install:
-  - composer require cundd/test-flight squizlabs/php_codesniffer phpmd/phpmd
+  - composer require cundd/test-flight phpmd/phpmd
 
 script:
   - vendor/bin/phpunit
   - vendor/bin/test-flight README.md
   - vendor/bin/test-flight classes/
-  - vendor/bin/phpcs --standard=PSR12 classes/ tests/
+  - vendor/bin/phpcs
   - vendor/bin/phpmd classes/ text cleancode,codesize,controversial,design,naming,unusedcode
