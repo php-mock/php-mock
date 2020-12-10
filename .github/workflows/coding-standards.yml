@@ -21,4 +21,4 @@ jobs:
           tools: composer:v2, cs2pr, phpcs
 
       - name: "Run phpcs"
-        run: phpcs -q --report=checkstyle src | cs2pr
+        run: phpcs -q --report=checkstyle classes tests | cs2pr
