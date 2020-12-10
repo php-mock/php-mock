@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class IncrementableTest extends TestCase
 {
-    
+
     /**
      * Tests increment().
      *
@@ -35,7 +35,7 @@ class IncrementableTest extends TestCase
         $incrementable->increment($increment);
         $this->assertEquals($expected, $getValue($incrementable));
     }
-    
+
     /**
      * Test cases for testIncrement().
      *
@@ -56,15 +56,15 @@ class IncrementableTest extends TestCase
             [1, 1, new FixedValueFunction(0), $getFixedValue],
             [2, 1, new FixedValueFunction(1), $getFixedValue],
             [-1, -1, new FixedValueFunction(0), $getFixedValue],
-            
+
             [1, 1, new FixedMicrotimeFunction(0), $getMicrotime],
             [-1, -1, new FixedMicrotimeFunction(0), $getMicrotime],
             [2, 1, new FixedMicrotimeFunction(1), $getMicrotime],
-            
+
             [1, 1, new FixedDateFunction(0), $getDate],
             [-1, -1, new FixedDateFunction(0), $getDate],
             [2, 1, new FixedDateFunction(1), $getDate],
-            
+
             [
                 1.00000001,
                 0.00000001,

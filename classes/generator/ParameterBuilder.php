@@ -45,7 +45,7 @@ class ParameterBuilder
             $parameter = $reflectionParameter->isPassedByReference()
                 ? "&$$reflectionParameter->name"
                 : "$$reflectionParameter->name";
-            
+
             $signatureParameter = $reflectionParameter->isOptional()
                 ? sprintf("%s = '%s'", $parameter, MockFunctionGenerator::DEFAULT_ARGUMENT)
                 : $parameter;
@@ -56,7 +56,7 @@ class ParameterBuilder
         $this->signatureParameters = implode(", ", $signatureParameters);
         $this->bodyParameters      = implode(", ", $bodyParameters);
     }
-    
+
     /**
      * Returns whether a parameter is variadic.
      *
@@ -75,7 +75,7 @@ class ParameterBuilder
         }
         return false;
     }
-    
+
     /**
      * Returns the signature's parameters.
      *
@@ -85,7 +85,7 @@ class ParameterBuilder
     {
         return $this->signatureParameters;
     }
-    
+
     /**
      * Returns the body's parameter access list.
      *

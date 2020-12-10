@@ -12,7 +12,7 @@ namespace phpmock;
  */
 class MockEnabledException extends \Exception
 {
-    
+
     /**
      * Sets the message.
      *

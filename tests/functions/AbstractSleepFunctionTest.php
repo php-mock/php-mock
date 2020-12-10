@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractSleepFunctionTest extends TestCase
 {
-    
+
     /**
      * Tests incrementation of all Incrementables
      *
@@ -25,13 +25,13 @@ class AbstractSleepFunctionTest extends TestCase
         $value1 = new FixedValueFunction(1);
         $value2 = new FixedValueFunction(2);
         $sleep = new SleepFunction([$value1, $value2]);
-        
+
         call_user_func($sleep->getCallable(), 1);
-        
+
         $this->assertEquals(2, call_user_func($value1->getCallable()));
         $this->assertEquals(3, call_user_func($value2->getCallable()));
     }
-    
+
     /**
      * Tests incrementation of Incrementables
      *
@@ -52,7 +52,7 @@ class AbstractSleepFunctionTest extends TestCase
         call_user_func($sleepFunction->getCallable(), $amount);
         $this->assertEquals($expected, call_user_func($value->getCallable()));
     }
-    
+
     /**
      * Returns test cases for testSleepIncrementation().
      *

@@ -16,18 +16,18 @@ use PHPUnit\Framework\TestCase;
 class SleepEnvironmentBuilderTest extends TestCase
 {
     use TestCaseTrait;
-    
+
     /**
      * @var MockEnvironment The build environment.
      */
     private $environment;
-    
+
     protected function setUpCompat()
     {
         $builder = new SleepEnvironmentBuilder();
         $builder->addNamespace(__NAMESPACE__)
                 ->setTimestamp(1234);
-        
+
         $this->environment = $builder->build();
         $this->environment->enable();
     }
@@ -36,7 +36,7 @@ class SleepEnvironmentBuilderTest extends TestCase
     {
         $this->environment->disable();
     }
-    
+
     /**
      * Tests mocking functions accross several namespaces.
      *
@@ -52,11 +52,11 @@ class SleepEnvironmentBuilderTest extends TestCase
         $this->environment->disable();
         $this->environment = $builder->build();
         $this->environment->enable();
-        
+
         $time = time();
         \testAddNamespace\sleep(123);
         sleep(123);
-        
+
         $this->assertEquals(2 * 123 + $time, time());
         $this->assertEquals(2 * 123 + $time, \testAddNamespace\time());
     }
@@ -71,12 +71,12 @@ class SleepEnvironmentBuilderTest extends TestCase
         $time = time();
         $microtime = microtime(true);
         sleep(1);
-        
+
         $this->assertEquals($time + 1, time());
         $this->assertEquals($microtime + 1, microtime(true));
         $this->assertEquals($time + 1, date("U"));
     }
-    
+
     /**
      * Tests usleep()
      *
@@ -90,13 +90,13 @@ class SleepEnvironmentBuilderTest extends TestCase
         $time = time();
         $microtime = microtime(true);
         usleep($microseconds);
-        
+
         $delta = $microseconds / 1000000;
         $this->assertEquals((int)($time + $delta), time());
         $this->assertEquals((int)($time + $delta), date("U"));
         $this->assertEquals($microtime + $delta, microtime(true));
     }
-    
+
     /**
      * Returns test cases for testUsleep().
      *
@@ -120,7 +120,7 @@ class SleepEnvironmentBuilderTest extends TestCase
     {
         $time = time();
         sleep(100);
-        
+
         $this->assertEquals($time + 100, date("U"));
     }
 }

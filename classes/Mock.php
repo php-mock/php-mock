@@ -44,17 +44,17 @@ class Mock implements Deactivatable
      * @var string namespace for the mock function.
      */
     private $namespace;
-    
+
     /**
      * @var string function name of the mocked function.
      */
     private $name;
-    
+
     /**
      * @var callable The function mock.
      */
     private $function;
-    
+
     /**
      * Set the namespace, function name and the mock function.
      *
@@ -70,12 +70,12 @@ class Mock implements Deactivatable
         if (empty($name)) {
             throw new InvalidArgumentException('Function name should not be empty');
         }
-        
+
         $this->namespace = $namespace;
         $this->name      = $name;
         $this->function  = $function;
     }
-    
+
     /**
      * Enables this mock.
      *
@@ -108,7 +108,7 @@ class Mock implements Deactivatable
     {
         MockRegistry::getInstance()->unregister($this);
     }
-    
+
     /**
      * Disable all mocks.
      *
@@ -119,7 +119,7 @@ class Mock implements Deactivatable
     {
         MockRegistry::getInstance()->unregisterAll();
     }
-    
+
     /**
      * Calls the mocked function.
      *
@@ -133,7 +133,7 @@ class Mock implements Deactivatable
     {
         return call_user_func_array($this->function, $arguments);
     }
-    
+
     /**
      * Returns the fully qualified function name.
      *
@@ -154,7 +154,7 @@ class Mock implements Deactivatable
     {
         return trim($this->namespace, "\\");
     }
-    
+
     /**
      * Returns the unqualified function name.
      *
@@ -164,7 +164,7 @@ class Mock implements Deactivatable
     {
         return $this->name;
     }
-    
+
     /**
      * Defines the mocked function in the given namespace.
      *

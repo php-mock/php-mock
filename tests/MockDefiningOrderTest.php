@@ -28,7 +28,7 @@ class MockDefiningOrderTest extends TestCase
             $this->mock->disable();
         }
     }
-    
+
     /**
      * Returns the built-in call to escapeshellcmd().
      *
@@ -65,17 +65,17 @@ class MockDefiningOrderTest extends TestCase
         if (defined('HHVM_VERSION')) {
             $this->markTestSkipped();
         }
-        
+
         $function = __NAMESPACE__ . '\escapeshellcmd';
         $this->assertFalse(function_exists($function));
-        
+
         self::escapeshellcmd("foo");
-        
+
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
                 ->setName("escapeshellcmd")
                 ->setFunctionProvider(new FixedValueFunction("foo"));
-        
+
         $this->mock = $builder->build();
         $this->mock->enable();
 

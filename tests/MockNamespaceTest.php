@@ -20,17 +20,17 @@ use PHPUnit\Framework\TestCase;
 class MockNamespaceTest extends TestCase
 {
     use TestCaseTrait;
-    
+
     /**
      * @var Mock
      */
     private $mock;
-    
+
     /**
      * @var MockBuilder
      */
     private $builder;
-    
+
     protected function setUpCompat()
     {
         $this->builder = new MockBuilder();
@@ -38,7 +38,7 @@ class MockNamespaceTest extends TestCase
                 ->setName("time")
                 ->setFunctionProvider(new FixedValueFunction(1234));
     }
-    
+
     protected function tearDownCompat()
     {
         if (! empty($this->mock)) {
@@ -59,7 +59,7 @@ class MockNamespaceTest extends TestCase
         $this->builder->setNamespace(__NAMESPACE__);
         $this->mock = $this->builder->build();
         $this->mock->enable();
-        
+
         $this->assertEquals(1234, time());
     }
 
@@ -74,10 +74,10 @@ class MockNamespaceTest extends TestCase
         $this->builder->setNamespace(__NAMESPACE__);
         $this->mock = $this->builder->build();
         $this->mock->enable();
-        
+
         $this->assertEquals(1234, time());
     }
-    
+
     /**
      * Provides namespaces for testNamespace().
      *

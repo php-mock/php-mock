@@ -19,18 +19,18 @@ use PHPUnit\Framework\TestCase;
 class MockEnvironmentTest extends TestCase
 {
     use TestCaseTrait;
-    
+
     /**
      * @var MockEnvironment The tested environment.
      */
     private $environment;
-    
+
     protected function setUpCompat()
     {
         $builder = new MockBuilder();
         $builder->setNamespace(__NAMESPACE__)
                 ->setFunctionProvider(new FixedValueFunction(1234));
-        
+
         $this->environment = new MockEnvironment();
         $this->environment->addMock($builder->setName("time")->build());
         $this->environment->addMock($builder->setName("rand")->build());
@@ -65,14 +65,14 @@ class MockEnvironmentTest extends TestCase
             new Mock(__NAMESPACE__, "testDefine", function () {
             })
         );
-        
+
         $this->environment->define();
 
         $this->assertTrue(function_exists("phpmock\\environment\\time"));
         $this->assertTrue(function_exists("phpmock\\environment\\rand"));
         $this->assertTrue(function_exists("phpmock\\environment\\testDefine"));
     }
-    
+
     /**
      * Tests disable()
      *
