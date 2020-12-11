@@ -66,10 +66,6 @@ class ParameterBuilderTest extends TestCase
         {
         }
 
-        function testOptionalParameters4($one = 1, $two)
-        {
-        }
-        
         function testReference1(&$one)
         {
         }
@@ -105,11 +101,25 @@ class ParameterBuilderTest extends TestCase
         function testPHPVariadics4(&$one, $two = 2, ...$three)
         {
         }
+
+        // When declaring a function or a method, adding a required parameter
+        // after optional parameters is deprecated since PHP 8.0. So, let's
+        // use conditional eval() here and avoid parsing this part of file
+        // as a function in PHP8.0+.
+        if (version_compare(PHP_VERSION, '8.0', '<')) {
+          eval(
+              'namespace ' . __NAMESPACE__ . ';
+               function testOptionalParametersBeforeRequired($one = 1, $two)
+               {
+               }'
+          );
+        }
         
         // @codingStandardsIgnoreEnd
 
+        // PHP8.0+ has a different signature wording.
+        $return_value = version_compare(PHP_VERSION, '8', '<') ? "return_value" : "result_code";
         // HHVM has a different signature wording.
-        $return_value = "return_value";
         if (defined('HHVM_VERSION')) {
             $return_value = "return_var";
         }
@@ -157,14 +167,6 @@ class ParameterBuilderTest extends TestCase
             ],
             [
                 sprintf(
-                    "\$one, \$two",
-                    MockFunctionGenerator::DEFAULT_ARGUMENT
-                ),
-                '$one, $two',
-                __NAMESPACE__ . "\\testOptionalParameters4"
-            ],
-            [
-                sprintf(
                     "\$one, &\$two, \$three = '%1\$s', &\$four = '%1\$s'",
                     MockFunctionGenerator::DEFAULT_ARGUMENT
                 ),
@@ -184,7 +186,7 @@ class ParameterBuilderTest extends TestCase
             ]);
         } else {
             $cases = array_merge($cases, [
-                ["", "", "min"],
+                version_compare(PHP_VERSION, '8', '<') ? ["", "", "min"] : ['$value', '$value', "min"],
                 [
                     sprintf(
                         "\$one, \$two = '%s'",
@@ -200,6 +202,19 @@ class ParameterBuilderTest extends TestCase
                     ),
                     '&$one, $two',
                     __NAMESPACE__ . "\\testPHPVariadics4"
+                ],
+            ]);
+        }
+
+        if (version_compare(PHP_VERSION, '8.0', '<')) {
+            $cases = array_merge($cases, [
+                [
+                    sprintf(
+                        "\$one, \$two",
+                        MockFunctionGenerator::DEFAULT_ARGUMENT
+                    ),
+                    '$one, $two',
+                    __NAMESPACE__ . "\\testOptionalParametersBeforeRequired"
                 ],
             ]);
         }
