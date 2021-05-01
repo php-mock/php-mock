@@ -1,17 +1,18 @@
-namespace {namespace};
+namespace {namespace} {
 
-use phpmock\generator\MockFunctionGenerator;
+    use phpmock\generator\MockFunctionGenerator;
 
-function {name}({signatureParameters})
-{
-    $arguments = [{bodyParameters}];
+    function {name}({signatureParameters})
+    {
+        $arguments = [{bodyParameters}];
 
-    $variadics = \array_slice(\func_get_args(), \count($arguments));
-    $arguments = \array_merge($arguments, $variadics);
+        $variadics = \array_slice(\func_get_args(), \count($arguments));
+        $arguments = \array_merge($arguments, $variadics);
 
-    return MockFunctionGenerator::call(
-        '{name}',
-        '{fqfn}',
-        $arguments
-    );
+        return MockFunctionGenerator::call(
+            '{name}',
+            '{fqfn}',
+            $arguments
+        );
+    }
 }
