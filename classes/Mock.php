@@ -64,9 +64,6 @@ class Mock implements Deactivatable
      */
     public function __construct($namespace, $name, callable $function)
     {
-        if (empty($namespace)) {
-            throw new InvalidArgumentException('Namespace should not be empty');
-        }
         if (empty($name)) {
             throw new InvalidArgumentException('Function name should not be empty');
         }
