@@ -2,7 +2,12 @@ name: "PHPUnit tests"
 
 on:
   pull_request:
-  push:
+  schedule:
+    - cron: "0 0 * * *"
+    
+concurrency:
+  group: ${{ github.head_ref || 'cron' }}
+  cancel-in-progress: true
 
 jobs:
   phpunit:
@@ -20,10 +25,13 @@ jobs:
           - "7.3"
           - "7.4"
           - "8.0"
+          - "8.1"
 
     steps:
       - name: "Checkout"
         uses: "actions/checkout@v2"
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: "Install PHP"
         uses: "shivammathur/setup-php@v2"
