@@ -35,7 +35,6 @@ use phpmock\Mock;
  */
 class Spy extends Mock
 {
-
     /**
      * @var Invocation[] The recorded calls.
      */

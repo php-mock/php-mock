@@ -11,7 +11,6 @@ namespace phpmock;
  */
 interface Deactivatable
 {
-
     /**
      * Disable related mocks.
      */

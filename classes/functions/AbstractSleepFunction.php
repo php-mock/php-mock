@@ -11,7 +11,6 @@ namespace phpmock\functions;
  */
 abstract class AbstractSleepFunction implements FunctionProvider
 {
-
     /**
      * @var Incrementable[] Observing Incrementables.
      */

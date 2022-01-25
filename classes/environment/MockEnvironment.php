@@ -14,7 +14,6 @@ use phpmock\Mock;
  */
 class MockEnvironment implements Deactivatable
 {
-
     /**
      * @var Mock[] Mock environment.
      */

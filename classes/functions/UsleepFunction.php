@@ -15,7 +15,6 @@ namespace phpmock\functions;
  */
 class UsleepFunction extends AbstractSleepFunction
 {
-
     protected function convertToSeconds($amount)
     {
         return $amount / 1000000;

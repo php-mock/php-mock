@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
  */
 class MicrotimeConverterTest extends TestCase
 {
-
     /**
      * Test convertStringToFloat().
      *

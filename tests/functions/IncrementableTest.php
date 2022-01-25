@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
  */
 class IncrementableTest extends TestCase
 {
-
     /**
      * Tests increment().
      *

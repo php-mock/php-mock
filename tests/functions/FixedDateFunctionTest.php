@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
  */
 class FixedDateFunctionTest extends TestCase
 {
-
     /**
      * Tests getDate().
      *

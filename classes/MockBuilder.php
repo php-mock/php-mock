@@ -39,7 +39,6 @@ use phpmock\functions\FunctionProvider;
  */
 class MockBuilder
 {
-
     /**
      * @var string namespace for the mock function.
      */

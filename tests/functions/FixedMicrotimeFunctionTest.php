@@ -15,7 +15,6 @@ use PHPUnit\Framework\TestCase;
  */
 class FixedMicrotimeFunctionTest extends TestCase
 {
-
     /**
      * Tests setMicrotime().
      *

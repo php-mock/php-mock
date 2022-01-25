@@ -11,7 +11,6 @@ namespace phpmock\spy;
  */
 class Invocation
 {
-
     /**
      * @var mixed The function call's return value.
      */

@@ -39,7 +39,6 @@ use phpmock\generator\MockFunctionGenerator;
  */
 class Mock implements Deactivatable
 {
-
     /**
      * @var string namespace for the mock function.
      */

@@ -11,7 +11,6 @@ namespace phpmock\functions;
  */
 interface Incrementable
 {
-
     /**
      * Increments a value.
      *

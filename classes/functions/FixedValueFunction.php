@@ -11,7 +11,6 @@ namespace phpmock\functions;
  */
 class FixedValueFunction implements FunctionProvider, Incrementable
 {
-
     /**
      * @var mixed The fixed value for the function.
      */

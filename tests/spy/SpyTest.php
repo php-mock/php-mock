@@ -15,7 +15,6 @@ use phpmock\AbstractMockTest;
  */
 class SpyTest extends AbstractMockTest
 {
-
     protected function defineFunction($namespace, $functionName)
     {
         $mock = new Spy($namespace, $functionName, function () {

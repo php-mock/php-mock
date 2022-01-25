@@ -12,7 +12,6 @@ namespace phpmock\functions;
  */
 interface FunctionProvider
 {
-
     /**
      * Returns this object as a callable for the mock function.
      *

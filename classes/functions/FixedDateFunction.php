@@ -13,7 +13,6 @@ use InvalidArgumentException;
  */
 class FixedDateFunction implements FunctionProvider, Incrementable
 {
-
     /**
      * @var int the timestamp.
      */

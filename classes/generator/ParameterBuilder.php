@@ -14,7 +14,6 @@ use ReflectionFunction;
  */
 class ParameterBuilder
 {
-
     /**
      * @var string The signature's parameters.
      */

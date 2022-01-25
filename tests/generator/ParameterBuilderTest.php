@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
  */
 class ParameterBuilderTest extends TestCase
 {
-
     /**
      * Tests build().
      *

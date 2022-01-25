@@ -42,7 +42,6 @@ use phpmock\functions\UsleepFunction;
  */
 class SleepEnvironmentBuilder
 {
-
     /**
      * @var array The namespaces for the mock environment.
      */

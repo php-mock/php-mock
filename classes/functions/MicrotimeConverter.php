@@ -12,7 +12,6 @@ namespace phpmock\functions;
  */
 class MicrotimeConverter
 {
-
     /**
      * Converts a string microtime into a float.
      *

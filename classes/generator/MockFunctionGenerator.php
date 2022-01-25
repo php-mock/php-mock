@@ -16,7 +16,6 @@ use SebastianBergmann\Template\Template;
  */
 class MockFunctionGenerator
 {
-
     /**
      * @var string The internal name for optional parameters.
      */

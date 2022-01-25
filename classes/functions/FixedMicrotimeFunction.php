@@ -13,7 +13,6 @@ use InvalidArgumentException;
  */
 class FixedMicrotimeFunction implements FunctionProvider, Incrementable
 {
-
     /**
      * @var string the timestamp in PHP's microtime() string format.
      */

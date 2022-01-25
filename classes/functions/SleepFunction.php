@@ -15,7 +15,6 @@ namespace phpmock\functions;
  */
 class SleepFunction extends AbstractSleepFunction
 {
-
     protected function convertToSeconds($amount)
     {
         return $amount;

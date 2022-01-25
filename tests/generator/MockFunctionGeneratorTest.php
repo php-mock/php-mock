@@ -14,7 +14,6 @@ use PHPUnit\Framework\TestCase;
  */
 class MockFunctionGeneratorTest extends TestCase
 {
-
     /**
      * Tests removeDefaultArguments().
      *

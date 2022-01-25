@@ -13,7 +13,6 @@ namespace phpmock;
  */
 class MockRegistry
 {
-
     /**
      * @var Mock[] Enabled mocks.
      */
