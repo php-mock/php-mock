@@ -124,6 +124,7 @@ class ParameterBuilderTest extends TestCase
         }
 
         $cases = [
+            ["", "", __NAMESPACE__ . "\\testDoesNotExist"],
             ["", "", __NAMESPACE__ . "\\testNoParameter"],
             ['$one', '$one', __NAMESPACE__ . "\\testOneParameter"],
             ['$one, $two', '$one, $two', __NAMESPACE__ . "\\testTwoParameters"],
