@@ -38,7 +38,7 @@ class ParameterBuilder
         $signatureParameters = [];
         $bodyParameters      = [];
         foreach ($function->getParameters() as $reflectionParameter) {
-            if ($this->isVariadic($reflectionParameter)) {
+            if ($reflectionParameter->isVariadic()) {
                 break;
             }
             $parameter = $reflectionParameter->isPassedByReference()
@@ -54,25 +54,6 @@ class ParameterBuilder
         }
         $this->signatureParameters = implode(", ", $signatureParameters);
         $this->bodyParameters      = implode(", ", $bodyParameters);
-    }
-
-    /**
-     * Returns whether a parameter is variadic.
-     *
-     * @param \ReflectionParameter $parameter The parameter.
-     *
-     * @return boolean True, if the parameter is variadic.
-     */
-    private function isVariadic(\ReflectionParameter $parameter)
-    {
-        if ($parameter->name == "...") {
-            // This is a variadic C-implementation before PHP-5.6.
-            return true;
-        }
-        if (method_exists($parameter, "isVariadic")) {
-            return $parameter->isVariadic();
-        }
-        return false;
     }
 
     /**
