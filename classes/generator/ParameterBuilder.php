@@ -17,7 +17,7 @@ class ParameterBuilder
     /**
      * @var string The signature's parameters.
      */
-    private $signatureParameters;
+    private $signatureParameters = '';
 
     /**
      * @var string The body's parameter access list.
