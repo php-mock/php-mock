@@ -28,8 +28,8 @@ class ParameterBuilderTest extends TestCase
     {
         $builder = new ParameterBuilder();
         $builder->build($function);
-        $this->assertEquals($expectedSignature, $builder->getSignatureParameters());
-        $this->assertEquals($expectedBody, $builder->getBodyParameters());
+        $this->assertSame($expectedSignature, $builder->getSignatureParameters());
+        $this->assertSame($expectedBody, $builder->getBodyParameters());
     }
 
     /**
@@ -124,6 +124,7 @@ class ParameterBuilderTest extends TestCase
         }
 
         $cases = [
+            ["", "", __NAMESPACE__ . "\\testDoesNotExist"],
             ["", "", __NAMESPACE__ . "\\testNoParameter"],
             ['$one', '$one', __NAMESPACE__ . "\\testOneParameter"],
             ['$one, $two', '$one, $two', __NAMESPACE__ . "\\testTwoParameters"],

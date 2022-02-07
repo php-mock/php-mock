@@ -17,12 +17,12 @@ class ParameterBuilder
     /**
      * @var string The signature's parameters.
      */
-    private $signatureParameters;
+    private $signatureParameters = '';
 
     /**
      * @var string The body's parameter access list.
      */
-    private $bodyParameters;
+    private $bodyParameters = '';
 
     /**
      * Builds the parameters for an existing function.
