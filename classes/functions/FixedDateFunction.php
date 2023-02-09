@@ -51,6 +51,6 @@ class FixedDateFunction implements FunctionProvider, Incrementable
 
     public function increment($increment)
     {
-        $this->timestamp += $increment;
+        $this->timestamp += (int) $increment;
     }
 }

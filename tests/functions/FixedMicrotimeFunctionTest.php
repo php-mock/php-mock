@@ -105,7 +105,7 @@ class FixedMicrotimeFunctionTest extends TestCase
      *
      * @return array Test cases.
      */
-    public function provideTestConstructFailsForInvalidArgument()
+    public static function provideTestConstructFailsForInvalidArgument()
     {
         return [
             [true],
@@ -134,7 +134,7 @@ class FixedMicrotimeFunctionTest extends TestCase
      *
      * @return array
      */
-    public function provideTestConstruct()
+    public static function provideTestConstruct()
     {
         return [
             ["0.00000001 1", 1.00000001],

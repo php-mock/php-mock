@@ -49,7 +49,7 @@ class MicrotimeConverterTest extends TestCase
      *
      * @return array
      */
-    public function provideFloatAndStrings()
+    public static function provideFloatAndStrings()
     {
         return [
             [1.0,        "0.00000000 1"],

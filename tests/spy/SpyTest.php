@@ -3,7 +3,7 @@
 namespace phpmock\spy;
 
 use phpmock\Mock;
-use phpmock\AbstractMockTest;
+use phpmock\AbstractMockTestCase;
 
 /**
  * Tests the Spy.
@@ -13,7 +13,7 @@ use phpmock\AbstractMockTest;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Spy
  */
-class SpyTest extends AbstractMockTest
+class SpyTest extends AbstractMockTestCase
 {
     protected function defineFunction($namespace, $functionName)
     {
@@ -56,7 +56,7 @@ class SpyTest extends AbstractMockTest
      *
      * @return array Test cases for testGetInvocations.
      */
-    public function provideTestGetInvocations()
+    public static function provideTestGetInvocations()
     {
         eval("function testGetInvocations_noParameters() { return 123; }");
         eval("function testGetInvocations_oneParameter(\$a) { return \$a + 1; }");

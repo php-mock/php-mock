@@ -78,7 +78,7 @@ class MockCaseInsensitivityTest extends TestCase
      *
      * @return string[][] Test cases.
      */
-    public function provideTestCaseSensitivity()
+    public static function provideTestCaseSensitivity()
     {
         return [
             ["TIME"],
