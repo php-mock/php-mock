@@ -17,7 +17,7 @@ if (!trait_exists(TestCaseTrait::class)) {
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Mock
  */
-abstract class AbstractMockTest extends TestCase
+abstract class AbstractMockTestCase extends TestCase
 {
     use TestCaseTrait;
 
@@ -327,7 +327,7 @@ abstract class AbstractMockTest extends TestCase
      *
      * @return array Test cases.
      */
-    public function provideTestBackupStaticAttributes()
+    public static function provideTestBackupStaticAttributes()
     {
         return [
             [], [], [], [], [], [], [], [], [], [], [], []

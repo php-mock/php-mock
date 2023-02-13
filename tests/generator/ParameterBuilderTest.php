@@ -37,7 +37,7 @@ class ParameterBuilderTest extends TestCase
      *
      * @return string[][][] The test cases.
      */
-    public function provideTestBuild()
+    public static function provideTestBuild()
     {
         // @codingStandardsIgnoreStart
 
@@ -84,7 +84,7 @@ class ParameterBuilderTest extends TestCase
         function testCombined($one, &$two, $three = 3, &$four = 4)
         {
         }
-        
+
         function testPHPVariadics1(...$one)
         {
         }
@@ -113,7 +113,7 @@ class ParameterBuilderTest extends TestCase
                }'
           );
         }
-        
+
         // @codingStandardsIgnoreEnd
 
         // PHP8.0+ has a different signature wording.

@@ -57,7 +57,7 @@ class AbstractSleepFunctionTest extends TestCase
      *
      * @return array Test cases.
      */
-    public function provideTestSleepIncrementation()
+    public static function provideTestSleepIncrementation()
     {
         return [
             [new SleepFunction(), 1, 1],

@@ -34,7 +34,7 @@ class MockFunctionGeneratorTest extends TestCase
      *
      * @return The test cases.
      */
-    public function provideTestRemoveDefaultArguments()
+    public static function provideTestRemoveDefaultArguments()
     {
         return[
             [[], []],

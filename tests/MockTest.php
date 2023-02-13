@@ -10,7 +10,7 @@ namespace phpmock;
  * @license http://www.wtfpl.net/txt/copying/ WTFPL
  * @see Mock
  */
-class MockTest extends AbstractMockTest
+class MockTest extends AbstractMockTestCase
 {
     protected function defineFunction($namespace, $functionName)
     {

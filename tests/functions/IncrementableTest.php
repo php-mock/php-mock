@@ -40,7 +40,7 @@ class IncrementableTest extends TestCase
      *
      * @return array Test cases.
      */
-    public function provideTestIncrement()
+    public static function provideTestIncrement()
     {
         $getFixedValue = function (FixedValueFunction $function) {
             return call_user_func($function->getCallable());

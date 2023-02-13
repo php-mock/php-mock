@@ -102,7 +102,7 @@ class SleepEnvironmentBuilderTest extends TestCase
      *
      * @return int[][] Test cases.
      */
-    public function provideTestUsleep()
+    public static function provideTestUsleep()
     {
         return [
             [1000],
