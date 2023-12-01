@@ -28,13 +28,13 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.0 || ^9.0 || ^10.0",
-        "squizlabs/php_codesniffer": "^3.5"
+        "phpcsstandards/php_codesniffer": "^3.5"
     },
     "replace": {
         "malkusch/php-mock": "*"
     },
     "suggest": {
-	    "php-mock/php-mock-phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock."
+        "php-mock/php-mock-phpunit": "Allows integration into PHPUnit testcase with the trait PHPMock."
     },
     "archive": {
         "exclude": ["/tests"]

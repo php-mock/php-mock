@@ -2,29 +2,28 @@ name: "Check test-flight"
 
 on:
   pull_request:
-  push:
 
 jobs:
   coding-standards:
     name: "Check test-flight"
 
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
 
     steps:
-      - name: "Checkout"
-        uses: "actions/checkout@v3"
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: "Setup PHP"
-        uses: "shivammathur/setup-php@v2"
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
           php-version: "7.4"
           tools: composer:v2
           ini-values: "zend.assertions=1"
 
-      - name: "Install dependencies"
-        run: "composer require cundd/test-flight --no-interaction --no-progress --no-suggest"
+      - name: Install dependencies
+        run: composer require cundd/test-flight --no-interaction --no-progress
 
-      - name: "Run test-flight"
+      - name: Run test-flight
         run: |
           vendor/bin/test-flight README.md
           vendor/bin/test-flight classes/
