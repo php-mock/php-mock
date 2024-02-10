@@ -52,8 +52,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking a function without parameters.
-     *
-     * @test
      */
     public function testMockFunctionWithoutParameters()
     {
@@ -65,8 +63,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking a previously mocked function again.
-     *
-     * @test
      * @depends testMockFunctionWithoutParameters
      */
     public function testRedefine()
@@ -79,8 +75,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking a function without parameters.
-     *
-     * @test
      */
     public function testMockFunctionWithParameters()
     {
@@ -92,8 +86,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking of an undefined function.
-     *
-     * @test
      */
     public function testUndefinedFunction()
     {
@@ -107,8 +99,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests failing enabling an already enabled mock.
-     *
-     * @test
      */
     public function testFailEnable()
     {
@@ -121,8 +111,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests passing by value.
-     *
-     * @test
      */
     public function testPassingByValue()
     {
@@ -136,8 +124,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Test passing by reference.
-     *
-     * @test
      */
     public function testPassingByReference()
     {
@@ -161,8 +147,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests that the mock preserves the default argument
-     *
-     * @test
      */
     public function testPreserveArgumentDefaultValue()
     {
@@ -189,8 +173,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests that the disabled mock uses the default argument of the original function.
-     *
-     * @test
      * @depends testPreserveArgumentDefaultValue
      */
     public function testResetToDefaultArgumentOfOriginalFunction()
@@ -202,8 +184,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests some methods which use the varname "...".
-     *
-     * @test
      */
     public function testCVariadic()
     {
@@ -215,8 +195,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests some methods which use the varname "..." after a mock was defined.
-     *
-     * @test
      * @depends testCVariadic
      */
     public function testCVariadicReset()
@@ -227,8 +205,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Setup a mock for testDisable().
-     *
-     * @test
      */
     public function testDisableSetup()
     {
@@ -244,8 +220,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests disable().
-     *
-     * @test
      * @depends testDisableSetup
      */
     public function testDisable()
@@ -256,8 +230,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking the function implicitely defines the function.
-     *
-     * @test
      */
     public function testImplicitDefine()
     {
@@ -270,8 +242,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests explicit function defining.
-     *
-     * @test
      */
     public function testExplicitDefine()
     {
@@ -311,8 +281,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests declaring repeatedly a mock with enabled backupStaticAttributes.
-     *
-     * @test
      * @backupStaticAttributes
      * @dataProvider provideTestBackupStaticAttributes
      */
@@ -336,8 +304,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests the mock in a separate process.
-     *
-     * @test
      * @runInSeparateProcess
      */
     public function testRunInSeparateProcess()

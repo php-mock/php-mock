@@ -43,8 +43,6 @@ class MockEnvironmentTest extends TestCase
 
     /**
      * Tests enable()
-     *
-     * @test
      */
     public function testEnable()
     {
@@ -56,8 +54,6 @@ class MockEnvironmentTest extends TestCase
 
     /**
      * Tests define()
-     *
-     * @test
      */
     public function testDefine()
     {
@@ -75,8 +71,6 @@ class MockEnvironmentTest extends TestCase
 
     /**
      * Tests disable()
-     *
-     * @test
      */
     public function testDisable()
     {

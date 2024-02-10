@@ -32,8 +32,6 @@ class MockTest extends AbstractMockTestCase
 
     /**
      * Tests enable().
-     *
-     * @test
      */
     public function testEnable()
     {
@@ -51,8 +49,6 @@ class MockTest extends AbstractMockTestCase
 
     /**
      * Tests disabling and enabling again.
-     *
-     * @test
      */
     public function testReenable()
     {
@@ -71,8 +67,6 @@ class MockTest extends AbstractMockTestCase
 
     /**
      * Tests disableAll().
-     *
-     * @test
      */
     public function testDisableAll()
     {

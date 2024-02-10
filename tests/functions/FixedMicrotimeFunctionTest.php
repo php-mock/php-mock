@@ -17,8 +17,6 @@ class FixedMicrotimeFunctionTest extends TestCase
 {
     /**
      * Tests setMicrotime().
-     *
-     * @test
      */
     public function testSetMicrotime()
     {
@@ -29,8 +27,6 @@ class FixedMicrotimeFunctionTest extends TestCase
 
     /**
      * Tests setMicrotimeAsFloat().
-     *
-     * @test
      */
     public function testSetMicrotimeAsFloat()
     {
@@ -41,8 +37,6 @@ class FixedMicrotimeFunctionTest extends TestCase
 
     /**
      * Tests getMicrotime().
-     *
-     * @test
      */
     public function testGetMicrotime()
     {
@@ -54,8 +48,6 @@ class FixedMicrotimeFunctionTest extends TestCase
 
     /**
      * Tests getCallable()
-     *
-     * @test
      */
     public function testGetCallable()
     {
@@ -77,8 +69,6 @@ class FixedMicrotimeFunctionTest extends TestCase
 
     /**
      * Tests initializing with the current timestamp
-     *
-     * @test
      */
     public function testConstructCurrentTime()
     {
@@ -90,8 +80,6 @@ class FixedMicrotimeFunctionTest extends TestCase
 
     /**
      * Tests exception for invalid argument in constructor.
-     *
-     * @test
      * @dataProvider provideTestConstructFailsForInvalidArgument
      */
     public function testConstructFailsForInvalidArgument($timestamp)
@@ -118,8 +106,6 @@ class FixedMicrotimeFunctionTest extends TestCase
      *
      * @param mixed $timestamp The tested timestamp.
      * @param float $expected  The expected timestamp.
-     *
-     * @test
      * @dataProvider provideTestConstruct
      */
     public function testConstruct($timestamp, $expected)

@@ -39,8 +39,6 @@ class SpyTest extends AbstractMockTestCase
      * @param array    $expected
      * @param string   $name
      * @param callable $invocations
-     *
-     * @test
      * @dataProvider provideTestGetInvocations
      */
     public function testGetInvocations(array $expected, $name, callable $invocations)
@@ -121,8 +119,6 @@ class SpyTest extends AbstractMockTestCase
 
     /**
      * Tests the default function.
-     *
-     * @test
      */
     public function testDefaultFunction()
     {
@@ -136,8 +132,6 @@ class SpyTest extends AbstractMockTestCase
 
     /**
      * An exception should still be recorded.
-     *
-     * @test
      */
     public function testException()
     {
@@ -160,8 +154,6 @@ class SpyTest extends AbstractMockTestCase
 
     /**
      * Test the invocation of a none exception call.
-     *
-     * @test
      */
     public function testNoException()
     {

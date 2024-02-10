@@ -22,7 +22,6 @@ class ParameterBuilderTest extends TestCase
      * @param string $function          The function name.
      *
      * @dataProvider provideTestBuild
-     * @test
      */
     public function testBuild($expectedSignature, $expectedBody, $function)
     {
