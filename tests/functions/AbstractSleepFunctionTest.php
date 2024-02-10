@@ -16,8 +16,6 @@ class AbstractSleepFunctionTest extends TestCase
 {
     /**
      * Tests incrementation of all Incrementables
-     *
-     * @test
      */
     public function testSleepIncrementationOfAllIncrementables()
     {
@@ -37,8 +35,6 @@ class AbstractSleepFunctionTest extends TestCase
      * @param AbstractSleepFunction $sleepFunction Tested implementation.
      * @param int $amount                          Amount of time units.
      * @param mixed $expected                      Expected seconds.
-     *
-     * @test
      * @dataProvider provideTestSleepIncrementation
      */
     public function testSleepIncrementation(

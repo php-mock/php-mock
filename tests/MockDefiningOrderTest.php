@@ -52,7 +52,6 @@ class MockDefiningOrderTest extends TestCase
      * documentation can be updated.
      *
      * @link https://bugs.php.net/bug.php?id=68541 Bug #68541
-     * @test
      */
     public function testDefineBeforeFirstCallRestriction()
     {
@@ -86,8 +85,6 @@ class MockDefiningOrderTest extends TestCase
 
     /**
      * Tests defining the mock after calling the unqualified function name.
-     *
-     * @test
      */
     public function testDefiningAfterCallingUnqualified()
     {
@@ -109,8 +106,6 @@ class MockDefiningOrderTest extends TestCase
 
     /**
      * Tests defining the mock after calling the qualified function name.
-     *
-     * @test
      */
     public function testDefiningAfterCallingQualified()
     {

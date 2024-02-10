@@ -28,8 +28,6 @@ class ExampleTest extends TestCase
 
     /**
      * Tests the example from the documentation.
-     *
-     * @test
      */
     public function testExample1()
     {
@@ -50,8 +48,6 @@ class ExampleTest extends TestCase
 
     /**
      * Tests the example from the documentation.
-     *
-     * @test
      */
     public function testExample2()
     {
@@ -68,8 +64,6 @@ class ExampleTest extends TestCase
 
     /**
      * Tests the example from the documentation.
-     *
-     * @test
      */
     public function testExample3()
     {
@@ -106,8 +100,6 @@ class ExampleTest extends TestCase
 
     /**
      * Tests the example from the documentation.
-     *
-     * @test
      */
     public function testExample5()
     {

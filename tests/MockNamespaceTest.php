@@ -49,8 +49,6 @@ class MockNamespaceTest extends TestCase
 
     /**
      * Tests defining mocks in a different namespace.
-     *
-     * @test
      * @dataprovider provideTestNamespace
      * @runInSeparateProcess
      */
@@ -65,8 +63,6 @@ class MockNamespaceTest extends TestCase
 
     /**
      * Tests redefining mocks in a different namespace.
-     *
-     * @test
      * @dataprovider provideTestNamespace
      */
     public function testRedefiningNamespaces()

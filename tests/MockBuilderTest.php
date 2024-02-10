@@ -17,8 +17,6 @@ class MockBuilderTest extends TestCase
 {
     /**
      * Tests build().
-     *
-     * @test
      */
     public function testBuild()
     {

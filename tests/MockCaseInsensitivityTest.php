@@ -33,7 +33,6 @@ class MockCaseInsensitivityTest extends TestCase
      * @param string $mockName  The mock function name.
      *
      * @dataProvider provideTestCaseSensitivity
-     * @test
      */
     public function testFailEnable($mockName)
     {
@@ -54,8 +53,6 @@ class MockCaseInsensitivityTest extends TestCase
      * Tests case insensitive mocks.
      *
      * @param string $mockName  The mock function name.
-     *
-     * @test
      * @dataProvider provideTestCaseSensitivity
      */
     public function testCaseSensitivity($mockName)
