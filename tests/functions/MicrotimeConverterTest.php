@@ -21,6 +21,7 @@ class MicrotimeConverterTest extends TestCase
      * @param string $string  The timestamp.
      * @dataProvider provideFloatAndStrings
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideFloatAndStrings')]
     public function testConvertStringToFloat($float, $string)
     {
         $converter = new MicrotimeConverter();
@@ -34,6 +35,7 @@ class MicrotimeConverterTest extends TestCase
      * @param string $string  The timestamp.
      * @dataProvider provideFloatAndStrings
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideFloatAndStrings')]
     public function testConvertFloatToString($float, $string)
     {
         $converter = new MicrotimeConverter();

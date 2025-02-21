@@ -65,6 +65,7 @@ abstract class AbstractMockTestCase extends TestCase
      * Tests mocking a previously mocked function again.
      * @depends testMockFunctionWithoutParameters
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testMockFunctionWithoutParameters')]
     public function testRedefine()
     {
         $this->mockFunction(__NAMESPACE__, "getmyuid", function () {
@@ -175,6 +176,7 @@ abstract class AbstractMockTestCase extends TestCase
      * Tests that the disabled mock uses the default argument of the original function.
      * @depends testPreserveArgumentDefaultValue
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testPreserveArgumentDefaultValue')]
     public function testResetToDefaultArgumentOfOriginalFunction()
     {
         $functionName = $this->buildPrivateFunctionName("testPreserveArgumentDefaultValue");
@@ -197,6 +199,7 @@ abstract class AbstractMockTestCase extends TestCase
      * Tests some methods which use the varname "..." after a mock was defined.
      * @depends testCVariadic
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testCVariadic')]
     public function testCVariadicReset()
     {
         $this->assertEquals(1, min(2, 1));
@@ -222,6 +225,7 @@ abstract class AbstractMockTestCase extends TestCase
      * Tests disable().
      * @depends testDisableSetup
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testDisableSetup')]
     public function testDisable()
     {
         $this->assertNotEquals(1234, rand());
@@ -284,6 +288,8 @@ abstract class AbstractMockTestCase extends TestCase
      * @backupStaticAttributes
      * @dataProvider provideTestBackupStaticAttributes
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestBackupStaticAttributes')]
+    #[\PHPUnit\Framework\Attributes\BackupStaticProperties(true)]
     public function testBackupStaticAttributes()
     {
         $this->mockFunction(__NAMESPACE__, "testBackupStaticAttributes", "sqrt");
@@ -306,6 +312,7 @@ abstract class AbstractMockTestCase extends TestCase
      * Tests the mock in a separate process.
      * @runInSeparateProcess
      */
+    #[\PHPUnit\Framework\Attributes\RunInSeparateProcess]
     public function testRunInSeparateProcess()
     {
         $this->mockFunction(__NAMESPACE__, "time", function () {

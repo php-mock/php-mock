@@ -21,6 +21,7 @@ class MockFunctionGeneratorTest extends TestCase
      * @param array $arguments The input arguments.
      * @dataProvider provideTestRemoveDefaultArguments
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestRemoveDefaultArguments')]
     public function testRemoveDefaultArguments(array $expected, array $arguments)
     {
         MockFunctionGenerator::removeDefaultArguments($arguments);
