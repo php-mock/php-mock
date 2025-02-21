@@ -79,6 +79,7 @@ class SleepEnvironmentBuilderTest extends TestCase
      * @param int $microseconds Microseconds.
      * @dataProvider provideTestUsleep
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestUsleep')]
     public function testUsleep($microseconds)
     {
         $time = time();
