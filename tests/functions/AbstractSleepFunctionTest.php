@@ -37,6 +37,7 @@ class AbstractSleepFunctionTest extends TestCase
      * @param mixed $expected                      Expected seconds.
      * @dataProvider provideTestSleepIncrementation
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestSleepIncrementation')]
     public function testSleepIncrementation(
         AbstractSleepFunction $sleepFunction,
         $amount,

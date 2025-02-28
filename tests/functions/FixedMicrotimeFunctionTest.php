@@ -82,6 +82,7 @@ class FixedMicrotimeFunctionTest extends TestCase
      * Tests exception for invalid argument in constructor.
      * @dataProvider provideTestConstructFailsForInvalidArgument
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestConstructFailsForInvalidArgument')]
     public function testConstructFailsForInvalidArgument($timestamp)
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -108,6 +109,7 @@ class FixedMicrotimeFunctionTest extends TestCase
      * @param float $expected  The expected timestamp.
      * @dataProvider provideTestConstruct
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestConstruct')]
     public function testConstruct($timestamp, $expected)
     {
         $function = new FixedMicrotimeFunction($timestamp);

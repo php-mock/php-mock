@@ -41,6 +41,7 @@ class SpyTest extends AbstractMockTestCase
      * @param callable $invocations
      * @dataProvider provideTestGetInvocations
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestGetInvocations')]
     public function testGetInvocations(array $expected, $name, callable $invocations)
     {
         $spy = new Spy(__NAMESPACE__, $name);
