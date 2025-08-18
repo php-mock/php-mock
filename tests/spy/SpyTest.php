@@ -2,6 +2,7 @@
 
 namespace phpmock\spy;
 
+use InvalidArgumentException;
 use phpmock\Mock;
 use phpmock\AbstractMockTestCase;
 
@@ -178,7 +179,7 @@ class SpyTest extends AbstractMockTestCase
 
     public function testFunctionMustBeCallable()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The function must be callable.');
 
         new Spy(__NAMESPACE__, 'testFunctionMustBeCallable', 'not a callable');
