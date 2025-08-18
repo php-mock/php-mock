@@ -31,11 +31,11 @@ class Invocation
      *
      * @param array $arguments Function's arguments
      * @param mixed $return Function's return value
-     * @param \Exception $exception The exception thrown by the function
+     * @param \Exception|null $exception The exception thrown by the function
      *
      * @internal
      */
-    public function __construct(array $arguments, $return, \Exception $exception = null)
+    public function __construct(array $arguments, $return, $exception = null)
     {
         $this->arguments = $arguments;
         $this->return    = $return;
