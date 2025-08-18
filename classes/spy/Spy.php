@@ -48,9 +48,15 @@ class Spy extends Mock
      * @param string        $namespace The namespace for the mock function.
      * @param string        $name      The function name of the mocked function.
      * @param callable|null $function  The mock function, or null for using the existing function.
+     *
+     * @throws \InvalidArgumentException If the provided function is not callable.
      */
-    public function __construct($namespace, $name, callable $function = null)
+    public function __construct($namespace, $name, $function = null)
     {
+        if ($function !== null && !is_callable($function)) {
+            throw new \InvalidArgumentException('The function must be callable.');
+        }
+
         parent::__construct($namespace, $name, $function ?: $name);
     }
 
