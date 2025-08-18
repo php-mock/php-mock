@@ -22,8 +22,8 @@ class ParameterBuilderTest extends TestCase
      * @param string $function          The function name.
      *
      * @dataProvider provideTestBuild
-     * @test
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestBuild')]
     public function testBuild($expectedSignature, $expectedBody, $function)
     {
         $builder = new ParameterBuilder();

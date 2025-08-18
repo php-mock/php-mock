@@ -39,8 +39,6 @@ class SleepEnvironmentBuilderTest extends TestCase
 
     /**
      * Tests mocking functions accross several namespaces.
-     *
-     * @test
      */
     public function testAddNamespace()
     {
@@ -63,8 +61,6 @@ class SleepEnvironmentBuilderTest extends TestCase
 
     /**
      * Tests sleep()
-     *
-     * @test
      */
     public function testSleep()
     {
@@ -81,10 +77,9 @@ class SleepEnvironmentBuilderTest extends TestCase
      * Tests usleep()
      *
      * @param int $microseconds Microseconds.
-     *
-     * @test
      * @dataProvider provideTestUsleep
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestUsleep')]
     public function testUsleep($microseconds)
     {
         $time = time();
@@ -113,8 +108,6 @@ class SleepEnvironmentBuilderTest extends TestCase
 
     /**
      * Tests date()
-     *
-     * @test
      */
     public function testDate()
     {

@@ -52,8 +52,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking a function without parameters.
-     *
-     * @test
      */
     public function testMockFunctionWithoutParameters()
     {
@@ -65,10 +63,9 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking a previously mocked function again.
-     *
-     * @test
      * @depends testMockFunctionWithoutParameters
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testMockFunctionWithoutParameters')]
     public function testRedefine()
     {
         $this->mockFunction(__NAMESPACE__, "getmyuid", function () {
@@ -79,8 +76,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking a function without parameters.
-     *
-     * @test
      */
     public function testMockFunctionWithParameters()
     {
@@ -92,8 +87,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking of an undefined function.
-     *
-     * @test
      */
     public function testUndefinedFunction()
     {
@@ -107,8 +100,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests failing enabling an already enabled mock.
-     *
-     * @test
      */
     public function testFailEnable()
     {
@@ -121,8 +112,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests passing by value.
-     *
-     * @test
      */
     public function testPassingByValue()
     {
@@ -136,8 +125,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Test passing by reference.
-     *
-     * @test
      */
     public function testPassingByReference()
     {
@@ -161,8 +148,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests that the mock preserves the default argument
-     *
-     * @test
      */
     public function testPreserveArgumentDefaultValue()
     {
@@ -189,10 +174,9 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests that the disabled mock uses the default argument of the original function.
-     *
-     * @test
      * @depends testPreserveArgumentDefaultValue
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testPreserveArgumentDefaultValue')]
     public function testResetToDefaultArgumentOfOriginalFunction()
     {
         $functionName = $this->buildPrivateFunctionName("testPreserveArgumentDefaultValue");
@@ -202,8 +186,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests some methods which use the varname "...".
-     *
-     * @test
      */
     public function testCVariadic()
     {
@@ -215,10 +197,9 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests some methods which use the varname "..." after a mock was defined.
-     *
-     * @test
      * @depends testCVariadic
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testCVariadic')]
     public function testCVariadicReset()
     {
         $this->assertEquals(1, min(2, 1));
@@ -227,8 +208,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Setup a mock for testDisable().
-     *
-     * @test
      */
     public function testDisableSetup()
     {
@@ -244,10 +223,9 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests disable().
-     *
-     * @test
      * @depends testDisableSetup
      */
+    #[\PHPUnit\Framework\Attributes\Depends('testDisableSetup')]
     public function testDisable()
     {
         $this->assertNotEquals(1234, rand());
@@ -256,8 +234,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests mocking the function implicitely defines the function.
-     *
-     * @test
      */
     public function testImplicitDefine()
     {
@@ -270,8 +246,6 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests explicit function defining.
-     *
-     * @test
      */
     public function testExplicitDefine()
     {
@@ -311,11 +285,11 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests declaring repeatedly a mock with enabled backupStaticAttributes.
-     *
-     * @test
      * @backupStaticAttributes
      * @dataProvider provideTestBackupStaticAttributes
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestBackupStaticAttributes')]
+    #[\PHPUnit\Framework\Attributes\BackupStaticProperties(true)]
     public function testBackupStaticAttributes()
     {
         $this->mockFunction(__NAMESPACE__, "testBackupStaticAttributes", "sqrt");
@@ -336,10 +310,9 @@ abstract class AbstractMockTestCase extends TestCase
 
     /**
      * Tests the mock in a separate process.
-     *
-     * @test
      * @runInSeparateProcess
      */
+    #[\PHPUnit\Framework\Attributes\RunInSeparateProcess]
     public function testRunInSeparateProcess()
     {
         $this->mockFunction(__NAMESPACE__, "time", function () {

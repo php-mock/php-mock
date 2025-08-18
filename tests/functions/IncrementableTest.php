@@ -21,10 +21,9 @@ class IncrementableTest extends TestCase
      * @param mixed $increment              The amount of increase.
      * @param Incrementable $incrementable  The tested Incrementable.
      * @param callable $getValue            The lambda for getting the value.
-     *
-     * @test
      * @dataProvider provideTestIncrement
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestIncrement')]
     public function testIncrement(
         $expected,
         $increment,

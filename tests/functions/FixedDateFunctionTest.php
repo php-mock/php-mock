@@ -16,8 +16,6 @@ class FixedDateFunctionTest extends TestCase
 {
     /**
      * Tests getDate().
-     *
-     * @test
      */
     public function testGetDate()
     {

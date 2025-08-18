@@ -49,11 +49,10 @@ class MockNamespaceTest extends TestCase
 
     /**
      * Tests defining mocks in a different namespace.
-     *
-     * @test
      * @dataprovider provideTestNamespace
      * @runInSeparateProcess
      */
+    #[\PHPUnit\Framework\Attributes\RunInSeparateProcess]
     public function testDefiningNamespaces()
     {
         $this->builder->setNamespace(__NAMESPACE__);
@@ -65,8 +64,6 @@ class MockNamespaceTest extends TestCase
 
     /**
      * Tests redefining mocks in a different namespace.
-     *
-     * @test
      * @dataprovider provideTestNamespace
      */
     public function testRedefiningNamespaces()

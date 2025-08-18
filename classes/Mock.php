@@ -90,7 +90,7 @@ class Mock implements Deactivatable
         if ($registry->isRegistered($this)) {
             throw new MockEnabledException(
                 "$this->name is already enabled."
-                . "Call disable() on the existing mock."
+                . " Call disable() on the existing mock."
             );
         }
         $this->define();

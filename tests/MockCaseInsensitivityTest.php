@@ -33,8 +33,8 @@ class MockCaseInsensitivityTest extends TestCase
      * @param string $mockName  The mock function name.
      *
      * @dataProvider provideTestCaseSensitivity
-     * @test
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestCaseSensitivity')]
     public function testFailEnable($mockName)
     {
         $builder = new MockBuilder();
@@ -54,10 +54,9 @@ class MockCaseInsensitivityTest extends TestCase
      * Tests case insensitive mocks.
      *
      * @param string $mockName  The mock function name.
-     *
-     * @test
      * @dataProvider provideTestCaseSensitivity
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('provideTestCaseSensitivity')]
     public function testCaseSensitivity($mockName)
     {
         $builder = new MockBuilder();
